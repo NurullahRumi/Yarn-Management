@@ -1,0 +1,147 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1554262401436",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.StatPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "error",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "statForBtnQry" : {
+    "_id" : "wm-statForBtnQry-wm.Variable-1580388407332",
+    "name" : "statForBtnQry",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Y",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "StatPrgid" : {
+    "_id" : "wm-StatPrgid-wm.Variable-1554182634860",
+    "name" : "StatPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "YM1000W81",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "StatPrgName" : {
+    "_id" : "wm-StatPrgName-wm.Variable-1554182667608",
+    "name" : "StatPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Query Yarn Delivery to Floor",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum" : {
+    "_id" : "wm-svGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum-wm.ServiceVariable-1554286952317",
+    "name" : "svGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000pk0DelflrYm322lstOfWrhnumResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_DDELFLR_YM322QryDel" : {
+    "_id" : "wm-svGetProcYM1000WPK0_DDELFLR_YM322QryDel-wm.ServiceVariable-1554204486117",
+    "name" : "svGetProcYM1000WPK0_DDELFLR_YM322QryDel",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pWrhNum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pWrhNum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pPalNum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pPalNum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pOrdNum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pOrdNum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pYrncod",
+      "value" : "bind:Widgets.formFilter.formWidgets.pYrncod.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFromDATEDEL",
+      "value" : "bind:Widgets.formFilter.formWidgets.pFromDATEDEL.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pToDATEDEL",
+      "value" : "bind:Widgets.formFilter.formWidgets.pToDATEDEL.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0DdelflrYm322qryDelResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_DDELFLR_YM322QryDel",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_DDELFLR_YM322QryDel",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svGetProcYM1000WPK0_DDELFLR_YM322QryDelonSuccess($event, $scope)",
+    "onError" : "svGetProcYM1000WPK0_DDELFLR_YM322QryDelonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

@@ -1,0 +1,571 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1560401623187",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.StatPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "error",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "StatPrgid" : {
+    "_id" : "wm-StatPrgid-wm.Variable-1560401529293",
+    "name" : "StatPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "YM1000W93",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "StatPrgName" : {
+    "_id" : "wm-StatPrgName-wm.Variable-1560401561624",
+    "name" : "StatPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Yarn Pallet Requisition",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svCreateProcYM1000WPK0_YNREQN_YM144AddMaster" : {
+    "_id" : "wm-svCreateProcYM1000WPK0_YNREQN_YM144AddMaster-wm.ServiceVariable-1561438537969",
+    "name" : "svCreateProcYM1000WPK0_YNREQN_YM144AddMaster",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pNumfeed",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pNumfeed.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pKmchcod",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pKmchcod.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFabseq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pFabseq.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pAlcseq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pAlcseq.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pYrnmix",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pYrnmix.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pDatereq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pDatereq.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pTotpal",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pTotpal.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pYrnid",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pYrnid.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pReqnum",
+      "value" : "bind:Widgets.lblReqnumGen.caption",
+      "type" : "number"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.CreateProcYm1000wpk0YnreqnYm144addMasterResponse",
+    "service" : "pfsdb",
+    "operation" : "executeCreateProcYM1000WPK0_YNREQN_YM144AddMaster",
+    "operationId" : "ProcedureExecutionController_executeCreateProcYM1000WPK0_YNREQN_YM144AddMaster",
+    "operationType" : "post",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svCreateProcYM1000WPK0_YNREQN_YM144AddMasteronSuccess($event, $scope)",
+    "onError" : "svCreateProcYM1000WPK0_YNREQN_YM144AddMasteronError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144DlyReqnum" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144DlyReqnum-wm.ServiceVariable-1562228304739",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144DlyReqnum",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pReqnum",
+      "type" : "number"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnreqnYm144dlyReqnumResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144DlyReqnum",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144DlyReqnum",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144RGFabseq" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144RGFabseq-wm.ServiceVariable-1562127833718",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144RGFabseq",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnreqnYm144rgfabseqResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144RGFabseq",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144RGFabseq",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144RGKmchcod" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144RGKmchcod-wm.ServiceVariable-1562147956493",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144RGKmchcod",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFabseq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pFabseq.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pYrnid",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pYrnid.datavalue",
+      "type" : "integer"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnreqnYm144rgkmchcodResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144RGKmchcod",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144RGKmchcod",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144RGOrdnum" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144RGOrdnum-wm.ServiceVariable-1562064089037",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144RGOrdnum",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnreqnYm144rgordnumResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144RGOrdnum",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144RGOrdnum",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144RGTotpal" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144RGTotpal-wm.ServiceVariable-1562218825296",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144RGTotpal",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pTotpal",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pTotpal.datavalue",
+      "type" : "number"
+    }, {
+      "target" : "pExtotpal",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pExtotpal.datavalue",
+      "type" : "number"
+    }, {
+      "target" : "pPalwgt",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pPalwgt.datavalue",
+      "type" : "number"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnreqnYm144rgtotpalResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144RGTotpal",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144RGTotpal",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onError" : "svGetProcYM1000WPK0_YNREQN_YM144RGTotpalonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144RGWrhnum" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144RGWrhnum-wm.ServiceVariable-1562062062104",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144RGWrhnum",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnreqnYm144rgwrhnumResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144RGWrhnum",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144RGWrhnum",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144RGYrnID" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144RGYrnID-wm.ServiceVariable-1562133821536",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144RGYrnID",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFabseq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pFabseq.datavalue",
+      "type" : "integer"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnreqnYm144rgyrnIdResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144RGYrnID",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144RGYrnID",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144RGYrnmix" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144RGYrnmix-wm.ServiceVariable-1562144004127",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144RGYrnmix",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFabseq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pFabseq.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pYrnid",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pYrnid.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pAlcseq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pAlcseq.datavalue",
+      "type" : "integer"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnreqnYm144rgyrnmixResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144RGYrnmix",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144RGYrnmix",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144VldtFabseq" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144VldtFabseq-wm.ServiceVariable-1562130779623",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144VldtFabseq",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFabseq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pFabseq.datavalue",
+      "type" : "integer"
+    } ],
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144VldtFabseq",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144VldtFabseq",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onError" : "svGetProcYM1000WPK0_YNREQN_YM144VldtFabseqonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144VldtKmchcod" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144VldtKmchcod-wm.ServiceVariable-1562154037251",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144VldtKmchcod",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pKmchflrid",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pKmcflrid.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFabseq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pFabseq.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pYrnid",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pYrnid.datavalue",
+      "type" : "integer"
+    } ],
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144VldtKmchcod",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144VldtKmchcod",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onError" : "svGetProcYM1000WPK0_YNREQN_YM144VldtKmchcodonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144VldtNumfed" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144VldtNumfed-wm.ServiceVariable-1562216462299",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144VldtNumfed",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pYrnmix",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pYrnmix.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFabseq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pFabseq.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pYrnid",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pYrnid.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pAlcseq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pAlcseq.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pNumfeed",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pNumfeed.datavalue",
+      "type" : "number"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pQtyalc",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pQtyalc.datavalue",
+      "type" : "number"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnreqnYm144vldtNumfedResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144VldtNumfed",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144VldtNumfed",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onError" : "svGetProcYM1000WPK0_YNREQN_YM144VldtNumfedonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144VldtOrdnum" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144VldtOrdnum-wm.ServiceVariable-1562067382880",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144VldtOrdnum",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    } ],
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144VldtOrdnum",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144VldtOrdnum",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onError" : "svGetProcYM1000WPK0_YNREQN_YM144VldtOrdnumonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM144VldtYrnmix" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM144VldtYrnmix-wm.ServiceVariable-1562146403071",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM144VldtYrnmix",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFabseq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pFabseq.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pYrnid",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pYrnid.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pAlcseq",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pAlcseq.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pYrnmix",
+      "value" : "bind:Widgets.formAddMaster.formWidgets.pYrnmix.datavalue",
+      "type" : "string"
+    } ],
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM144VldtYrnmix",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM144VldtYrnmix",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onError" : "svGetProcYM1000WPK0_YNREQN_YM144VldtYrnmixonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

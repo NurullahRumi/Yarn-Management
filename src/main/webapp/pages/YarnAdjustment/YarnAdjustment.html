@@ -1,0 +1,287 @@
+<wm-page data-ng-controller="YarnAdjustmentPageController" pagetitle="Yarn Adjustment" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.statPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter" class="panel-primary">
+                <wm-layoutgrid columns="1" name="layoutgrid1">
+                    <wm-gridrow name="gridrow1">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn1">
+                            <wm-form-field readonly="false" name="p_YRNCOD" displayname="Yarn Code" key="p_YRNCOD" type="string" show="true" widget="text" defaultvalue="bind:pageParams.pParam1" on-change="p_YRNCODChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn4">
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup1">
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="button3" margin="15px unset unset unset" on-click="button3Click($event, $scope)" disabled="bind:Variables.statForBtnQry.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                <wm-button caption="Reset" type="reset" class="btn-secondary" name="button1" margin="15px unset unset unset" on-click="button1Click($event, $scope)"></wm-button>
+                            </wm-buttongroup>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn5"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn6"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-form>
+            <wm-layoutgrid name="layoutgrid2">
+                <wm-gridrow name="gridrow2">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn5_1">
+                        <wm-layoutgrid name="layoutgrid3">
+                            <wm-gridrow name="gridrow4">
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn9">
+                                    <wm-label class="col-md-6 control-label" textalign="left" caption="Code" name="label3"></wm-label>
+                                    <wm-label class="displayField" width="130" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].yrncod" name="lblYrncod"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn10">
+                                    <wm-label class="col-md-6 control-label" textalign="left" caption="Origin" name="label5"></wm-label>
+                                    <wm-label class="displayField" width="130" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].yrnori" name="label7"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn17">
+                                    <wm-label class="col-md-6 control-label" textalign="left" caption="Lot#" name="label6"></wm-label>
+                                    <wm-label class="displayField" width="130" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].yrnlot" name="label8"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow5">
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn11">
+                                    <wm-label class="col-md-6 control-label" textalign="left" caption="Sts" name="label9"></wm-label>
+                                    <wm-label class="displayField" width="130" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].yrnstat" name="lblStatus"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn18">
+                                    <wm-label class="col-md-6 control-label" textalign="left" caption="Kgs Recved" name="label10"></wm-label>
+                                    <wm-label class="displayField" width="130" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].qtyrec.toLocaleString()" name="label13" textalign="right"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn12">
+                                    <wm-label class="col-md-6 control-label" textalign="left" caption="Date Recved" name="label11"></wm-label>
+                                    <wm-label class="displayField" width="130" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].daterec | toDate: 'dd-MMM-yyyy'" name="label14"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow7_1">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn17_1">
+                                    <wm-panel iconclass="" autoclose="outsideClick" title="Production Summary" name="panel1" class="panel-info">
+                                        <wm-layoutgrid name="layoutgrid5">
+                                            <wm-gridrow name="gridrow8">
+                                                <wm-gridcolumn columnwidth="4" name="gridcolumn20">
+                                                    <wm-label class="col-md-6 control-label" textalign="left" width="120" caption="Total Kgs Allocated" name="label16"></wm-label>
+                                                    <wm-label class="displayField" width="130" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].wqtyalc.toLocaleString()" name="label19" textalign="right"></wm-label>
+                                                </wm-gridcolumn>
+                                                <wm-gridcolumn columnwidth="4" name="gridcolumn21">
+                                                    <wm-label class="col-md-6 control-label" textalign="left" width="100" caption="Kgs Knit" name="label17"></wm-label>
+                                                    <wm-label class="displayField" width="130" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutQtyknt.toLocaleString()" name="label20" textalign="right"></wm-label>
+                                                </wm-gridcolumn>
+                                                <wm-gridcolumn columnwidth="4" name="gridcolumn24">
+                                                    <wm-label class="col-md-6 control-label" textalign="left" width="100" caption="Efficiency (%)" name="label18"></wm-label>
+                                                    <wm-label class="displayField" width="130" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutKntdiffPercent.toLocaleString() | numberToString: '2'" name="label21" textalign="right"></wm-label>
+                                                </wm-gridcolumn>
+                                            </wm-gridrow>
+                                        </wm-layoutgrid>
+                                    </wm-panel>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn6_1">
+                        <wm-layoutgrid name="layoutgrid4">
+                            <wm-gridrow name="gridrow6" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn13">
+                                    <wm-label class="col-md-3 control-label" textalign="right" width="100" caption="Yrn Cps" name="label22" margin="unset 5px unset unset"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="450" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].nfyrncps" name="label23"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow7" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn15">
+                                    <wm-label class="col-md-3 control-label" textalign="right" width="100" caption="Cnt" margin="unset 5px unset unset" name="label24"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="450" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].nyrncnt" name="label29"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow10" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn25">
+                                    <wm-label class="col-md-3 control-label" textalign="right" width="100" caption="Clr/Colour Des" margin="unset 5px unset unset" name="label25"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="60" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].nyrnclr" name="label30" margin="unset 5px unset unset"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="250" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].nyrncdes" name="label31" margin="unset 5px unset unset"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="120" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].clrref" name="label32"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow11" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn27">
+                                    <wm-label class="col-md-3 control-label" textalign="right" width="100" caption="Quality" margin="unset 5px unset unset" name="label26"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="150" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].nyrnqlty" name="label33" margin="unset 5px unset unset"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="150" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].nyrnsubqltya" name="label34" margin="unset 5px unset unset"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="150" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].nyrnsubqltyb" name="label35"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow12" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn29">
+                                    <wm-label class="col-md-3 control-label" textalign="right" width="100" caption="FF Code" margin="unset 5px unset unset" name="label27"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="450" caption="bind:Variables.svProcYM1000PKO_YM155Master.dataSet.poutYm155master[$i].yrnff" name="label36"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow13" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn31" horizontalalign="center">
+                                    <wm-button class="btn-default" caption="View Yarn Allocation" type="button" margin="unset 0.5em" name="btnViewYarnAllocation" width="155" on-click="btnViewYarnAllocationClick($event, $scope)"></wm-button>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn32" horizontalalign="center">
+                                    <wm-button class="btn-default" caption="WH Placement" type="button" margin="unset 0.5em" name="btnWHPlace" width="155" on-click="btnWHPlaceClick($event, $scope)"></wm-button>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn35" horizontalalign="center"></wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-table title="Yarn Stock" dataset="bind:Variables.svProcYM1000PKO_YM155DETAIL.dataSet.poutDetail" navigation="Classic" name="table1" spacing="condensed" showrecordcount="true" class="panel-info">
+                <wm-table-column binding="wrhnum" caption="W/H" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wprodqtyalc" caption="Kgs Alc for Knt" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wprodqtyknit" caption="Kgs Knit" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wknitdiffPercent" caption="Efficiency  (%)" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wkntplanSts" caption="Knt Planng Status" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="qtyphys" caption="Physical" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wlooseQtyphys" caption="Loose Qty" textalignment="right" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wpalletkgs" caption="Kgs Stored as Pallets" textalignment="right" edit-widget-type="number" type="float" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wnewQtyphys" caption="New Physical" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="qtyavail" caption="Net Avail" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wsinglemixAvail" caption="Single Mix Kgs Avail" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wdoublemixAvail" caption="Double Yrn Mix Kgs Avail" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wnewQtyavail" caption="New Avail" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wplacementQty" caption="WH Placement kgs (Include SAL)" textalignment="right" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="customField" caption="" widget-type="button" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNADJUST_UPDSTK" searchable="false" show="true" readonly="false">
+                    <wm-button caption="{{row.getProperty('customField') || 'Update'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="customFieldAction(selectedItemData)" data-ng-class=""></wm-button>
+                </wm-table-column>
+            </wm-table>
+            <wm-layoutgrid name="layoutgrid6">
+                <wm-gridrow name="gridrow13_1">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn25_1"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn29_1"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn30">
+                        <wm-label class="col-md-6 control-label" textalign="right" caption="Physical" name="label33_1" width="95%"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn31_1">
+                        <wm-label class="col-md-6 control-label" textalign="right" caption="Loose Qty" name="label34_1" width="95%"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn32_1">
+                        <wm-label class="col-md-6 control-label" textalign="right" caption="Kgs Stored as Pallets" name="label35_1" width="95%"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn33">
+                        <wm-label class="col-md-6 control-label" textalign="right" caption="New Physical" name="label36_1" width="95%"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn34">
+                        <wm-label class="col-md-6 control-label" textalign="right" caption="Net Avail" name="label37" width="95%"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn35_1">
+                        <wm-label class="col-md-6 control-label" textalign="right" caption="Single Mix Kgs Avail" name="label38" width="95%"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn36">
+                        <wm-label class="col-md-6 control-label" textalign="right" caption="Double Yrn Mix Kgs Avail" name="label39" width="95%"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn38">
+                        <wm-label class="col-md-6 control-label" textalign="right" caption="New Avail" name="label40" width="95%"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn26">
+                        <wm-label class="col-md-6 control-label" textalign="right" caption="WH Placement kgs (Include SAL)" name="label41" width="95%"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn55_1"></wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow15">
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn39"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn51">
+                        <wm-label class="col-md-6 control-label" textalign="right" caption="Total" name="label42"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn52">
+                        <wm-label class="displayField" width="95%" caption="bind:Variables.svProcYM1000PKO_YM155DETAIL.dataSet.poutDetail[$i].wdetailSumQtyphys.toLocaleString()" name="label43" textalign="right"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn53">
+                        <wm-label class="displayField" width="95%" caption="bind:Variables.svProcYM1000PKO_YM155DETAIL.dataSet.poutDetail[$i].wdetailSumLooseQtyphys.toLocaleString()" name="label44" textalign="right"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn54">
+                        <wm-label class="displayField" width="95%" caption="bind:Variables.svProcYM1000PKO_YM155DETAIL.dataSet.poutDetail[$i].wprodqtySumPalletkgs.toLocaleString()" name="label50" textalign="right"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn55">
+                        <wm-label class="displayField" width="95%" caption="bind:Variables.svProcYM1000PKO_YM155DETAIL.dataSet.poutDetail[$i].wdetailSumNewQtyphys.toLocaleString()" name="label46" textalign="right"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn57">
+                        <wm-label class="displayField" width="95%" caption="bind:Variables.svProcYM1000PKO_YM155DETAIL.dataSet.poutDetail[$i].wdetailSumQtyavail.toLocaleString()" name="label49" textalign="right"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn59">
+                        <wm-label class="displayField" width="95%" caption="bind:Variables.svProcYM1000PKO_YM155DETAIL.dataSet.poutDetail[$i].wdetailSumSmixQtyavail.toLocaleString()" name="label48" textalign="right"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn60">
+                        <wm-label class="displayField" width="95%" caption="bind:Variables.svProcYM1000PKO_YM155DETAIL.dataSet.poutDetail[$i].wdetailSumDmixQtyavail.toLocaleString()" name="label51" textalign="right"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn58">
+                        <wm-label class="displayField" width="95%" caption="bind:Variables.svProcYM1000PKO_YM155DETAIL.dataSet.poutDetail[$i].wdetailSumNewQtyavail.toLocaleString()" name="label52" textalign="right"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn50">
+                        <wm-label class="displayField" width="95%" caption="bind:Variables.svProcYM1000PKO_YM155DETAIL.dataSet.poutDetail[$i].wdetailSumPlacementqty.toLocaleString()" name="label53" textalign="right"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn56_1"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-layoutgrid name="layoutgrid7">
+                <wm-gridrow name="gridrow15_1" padding="5px unset unset unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn47">
+                        <wm-button class="btn-default" caption="Complete Yarn" type="button" margin="unset 0.5em" width="155" name="button6_1" on-click="button6_1Click($event, $scope)" accessroles="YRNDEF_UPDCOMSTS"></wm-button>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn48"></wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow16">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn49"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn50_1"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Complete the Yarn" iconclass="" name="dialogCmpltYrncod">
+            <wm-layoutgrid name="layoutgrid8">
+                <wm-gridrow name="gridrow17">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn51_1">
+                        <wm-composite name="composite1">
+                            <wm-label class="col-md-3 control-label" name="label56" caption="Remarks"></wm-label>
+                            <wm-container class="col-md-9" name="container1">
+                                <wm-textarea name="textareaCmpltCmt" maxchars="120"></wm-textarea>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Complete and Exit" type="button" margin="unset 0.5em" name="button8" on-click="button8Click($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button7" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view3">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Physical and Avail" iconclass="wi wi-edit" name="dialogUpdDETAIL">
+            <wm-layoutgrid name="layoutgrid9">
+                <wm-gridrow name="gridrow18" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn52_1">
+                        <wm-label class="col-md-3 control-label" caption="New Physical" name="label58"></wm-label>
+                        <wm-text name="txtUpdNEW_QTYPHYS" width="150" type="number" maxchars="11" step="0.01" datavalue="bind:Widgets.table1.selecteditem.wnewQtyphys"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow19" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn54_1">
+                        <wm-label class="col-md-3 control-label" caption="New Avail" name="label59"></wm-label>
+                        <wm-text name="txtUpdNEW_QTYAVAIL" width="150" type="number" maxchars="11" step="0.01" datavalue="bind:Widgets.table1.selecteditem.wnewQtyavail"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow20">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn56">
+                        <wm-composite name="composite2">
+                            <wm-label class="col-md-3 control-label" name="label60" caption="Remarks"></wm-label>
+                            <wm-container class="col-md-9" name="container2">
+                                <wm-textarea name="textareaUpdRemarks" maxchars="120"></wm-textarea>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions2">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="button10" on-click="button10Click($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button9" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

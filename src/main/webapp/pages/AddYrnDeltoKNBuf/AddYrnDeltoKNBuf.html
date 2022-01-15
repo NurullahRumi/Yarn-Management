@@ -1,0 +1,152 @@
+<wm-page data-ng-controller="AddYrnDeltoKNBufPageController" pagetitle="Add Yrn Delto Kn Buf" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.StatPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-table title="Yarn Delivery" dataset="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM150DspyDelnum.dataSet.poutdelnum" navigation="Classic" name="tableDspyDelnum" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" class="panel-primary">
+                <wm-table-column binding="delnum" caption="Delivery Note #" width="80px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="datedel" caption="Delivery Date" width="110px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy HH:mm" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="manualdn" caption="Manual DN#" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="reqnum" caption="Req #" width="80px" textalignment="right" type="integer" formatpattern="numberToString" fractionsize="0" show="true" readonly="undefined"></wm-table-column>
+                <wm-table-column binding="reqnseq" caption="Request Seq" width="80px" textalignment="right" type="byte" formatpattern="numberToString" show="true" readonly="undefined"></wm-table-column>
+                <wm-table-column binding="palletid" caption="Pallet Id" width="100px" type="string" show="true" readonly="undefined"></wm-table-column>
+                <wm-table-column-group name="group" caption="Delivering warehouse">
+                    <wm-table-column binding="fromwrh" caption="" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="fromwhdes" caption="" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                </wm-table-column-group>
+                <wm-table-column-group name="group1" caption="Receiving warehouse">
+                    <wm-table-column binding="towrh" caption="" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="towhdes" caption="" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                </wm-table-column-group>
+            </wm-table>
+            <wm-form errormessage="" captionposition="left" title="Yarn Delivery entries" enctype="application/x-www-form-urlencoded" method="post" captionalign="left" name="formYrnDelBuf" class="panel-info" postmessage="">
+                <wm-layoutgrid columns="1" name="layoutgrid1">
+                    <wm-gridrow name="gridrow1">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn1">
+                            <wm-form-field name="pMANUALDN" readonly="false" displayname="Manual DN#" key="pMANUALDN" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" maxchars="30"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow2">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn2">
+                            <wm-form-field name="pFROMWRH" readonly="false" displayname="Delivering Warehouse" key="pFROMWRH" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM150RGFromWrh.dataSet.poutWrh"
+                                datafield="strcod" displayfield="strdes"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow3">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn3">
+                            <wm-form-field name="pTOWRH" readonly="false" displayname="Receiving  Warehouse" key="pTOWRH" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM150RGToWrh.dataSet.poutWrh"
+                                datafield="strcod" displayfield="strdes"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow4">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn4">
+                            <wm-form-field name="pREQNUM" readonly="false" displayname="Request number" key="pREQNUM" type="integer" show="true" widget="number" inputtype="number" placeholder="Enter value" on-click="pREQNUMClick($event, $scope)"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow5">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn5">
+                            <wm-form-field name="pREQNSEQ" readonly="true" displayname="Request Seq" key="pREQNSEQ" type="integer" show="true" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow6">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn6">
+                            <wm-form-field name="pPALLETID" readonly="false" displayname="Pallet Id" key="pPALLETID" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-click="pPALLETIDClick($event, $scope)" on-change="pPALLETIDChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow7">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn7">
+                            <wm-form-field name="pYRNMIXCODE" readonly="true" displayname="Yrnmixcode" key="pYRNMIXCODE" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn11">
+                            <wm-form-field name="pKmchflrid" displayname="Mch Flr Id" widget="text" show="true" type="custom" readonly="true" inputtype="text" key="pKmchflrid" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn12">
+                            <wm-form-field name="pKmchcod" displayname="M/C Code" widget="text" show="true" type="custom" readonly="true" inputtype="text" key="pKmchcod" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow8">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn8">
+                            <wm-form-field name="pOrdnum" readonly="true" displayname="Ordnum" key="pOrdnum" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn13">
+                            <wm-form-field name="pKgsReq" displayname="Deliver #Kgs" widget="text" show="true" type="custom" readonly="true" inputtype="text" key="pKgsReq" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn14">
+                            <wm-form-field name="pKgsleft" displayname="Balance # Kgs" widget="text" show="true" type="custom" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM150Kgsleft.dataSet.poutkgsleft" readonly="true" inputtype="text" key="pKgsleft"
+                                placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow9">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn9">
+                            <wm-form-field name="pNUMCON" readonly="true" displayname="No of Cones" key="pNUMCON" type="number" show="true" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn15">
+                            <wm-form-field name="pAlcseq" displayname="Allocation Seq" widget="text" show="bind:false" type="custom" inputtype="text" key="pAlcseq" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn16">
+                            <wm-form-field name="pFabseq" displayname="Fabric Seq" widget="text" show="bind:false" type="custom" inputtype="text" key="pFabseq" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow10">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn10">
+                            <wm-form-field name="pPALWGT" readonly="true" displayname="Pallet Wgt" key="pPALWGT" type="number" show="true" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn17">
+                            <wm-form-field name="pYrnid" displayname="Yarn ID" widget="text" show="bind:false" type="custom" inputtype="text" key="pYrnid" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-buttongroup horizontalalign="right" class="form-action col-md-12" name="buttongroup1">
+                    <wm-button caption="Save" type="submit" class="btn-primary" name="BtnSav" on-click="BtnSavClick($event, $scope)"></wm-button>
+                    <wm-button caption="Reset" type="reset" class="btn-secondary" name="btnReset"></wm-button>
+                </wm-buttongroup>
+            </wm-form>
+            <wm-layoutgrid name="layoutgrid2">
+                <wm-gridrow name="gridrow11">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn19">
+                        <wm-label padding="unset 0.5em" name="lblDelnum" caption="bind:Variables.svCreateProcYM1000WPK0_DELFLR_YM150YrnDelbuf.dataSet.poutDelnum" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn20"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="List of Requisition number" iconclass="wi wi-list" name="dialogRGReqnum" width="60%">
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Select And Exit" type="button" margin="unset 0.5em" name="btnReqnum" on-click="btnReqnumClick($event, $scope)"></wm-button>
+            </wm-dialogactions>
+            <wm-table title="" dataset="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM150RGReqnum.dataSet.poutReqnum" navigation="None" name="tableRGReqnum" spacing="condensed">
+                <wm-table-column binding="reqnum" caption="Request#" width="80px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrnmixcode" caption="Yarn Mix Code" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="fabseq" caption="Fab Seq" width="70px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrnid" caption="Yarn ID" width="70px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="alcseq" caption="Allocation Seq" width="80px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="kmchcod" caption="Machine Code" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="kmchflrid" caption="Kmchflrid" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="ordnum" caption="Order No" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="qtyreqn" caption="Qty Reqn" width="80px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="8" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="reqnseq" caption="Req Seq" width="80px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+            </wm-table>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view3">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="List of Pallet ID" iconclass="wi wi-list" name="dialogRGPalletid">
+            <wm-dialogactions name="dialogactions2">
+                <wm-button class="btn-default" caption="Select And Exit" type="button" margin="unset 0.5em" name="btnSltPallet" on-click="btnSltPalletClick($event, $scope)"></wm-button>
+            </wm-dialogactions>
+            <wm-table title="" dataset="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM150RGPalletid.dataSet.poutPal" navigation="None" name="tablePalletID" spacing="condensed">
+                <wm-table-column binding="palletid" caption="Pallet Id" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="numcon" caption="No of Cones" width="80px" textalignment="right" edit-widget-type="number" type="long" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="palwgt" caption="Pallet Wgt" width="80px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+            </wm-table>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

@@ -1,0 +1,385 @@
+[ {
+  "name" : "admin",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "user",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDEF_QRYNORMAL",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDEF_UPDSPECS",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDEF_UPDFIBDET",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDEF_UPDAFTUSE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDEF_UPDSTDWGT",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDET_UPDSURPLUSCAT",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDEF_UPDREJSTS",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDEF_UPDHOLDSTS",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDEF_UPDACTIVESTS",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNTEST_QRYTEST",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNADDRECEIPT_QRY",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDEF_QRYFIBDET",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNSTOCK_ADJSTOCK",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNCONTRACT_EDIT",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNCONTRACT_VIEW",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDELFLOOR_ADD",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDELFLOOR_QRY",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNRETFLOOR_ADD",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNRETFLOOR_QRY",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YNREQN_DELETE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YNREQN_CXLAMT",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YNREQN_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YNTRNSFORM_QRY",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNSTOCK_SUPPMOD",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNTEST_UPDTEST",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNTEST_RELEASE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNADDRECEIPT_CREATE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNADJUST_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDEF_UPDCOMSTS",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDEF_VIEWFIBDETLBL",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNPALLETGEN_QRY",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNPALLETGEN_CREATEPAL",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNACKPCKLST_ACKPAL",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNACKPCKLST_QRY",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNCARTONSTICKER_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNCARTONSTICKER_CREATECRT",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNPALLETSTICKER_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNPALLETSTICKER_CREATEPAL",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "MATERIALSTOCK_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNTRANSACTION_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNREQ_INTRSTRTRNF_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YARNMIXDET_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDEALLOC_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YARNALLOCATION_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNACKINTRSTRTRSF_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YNTRNSFORM_SAVE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNREQTRNF_SAVE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNREQTRNF_QRY",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YNREQN_CREATE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNRETTOWRH_SAVE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNRETTOWRH_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNSALE_SAVE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNSALE_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNCRTREQ_SAVE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNINTRSTRTRSFACK_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNVWINTRSTRTRSF_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNTRSFSTK_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNVWTRSFSTK_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNDELTOKNBUF_VIEWPAGE",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNPALLETSTICKER_EDITPAL",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNCARTONSTICKER_EDITCRT",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+}, {
+  "name" : "YRNADJUST_UPDSTK",
+  "description" : null,
+  "roleConfig" : {
+    "landingPage" : "Main"
+  }
+} ]

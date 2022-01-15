@@ -1,0 +1,117 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1531041403114",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.statPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "information",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "statForBtnQry" : {
+    "_id" : "wm-statForBtnQry-wm.Variable-1580358424154",
+    "name" : "statForBtnQry",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Y",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgid" : {
+    "_id" : "wm-statPrgid-wm.Variable-1530956228310",
+    "name" : "statPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "YM1000W30",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgName" : {
+    "_id" : "wm-statPrgName-wm.Variable-1530956257372",
+    "name" : "statPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "View Yarn Deallocation",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svProcYM1000PKO_YM130QryYrnDeallocation" : {
+    "_id" : "wm-svProcYM1000PKO_YM130QryYrnDeallocation-wm.ServiceVariable-1531027416300",
+    "name" : "svProcYM1000PKO_YM130QryYrnDeallocation",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.statPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFabseq",
+      "value" : "bind:Widgets.formFilter.formWidgets.pFabseq.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pYrnMixCode",
+      "value" : "bind:Widgets.formFilter.formWidgets.pYrnMixCode.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pDateAlcFrom",
+      "value" : "bind:Widgets.formFilter.formWidgets.pDateAlcFrom.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pDateAlcTo",
+      "value" : "bind:Widgets.formFilter.formWidgets.pDateAlcTo.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.ProcYm1000pkoYm130qryYrnDeallocationResponse",
+    "service" : "pfsdb",
+    "operation" : "executeProcYM1000PKO_YM130QryYrnDeallocation",
+    "operationId" : "ProcedureExecutionController_executeProcYM1000PKO_YM130QryYrnDeallocation",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svProcYM1000PKO_YM130QryYrnDeallocationonSuccess($event, $scope)",
+    "onError" : "svProcYM1000PKO_YM130QryYrnDeallocationonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

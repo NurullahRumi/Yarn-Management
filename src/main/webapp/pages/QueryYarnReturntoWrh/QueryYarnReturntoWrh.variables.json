@@ -1,0 +1,240 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1557740653726",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.StatPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "error",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "statForBtnQry" : {
+    "_id" : "wm-statForBtnQry-wm.Variable-1580385832018",
+    "name" : "statForBtnQry",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Y",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "StatPrgid" : {
+    "_id" : "wm-StatPrgid-wm.Variable-1557739538193",
+    "name" : "StatPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "YM1000W91",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "StatPrgName" : {
+    "_id" : "wm-StatPrgName-wm.Variable-1557739575240",
+    "name" : "StatPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Query Yarn Return from Knitting to Warehouse",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svGetProcYM1000WPK0_YNRET_YM160ListofWrh" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNRET_YM160ListofWrh-wm.ServiceVariable-1557823565580",
+    "name" : "svGetProcYM1000WPK0_YNRET_YM160ListofWrh",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnretYm160listofWrhResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNRET_YM160ListofWrh",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNRET_YM160ListofWrh",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNRET_YM160YrnRet" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNRET_YM160YrnRet-wm.ServiceVariable-1557740009946",
+    "name" : "svGetProcYM1000WPK0_YNRET_YM160YrnRet",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pRetnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pRetnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pYnretid",
+      "value" : "bind:Widgets.formFilter.formWidgets.pYnretid.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pRetordnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pRetordnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFromdat",
+      "value" : "bind:Widgets.formFilter.formWidgets.pFromdat.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pTodate",
+      "value" : "bind:Widgets.formFilter.formWidgets.pTodate.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnretYm160yrnRetResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNRET_YM160YrnRet",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNRET_YM160YrnRet",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svGetProcYM1000WPK0_YNRET_YM160YrnRetonSuccess($event, $scope)",
+    "onError" : "svGetProcYM1000WPK0_YNRET_YM160YrnRetonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svUpdateProcYM1000WPK0_YNRET_YM165Discard" : {
+    "_id" : "wm-svUpdateProcYM1000WPK0_YNRET_YM165Discard-wm.ServiceVariable-1558858536114",
+    "name" : "svUpdateProcYM1000WPK0_YNRET_YM165Discard",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPalletid",
+      "value" : "bind:Widgets.lblDisPalletid.caption",
+      "type" : "string"
+    }, {
+      "target" : "pRetnum",
+      "value" : "bind:Widgets.lblDisRetnum.caption",
+      "type" : "string"
+    }, {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pYrnmix",
+      "value" : "bind:Widgets.lblDisYrnmix.caption",
+      "type" : "string"
+    } ],
+    "service" : "pfsdb",
+    "operation" : "executeUpdateProcYM1000WPK0_YNRET_YM165Discard",
+    "operationId" : "ProcedureExecutionController_executeUpdateProcYM1000WPK0_YNRET_YM165Discard",
+    "operationType" : "put",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svUpdateProcYM1000WPK0_YNRET_YM165DiscardonSuccess($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svUpdateProcYM1000WPK0_YNRET_YM165KgsAvl" : {
+    "_id" : "wm-svUpdateProcYM1000WPK0_YNRET_YM165KgsAvl-wm.ServiceVariable-1558775984541",
+    "name" : "svUpdateProcYM1000WPK0_YNRET_YM165KgsAvl",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pKgsAvl",
+      "value" : "bind:Widgets.txtKgsAvl.datavalue",
+      "type" : "number"
+    }, {
+      "target" : "pPalletid",
+      "value" : "bind:Widgets.lblPalletid.caption",
+      "type" : "string"
+    }, {
+      "target" : "pKgsret",
+      "value" : "bind:Widgets.lblKgsret.caption",
+      "type" : "number"
+    }, {
+      "target" : "pYrnmix",
+      "value" : "bind:Widgets.lblYrnmix.caption",
+      "type" : "string"
+    }, {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pKgsmadeava",
+      "value" : "bind:Widgets.lblKgsMadAvl.caption",
+      "type" : "number"
+    }, {
+      "target" : "pRetnum",
+      "value" : "bind:Widgets.lblRetnum.caption",
+      "type" : "string"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.lblWrhnum.caption",
+      "type" : "string"
+    } ],
+    "service" : "pfsdb",
+    "operation" : "executeUpdateProcYM1000WPK0_YNRET_YM165KgsAvl",
+    "operationId" : "ProcedureExecutionController_executeUpdateProcYM1000WPK0_YNRET_YM165KgsAvl",
+    "operationType" : "put",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svUpdateProcYM1000WPK0_YNRET_YM165KgsAvlonSuccess($event, $scope)",
+    "onError" : "svUpdateProcYM1000WPK0_YNRET_YM165KgsAvlonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

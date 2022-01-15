@@ -1,0 +1,221 @@
+<wm-page data-ng-controller="AdditionalReceiptPageController" pagetitle="Additional Receipt" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.statPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter" class="panel-primary">
+                <wm-layoutgrid columns="1" name="layoutgrid1">
+                    <wm-gridrow name="gridrow1">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn1">
+                            <wm-form-field readonly="false" name="p_yrncod" displayname="Yarn Code" key="p_yrncod" type="string" show="true" widget="text" defaultvalue="bind:pageParams.p_param1" on-change="p_yrncodChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn8">
+                            <wm-form-field readonly="false" name="p_RECPNUM" displayname="Recpt Seq" key="p_RECPNUM" type="string" show="true" widget="text" on-change="p_RECPNUMChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn9">
+                            <wm-form-field readonly="false" name="p_CNTNUM" displayname="Container" key="p_CNTNUM" type="string" show="true" widget="text" on-change="p_CNTNUMChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn10">
+                            <wm-form-field readonly="false" name="p_RCVDAT" displayname="Date Received" key="p_RCVDAT" type="string" show="true" widget="date"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn11">
+                            <wm-form-field readonly="false" name="p_WRHNUM" displayname="Warehouse" key="p_WRHNUM" type="string" show="true" widget="text" on-change="p_WRHNUMChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn12">
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup1">
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="button3" margin="15px unset unset unset" on-click="button3Click($event, $scope)" disabled="bind:Variables.statCheckSts.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                <wm-button caption="Reset" type="reset" class="btn-secondary" name="button1" margin="15px unset unset unset" on-click="button1Click($event, $scope)"></wm-button>
+                            </wm-buttongroup>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-form>
+            <wm-table title="Yarn" dataset="bind:Variables.svProcYM1000PK0_YM285MASTER.dataSet.poutYm285master" navigation="Classic" name="tableYarn" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" class="panel-info">
+                <wm-table-column binding="yrncod" caption="Yarn Code" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="recpnum" caption="Recpt Seq" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="cntnum" caption="Container" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="rcvdat" caption="Date Received" width="100px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wrhnum" caption="Warehouse" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="qtyrec" caption="Kgs Received" width="100px" textalignment="right" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="undefined"></wm-table-column>
+                <wm-table-column binding="yrnori" caption="Origin" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrnlot" caption="Lot #" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="nfyrncps" caption="Cps" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="nfcntdes" caption="Count" width="250px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            </wm-table>
+            <wm-panel iconclass="" autoclose="outsideClick" title="Receipt Details" name="panel2" class="panel-info">
+                <wm-list listclass="list-group" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" dataset="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq" navigation="Classic" name="listRecptSeq" title="" selectfirstitem="true"
+                    showrecordcount="true" pagesize="1">
+                    <wm-listtemplate layout="inline" name="listtemplate2_1">
+                        <wm-layoutgrid name="layoutgrid14">
+                            <wm-gridrow name="gridrow30">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn77">
+                                    <wm-label class="col-md-3 control-label" caption="Recpt Seq" width="95%" margin="unset 5px unset unset" textalign="left" name="label103"></wm-label>
+                                    <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].recpnum" name="lblRecpNum" width="95%"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn78">
+                                    <wm-label class="col-md-3 control-label" caption="Container" width="95%" margin="unset 5px unset unset" textalign="left" name="label105"></wm-label>
+                                    <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].cntnum" name="label106" width="95%"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn79">
+                                    <wm-label class="col-md-3 control-label" caption="Date Received" width="95%" margin="unset 5px unset unset" textalign="left" name="label107"></wm-label>
+                                    <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].rcvdat | toDate: 'dd-MMM-yyyy'" name="label108" width="95%"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn80">
+                                    <wm-label class="col-md-3 control-label" caption="Warehouse" width="95%" margin="unset 5px unset unset" textalign="left" name="label109"></wm-label>
+                                    <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].wrhnum" name="label110" width="95%"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn49"></wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow31">
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn81">
+                                    <wm-label class="col-md-3 control-label" caption="Pallet Type" width="95%" margin="unset 5px unset unset" textalign="left" name="label111"></wm-label>
+                                    <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].pallettype" width="25%" margin="unset 5px unset unset" name="label112"></wm-label>
+                                    <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].palletdesc" name="label113" width="70%"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn82">
+                                    <wm-label class="col-md-3 control-label" caption="No of Pallets" width="95%" margin="unset 5px unset unset" textalign="left" name="label114"></wm-label>
+                                    <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].totpalcreated" name="label115" textalign="right" width="95%"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn83">
+                                    <wm-label class="col-md-3 control-label" caption="Created by" width="95%" margin="unset 5px unset unset" textalign="left" name="label116"></wm-label>
+                                    <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].modid" margin="unset 5px unset unset" width="25%" name="label117"></wm-label>
+                                    <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].moddat | toDate: 'dd-MMM-yyyy HH:mm'" name="label118" width="70%"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn50"></wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                        <wm-tile width="400px" height="210px" class="well" margin="15px 20px unset unset" name="tile5">
+                            <wm-label caption="Pallet Details" class="p label-info" fontsize="1.5" fontunit="em" name="label119"></wm-label>
+                            <wm-layoutgrid name="layoutgrid15">
+                                <wm-gridrow name="gridrow32">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn84">
+                                        <wm-label class="col-md-3 control-label" caption="Cone Wgt" width="35%" margin="unset 5px unset unset" textalign="right" name="label120"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].conwgt | numberToString: '4'" name="label121" textalign="right"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow33">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn85">
+                                        <wm-label class="col-md-3 control-label" caption="Cones per Carton" width="35%" margin="unset 5px unset unset" textalign="right" name="label122"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].concar | numberToString" name="label123" textalign="right"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow34">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn86">
+                                        <wm-label class="col-md-3 control-label" caption="No of Cartons" width="35%" margin="unset 5px unset unset" textalign="right" name="label124"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].carpall | numberToString" name="label125" textalign="right"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow35">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn87">
+                                        <wm-label class="col-md-3 control-label" caption="No of Cones" width="35%" margin="unset 5px unset unset" textalign="right" name="label126"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].numcon | numberToString" name="label127" textalign="right"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-tile>
+                        <wm-tile width="350px" height="210px" class="well" margin="unset unset unset 150px" name="tile6">
+                            <wm-table title="" dataset="bind:Variables.svProcYM1000PK0_YM286DETPALLET.dataSet.poutDetpallet" navigation="None" spacing="condensed" height="150" name="tablePrtPallet" radioselect="false" multiselect="true" enablecolumnselection="false">
+                                <wm-table-column binding="palletid" caption="Palletid" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            </wm-table>
+                        </wm-tile>
+                        <wm-layoutgrid name="layoutgrid16">
+                            <wm-gridrow name="gridrow36">
+                                <wm-gridcolumn columnwidth="3" name="gridcolumn88" class="bordered" padding="3px unset">
+                                    <wm-label class="col-md-3 control-label" caption="Kgs Received" width="135" margin="unset 5px unset unset" textalign="right" name="label128"></wm-label>
+                                    <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000PK0_YM285RecptSeq.dataSet.poutRecptSeq[$i].qtyrec | numberToString: '2'" name="label129" textalign="right"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="9" name="gridcolumn89"></wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                        <wm-layoutgrid name="layoutgrid17"></wm-layoutgrid>
+                    </wm-listtemplate>
+                </wm-list>
+            </wm-panel>
+            <wm-layoutgrid name="layoutgrid13_1">
+                <wm-gridrow name="gridrow28_1">
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn70_1" horizontalalign="center">
+                        <wm-button class="btn-default" caption="Add receipt" type="button" margin="unset 0.5em" width="160" on-click="button3_1Click($event, $scope)" name="button13" accessroles="YRNADDRECEIPT_CREATE"></wm-button>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn74_1" horizontalalign="center"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn75_1">
+                        <wm-label class="col-md-3 control-label" caption="Printer Name" width="40%" margin="unset 5px unset unset" textalign="right" name="label130"></wm-label>
+                        <wm-label class="displayField col-md-6" caption="" name="label131" width="55%"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn76_1" horizontalalign="center">
+                        <wm-button class="btn-default" caption="Print Sticker" type="button" margin="unset 0.5em" width="160" name="btnPntStkr" on-click="btnPntStkrClick($event, $scope)"></wm-button>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn48">
+                        <wm-label padding="unset 0.5em" name="lblYrncod" caption="bind:Variables.svProcYM1000PK0_YM286DETPALLET.dataSet.poutDetpallet[$i].yrncod" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Add Receipt Details" iconclass="wi wi-create" name="dialogInsMASTER">
+            <wm-layoutgrid name="layoutgrid7_1">
+                <wm-gridrow name="gridrow13_1" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn36_1">
+                        <wm-label class="col-md-6 control-label" textalign="right" width="105" caption="Yarn Code" margin="unset 5px unset unset" name="label44"></wm-label>
+                        <wm-text name="txtInsYRNCOD" width="150" maxchars="15" datavalue="bind:Widgets.tableYarn.selecteditem.yrncod"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn37">
+                        <wm-label class="col-md-6 control-label" textalign="right" width="105" caption="Container" margin="unset 5px unset unset" name="label45"></wm-label>
+                        <wm-text name="txtInsCNTNUM" width="150" maxchars="15"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow14" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn38_1">
+                        <wm-label class="col-md-6 control-label" textalign="right" width="105" caption="Date Received" margin="unset 5px unset unset" name="label46"></wm-label>
+                        <wm-date name="dateInsRCVDAT" width="150" maxdate="CURRENT_DATE" mindate="bind:Variables.svGetqrymindate.dataSet[$i].mindate"></wm-date>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn39_1">
+                        <wm-label class="col-md-6 control-label" textalign="right" width="105" caption="Warehouse" margin="unset 5px unset unset" name="label47"></wm-label>
+                        <wm-select name="selectInsWRHNUM" width="150" placeholder="Enter Value" dataset="bind:Variables.svProcYM1000PKO_YM285WRHNUM.dataSet.poutWrhnum" datafield="strcod" displayfield="strcod"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow15" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn40">
+                        <wm-label class="col-md-6 control-label" textalign="right" width="105" caption="Pallet Type" margin="unset 5px unset unset" name="label48"></wm-label>
+                        <wm-select name="selectInsPALLETTYPE" width="150" placeholder="Enter Value" dataset="bind:Variables.svProcYM1000PKO_YM285PALLETTYPE.dataSet.poutPallettype" datafield="itemcod" displayfield="itemdes" on-change="selectInsPALLETTYPEChange($event, $scope, newVal, oldVal)"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn41">
+                        <wm-label class="col-md-6 control-label" textalign="right" width="105" caption="No of Pallets" margin="unset 5px unset unset" name="label49"></wm-label>
+                        <wm-text name="txtInsTOTPALCREATED" width="150" maxchars="4" type="number" step="1" minvalue="1" maxvalue="9999" on-change="txtInsTOTPALCREATEDChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow16_1" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn42">
+                        <wm-label class="col-md-6 control-label" textalign="right" width="105" caption="Cone Wgt" margin="unset 5px unset unset" name="label50"></wm-label>
+                        <wm-text name="txtInsCONWGT" width="150" type="number" maxchars="10" step="0.0001" minvalue=".0001" on-change="txtInsCONWGTChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn43">
+                        <wm-label class="col-md-6 control-label" textalign="right" width="105" caption="Cones per Carton" margin="unset 5px unset unset" name="label51"></wm-label>
+                        <wm-text name="txtInsCONCAR" width="150" type="number" maxchars="5" minvalue="1" on-change="txtInsCONCARChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow17">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn44_1">
+                        <wm-label class="col-md-6 control-label" textalign="right" width="105" caption="No of Cartons" margin="unset 5px unset unset" name="label52"></wm-label>
+                        <wm-text name="txtInsCARPALL" width="150" type="number" maxchars="4" step="1" maxvalue="9999" minvalue="1" on-change="txtInsCARPALLChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn45_1">
+                        <wm-label class="col-md-6 control-label" textalign="right" width="105" caption="No of Cones" margin="unset 5px unset unset" name="label53"></wm-label>
+                        <wm-text name="txtInsNUMCON" width="150" readonly="false" type="number" maxchars="5" step="1" on-change="txtInsNUMCONChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="button7" on-click="button7Click($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button6" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+</wm-page>

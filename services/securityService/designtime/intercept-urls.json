@@ -1,0 +1,191 @@
+[ {
+  "urlPattern" : "/pages/AckInterstoreTrsf/**",
+  "permission" : "Role",
+  "roles" : [ "YRNACKINTRSTRTRSF_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/AcknowladgePackingList/**",
+  "permission" : "Role",
+  "roles" : [ "YRNACKPCKLST_QRY" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/AdditionalReceipt/**",
+  "permission" : "Role",
+  "roles" : [ "YRNADDRECEIPT_QRY" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/AddMultipleYarnPalletisation/**",
+  "permission" : "Role",
+  "roles" : [ "YNTRNSFORM_SAVE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/AddReqYarnTransformation/**",
+  "permission" : "Role",
+  "roles" : [ "YRNREQTRNF_SAVE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/AddYarnFlrDelivery/**",
+  "permission" : "Role",
+  "roles" : [ "YRNDELFLOOR_ADD" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/AddYarnFlrReturn/**",
+  "permission" : "Role",
+  "roles" : [ "YRNRETFLOOR_ADD" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/AddYarnPalletReqn/**",
+  "permission" : "Role",
+  "roles" : [ "YNREQN_CREATE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/AddYarnRettoWrh/**",
+  "permission" : "Role",
+  "roles" : [ "YRNRETTOWRH_SAVE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/AddYarnSales/**",
+  "permission" : "Role",
+  "roles" : [ "YRNSALE_SAVE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/AddYrnDeltoKNBuf/**",
+  "permission" : "Role",
+  "roles" : [ "YRNDELTOKNBUF_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/CreateYrnReqIST/**",
+  "permission" : "Role",
+  "roles" : [ "YRNCRTREQ_SAVE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/Login/**",
+  "permission" : "PermitAll",
+  "roles" : [ ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/PalletsGeneration/**",
+  "permission" : "Role",
+  "roles" : [ "YRNPALLETGEN_QRY" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/QryMultipleYarnPalletisation/**",
+  "permission" : "Role",
+  "roles" : [ "YNTRNSFORM_QRY" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/QryReqYarnTransformation/**",
+  "permission" : "Role",
+  "roles" : [ "YRNREQTRNF_QRY" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/QryYarnPalletReqn/**",
+  "permission" : "Role",
+  "roles" : [ "YNREQN_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/QueryYarnFlrDelivery/**",
+  "permission" : "Role",
+  "roles" : [ "YRNDELFLOOR_QRY" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/QueryYarnFlrReturn/**",
+  "permission" : "Role",
+  "roles" : [ "YRNRETFLOOR_QRY" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/QueryYarnReturntoWrh/**",
+  "permission" : "Role",
+  "roles" : [ "YRNRETTOWRH_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/QueryYarnSales/**",
+  "permission" : "Role",
+  "roles" : [ "YRNSALE_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/QueryYarnStockTransformation/**",
+  "permission" : "Role",
+  "roles" : [ "YRNVWTRSFSTK_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/SpinningMaterialStock/**",
+  "permission" : "Role",
+  "roles" : [ "MATERIALSTOCK_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/TransformYarnStock/**",
+  "permission" : "Role",
+  "roles" : [ "YRNTRSFSTK_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/ViewInterstoreTrsf/**",
+  "permission" : "Role",
+  "roles" : [ "YRNVWINTRSTRTRSF_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/ViewInterstoreTrsfAck/**",
+  "permission" : "Role",
+  "roles" : [ "YRNINTRSTRTRSFACK_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/ViewYarnAllocByYrncode/**",
+  "permission" : "Role",
+  "roles" : [ "YARNALLOCATION_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/ViewYarnDeallocation/**",
+  "permission" : "Role",
+  "roles" : [ "YRNDEALLOC_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/ViewYarnMixDetails/**",
+  "permission" : "Role",
+  "roles" : [ "YARNMIXDET_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/YarnAdjustment/**",
+  "permission" : "Role",
+  "roles" : [ "YRNADJUST_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/YarnCartonSticker/**",
+  "permission" : "Role",
+  "roles" : [ "YRNCARTONSTICKER_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/YarnOrdering/**",
+  "permission" : "Role",
+  "roles" : [ "YRNCONTRACT_EDIT", "YRNCONTRACT_VIEW" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/YarnPalletSticker/**",
+  "permission" : "Role",
+  "roles" : [ "YRNPALLETSTICKER_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/YarnReqForInterstoreTransfer/**",
+  "permission" : "Role",
+  "roles" : [ "YRNREQ_INTRSTRTRNF_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/YarnStock/**",
+  "permission" : "Role",
+  "roles" : [ "YRNDEF_QRYNORMAL" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/YarnTest/**",
+  "permission" : "Role",
+  "roles" : [ "YRNTEST_QRYTEST" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/pages/YarnTransactions/**",
+  "permission" : "Role",
+  "roles" : [ "YRNTRANSACTION_VIEWPAGE" ],
+  "httpMethod" : null
+}, {
+  "urlPattern" : "/**",
+  "permission" : "Authenticated",
+  "roles" : null,
+  "httpMethod" : null
+} ]

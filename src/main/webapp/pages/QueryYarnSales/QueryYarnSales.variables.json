@@ -1,0 +1,129 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1580446106544",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.statPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "information",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "statForBtnQry" : {
+    "_id" : "wm-statForBtnQry-wm.Variable-1580447013338",
+    "name" : "statForBtnQry",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Y",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgid" : {
+    "_id" : "wm-statPrgid-wm.Variable-1552799578746",
+    "name" : "statPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "YM1000W70",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgName" : {
+    "_id" : "wm-statPrgName-wm.Variable-1552799239701",
+    "name" : "statPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Query Yarn Sales",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svGetYM250PK0_YNSALES_YM340QryYrnSold" : {
+    "_id" : "wm-svGetYM250PK0_YNSALES_YM340QryYrnSold-wm.ServiceVariable-1552805534282",
+    "name" : "svGetYM250PK0_YNSALES_YM340QryYrnSold",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.statPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pDatesld",
+      "value" : "bind:Widgets.formFilter.formWidgets.pDatesld.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pBuyer",
+      "value" : "bind:Widgets.formFilter.formWidgets.pBuyer.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pREQNUM",
+      "value" : "bind:Widgets.formFilter.formWidgets.pREQNUM.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pInvnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pInvnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pYrncod",
+      "value" : "bind:Widgets.formFilter.formWidgets.pYrncod.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pPALLETID",
+      "value" : "bind:Widgets.formFilter.formWidgets.pPALLETID.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pDelnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pDelnum.datavalue",
+      "type" : "integer"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetYm250pk0YnsalesYm340qryYrnSoldResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetYM250PK0_YNSALES_YM340QryYrnSold",
+    "operationId" : "ProcedureExecutionController_executeGetYM250PK0_YNSALES_YM340QryYrnSold",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svGetYM250PK0_YNSALES_YM340QryYrnSoldonSuccess($event, $scope)",
+    "onError" : "svGetYM250PK0_YNSALES_YM340QryYrnSoldonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

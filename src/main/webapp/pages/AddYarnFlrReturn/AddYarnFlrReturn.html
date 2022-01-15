@@ -1,0 +1,139 @@
+<wm-page data-ng-controller="AddYarnFlrReturnPageController" pagetitle="Add Yarn Flr Return" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.StatPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="left" title="Add Yarn Return" enctype="application/x-www-form-urlencoded" method="post" captionalign="left" name="formAddreturn" class="panel-primary">
+                <wm-layoutgrid columns="1" name="layoutgrid6">
+                    <wm-gridrow name="gridrow39">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn149">
+                            <wm-form-field name="pWrhnum" readonly="false" displayname="Warehouse" key="pWrhnum" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.svGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum.dataSet.poutLstOfWrhnum"
+                                datafield="strcod" displayfield="strcod"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn156">
+                            <wm-form-field name="pDateret" displayname="Date" widget="date" show="true" type="custom" datepattern="yyyy-MM-dd" key="form_field112" placeholder="Select date" defaultvalue="CURRENT_DATE" readonly="true"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow40">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn150">
+                            <wm-form-field name="pRetby" readonly="false" displayname="Operator" key="pRetby" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322ListofDelby.dataSet.poutLstOfDelby"
+                                datafield="wrkid" displayfield="wrknam"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow41">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn151">
+                            <wm-form-field name="pOrdnum" readonly="false" displayname="Order No" key="pOrdnum" type="string" show="true" widget="text" placeholder="Enter value" on-click="pOrdnumClick($event, $scope)" inputtype="text" on-change="pOrdnumChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn165">
+                            <wm-form-field name="pClinam" widget="text" show="true" type="custom" inputtype="text" key="form_field113" placeholder="Enter value" readonly="true"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow42">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn152">
+                            <wm-form-field name="pFabseq" displayname="Fabric" widget="number" show="true" type="custom" inputtype="text" key="form_field114" placeholder="Enter value" readonly="true"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn168">
+                            <wm-form-field name="pFabtyp" widget="text" show="true" type="custom" inputtype="text" key="form_field115" placeholder="Enter value" readonly="true"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn169">
+                            <wm-form-field name="pFabdesc" widget="text" show="true" type="custom" inputtype="text" key="form_field116" placeholder="Enter value" readonly="true"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn170">
+                            <wm-form-field name="pFabind" widget="text" show="true" type="custom" inputtype="text" key="form_field117" placeholder="Enter value" readonly="true"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn171">
+                            <wm-form-field name="pFabwgt" displayname="g/m2" widget="text" show="true" type="custom" inputtype="text" key="form_field118" placeholder="Enter value" readonly="true"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow43">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn153">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="Yarn Details" name="panelAddreturn" class="panel-info">
+                                <wm-layoutgrid name="layoutgrid7">
+                                    <wm-gridrow name="gridrow46">
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn172">
+                                            <wm-form-field name="pKMCHFLRID" displayname="Knt Machine" widget="text" show="true" type="custom" inputtype="text" key="form_field119" placeholder="Enter value" readonly="true"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow47">
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn174">
+                                            <wm-form-field name="pYrncod" readonly="true" displayname="Yrn Code" key="pYrncod" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow48">
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn178">
+                                            <wm-form-field name="pYrnlot" displayname="Yrn Lot" widget="text" show="true" type="custom" inputtype="text" key="form_field120" placeholder="Enter value" readonly="true"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn186">
+                                            <wm-form-field name="pYrncnt" displayname="Cnt" widget="text" show="true" type="custom" inputtype="text" key="form_field121" placeholder="Enter value" readonly="true"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow49">
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn180">
+                                            <wm-form-field name="pYrncps" displayname="Yrn Cps" widget="text" show="true" type="custom" inputtype="text" key="form_field122" placeholder="Enter value" readonly="true"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn188">
+                                            <wm-form-field name="pYrnori" displayname="Origin" widget="text" show="true" type="custom" inputtype="text" key="form_field123" placeholder="Enter value" readonly="true"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow50">
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn182">
+                                            <wm-form-field name="pReqnum" readonly="true" displayname="Requisition #" key="pReqnum" type="integer" show="true" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn190">
+                                            <wm-form-field name="pReqnseq" readonly="true" displayname="Req seq" key="pReqnseq" type="integer" show="true" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="4" name="gridcolumn191"></wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="2" name="gridcolumn22"></wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow12">
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn23">
+                                            <wm-form-field name="pYrnBalance" displayname="Total Return Allowed" widget="number" show="true" type="custom" inputtype="text" key="form_field124" placeholder="Enter value" readonly="true"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="6" name="gridcolumn25"></wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="2" name="gridcolumn26"></wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow45">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn155">
+                            <wm-form-field name="pGrosswgt" readonly="false" displayname="Weight" key="pGrosswgt" type="number" show="true" widget="number" inputtype="number" placeholder="Enter value" on-change="pGrosswgtChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-buttongroup horizontalalign="right" class="form-action col-md-12" name="buttongroup3">
+                    <wm-button caption="Save" type="submit" class="btn-primary" name="btnSvereturn" on-click="btnSvereturnClick($event, $scope)"></wm-button>
+                    <wm-button class="btn-secondary" caption="Reset" type="button" margin="unset 0.5em" name="btnReset" on-click="btnResetClick($event, $scope)"></wm-button>
+                </wm-buttongroup>
+            </wm-form>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="List of Orders to deliver" iconclass="wi wi-list" name="dialoglistofOrder" width="60%">
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Select And Exit" type="button" margin="unset 0.5em" name="btnsaveOdrLst" on-click="btnsaveOdrLstClick($event, $scope)"></wm-button>
+            </wm-dialogactions>
+            <wm-table title="" dataset="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM323ListofOrder.dataSet.poutListofOrder" navigation="None" name="tableOrdlist" spacing="condensed" height="120">
+                <wm-table-column binding="ordnum" caption="Order" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="fabseq" caption="Fab" width="70px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="fabwgt" caption="Fabwgt" width="80px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="kmchflrid" caption="MC Flr id" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrncod" caption="Yarn Code" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="reqnum" caption="ReqNo" width="80px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="reqnseq" caption="Req seq" width="80px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrnid" caption="Yrn id" width="90px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="alcseq" caption="Allocation seq" width="90px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrnmixcode" caption="Yrnmixcode" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="kmchcod" caption="mc id" width="90px" textalignment="right" type="string" show="true" readonly="undefined"></wm-table-column>
+            </wm-table>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

@@ -1,0 +1,148 @@
+<wm-page data-ng-controller="QueryYarnReturntoWrhPageController" pagetitle="Query Yarn Returnto Wrh" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.StatPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter" class="panel-primary" postmessage="">
+                <wm-layoutgrid columns="1" name="layoutgrid1">
+                    <wm-gridrow name="gridrow1">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn1">
+                            <wm-form-field name="pRetnum" readonly="false" displayname="Return No" key="pRetnum" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pRetnumChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn7">
+                            <wm-form-field name="pYnretid" readonly="false" displayname="Exp Ret ID" key="pYnretid" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pYnretidChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn8">
+                            <wm-form-field name="pRetordnum" readonly="false" displayname="Order #" key="pRetordnum" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pRetordnumChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn9">
+                            <wm-form-field name="pWrhnum" readonly="false" displayname="Warehouse" key="pWrhnum" type="string" show="true" widget="select" inputtype="text" placeholder="Enter value" on-change="pWrhnumChange($event, $scope, newVal, oldVal)"
+                                dataset="bind:Variables.svGetProcYM1000WPK0_YNRET_YM160ListofWrh.dataSet.poutWrh" datafield="strcod" displayfield="strcod"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn10">
+                            <wm-form-field name="pFromdat" readonly="false" displayname="From" key="pFromdat" type="string" show="true" widget="date" datepattern="dd-MMM-yyyy" placeholder="Select date"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn11">
+                            <wm-form-field name="pTodate" readonly="false" displayname="To" key="pTodate" type="string" show="true" widget="date" datepattern="dd-MMM-yyyy" placeholder="Select date"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow2">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn2">
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup1">
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="btnQry" on-click="btnQryClick($event, $scope)" disabled="bind:Variables.statForBtnQry.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                <wm-button caption="Reset" type="reset" class="btn-secondary" name="btnReset" on-click="btnResetClick($event, $scope)"></wm-button>
+                            </wm-buttongroup>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-form>
+            <wm-table title="Yarn Returns" dataset="bind:Variables.svGetProcYM1000WPK0_YNRET_YM160YrnRet.dataSet.poutYrnret" navigation="Classic" name="tableYrnret" spacing="condensed" class="panel-info" gridfirstrowselect="true" showrecordcount="true">
+                <wm-table-column binding="retnum" caption="Ret #" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="ynretid" caption="Exp Ret ID" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="retOrdnum" caption="Order #" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="retFabseq" caption="Fab Seq" width="60px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="retYrnid" caption="Yrn ID" width="60px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="retKmchcod" caption="M/C" width="75px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="palletid" caption="Pallet ID" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrnmixcode" caption="Yarnmix Code" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wrhnum" caption="W/H" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="numcon" caption="# Cones" width="70px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="numcar" caption="# Cartons" width="70px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="kgsret" caption="Kgs Ret" width="70px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="retby" caption="Ret By" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="retdat" caption="Ret Date" width="120px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy HH:mm" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="remarks" caption="Remarks" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="discardkgs" caption="Disc Kgs" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column-group name="group" caption="Made Available">
+                    <wm-table-column binding="kgsmadeavail" caption="Kgs" width="110px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="availby" caption="By" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="availdat" caption="Date" width="110px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy HH:mm" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                </wm-table-column-group>
+                <wm-table-column binding="MakeAvailable" caption="" widget-type="button" width="100px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
+                    <wm-button caption="{{row.getProperty('MakeAvailable') || 'Make Available'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="MakeAvailableAction(selectedItemData)" data-ng-class=""></wm-button>
+                </wm-table-column>
+                <wm-table-column binding="Discard" caption="" widget-type="button" width="80px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
+                    <wm-button caption="{{row.getProperty('Discard') || 'Discard'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="DiscardAction(selectedItemData)" data-ng-class=""></wm-button>
+                </wm-table-column>
+            </wm-table>
+            <wm-layoutgrid name="layoutgrid4">
+                <wm-gridrow name="gridrow6">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn19">
+                        <wm-button class="btn-default" caption="View Allocation Made" type="button" margin="unset 0.5em" name="btnVwAlloc" on-click="btnVwAllocClick($event, $scope)"></wm-button>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn20_1"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="qty available" iconclass="wi wi-edit" name="dialogKgsAvl">
+            <wm-layoutgrid name="layoutgrid2">
+                <wm-gridrow name="gridrow5">
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn12">
+                        <wm-label padding="unset 0.5em" name="lblRetnum" caption="bind:Widgets.tableYrnret.selecteditem.retnum" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn13">
+                        <wm-label padding="unset 0.5em" name="lblYrnmix" caption="bind:Widgets.tableYrnret.selecteditem.yrnmixcode" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn14">
+                        <wm-label padding="unset 0.5em" name="lblPalletid" caption="bind:Widgets.tableYrnret.selecteditem.palletid" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn13_1">
+                        <wm-label padding="unset 0.5em" name="lblKgsret" caption="bind:!Widgets.tableYrnret.selecteditem.kgsret? 0 : Widgets.tableYrnret.selecteditem.kgsret" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn14_1">
+                        <wm-label padding="unset 0.5em" name="lblKgsMadAvl" caption="bind:!Widgets.tableYrnret.selecteditem.kgsmadeavail? 0 : Widgets.tableYrnret.selecteditem.kgsmadeavail" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn15">
+                        <wm-label padding="unset 0.5em" name="lblWrhnum" caption="bind:Widgets.tableYrnret.selecteditem.wrhnum" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow3">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn8_1">
+                        <wm-composite name="composite1">
+                            <wm-label class="col-md-3 control-label" name="label5" caption="Kgs to  make Avail" width="50%"></wm-label>
+                            <wm-container class="col-md-9" name="container1" width="40%">
+                                <wm-text name="txtKgsAvl" type="number" step="0.01" maxchars="30" datavalue="bind:Widgets.tableYrnret.selecteditem.kgsmadeavail"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn12_1"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="btnKgsAvl" on-click="btnKgsAvlClick($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button3" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view3">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Discard Kgs to  make Available" iconclass="" name="dialogDiscard">
+            <wm-dialogactions name="dialogactions2">
+                <wm-button class="btn-default" caption="Discard And Exit" type="button" margin="unset 0.5em" name="btnDrd" on-click="btnDrdClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button5" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-layoutgrid name="layoutgrid3">
+                <wm-gridrow name="gridrow5_1">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn16">
+                        <wm-label padding="unset 0.5em" name="lblDisRetnum" caption="bind:Widgets.tableYrnret.selecteditem.retnum" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn17">
+                        <wm-label padding="unset 0.5em" name="lblDisYrnmix" caption="bind:Widgets.tableYrnret.selecteditem.yrnmixcode" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn20">
+                        <wm-label padding="unset 0.5em" name="lblDisPalletid" caption="bind:Widgets.tableYrnret.selecteditem.palletid" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-label padding="unset 0.5em" caption="Do you want to discard Kgs to  make Available" name="label8" class="col-md-6 control-label"></wm-label>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

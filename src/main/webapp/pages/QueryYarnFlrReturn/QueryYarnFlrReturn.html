@@ -1,0 +1,68 @@
+<wm-page data-ng-controller="QueryYarnFlrReturnPageController" pagetitle="Query Yarn Flr Return" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.StatPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter" class="panel-primary" postmessage="">
+                <wm-layoutgrid columns="1" name="layoutgrid3">
+                    <wm-gridrow name="gridrow3">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn7_1">
+                            <wm-form-field name="pOrdnum" readonly="false" displayname="Order" key="pOrdnum" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pOrdnumChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn13">
+                            <wm-form-field name="pRetnum" readonly="false" displayname="Return No" key="pRetnum" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pRetnumChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn14">
+                            <wm-form-field name="pYrncod" readonly="false" displayname="Yrn Code" key="pYrncod" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pYrncodChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn15">
+                            <wm-form-field name="pWrhnum" readonly="false" displayname="Warehouse" key="pWrhnum" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.svGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum.dataSet.poutLstOfWrhnum"
+                                datafield="strcod" displayfield="strcod" on-change="pWrhnumChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn16">
+                            <wm-form-field name="pFromDATERet" readonly="false" displayname="From" key="pFromDATERet" type="string" show="true" widget="date" datepattern="dd-MMM-yyyy" placeholder="Select date"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn17">
+                            <wm-form-field name="pToDATERet" readonly="false" displayname="To" key="pToDATERet" type="string" show="true" widget="date" datepattern="dd-MMM-yyyy" placeholder="Select date"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow4">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn8_2">
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup2">
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="btnQry" on-click="btnQryClick($event, $scope)" disabled="bind:Variables.statForBtnQry.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                <wm-button caption="Reset" type="reset" class="btn-secondary" name="btnReset" on-click="btnResetClick($event, $scope)"></wm-button>
+                            </wm-buttongroup>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-form>
+            <wm-table title="Yarn return from floor" dataset="bind:Variables.svGetProcYM1000WPK0_YM323QryReturn.dataSet.poutQryReturn" navigation="Classic" name="tableQryReturn" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" class="panel-info">
+                <wm-table-column binding="retnum" caption="Return#" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wyrncod" caption="Yrn Code" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wrhnum" caption="Wh" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="kgsret" caption="Kgs Returned" width="90px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="retby" caption="By" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="retdat" caption="Date" width="120px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy HH:mm" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="retOrdnum" caption="Order" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="retFabseq" caption="Fb  Sq" width="60px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wfabtyp" caption="Typ" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="retYrnid" caption="Yrn  Id" width="70px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+            </wm-table>
+            <wm-layoutgrid name="layoutgrid2">
+                <wm-gridrow name="gridrow2">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn7">
+                        <wm-button class="btn-default" caption="Add yarn return" type="button" margin="unset 0.5em" name="btnYrnReturn" on-click="btnYrnReturnClick($event, $scope)"></wm-button>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn8_1"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+</wm-page>

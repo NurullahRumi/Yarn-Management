@@ -1,0 +1,147 @@
+<wm-page data-ng-controller="AddYarnSalesPageController" pagetitle="Add Yarn Sales" name="page1"> 
+    <wm-header content="header" name="header1"> 
+        <wm-param name="pTitle" value="bind:Variables.statPrgName.dataSet.dataValue" type="string"></wm-param> 
+    </wm-header> 
+    <wm-top-nav content="topnav" name="top_nav1"> 
+        <wm-param name="pShowMenubar" value="Y" type="string"></wm-param> 
+    </wm-top-nav> 
+    <wm-content name="content1"> 
+        <wm-page-content columnwidth="12" name="page_content1"> 
+            <wm-table title="sales of yarn" dataset="bind:Variables.svGetProcYM250PK0_YM340YarnDisplay.dataSet.poutAllYarn" navigation="Classic" name="tableAllYrn" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" class="panel-primary"> 
+                <wm-table-column binding="palletid" caption="Pallet ID" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="yrncod" caption="Yarncode" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="yrnori" caption="Origin" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="yrnlot" caption="Lot #" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="nfyrncps" caption="Comps" width="180px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="nyrncnt" caption="Count" width="180px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="numcon" caption="# Cones" width="70px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="numcar" caption="Ctns" width="70px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="qtyphys" caption="Qty kgs" width="80px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="kgprice" caption="Price/kg" width="80px" textalignment="right" edit-widget-type="number" type="float" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="remarks" caption="Remarks" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+            </wm-table> 
+            <wm-panel iconclass="" autoclose="outsideClick" title="Sales delivery number" name="panelHeader" class="panel-info"> 
+                <wm-layoutgrid name="layoutgrid3"> 
+                    <wm-gridrow name="gridrow14_1"> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn19"> 
+                            <wm-label padding="unset 0.5em" name="label1" caption="Date"></wm-label> 
+                            <wm-label padding="unset 0.5em" name="label2" caption="bind:Widgets.tableAllYrn.selecteditem.datesld | toDate: 'dd-MMM-yyyy'" class="displayField"></wm-label> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn23"> 
+                            <wm-label padding="unset 0.5em" caption="Warehouse" name="label4"></wm-label> 
+                            <wm-label padding="unset 0.5em" caption="bind:Widgets.tableAllYrn.selecteditem.wrhnum" class="displayField" name="label10"></wm-label> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn24"> 
+                            <wm-label padding="unset 0.5em" caption="Buyer" name="label6"></wm-label> 
+                            <wm-label padding="unset 0.5em" caption="bind:Widgets.tableAllYrn.selecteditem.buyer" class="displayField" name="label11"></wm-label> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn20"> 
+                            <wm-label padding="unset 0.5em" caption="Client Reqn" name="label8"></wm-label> 
+                            <wm-label padding="unset 0.5em" caption="bind:Widgets.tableAllYrn.selecteditem.reqnum" class="displayField" name="label12"></wm-label> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn27"> 
+                            <wm-label padding="unset 0.5em" caption="Invoice #" name="label3"></wm-label> 
+                            <wm-label padding="unset 0.5em" caption="bind:Widgets.tableAllYrn.selecteditem.invnum" class="displayField" name="label13"></wm-label> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn24_1"> 
+                            <wm-label padding="unset 0.5em" caption="Sales Delivery #" name="label12_1"></wm-label> 
+                            <wm-label padding="unset 0.5em" name="lblDelnum" caption="bind:Variables.svCreateProcYM250PK0_YNSALES_YM340Addyrnsls.dataSet.poutDn" class="displayField"></wm-label> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                </wm-layoutgrid> 
+            </wm-panel> 
+            <wm-form errormessage="" captionposition="left" title="Pallet ID details" enctype="application/x-www-form-urlencoded" method="post" captionalign="left" name="formAddSales" class="panel-info" postmessage=""> 
+                <wm-layoutgrid columns="1" name="layoutgrid1"> 
+                    <wm-gridrow name="gridrow1"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn1"> 
+                            <wm-form-field name="pDATESLD" readonly="false" key="pDATESLD" type="string" show="true" widget="date" datepattern="dd-MMM-yyyy" placeholder="Select date" defaultvalue="bind:Widgets.tableAllYrn.selecteditem.datesld" showbuttonbar="true" displayname="Date"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow2"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn2"> 
+                            <wm-form-field name="pWRHNUM" readonly="false" displayname="Warehouse" key="pWRHNUM" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.svGetProcYM250PK0_YNSALES_YM340WarehouseList.dataSet.poutList" datafield="strcod" defaultvalue="bind:Widgets.tableAllYrn.selecteditem.wrhnum" displaylabel="strdes" on-beforeservicecall="pWRHNUMBeforeservicecall($scope, inputData)" displayfield="strdes"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow3"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn3"> 
+                            <wm-form-field name="pBUYER" readonly="false" displayname="Buyer" key="pBUYER" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.svGetProcYM250PK0_YMSALES_YM340BuyerList.dataSet.poutList" datafield="clicod" displayfield="clinam" defaultvalue="bind:Widgets.tableAllYrn.selecteditem.buyer" displaylabel="clinam"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow4"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn4"> 
+                            <wm-form-field name="pREQNUM" readonly="false" displayname="Client Reqn" key="pREQNUM" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" defaultvalue="bind:Widgets.tableAllYrn.selecteditem.reqnum"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow5" padding="unset unset 20px unset"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn5"> 
+                            <wm-form-field name="pINVNUM" readonly="false" displayname="Invoice #" key="pINVNUM" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" defaultvalue="bind:Widgets.tableAllYrn.selecteditem.invnum"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow6"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn6"> 
+                            <wm-form-field name="pPALLETID" readonly="false" displayname="Pallet ID" key="pPALLETID" type="string" show="true" widget="text" placeholder="Enter value" defaultvalue="CARTONS"></wm-form-field> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn30"> 
+                            <wm-form-field name="pYrnori" displayname="Origin" widget="text" show="true" type="custom" readonly="true" defaultvalue="bind:Variables.svGetProcYM250PK0_YNSALES_YM340VldYrnCod.dataSet.pyrnori" placeholder="" inputtype="text" key="pYrnori"></wm-form-field> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn32"> 
+                            <wm-form-field name="pNfyrncps" displayname="Comps" widget="text" show="true" type="custom" readonly="true" defaultvalue="bind:Variables.svGetProcYM250PK0_YNSALES_YM340VldYrnCod.dataSet.pnfyrncps" placeholder="" inputtype="text" key="pNfyrncps"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow7" padding="unset unset 20px unset"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn7"> 
+                            <wm-form-field name="pYRNCOD" readonly="false" displayname="Yarncode" key="pYRNCOD" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pYRNCODChange($event, $scope, newVal, oldVal)"></wm-form-field> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn34"> 
+                            <wm-form-field name="pYrnlot" displayname="Lot #" widget="text" show="true" type="custom" readonly="true" defaultvalue="bind:Variables.svGetProcYM250PK0_YNSALES_YM340VldYrnCod.dataSet.pyrnlot" placeholder="" inputtype="text" key="pYrnlot"></wm-form-field> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn36"> 
+                            <wm-form-field name="pNyrncnt" displayname="Count" widget="text" show="true" type="custom" readonly="true" defaultvalue="bind:Variables.svGetProcYM250PK0_YNSALES_YM340VldYrnCod.dataSet.pnyrncnt" placeholder="" inputtype="text" key="pNyrncnt"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow9"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn9"> 
+                            <wm-form-field name="pNUMCON" readonly="false" displayname="# Cones" key="pNUMCON" type="integer" show="true" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow10"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn10"> 
+                            <wm-form-field name="pNUMCAR" readonly="false" displayname="Ctns" key="pNUMCAR" type="integer" show="true" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow11"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn11"> 
+                            <wm-form-field name="pQTYPHYS" readonly="false" displayname="Qty kgs" key="pQTYPHYS" type="number" show="true" widget="number" inputtype="number" placeholder="Enter value" minvalue="0"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow14"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn37"> 
+                            <wm-form-field name="pKGPRICE" readonly="false" displayname="Price/kg" key="pKGPRICE" type="number" show="true" widget="number" inputtype="number" placeholder="Enter value" minvalue="0"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow15"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn38"> 
+                            <wm-form-field name="pREMARKS" readonly="false" displayname="Remarks" key="pREMARKS" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                </wm-layoutgrid> 
+                <wm-buttongroup horizontalalign="right" class="form-action col-md-12" name="buttongroup1"> 
+                    <wm-button caption="Save" type="submit" class="btn-primary" name="btnSave" on-click="btnSaveClick($event, $scope)"></wm-button> 
+                    <wm-button caption="Reset" type="reset" class="btn-secondary" name="btnReset"></wm-button> 
+                </wm-buttongroup> 
+            </wm-form> 
+            <wm-layoutgrid name="layoutgrid2"> 
+                <wm-gridrow name="gridrow13"> 
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn17"></wm-gridcolumn> 
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn18"> 
+                        <wm-button class="btn-default" caption="1. Query Sales" type="button" margin="unset 0.5em" name="btnqrysles" on-click="btnqryslesClick($event, $scope)"></wm-button> 
+                    </wm-gridcolumn> 
+                </wm-gridrow> 
+            </wm-layoutgrid> 
+        </wm-page-content> 
+    </wm-content> 
+    <wm-footer content="footer" name="footer1"></wm-footer> 
+    <wm-view class="dialog-view" name="view1"> 
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}" on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog> 
+    </wm-view> 
+</wm-page>

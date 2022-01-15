@@ -1,0 +1,9 @@
+.listMain {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #1c6f96;
+    border-radius: 5px;
+}
+.wm-app .dropdown-menu {
+   width: auto !important;
+} 

@@ -1,0 +1,111 @@
+<wm-partial data-ng-controller="partialPackingListPageController" name="partial1">
+    <wm-table title="" dataset="bind:Variables.svProcYM40000PK0_YM400PList.dataSet.poutPlist" navigation="Classic" name="tablePList" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" enablecolumnselection="false">
+        <wm-table-column binding="palletSeq" caption="Sq" width="60px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+        <wm-table-column-group name="group" caption="Pallet Type">
+            <wm-table-column binding="palletcat" caption="" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="wpalletcatDes" caption="" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+        </wm-table-column-group>
+        <wm-table-column binding="numpal" caption="No of Pallets" width="80px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+        <wm-table-column-group name="group1" caption="Pallet Details">
+            <wm-table-column binding="conwgt" caption="Cone Weight" width="100px" textalignment="right" edit-widget-type="number" type="float" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="concar" caption="Cones Per Carton" width="100px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="carpall" caption="No of Cartons" width="100px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="numcones" caption="Total  Cones" width="100px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+        </wm-table-column-group>
+        <wm-table-column binding="palwgt" caption="Pallet Wgt" width="120px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="qtyrec" caption="Kgs Received" width="150px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="totpalack" caption="Total Pallet Ack" width="100px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+        <wm-table-column binding="wkgsack" caption="Kgs Acknowledged" width="100px" textalignment="right" edit-widget-type="number" type="long" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+        <wm-table-column-group name="group2" caption="Last Modified">
+            <wm-table-column binding="modid" caption="" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            <wm-table-column binding="moddat" caption="" width="120px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy HH:mm" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+        </wm-table-column-group>
+        <wm-table-column binding="cfUpdPList" caption="" widget-type="button" width="80px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true" readonly="false">
+            <wm-button caption="{{row.getProperty('cfUpdPList') || 'Update'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="cfUpdPListAction(selectedItemData)" data-ng-class=""></wm-button>
+        </wm-table-column>
+        <wm-table-column binding="cfDltPList" caption="" widget-type="button" width="80px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true" readonly="false">
+            <wm-button caption="{{row.getProperty('cfDltPList') || 'Delete'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="cfDltPListAction(selectedItemData)" data-ng-class=""></wm-button>
+        </wm-table-column>
+    </wm-table>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="bind:!Widgets.lblUpdPListPalletSeq.caption?&quot;Create Packing List&quot;:&quot;Edit Packing List&quot;" iconclass="wi wi-edit" name="dialogUpdPList" width="50%" on-opened="dialogUpdPListOpened($event, $scope)">
+            <wm-layoutgrid name="layoutgrid1">
+                <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn1">
+                        <wm-label padding="unset 0.5em" name="lblUpdPListContractID" caption="bind:Widgets.tablePList.selecteditem.contractid" show="false" class="displayField"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn2" class="displayField">
+                        <wm-label padding="unset 0.5em" name="lblUpdPListYnItemNo" caption="bind:Widgets.tablePList.selecteditem.ynitemno" show="false" class="displayField"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn9">
+                        <wm-label padding="unset 0.5em" name="lblUpdPListContainerSeq" caption="bind:Widgets.tablePList.selecteditem.containerSeq" show="false" class="displayField"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn16">
+                        <wm-label padding="unset 0.5em" name="lblUpdPListPalletSeq" caption="bind:Widgets.tablePList.selecteditem.palletSeq" show="false" class="displayField"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow2" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn3">
+                        <wm-label padding="unset 0.5em" caption="Pallet Type" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label4"></wm-label>
+                        <wm-select name="selectUpdPalletCat" placeholder="Enter Value" width="40%" dataset="bind:Variables.svProcYM4000PK0_YM400RgPalletCat.dataSet.poutRgPalletCat" datafield="itemcod" displayfield="itemdes" on-click="selectUpdPalletCatClick($event, $scope)"
+                            datavalue="bind:Widgets.tablePList.selecteditem.palletcat"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow3" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn5">
+                        <wm-label padding="unset 0.5em" caption="No of Pallets" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label7_1"></wm-label>
+                        <wm-text name="txtUpdNumPal" type="number" width="40%" maxchars="4" minvalue="1" datavalue="bind:Widgets.tablePList.selecteditem.numpal" on-change="txtUpdNumPalChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow4" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn7">
+                        <wm-label padding="unset 0.5em" caption="Cone Weight" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label8"></wm-label>
+                        <wm-text name="txtUpdConWgt" type="number" width="40%" maxchars="5" step="0.01" minvalue="0.01" datavalue="bind:Widgets.tablePList.selecteditem.conwgt" on-change="txtUpdConWgtChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow9" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn19">
+                        <wm-label padding="unset 0.5em" caption="Cones Per Carton" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label9"></wm-label>
+                        <wm-text name="txtUpdConCar" type="number" width="40%" maxchars="4" minvalue="1" datavalue="bind:Widgets.tablePList.selecteditem.concar" on-change="txtUpdConCarChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow10" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn21">
+                        <wm-label padding="unset 0.5em" caption="No of Cartons" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label10"></wm-label>
+                        <wm-text name="txtUpdCarPall" type="number" width="40%" maxchars="3" minvalue="1" datavalue="bind:Widgets.tablePList.selecteditem.carpall" on-change="txtUpdCarPallChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow11">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn23">
+                        <wm-label padding="unset 0.5em" caption="Total  Cones" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label11"></wm-label>
+                        <wm-text name="txtUpdNumCones" type="number" width="40%" maxchars="7" minvalue="1" datavalue="bind:Widgets.tablePList.selecteditem.numcones" on-change="txtUpdNumConesChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="btnUpdPList" on-click="btnUpdPListClick($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button1" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-button class="btn-default" caption="Add Packing List" type="button" margin="unset 0.5em" name="btnOpndlgInsPList" width="180" on-click="btnOpndlgInsPListClick($event, $scope)" show="bind:!!pageParams.pContractid" accessroles="YRNCONTRACT_EDIT"></wm-button>
+    <wm-view class="dialog-view" name="view4">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Delete Packing List" iconclass="wi wi-delete" name="dialogDltPList">
+            <wm-layoutgrid name="layoutgrid3">
+                <wm-gridrow name="gridrow7">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn15">
+                        <wm-label padding="unset 0.5em" caption="All Changes Will be Commited. Confirm Delete?" name="label15_1" class="col-md-6 control-label" width="100%"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions3">
+                <wm-button class="btn-default" caption="Delete And Exit" type="button" margin="unset 0.5em" name="btnDltPList" on-click="btnDltPListClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button6" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+</wm-partial>

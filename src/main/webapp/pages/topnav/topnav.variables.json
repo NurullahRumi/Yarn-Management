@@ -1,0 +1,224 @@
+{
+  "stat" : {
+    "_id" : "wm-stat-wm.Variable-1528622186198",
+    "name" : "stat",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "progname" : "Additional Receipt",
+      "Action" : "Variables.goToPage_AdditionalReceipt.invoke();"
+    }, {
+      "progname" : "Material Stock",
+      "Action" : "Variables.goToPage_SpinningMaterialStock.invoke();"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "staticPalletisation" : {
+    "_id" : "wm-staticPalletisation-wm.Variable-1556614477793",
+    "name" : "staticPalletisation",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "label" : "Multiple Yarn Palletisation",
+      "children" : [ {
+        "label" : "Add Multiple Yarn Palletisation",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#AddMultipleYarnPalletisation"
+      }, {
+        "label" : "Query Multiple Yarn Palletisation",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#QryMultipleYarnPalletisation"
+      } ]
+    }, {
+      "label" : "Request Yarn Transformation",
+      "children" : [ {
+        "label" : "Request for Yarn Transformation",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#AddReqYarnTransformation"
+      }, {
+        "label" : "Query Requests for Yarn Transformation",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#QryReqYarnTransformation"
+      } ]
+    }, {
+      "label" : "Yarn Stock Transformation",
+      "children" : [ {
+        "label" : "Yarn Stock Transformation",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#TransformYarnStock"
+      }, {
+        "label" : "Query Yarn Stock Transformation",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#QueryYarnStockTransformation"
+      } ]
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "statIntrTrns" : {
+    "_id" : "wm-statIntrTrns-wm.Variable-1556339188538",
+    "name" : "statIntrTrns",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "progname" : "Yarn Req For Interstore Transfer",
+      "Action" : "Variables.goToPage_YarnReqForInterstoreTransfer.invoke();"
+    }, {
+      "progname" : "Create Yarn Request",
+      "Action" : "Variables.goToPage_CreateYrnReqIST.invoke();"
+    }, {
+      "progname" : "View Inter-store Transfer",
+      "Action" : "Variables.goToPage_ViewInterstoreTrsf.invoke();"
+    }, {
+      "progname" : "View Inter-store Transfer Acknowledgement",
+      "Action" : "Variables.goToPage_ViewInterstoreTrsfAck.invoke();"
+    }, {
+      "progname" : "Acknowledge Inter-store Transfer",
+      "Action" : "Variables.goToPage_AckInterstoreTrsf.invoke();"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "statVwScrns" : {
+    "_id" : "wm-statVwScrns-wm.Variable-1556187842531",
+    "name" : "statVwScrns",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "progname" : "View Yarn Allocation",
+      "Action" : "Variables.goToPage_ViewYarnAllocByYrncode.invoke();"
+    }, {
+      "progname" : "View Yarn Transactions",
+      "Action" : "Variables.goToPage_YarnTransactions.invoke();"
+    }, {
+      "progname" : "View Yarn Deallocation",
+      "Action" : "Variables.goToPage_ViewYarnDeallocation.invoke();"
+    }, {
+      "progname" : "View Yarn Mix Details",
+      "Action" : "Variables.goToPage_ViewYarnMixDetails.invoke();"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "statYarnDelivery" : {
+    "_id" : "wm-statYarnDelivery-wm.Variable-1556342565223",
+    "name" : "statYarnDelivery",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "label" : "Yarn Delivery to Floor",
+      "children" : [ {
+        "label" : "BGD - Yarn Delivery to Floor",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#AddYarnFlrDelivery"
+      }, {
+        "label" : "BGD - Query Yarn Delivery to Floor",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#QueryYarnFlrDelivery"
+      } ]
+    }, {
+      "label" : "Yarn Return",
+      "children" : [ {
+        "label" : "BGD - Yarn Return from Floor",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#AddYarnFlrReturn"
+      }, {
+        "label" : "BGD - Query Yarn Return from Floor",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#QueryYarnFlrReturn"
+      }, {
+        "label" : "MAU - Yarn Return from Knitting to W/H",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#AddYarnRettoWrh"
+      }, {
+        "label" : "MAU - Query Yarn Return from Knitting to W/H",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#QueryYarnReturntoWrh"
+      } ]
+    }, {
+      "label" : "Yarn Delivery to KN2 Buffer",
+      "link" : "#AddYrnDeltoKNBuf"
+    }, {
+      "label" : "Yarn Pallet Requisition",
+      "link" : "#AddYarnPalletReqn"
+    }, {
+      "label" : "Query Yarn Pallet Requisition",
+      "link" : "#QryYarnPalletReqn"
+    }, {
+      "label" : "Sales of Yarn",
+      "children" : [ {
+        "label" : "Yarn Sales",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#AddYarnSales"
+      }, {
+        "label" : "Query Yarn Sales",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#QueryYarnSales"
+      } ]
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "statYrnOrd" : {
+    "_id" : "wm-statYrnOrd-wm.Variable-1556340273141",
+    "name" : "statYrnOrd",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "progname" : "Yarn Ordering",
+      "Action" : "Variables.goToPage_YarnOrdering.invoke();"
+    }, {
+      "progname" : "Pallets Generation",
+      "Action" : "Variables.goToPage_PalletsGeneration.invoke();"
+    }, {
+      "progname" : "Acknowledge Packing List",
+      "Action" : "Variables.goToPage_AcknowladgePackingList.invoke();"
+    } ],
+    "type" : "entry",
+    "isList" : true,
+    "saveInPhonegap" : false
+  },
+  "statYrnStock" : {
+    "_id" : "wm-statYrnStock-wm.Variable-1583912910350",
+    "name" : "statYrnStock",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "label" : "Yarn Stock",
+      "link" : "#YarnStock"
+    }, {
+      "label" : "Yarn Test",
+      "link" : "#YarnTest"
+    }, {
+      "label" : "Additional Receipt",
+      "link" : "#AdditionalReceipt"
+    }, {
+      "label" : "SML Sticker",
+      "children" : [ {
+        "label" : "Yarn Pallet Sticker",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#YarnPalletSticker"
+      }, {
+        "label" : "Yarn Carton Sticker",
+        "icon" : "glyphicon glyphicon-arrow-right",
+        "link" : "#YarnCartonSticker"
+      } ]
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
+  }
+}

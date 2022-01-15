@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd" xmlns="http://www.springframework.org/schema/beans" xmlns:security="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bean class="com.wavemaker.runtime.security.SecurityService" id="securityService"/>
+    <bean class="com.wavemaker.runtime.security.controller.SecurityController" id="securityController"/>
+    <bean class="com.wavemaker.runtime.web.filter.SSLSecureFilter" id="sslSecureFilter"/>
+    <bean class="com.wavemaker.runtime.security.xss.filter.WMXSSFilter" id="wmXSSFilter"/>
+    <bean class="com.wavemaker.runtime.security.filter.WMFrameOptionsHeaderFilter" id="wmFrameOptionsFilter">
+        <property name="frameOptions" ref="frameOptions"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.FrameOptions" id="frameOptions">
+        <property name="enabled" value="${general.frameOptions.enabled}"/>
+        <property name="mode" value="${general.frameOptions.mode}"/>
+        <property name="allowFromUrl" value="${general.frameOptions.allowFromUrl}"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.filter.WMXContentTypeOptionsFilter" id="wmXContentTypeOptionsFilter"/>
+    <bean class="org.springframework.web.filter.CorsFilter" id="corsFilter">
+        <constructor-arg ref="corsConfigurationSource"/>
+    </bean>
+    <bean class="org.springframework.web.cors.UrlBasedCorsConfigurationSource" id="corsConfigurationSource"/>
+    <bean class="com.wavemaker.runtime.cors.CorsBeanPostProcessor" id="corsBeanPostProcessor"/>
+    <bean class="org.springframework.security.web.FilterChainProxy" id="wmCompositeSecurityFilter">
+        <constructor-arg>
+            <security:filter-chain pattern="/**" filters="sslSecureFilter, wmXSSFilter, wmFrameOptionsFilter, wmXContentTypeOptionsFilter,corsFilter"/>
+        </constructor-arg>
+    </bean>
+    <bean class="com.wavemaker.runtime.data.spring.WMPropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>
+                    classpath:securityService.properties
+                </value>
+            </list>
+        </property>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.config.WMAppSecurityConfig" id="WMAppSecurityConfig">
+        <property name="sslConfig" ref="sslConfig"/>
+        <property name="xssConfig" ref="xssConfig"/>
+        <property name="enforceSecurity">
+            <value>${enabled}</value>
+        </property>
+        <property name="rolesConfig" ref="rolesConfig"/>
+        <property name="loginConfig" ref="loginConfig"/>
+        <property name="rememberMeConfig" ref="rememberMeConfig"/>
+        <property name="tokenAuthConfig" ref="tokenAuthConfig"/>
+        <property name="csrfConfig" ref="csrfConfig"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.SSLConfig" id="sslConfig">
+        <property name="useSSL" value="${general.ssl.enabled}"/>
+        <property name="sslPort" value="${general.ssl.port}"/>
+        <property name="excludedUrls" value="#{null}"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.XSSConfig" id="xssConfig">
+        <property name="enforceXssSecurity" value="${general.xss.enabled}"/>
+        <property name="policyFile" value="wm-xss-policies.xml"/>
+        <property name="xssFilterStrategy" value="NONE"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.CorsConfig" id="corsConfig">
+        <property name="enabled" value="${general.cors.enabled}"/>
+        <property name="maxAge" value="${general.cors.maxAge}"/>
+        <property name="allowCredentials" value="${general.cors.allowCredentials}"/>
+        <property name="pathEntries">
+            <list>
+                <bean class="com.wavemaker.commons.model.security.PathEntry" id="root">
+                    <property name="name" value="root"/>
+                    <property name="path" value="/**"/>
+                    <property name="allowedOrigins" value="${general.cors.root.allowedOrigins}"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <security:global-method-security pre-post-annotations="enabled" authentication-manager-ref="authenticationManager"/>
+    <security:http pattern="/app.css" security="none"/>
+    <security:http pattern="/app.js" security="none"/>
+    <security:http pattern="/app.variables.json" security="none"/>
+    <security:http pattern="/index.html" security="none"/>
+    <security:http pattern="/login.html" security="none"/>
+    <security:http pattern="/favicon.ico" security="none"/>
+    <security:http pattern="/print.css" security="none"/>
+    <security:http pattern="/wmProperties.js" security="none"/>
+    <security:http pattern="/cordova.js" security="none"/>
+    <security:http pattern="/config.json" security="none"/>
+    <security:http pattern="/types.js" security="none"/>
+    <security:http pattern="/pages/Common/**" security="none"/>
+    <security:http pattern="/pages/Login/**" security="none"/>
+    <security:http pattern="/themes/**" security="none"/>
+    <security:http pattern="/resources/**" security="none"/>
+    <security:http pattern="/**/wmapp/**" security="none"/>
+    <security:http pattern="/**/wmmobile/**" security="none"/>
+    <security:http pattern="/app/prefabs/**" security="none"/>
+    <security:http auto-config="false" use-expressions="true" entry-point-ref="WMSecAuthEntryPoint" disable-url-rewriting="true" name="interceptUrlsBean" authentication-manager-ref="authenticationManager">
+        <security:intercept-url pattern="/j_spring_cas_security_check" access="permitAll"/>
+        <security:intercept-url pattern="/j_spring_security_logout" access="permitAll"/>
+        <security:intercept-url pattern="/pages/AckInterstoreTrsf/**" access="hasAnyRole('ROLE_YRNACKINTRSTRTRSF_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/AcknowladgePackingList/**" access="hasAnyRole('ROLE_YRNACKPCKLST_QRY')"/>
+        <security:intercept-url pattern="/pages/AddMultipleYarnPalletisation/**" access="hasAnyRole('ROLE_YNTRNSFORM_SAVE')"/>
+        <security:intercept-url pattern="/pages/AddReqYarnTransformation/**" access="hasAnyRole('ROLE_YRNREQTRNF_SAVE')"/>
+        <security:intercept-url pattern="/pages/AddYarnFlrDelivery/**" access="hasAnyRole('ROLE_YRNDELFLOOR_ADD')"/>
+        <security:intercept-url pattern="/pages/AddYarnFlrReturn/**" access="hasAnyRole('ROLE_YRNRETFLOOR_ADD')"/>
+        <security:intercept-url pattern="/pages/AddYarnPalletReqn/**" access="hasAnyRole('ROLE_YNREQN_CREATE')"/>
+        <security:intercept-url pattern="/pages/AddYarnRettoWrh/**" access="hasAnyRole('ROLE_YRNRETTOWRH_SAVE')"/>
+        <security:intercept-url pattern="/pages/AddYarnSales/**" access="hasAnyRole('ROLE_YRNSALE_SAVE')"/>
+        <security:intercept-url pattern="/pages/AddYrnDeltoKNBuf/**" access="hasAnyRole('ROLE_YRNDELTOKNBUF_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/AdditionalReceipt/**" access="hasAnyRole('ROLE_YRNADDRECEIPT_QRY')"/>
+        <security:intercept-url pattern="/pages/CreateYrnReqIST/**" access="hasAnyRole('ROLE_YRNCRTREQ_SAVE')"/>
+        <security:intercept-url pattern="/pages/Login/**" access="permitAll"/>
+        <security:intercept-url pattern="/pages/PalletsGeneration/**" access="hasAnyRole('ROLE_YRNPALLETGEN_QRY')"/>
+        <security:intercept-url pattern="/pages/QryMultipleYarnPalletisation/**" access="hasAnyRole('ROLE_YNTRNSFORM_QRY')"/>
+        <security:intercept-url pattern="/pages/QryReqYarnTransformation/**" access="hasAnyRole('ROLE_YRNREQTRNF_QRY')"/>
+        <security:intercept-url pattern="/pages/QryYarnPalletReqn/**" access="hasAnyRole('ROLE_YNREQN_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/QueryYarnFlrDelivery/**" access="hasAnyRole('ROLE_YRNDELFLOOR_QRY')"/>
+        <security:intercept-url pattern="/pages/QueryYarnFlrReturn/**" access="hasAnyRole('ROLE_YRNRETFLOOR_QRY')"/>
+        <security:intercept-url pattern="/pages/QueryYarnReturntoWrh/**" access="hasAnyRole('ROLE_YRNRETTOWRH_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/QueryYarnSales/**" access="hasAnyRole('ROLE_YRNSALE_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/QueryYarnStockTransformation/**" access="hasAnyRole('ROLE_YRNVWTRSFSTK_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/SpinningMaterialStock/**" access="hasAnyRole('ROLE_MATERIALSTOCK_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/TransformYarnStock/**" access="hasAnyRole('ROLE_YRNTRSFSTK_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/ViewInterstoreTrsf/**" access="hasAnyRole('ROLE_YRNVWINTRSTRTRSF_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/ViewInterstoreTrsfAck/**" access="hasAnyRole('ROLE_YRNINTRSTRTRSFACK_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/ViewYarnAllocByYrncode/**" access="hasAnyRole('ROLE_YARNALLOCATION_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/ViewYarnDeallocation/**" access="hasAnyRole('ROLE_YRNDEALLOC_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/ViewYarnMixDetails/**" access="hasAnyRole('ROLE_YARNMIXDET_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/YarnAdjustment/**" access="hasAnyRole('ROLE_YRNADJUST_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/YarnCartonSticker/**" access="hasAnyRole('ROLE_YRNCARTONSTICKER_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/YarnOrdering/**" access="hasAnyRole('ROLE_YRNCONTRACT_EDIT','ROLE_YRNCONTRACT_VIEW')"/>
+        <security:intercept-url pattern="/pages/YarnPalletSticker/**" access="hasAnyRole('ROLE_YRNPALLETSTICKER_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/YarnReqForInterstoreTransfer/**" access="hasAnyRole('ROLE_YRNREQ_INTRSTRTRNF_VIEWPAGE')"/>
+        <security:intercept-url pattern="/pages/YarnStock/**" access="hasAnyRole('ROLE_YRNDEF_QRYNORMAL')"/>
+        <security:intercept-url pattern="/pages/YarnTest/**" access="hasAnyRole('ROLE_YRNTEST_QRYTEST')"/>
+        <security:intercept-url pattern="/pages/YarnTransactions/**" access="hasAnyRole('ROLE_YRNTRANSACTION_VIEWPAGE')"/>
+        <security:intercept-url pattern="/services/application/i18n/**" access="permitAll"/>
+        <security:intercept-url pattern="/services/prefabs/**/servicedefs" access="permitAll"/>
+        <security:intercept-url pattern="/services/security/ssologin" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/services/security/**" access="permitAll"/>
+        <security:intercept-url pattern="/services/servicedefs" access="permitAll"/>
+        <security:intercept-url pattern="/**" access="permitAll" method="OPTIONS"/>
+        <security:intercept-url pattern="/" access="isAuthenticated()"/>
+        <security:intercept-url pattern="/**" access="isAuthenticated()"/>
+        <security:headers disabled="true"/>
+        <security:request-cache ref="nullRequestCache"/>
+        <security:custom-filter before="PRE_AUTH_FILTER" ref="wmTokenBasedPreAuthenticatedProcessingFilter"/>
+        <security:custom-filter position="REMEMBER_ME_FILTER" ref="rememberMeAuthFilter"/>
+        <security:csrf request-matcher-ref="csrfSecurityRequestMatcher" token-repository-ref="csrfTokenRepository"/>
+        <security:custom-filter position="LOGOUT_FILTER" ref="logoutFilter"/>
+        <security:session-management session-authentication-strategy-ref="compositeSessionAuthenticationStrategy"/>
+        <security:custom-filter position="CAS_FILTER" ref="casFilter"/>
+    </security:http>
+    <bean class="org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy" id="compositeSessionAuthenticationStrategy">
+        <constructor-arg>
+            <list>
+                <ref bean="sessionFixationProtectionStrategy"/>
+                <ref bean="csrfAuthenticationStrategy"/>
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean class="org.springframework.security.web.authentication.session.SessionFixationProtectionStrategy" id="sessionFixationProtectionStrategy"/>
+    <bean class="org.springframework.security.web.csrf.CsrfAuthenticationStrategy" id="csrfAuthenticationStrategy">
+        <constructor-arg ref="csrfTokenRepository"/>
+    </bean>
+    <security:authentication-manager id="authenticationManager">
+        <security:authentication-provider ref="casAuthenticationProvider"/>
+        <security:authentication-provider ref="rememberMeAuthenticationProvider"/>
+    </security:authentication-manager>
+    <bean class="com.wavemaker.runtime.security.WMAppAccessDeniedHandler" id="wmAppAccessDeniedHandler"/>
+    <bean class="com.wavemaker.runtime.security.csrf.WMHttpSessionCsrfTokenRepository" id="csrfTokenRepository">
+        <constructor-arg>
+            <bean class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository"/>
+        </constructor-arg>
+        <property name="csrfConfig" ref="csrfConfig"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.csrf.CsrfSecurityRequestMatcher" id="csrfSecurityRequestMatcher">
+        <property name="csrfConfig" ref="csrfConfig"/>
+    </bean>
+    <bean class="org.springframework.security.web.authentication.logout.LogoutFilter" id="logoutFilter">
+        <constructor-arg ref="logoutSuccessHandler"/>
+        <constructor-arg>
+            <list>
+                <ref bean="securityContextLogoutHandler"/>
+                <ref bean="rememberMeServices"/>
+                <ref bean="wmCsrfLogoutHandler"/>
+            </list>
+        </constructor-arg>
+        <property name="filterProcessesUrl" value="/j_spring_security_logout"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.csrf.WMCsrfLogoutHandler" id="wmCsrfLogoutHandler">
+        <constructor-arg>
+            <bean class="org.springframework.security.web.csrf.CsrfLogoutHandler">
+                <constructor-arg ref="csrfTokenRepository"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+    <bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler" id="securityContextLogoutHandler"/>
+    <bean class="org.springframework.security.web.savedrequest.NullRequestCache" id="nullRequestCache"/>
+    <bean class="com.wavemaker.runtime.security.filter.WMTokenBasedPreAuthenticatedProcessingFilter" id="wmTokenBasedPreAuthenticatedProcessingFilter">
+        <constructor-arg ref="authenticationManager"/>
+        <constructor-arg ref="wmTokenBasedAuthenticationService"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.token.WMTokenBasedAuthenticationService" id="wmTokenBasedAuthenticationService"/>
+    <bean class="com.wavemaker.runtime.security.WMAuthenticationSuccessHandler" id="successHandler"/>
+    <bean class="com.wavemaker.runtime.security.WMAuthenticationFailureHandler" id="failureHandler"/>
+    <bean class="com.wavemaker.runtime.security.rememberme.WMAppRememberMeServices" id="rememberMeServices">
+        <constructor-arg value="WM_APP_KEY"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.rememberme.WMRememberMeAuthenticationFilter" id="rememberMeAuthFilter">
+        <constructor-arg ref="authenticationManager"/>
+        <constructor-arg ref="rememberMeServices"/>
+    </bean>
+    <bean class="org.springframework.security.authentication.RememberMeAuthenticationProvider" id="rememberMeAuthenticationProvider">
+        <constructor-arg value="WM_APP_KEY"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.LoginConfig" id="loginConfig">
+        <property name="pageName" value="Login"/>
+        <property name="sessionTimeout">
+            <bean class="com.wavemaker.commons.model.security.SessionTimeoutConfig">
+                <property name="pageName" value=""/>
+                <property name="timeoutValue" value="${general.session.timeout}"/>
+                <property name="type">
+                    <value type="com.wavemaker.commons.model.security.LoginType">SSO</value>
+                </property>
+            </bean>
+        </property>
+        <property name="type">
+            <value type="com.wavemaker.commons.model.security.LoginType">SSO</value>
+        </property>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.CSRFConfig" id="csrfConfig">
+        <property name="enforceCsrfSecurity" value="${general.xsrf.enabled}"/>
+        <property name="headerName" value="X-WM-XSRF-TOKEN"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.RememberMeConfig" id="rememberMeConfig">
+        <property name="enabled" value="${general.rememberMe.enabled}"/>
+        <property name="tokenValiditySeconds" value="${general.rememberMe.timeOut}"/>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.RolesConfig" id="rolesConfig">
+        <property name="roleMap">
+            <description>Roles based landing page definitions</description>
+            <map key-type="java.lang.String" value-type="com.wavemaker.commons.model.security.RoleConfig">
+                <entry key="admin">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="user">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDEF_QRYNORMAL">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDEF_UPDSPECS">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDEF_UPDFIBDET">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDEF_UPDAFTUSE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDEF_UPDSTDWGT">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDET_UPDSURPLUSCAT">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDEF_UPDREJSTS">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDEF_UPDHOLDSTS">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDEF_UPDACTIVESTS">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNTEST_QRYTEST">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNADDRECEIPT_QRY">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDEF_QRYFIBDET">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNSTOCK_ADJSTOCK">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNCONTRACT_EDIT">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNCONTRACT_VIEW">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDELFLOOR_ADD">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDELFLOOR_QRY">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNRETFLOOR_ADD">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNRETFLOOR_QRY">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YNREQN_DELETE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YNREQN_CXLAMT">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YNREQN_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YNTRNSFORM_QRY">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNSTOCK_SUPPMOD">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNTEST_UPDTEST">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNTEST_RELEASE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNADDRECEIPT_CREATE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNADJUST_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDEF_UPDCOMSTS">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDEF_VIEWFIBDETLBL">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNPALLETGEN_QRY">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNPALLETGEN_CREATEPAL">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNACKPCKLST_ACKPAL">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNACKPCKLST_QRY">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNCARTONSTICKER_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNCARTONSTICKER_CREATECRT">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNPALLETSTICKER_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNPALLETSTICKER_CREATEPAL">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="MATERIALSTOCK_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNTRANSACTION_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNREQ_INTRSTRTRNF_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YARNMIXDET_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDEALLOC_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YARNALLOCATION_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNACKINTRSTRTRSF_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YNTRNSFORM_SAVE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNREQTRNF_SAVE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNREQTRNF_QRY">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YNREQN_CREATE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNRETTOWRH_SAVE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNRETTOWRH_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNSALE_SAVE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNSALE_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNCRTREQ_SAVE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNINTRSTRTRSFACK_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNVWINTRSTRTRSF_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNTRSFSTK_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNVWTRSFSTK_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNDELTOKNBUF_VIEWPAGE">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNPALLETSTICKER_EDITPAL">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNCARTONSTICKER_EDITCRT">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+                <entry key="YRNADJUST_UPDSTK">
+                    <bean class="com.wavemaker.commons.model.security.RoleConfig">
+                        <property name="landingPage" value="Main"/>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <bean class="com.wavemaker.commons.model.security.TokenAuthConfig" id="tokenAuthConfig">
+        <property name="enabled" value="${general.tokenService.enabled}"/>
+        <property name="parameter" value="${general.tokenService.parameter}"/>
+        <property name="tokenValiditySeconds" value="${general.tokenService.tokenValiditySeconds}"/>
+    </bean>
+    <bean class="org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler" id="logoutSuccessHandler">
+        <property name="defaultTargetUrl" value="${providers.cas.logoutUrl}"/>
+        <property name="redirectStrategy" ref="redirectStrategyBean"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.provider.cas.CASRedirectStrategy" id="redirectStrategyBean"/>
+    <bean class="org.springframework.security.cas.authentication.CasAuthenticationProvider" id="casAuthenticationProvider">
+        <property name="serviceProperties" ref="casServiceProperties"/>
+        <property name="key" value="casAuthProviderKey"/>
+        <property name="authenticationUserDetailsService" ref="wmCasUserDetailsByNameServiceWrapper"/>
+        <property name="ticketValidator" ref="cas20ServiceTicketValidator"/>
+    </bean>
+    <bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator" id="cas20ServiceTicketValidator">
+        <constructor-arg value="${providers.cas.serverUrl}"/>
+        <property name="URLConnectionFactory" ref="casUrlConnectionFactory"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.cas.WMCasHttpsURLConnectionFactory" id="casUrlConnectionFactory">
+        <property name="sslSocketFactory" ref="appSSLSocketFactory"/>
+        <property name="hostnameVerifier" ref="appHostnameVerifier"/>
+    </bean>
+    <bean class="org.springframework.security.cas.ServiceProperties" id="casServiceProperties">
+        <property name="service" value="/"/>
+        <property name="serviceParameter" value="${providers.cas.serviceParameter}"/>
+        <property name="artifactParameter" value="${providers.cas.artifactParameter}"/>
+        <property name="authenticateAllArtifacts" value="true"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.provider.cas.CASUserDetailsByNameServiceWrapper" id="wmCasUserDetailsByNameServiceWrapper">
+        <constructor-arg>
+            <bean class="com.wavemaker.runtime.security.provider.cas.CASDatabaseUserDetailsService" id="casUserDetailsService">
+                <property name="authoritiesProvider" ref="casAuthoritiesProvider"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+    <bean class="org.springframework.security.cas.web.authentication.ServiceAuthenticationDetailsSource" id="WMWebAuthenticationDetailsSource">
+        <constructor-arg ref="casServiceProperties"/>
+    </bean>
+    <bean class="org.springframework.security.cas.web.CasAuthenticationFilter" id="casFilter">
+        <property name="authenticationSuccessHandler" ref="successHandler"/>
+        <property name="authenticationFailureHandler" ref="failureHandler"/>
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="filterProcessesUrl" value="/j_spring_cas_security_check"/>
+        <property name="authenticationDetailsSource" ref="WMWebAuthenticationDetailsSource"/>
+        <property name="serviceProperties" ref="casServiceProperties"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.provider.cas.WMCASAuthenticationEntryPoint" id="WMSecAuthEntryPoint">
+        <property name="serviceProperties" ref="casServiceProperties"/>
+        <property name="loginUrl" value="${providers.cas.loginUrl}"/>
+    </bean>
+    <bean class="com.wavemaker.runtime.security.provider.database.authorities.DefaultAuthoritiesProviderImpl" id="casAuthoritiesProvider">
+        <property name="hibernateTemplate">
+            <ref bean="pfsdbTemplate"/>
+        </property>
+        <property name="transactionManager">
+            <ref bean="pfsdbTransactionManager"/>
+        </property>
+        <property name="rolesByQuery" value="true"/>
+        <property name="hql" value="true"/>
+        <property name="authoritiesByUsernameQuery">
+            <value>SELECT approle FROM VRft90201 WHERE userid = upper(:LOGGED_IN_USERNAME) and appid = 'YM1000WB'</value>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,1181 @@
+<wm-page data-ng-controller="YarnOrderingPageController" pagetitle="Yarn Ordering" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.statPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter" class="panel-primary">
+                <wm-layoutgrid columns="1" name="layoutgrid1">
+                    <wm-gridrow name="gridrow1">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn1">
+                            <wm-form-field readonly="false" name="pContractdatFrom" displayname="Order Date From" key="pContractdatFrom" type="string" show="true" widget="date" maxdate="CURRENT_DATE"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn7">
+                            <wm-form-field readonly="false" name="pContractdatTo" displayname="Order Date To" key="pContractdatTo" type="string" show="true" widget="date" maxdate="CURRENT_DATE"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn8">
+                            <wm-form-field readonly="false" name="pRyrnOri" displayname="Origin" key="pRyrnOri" type="string" show="true" widget="text" on-change="pRyrnOriChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn9">
+                            <wm-form-field readonly="false" name="pCtycod" displayname="Dest Country" key="pCtycod" type="string" show="true" widget="text" on-change="pCtycodChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn10">
+                            <wm-form-field readonly="false" name="pContractID" displayname="PFS ID" key="pContractID" type="string" show="true" widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn11"></wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow2">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn2">
+                            <wm-form-field readonly="false" name="pContractNO" displayname="Contract no" key="pContractNO" type="string" show="true" widget="text" on-change="pContractNOChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn12">
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup1">
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="btnQry" margin="15px unset unset unset" on-click="btnQryClick($event, $scope)" accessroles="YRNCONTRACT_EDIT,YRNCONTRACT_VIEW" disabled="bind:Variables.statForBtnQry.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                <wm-button caption="Reset" type="reset" class="btn-secondary" name="btnReset" margin="15px unset unset unset" on-click="btnResetClick($event, $scope)"></wm-button>
+                            </wm-buttongroup>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn13"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn14"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn15"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn16"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-form>
+            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel12">
+                <wm-list listclass="list-group" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="panel-primary listMain" dataset="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain" navigation="Classic" name="listMain" selectfirstitem="true"
+                    showrecordcount="true" pagesize="1" paginationclass="nopadding" title="Contracts">
+                    <wm-listtemplate layout="inline" name="listtemplate2">
+                        <wm-container class="media-body" padding="unset unset unset 1.25em" name="container5">
+                            <wm-layoutgrid name="layoutgrid3">
+                                <wm-gridrow name="gridrow5">
+                                    <wm-gridcolumn columnwidth="2" name="gridcolumn17">
+                                        <wm-label class="col-md-6 control-label" textalign="left" caption="Order Date" name="label1" width="95%"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].contractdat | toDate: 'dd-MMM-yyyy'" name="label2" width="90%"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="2" name="gridcolumn22">
+                                        <wm-label class="col-md-6 control-label" textalign="left" caption="Origin" name="label3" width="95%"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].ryrnori" name="label10" width="90%"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="3" name="gridcolumn23">
+                                        <wm-label class="col-md-6 control-label" textalign="left" caption="Status" name="label4" width="95%"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].contractsts" name="label11" width="45%" margin="unset 10px unset unset"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].wcontractsts" name="label14" width="45%"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="2" name="gridcolumn24">
+                                        <wm-label class="col-md-6 control-label" textalign="left" caption="PFS ID" name="label5" width="95%"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].contractid" name="lblContractID" width="90%"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="3" name="gridcolumn18">
+                                        <wm-label class="col-md-6 control-label" textalign="left" caption="Created By" width="95%" name="label153_1"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].createdid" width="45%" margin="unset 10px unset unset" name="label154_1"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].createddat | toDate: 'dd-MMM-yyyy HH:mm'" width="45%" name="label155_1"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow6">
+                                    <wm-gridcolumn columnwidth="4" name="gridcolumn19">
+                                        <wm-label class="col-md-6 control-label" textalign="left" caption="Contract no" name="label7" width="95%"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].contractno" name="label16" width="90%"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="1" name="gridcolumn21">
+                                        <wm-label class="col-md-6 control-label" textalign="left" caption="Dest Country" name="label8" width="95%"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].ctycod" name="label17" width="90%"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="4" name="gridcolumn156">
+                                        <wm-label class="col-md-6 control-label" textalign="left" caption="L/C No" name="label9" width="95%"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].lcreditno" name="label18" width="90%"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="3" name="gridcolumn20">
+                                        <wm-label class="col-md-6 control-label" textalign="left" caption="Modified By" name="label6" width="95%"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].modid" name="label13" width="45%" margin="unset 10px unset unset"></wm-label>
+                                        <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].moddat | toDate: 'dd-MMM-yyyy HH:mm'" name="label15" width="45%"></wm-label>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-container>
+                        <wm-container class="media-right media-top" name="container6"></wm-container>
+                    </wm-listtemplate>
+                    <wm-label padding="unset 0.5em" name="lblForvalidation" caption="bind:Variables.svProcYM4000PK0_YM400Main.dataSet.poutMain[$i].contractid" show="false"></wm-label>
+                </wm-list>
+                <wm-button class="btn-default" caption="Update Contract" type="button" margin="1em 0.5em" name="btnUpdDlg" on-click="btnUpdDlgClick($event, $scope)" width="150" show="bind:!Widgets.lblForvalidation.caption?false:true" accessroles="YRNCONTRACT_EDIT"></wm-button>
+                <wm-button class="btn-default" caption="Create Contract" type="button" margin="1em 0.5em" width="150" name="btnCrtDlg" on-click="btnCrtDlgClick($event, $scope)" accessroles="YRNCONTRACT_EDIT"></wm-button>
+                <wm-button class="btn-default" caption="Delete Contract" type="button" margin="1em 0.5em" name="btnDltPfsID" width="150" on-click="btnDltPfsIDClick($event, $scope)" show="bind:!Widgets.lblForvalidation.caption?false:true" accessroles="YRNCONTRACT_EDIT"></wm-button>
+            </wm-panel>
+            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel5">
+                <wm-panel iconclass="" autoclose="outsideClick" title="bind:&quot;Yarn for Contract no &quot; + Widgets.listMain.selecteditem.contractid" name="panel6" class="panel-primary">
+                    <wm-table title="" dataset="bind:Variables.svProcYM4000PK0_YM400YNDET.dataSet.poutYndet" navigation="Classic" name="tableYNDET" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" on-datarender="tableYNDETDatarender($scope, $data)">
+                        <wm-table-column binding="ynitemno" caption="Yn" width="100px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" fractionsize="0" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column-group name="group1" caption="Yarn Count">
+                            <wm-table-column binding="yrncnt" caption="Cnt" width="250px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="addCount" caption="" widget-type="button" width="80px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true" readonly="false">
+                                <wm-button caption="{{row.getProperty('addCount') || 'Add Count'}}" show="{{row.getProperty('yrncnt')==undefined?'true':'false'}}" class="btn-sm btn-primary" iconclass="" on-click="addCountAction(selectedItemData)" data-ng-class=""></wm-button>
+                            </wm-table-column>
+                        </wm-table-column-group>
+                        <wm-table-column binding="yrntex" caption="Yrn Tex" width="120px" textalignment="right" edit-widget-type="number" type="float" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column-group name="group2" caption="Yarn composition">
+                            <wm-table-column binding="yrncps" caption="Cps" width="220px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="addComposition" caption="" widget-type="button" width="80px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true"
+                                readonly="false">
+                                <wm-button caption="{{row.getProperty('addComposition') || 'Add Cps'}}" show="{{row.getProperty('yrncps')==undefined?'true':'false'}}" class="btn-sm btn-primary" iconclass="" on-click="addCompositionAction(selectedItemData)"
+                                    data-ng-class=""></wm-button>
+                            </wm-table-column>
+                        </wm-table-column-group>
+                        <wm-table-column-group name="group" caption="Yarn  Color">
+                            <wm-table-column binding="yrnclr" caption="" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="yrncdes" caption="" width="220px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        </wm-table-column-group>
+                        <wm-table-column binding="cfUpdYndet" caption="" widget-type="button" width="80px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true" readonly="false">
+                            <wm-button caption="{{row.getProperty('cfUpdYndet') || 'Update'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="cfUpdYndetAction(selectedItemData)" data-ng-class=""></wm-button>
+                        </wm-table-column>
+                        <wm-table-column binding="cfDltYndet" caption="" widget-type="button" width="80px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true" readonly="false">
+                            <wm-button caption="{{row.getProperty('cfDltYndet') || 'Delete'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="cfDltYndetAction(selectedItemData)" data-ng-class=""></wm-button>
+                        </wm-table-column>
+                    </wm-table>
+                    <wm-button class="btn-default" caption="Add Contract line" type="button" margin="unset 0.5em 1em 0.5em" width="150" on-click="btnInsYnDetDlgClick($event, $scope)" name="btnInsYnDetDlg" show="bind:!Widgets.lblForvalidation.caption?false:true"
+                        accessroles="YRNCONTRACT_EDIT"></wm-button>
+                </wm-panel>
+            </wm-panel>
+            <wm-panel iconclass="" autoclose="outsideClick" title="bind:&quot;Yarn and Fregiht Details for Yarn Seq &quot; + Widgets.tableYNDET.selecteditem.ynitemno" name="panelQualityFibreProcess" collapsible="true" class="panel-info">
+                <wm-layoutgrid name="layoutgrid10">
+                    <wm-gridrow name="gridrow22_1">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn65" padding="unset 15px unset unset">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="Yarn Count Description" name="panelSubCnt" collapsible="true" class="panel-info" expanded="true">
+                                <wm-table title="" dataset="bind:Variables.svProcYM4000PKO_YM400SUBCNT.dataSet.poutSubcnt" navigation="None" name="tableSubCnt" spacing="condensed" gridfirstrowselect="true" height="60">
+                                    <wm-table-column binding="subcntsys" caption="Cnt Sys" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="ply" caption="Ply" width="60px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="prefix" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="subcnt" caption="Cnt" width="80px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="filament" caption="Filaments" width="65px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="subcntcps" caption="Cps" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="wsubcntcpsDes" caption="" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="cfUpdSubCnt" caption="" widget-type="button" width="60px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true"
+                                        readonly="false">
+                                        <wm-button caption="{{row.getProperty('cfUpdSubCnt') || 'Update'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="cfUpdSubCntAction(selectedItemData)" data-ng-class=""></wm-button>
+                                    </wm-table-column>
+                                    <wm-table-column binding="cfDltSubCnt" caption="" widget-type="button" width="60px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true" readonly="false">
+                                        <wm-button caption="{{row.getProperty('cfDltSubCnt') || 'Delete'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="cfDltSubCntAction(selectedItemData)" data-ng-class=""></wm-button>
+                                    </wm-table-column>
+                                    <wm-table-action key="addNewRow" display-name="Add Count" show="bind:!!Variables.svProcYM4000PKO_YM400SUBCNT.dataSet.poutSubcnt[0].contractid" class="btn-primary" iconclass="wi wi-plus" title="Add New Count" action="addNewRowAction($event)"
+                                        accessroles="YRNCONTRACT_EDIT" shortcutkey="" disabled="false" widget-type="button"></wm-table-action>
+                                </wm-table>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn66_1" padding="unset unset unset 15px">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="Yarn Cps Description" name="panelCpsTyp" collapsible="true" class="panel-info">
+                                <wm-table title="" dataset="bind:Variables.svProcYM4000PK0_YM400CPSTYP.dataSet.poutCpstyp" navigation="None" name="tableCpsTyp" spacing="condensed" gridfirstrowselect="true" height="60" on-datarender="tableCpsTypDatarender($scope, $data)">
+                                    <wm-table-column binding="subcpstyp" caption="Cps Type" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="wsubcpstypDes" caption="" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="yrnfrac" caption="%" width="80px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-action key="addNewRow" display-name="Edit Cps" show="bind:!!Variables.svProcYM4000PK0_YM400CPSTYP.dataSet.poutCpstyp[0].contractid" class="btn-primary" iconclass="wi wi-plus" title="Edit Cps"
+                                        action="addNewRowAction($event)" accessroles="YRNCONTRACT_EDIT" shortcutkey="" disabled="false" widget-type="button"></wm-table-action>
+                                </wm-table>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-layoutgrid name="layoutgrid35">
+                    <wm-gridrow name="gridrow83">
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn166">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="Yarn Quality" name="panelYrnQlty" class="panel-info" collapsible="true" margin="unset 10px unset unset" actions="bind:Variables.statEditPanels.dataSet" itemlabel="Action Name"
+                                itemicon="Action Icon" itemaction="Action" on-actionsclick="panelYrnQltyActionsclick($item)" show="true" userrole="Action Rule">
+                                <wm-layoutgrid name="layoutgrid5">
+                                    <wm-gridrow name="gridrow7" padding="unset unset 3px unset">
+                                        <wm-gridcolumn columnwidth="4" name="gridcolumn25">
+                                            <wm-label padding="unset 0.5em" name="label26" caption="Quality" width="95%" textalign="right" class="col-md-6 control-label"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn26">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.yrnqlty" width="95%" name="label34"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn29">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.nyrnqltydes" width="95%" name="label40"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow8" padding="unset unset 3px unset">
+                                        <wm-gridcolumn columnwidth="4" name="gridcolumn27">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.labelsubqltya" width="95%" name="label29"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn28">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.yrnsubqltya" width="95%" name="label35"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn30">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.wyrnsubqltyaDes" width="95%" name="label41"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow11" padding="unset unset 3px unset">
+                                        <wm-gridcolumn columnwidth="4" name="gridcolumn37">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.labelsubqltyb" width="95%" name="label30"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn38">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.yrnsubqltyb" width="95%" name="label36"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn39">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.wyrnsubqltybDes" width="95%" name="label42"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow12" padding="unset unset 3px unset">
+                                        <wm-gridcolumn columnwidth="4" name="gridcolumn40">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.labelsubqltyc" width="95%" name="label31"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn41">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.yrnsubqltyc" width="95%" name="label37"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn42">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.wyrnsubqltycDes" width="95%" name="label43"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow13" padding="unset unset 3px unset">
+                                        <wm-gridcolumn columnwidth="4" name="gridcolumn43">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.labelsubqltyd" width="95%" name="label32"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn44">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.yrnsubqltyd" width="95%" name="label38"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn45">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.wyrnsubqltydDes" width="95%" name="label44"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow14">
+                                        <wm-gridcolumn columnwidth="4" name="gridcolumn46">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.labelsubqltye" width="95%" name="label33"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn47">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.yrnsubqltye" width="95%" name="label39"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn48">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.wyrnsubqltyeDes" width="95%" name="label45"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-panel>
+                            <wm-panel iconclass="" autoclose="outsideClick" title="Price Type" name="panelPriceTyp" class="panel-info" collapsible="true" margin="unset 10px unset unset" actions="bind:Variables.statEditPanels.dataSet" itemlabel="Action Name"
+                                itemicon="Action Icon" itemaction="Action" on-actionsclick="panelPriceTypActionsclick($item)" userrole="Action Rule">
+                                <wm-layoutgrid name="layoutgrid8_1">
+                                    <wm-gridrow name="gridrow22">
+                                        <wm-gridcolumn columnwidth="4" name="gridcolumn61_1">
+                                            <wm-label padding="unset 0.5em" caption="Price Type" width="95%" textalign="right" name="label55_1" class="col-md-6 control-label"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="8" name="gridcolumn62_1">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.pricetyp" width="25%" name="label56_1" margin="unset 5px unset unset"></wm-label>
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.wpricetypDes" width="70%" name="label57_1"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn170">
+                            <wm-table title="Fibre Type" dataset="bind:Variables.svProcYM4000PK0_YM400FIBRE.dataSet.poutFibre" navigation="None" name="tableFibre" spacing="condensed" gridfirstrowselect="true" showrecordcount="false" height="60" class="panel-info">
+                                <wm-table-column binding="fibretyp" caption="" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="wfibretypDes" caption="" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="fibrefrac" caption="%" width="50px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="cfUpdFibre" caption="" widget-type="button" width="60px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true"
+                                    readonly="false">
+                                    <wm-button caption="{{row.getProperty('cfUpdFibre') || 'Update'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="cfUpdFibreAction(selectedItemData)" data-ng-class=""></wm-button>
+                                </wm-table-column>
+                                <wm-table-column binding="cfDltFibre" caption="" widget-type="button" width="60px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true" readonly="false">
+                                    <wm-button caption="{{row.getProperty('cfDltFibre') || 'Delete'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="cfDltFibreAction(selectedItemData)" data-ng-class=""></wm-button>
+                                </wm-table-column>
+                                <wm-table-action key="addNewRow" display-name="Add Fibre" show="bind:!Widgets.lblForvalidation.caption?false:true" class="btn-primary" iconclass="wi wi-plus" title="Add Fibre" action="addNewRowAction($event)" accessroles="YRNCONTRACT_EDIT"
+                                    shortcutkey="" disabled="false" widget-type="button"></wm-table-action>
+                            </wm-table>
+                            <wm-table title="Special Process" dataset="bind:Variables.svProcYM4000PK0_YM400FINISH.dataSet.poutFinish" navigation="None" name="tableFinish" spacing="condensed" gridfirstrowselect="true" height="60" class="panel-info" showheader="false">
+                                <wm-table-column binding="yrnfinish" caption="" width="50px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="wyrnfinishDes" caption="" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                <wm-table-column binding="cfDltFinish" caption="" widget-type="button" width="30px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true"
+                                    readonly="false">
+                                    <wm-button caption="{{row.getProperty('cfDltFinish') || 'Delete'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="cfDltFinishAction(selectedItemData)" data-ng-class=""></wm-button>
+                                </wm-table-column>
+                                <wm-table-action key="addNewRow" display-name="Add Special Process" show="bind:!Widgets.lblForvalidation.caption?false:true" class="btn-primary" iconclass="wi wi-plus" title="Add" action="addNewRowAction($event)" accessroles="YRNCONTRACT_EDIT"
+                                    shortcutkey="" disabled="false" widget-type="button"></wm-table-action>
+                            </wm-table>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn167">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="Freight Details" name="panelFritDel" class="panel-info" collapsible="true" margin="unset unset unset 10px" actions="bind:Variables.statEditPanels.dataSet" itemlabel="Action Name"
+                                itemicon="Action Icon" itemaction="Action" on-actionsclick="panelFritDelActionsclick($item)" userrole="Action Rule">
+                                <wm-layoutgrid name="layoutgrid7">
+                                    <wm-gridrow name="gridrow15" padding="unset unset 3px unset">
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn49">
+                                            <wm-label padding="unset 0.5em" caption="Freight Terms" width="95%" textalign="right" name="label47" class="col-md-6 control-label"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="7" name="gridcolumn50">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.supFreightTerm" width="25%" name="label54" margin="unset 5px unset unset"></wm-label>
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.wsupFreightTerm" width="70%" name="label61"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow17" padding="unset unset 3px unset">
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn53">
+                                            <wm-label padding="unset 0.5em" caption="Price Per Kg" width="95%" textalign="right" name="label48" class="col-md-6 control-label"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="7" name="gridcolumn54">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.supCurPricekg.toLocaleString()" width="95%" name="label55" textalign="right"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow18" padding="unset unset 3px unset">
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn55">
+                                            <wm-label padding="unset 0.5em" caption="Currency" width="95%" textalign="right" name="label49" class="col-md-6 control-label"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="7" name="gridcolumn56">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.supCcycod" width="95%" name="label56" textalign="right"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow16">
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn51">
+                                            <wm-label padding="unset 0.5em" caption="Initial Kgs Ordered" width="95%" textalign="right" name="label50" class="col-md-6 control-label"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="7" name="gridcolumn52">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.iniordkgs.toLocaleString()" width="95%" name="label57" textalign="right"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-panel>
+                            <wm-panel iconclass="" autoclose="outsideClick" title="CIF Details" name="panelCifDel" class="panel-info" collapsible="true" margin="unset unset unset 10px" actions="bind:Variables.statEditPanels.dataSet" itemlabel="Action Name"
+                                itemicon="Action Icon" itemaction="Action" on-actionsclick="panelCifDelActionsclick($item)" userrole="Action Rule">
+                                <wm-layoutgrid name="layoutgrid8">
+                                    <wm-gridrow name="gridrow19" padding="unset unset 3px unset">
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn57">
+                                            <wm-label padding="unset 0.5em" caption="Price per Kg" width="95%" textalign="right" name="label51" class="col-md-6 control-label"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="7" name="gridcolumn58">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.cifCurPricekg.toLocaleString()" width="95%" name="label58" textalign="right"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow20" padding="unset unset 3px unset">
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn59">
+                                            <wm-label padding="unset 0.5em" caption="Currency" width="95%" textalign="right" name="label52" class="col-md-6 control-label"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="7" name="gridcolumn60">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.cifCur" width="95%" name="label59" textalign="right"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow21">
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn61">
+                                            <wm-label padding="unset 0.5em" caption="Price Per Kg(Rs)" width="95%" textalign="right" name="label53" class="col-md-6 control-label"></wm-label>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="7" name="gridcolumn62">
+                                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.cifRsPricekg.toLocaleString()" width="95%" name="label60" textalign="right"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-layoutgrid name="layoutgrid7_1">
+                    <wm-gridrow name="gridrow20_1">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn57_1">
+                            <wm-label padding="unset 0.5em" caption="Remarks" width="5%" textalign="left" class="col-md-6 control-label" name="label58_1" margin="unset 5px unset unset"></wm-label>
+                            <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.remark" name="label59_1" width="60%"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-panel>
+            <wm-panel iconclass="" autoclose="outsideClick" title="bind:&quot;Container for yarn seq &quot; + Widgets.tableYNDET.selecteditem.ynitemno" name="panel7" class="panel-info" collapsible="true">
+                <wm-table title="" dataset="bind:Variables.svProcYM4000PK0_YM400CONTDET.dataSet.poutContdet" navigation="Classic" name="tableContdet" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" on-datarender="tableContdetDatarender($scope, $data)">
+                    <wm-table-column binding="rowOperations" caption="" width="80px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true" rowactionsposition="0"></wm-table-column>
+                    <wm-table-column binding="crtYrnCod" caption="" widget-type="button" width="120px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true" readonly="false">
+                        <wm-button caption="{{row.getProperty('crtYrnCod') || 'Create Yarn Code'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="crtYrnCodAction(selectedItemData)" data-ng-class=""></wm-button>
+                    </wm-table-column>
+                    <wm-table-column binding="LnkEstgYrnCod" caption="" widget-type="button" width="140px" textalignment="center" edit-widget-type="text" type="string" accessroles="YRNCONTRACT_EDIT" searchable="false" show="true" readonly="false">
+                        <wm-button caption="{{row.getProperty('LnkEstgYrnCod') || 'Link Existing Yarn Code'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="LnkEstgYrnCodAction(selectedItemData)" data-ng-class=""></wm-button>
+                    </wm-table-column>
+                    <wm-table-column binding="containerSeq" caption="Seq" width="50px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="exprecdat" caption="Expected  Rcv Date" width="100px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="plnkgs" caption="Kgs To Rcv" width="100px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column-group name="group" caption="Shipmode">
+                        <wm-table-column binding="shpmod" caption="" width="40px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wshipmod" caption="" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    </wm-table-column-group>
+                    <wm-table-column binding="lcDate" caption="LC Date" width="90px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="lcNo" caption="LC Bill ID" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column-group name="group4" caption="LC Paid STS">
+                        <wm-table-column binding="paidSts" caption="" width="40px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="lcStsdes" caption="" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    </wm-table-column-group>
+                    <wm-table-column binding="containerqty" caption="# of cntainrs" width="60px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column-group name="group1" caption="Container Dimension">
+                        <wm-table-column binding="containerType" caption="" width="50px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wcontainerType" caption="" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    </wm-table-column-group>
+                    <wm-table-column binding="shipline" caption="Shipping line" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="containernum" caption="Container  no" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="ladingbill" caption="Bill of Lading" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="vessname" caption="Vessel Name" width="250px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="voyage" caption="Voyage" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="expdeparturedat" caption="Exp Departdate Cntry of Origin" width="100px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column-group name="group2" caption="<------  Arrival To MRU ------->">
+                        <wm-table-column binding="exparrivaldat" caption="Expctd date" width="100px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="actarrivaldat" caption="Actual date" width="100px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    </wm-table-column-group>
+                    <wm-table-column binding="qtyrec" caption="Qty Received" width="110px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="manudat" caption="Manufacturing  Date" width="100px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="rlotnum" caption="Supplier lot no" width="140px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="flrlotnum" caption="Flr-LotNo" width="140px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="flryrnori" caption="Flr-Origin" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column-group name="group3" caption="<-------- PFS Details -------->">
+                        <wm-table-column binding="yrncod" caption="Yrn code" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wflrlotnum" caption="Flr-Lotno" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wflryrnori" caption="Flr-Origin" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wdaterec" caption="Date Received" width="100px" edit-widget-type="text" type="string" datepattern="dd-MMM-yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    </wm-table-column-group>
+                    <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="updaterowAction($event)" accessroles="YRNCONTRACT_EDIT" disabled="false"></wm-table-row-action>
+                    <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleterowAction($event)" accessroles="YRNCONTRACT_EDIT" disabled="false"></wm-table-row-action>
+                </wm-table>
+                <wm-layoutgrid name="layoutgrid8_2">
+                    <wm-gridrow name="gridrow20_2">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn56_1">
+                            <wm-label caption="Total Kgs To Rcv" width="55%" textalign="right" class="col-md-6 control-label" name="label60_1" margin="unset 5px unset unset"></wm-label>
+                            <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400CONTDET.dataSet.poutContdet[$i].wtotal.toLocaleString()" width="40%" textalign="right" name="label61_1"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn60_1">
+                            <wm-label caption="Total Qty Received" width="55%" textalign="right" class="col-md-6 control-label" name="label62" margin="unset 5px unset unset"></wm-label>
+                            <wm-label class="displayField col-md-6" caption="bind:Variables.svProcYM4000PK0_YM400CONTDET.dataSet.poutContdet[$i].wtotqtyrcv.toLocaleString()" width="40%" textalign="right" name="label63"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn167_1" horizontalalign="center">
+                            <wm-button class="btn-default" caption="Add Container" type="button" margin="unset 0.5em" name="btnOpndlgInsContDet" width="75%" on-click="btnOpndlgInsContDetClick($event, $scope)" show="bind:!Widgets.lblForvalidation.caption?false:true"
+                                accessroles="YRNCONTRACT_EDIT"></wm-button>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn168" horizontalalign="center"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn62_2" horizontalalign="center"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn57_2"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-panel>
+            <wm-panel iconclass="" autoclose="outsideClick" title="bind:&quot;Packing List for Container seq &quot; + Widgets.tableContdet.selecteditem.containerSeq" name="panelPartialPlist" class="panel-info" content="partialPackingList" collapsible="true">
+                <wm-param name="pContractid" value="bind:Widgets.tableContdet.selecteditem.contractid" type="string"></wm-param>
+                <wm-param name="pYnitemno" value="bind:Widgets.tableContdet.selecteditem.ynitemno" type="integer"></wm-param>
+                <wm-param name="pContainerSeq" value="bind:Widgets.tableContdet.selecteditem.containerSeq" type="integer"></wm-param>
+            </wm-panel>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="bind:!Widgets.lblUpdCONTRACTID.caption?&quot;Create New Yarn Contracts&quot;:&quot;Edit Yarn Contracts&quot;" iconclass="wi wi-edit" name="dialogUpdMain" on-opened="dialogUpdMainOpened($event, $scope)">
+            <wm-layoutgrid name="layoutgrid10_1">
+                <wm-gridrow name="gridrow26" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn68_1">
+                        <wm-label padding="unset 0.5em" caption="PFS ID" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label70_1"></wm-label>
+                        <wm-label class="displayField col-md-6" caption="bind:Widgets.listMain.selecteditem.contractid" width="40%" name="lblUpdCONTRACTID"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow22_2" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn62_3">
+                        <wm-label padding="unset 0.5em" caption="Order Date" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label68"></wm-label>
+                        <wm-date name="dateUpdCONTRACTDAT" maxdate="CURRENT_DATE" datavalue="bind:Widgets.listMain.selecteditem.contractdat" outputformat="yyyy-MM-dd" showweeks="false"></wm-date>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow89" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn179">
+                        <wm-label padding="unset 0.5em" caption="Origin" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label70"></wm-label>
+                        <wm-search name="selectUpdRYRNORI" type="autocomplete" width="40%" dataset="bind:Variables.svProcYM4000PK0_YM400RgRYRNORI.dataSet.poutRgRyrnori" displaylabel="yrnsup" datafield="yrnori" datavalue="bind:Widgets.listMain.selecteditem.ryrnori"
+                            on-blur="selectUpdRYRNORIBlur($event, $scope)"></wm-search>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow23" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn64">
+                        <wm-label padding="unset 0.5em" caption="Status" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label71"></wm-label>
+                        <wm-select name="selectUpdCONTRACTSTS" width="40%" placeholder="Enter Value" datavalue="bind:Widgets.listMain.selecteditem.contractsts" dataset="bind:Variables.svProcYM4000PK0_YM400RgCONTRACTSTS.dataSet.poutRgContractsts"
+                            datafield="itemcod" displayfield="itemdes"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow24" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn66">
+                        <wm-label padding="unset 0.5em" caption="Contract no" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label73"></wm-label>
+                        <wm-text name="txtUpdCONTRACTNO" width="70%" datavalue="bind:Widgets.listMain.selecteditem.contractno" maxchars="40"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow90" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn181">
+                        <wm-label padding="unset 0.5em" caption="Dest Country" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label72"></wm-label>
+                        <wm-select name="selectUpdCTYCOD" width="40%" placeholder="Enter Value" datavalue="bind:Widgets.listMain.selecteditem.ctycod" dataset="bind:Variables.svProcYM4000PK0_YM400RgCTYCOD.dataSet.poutRgCtycod" datafield="itemcod"
+                            displayfield="itemcod"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow25">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn68">
+                        <wm-label padding="unset 0.5em" caption="L/C No" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label74"></wm-label>
+                        <wm-text name="txtUpdLCREDITNO" width="70%" datavalue="bind:Widgets.listMain.selecteditem.lcreditno" maxchars="40"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="btnUpdMain" on-click="btnUpdMainClick($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button3" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view3">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="bind:&quot;Edit Yarn Details for Contract no &quot; + Widgets.listMain.selecteditem.contractid" iconclass="wi wi-edit" name="dialogUpdYNDET" width="1100" on-opened="dialogUpdYNDETOpened($event, $scope)">
+            <wm-layoutgrid name="layoutgrid11" show="true">
+                <wm-gridrow name="gridrow28" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn72">
+                        <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.contractid" width="130" textalign="right" name="lblUpdYnDetCONTRACTID" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn73">
+                        <wm-label class="displayField col-md-6" caption="bind:Widgets.tableYNDET.selecteditem.ynitemno" width="60" textalign="right" name="lblUpdYnDetYNITEMNO" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="5" name="gridcolumn109"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions2">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="btnUpdYnDet" on-click="btnUpdYnDetClick($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button6" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-layoutgrid name="layoutgrid33_1">
+                <wm-gridrow name="gridrow95" padding="unset unset 10px unset">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn166_2">
+                        <wm-label name="tileTitle" caption="Contract no" class="p" fontsize="1" fontunit="em" fontweight="bold"></wm-label>
+                        <wm-layoutgrid name="layoutgrid13">
+                            <wm-gridrow name="gridrow38" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn92">
+                                    <wm-label padding="unset 0.5em" caption="Yrn Tex" textalign="right" class="col-md-4 control-label" name="label85" show="true"></wm-label>
+                                    <wm-text name="txtUpdYRNTEX" type="number" width="60%" datavalue="bind:Widgets.tableYNDET.selecteditem.yrntex" step="0.01" maxchars="9" placeholder="Enter number" show="true"></wm-text>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow39" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn94">
+                                    <wm-label padding="unset 0.5em" caption="Yarn  Colour" textalign="right" class="col-md-4 control-label" name="label86"></wm-label>
+                                    <wm-select name="selectUpdYRNCLR" width="60%" placeholder="Enter Value" dataset="bind:Variables.svProcYM4000PK0_YM400RgYrnClr.dataSet.poutRgYrnClr" datafield="nyrnclr" displayfield="nyrncdes" datavalue="bind:Widgets.tableYNDET.selecteditem.yrnclr"
+                                        on-change="selectUpdYRNCLRChange($event, $scope, newVal, oldVal)"></wm-select>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow60">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn127_1">
+                                    <wm-label padding="unset 0.5em" caption="Yarn  Colour Des" textalign="right" class="col-md-4 control-label" name="label134_1"></wm-label>
+                                    <wm-search name="selectUpdYRNCDES" type="autocomplete" width="60%" dataset="bind:Variables.svProcYM4000PK0_YM400UpdRgYrnCdes.dataSet.poutRgYrnCdes" displaylabel="yrnshade" datafield="yrnshade" datavalue="bind:Widgets.tableYNDET.selecteditem.yrncdes"
+                                        on-blur="selectUpdYRNCDESBlur($event, $scope)"></wm-search>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn167_3">
+                        <wm-label caption="Yarn Quality" class="p" fontsize="1" fontunit="em" name="label79" fontweight="bold"></wm-label>
+                        <wm-layoutgrid name="layoutgrid14">
+                            <wm-gridrow name="gridrow40" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn96">
+                                    <wm-label padding="unset 0.5em" caption="Yarn Qlty" textalign="right" class="col-md-2 control-label" name="label86_1"></wm-label>
+                                    <wm-select name="selectUpdYRNQLTY" width="40%" placeholder="Enter Value" datavalue="bind:Widgets.tableYNDET.selecteditem.yrnqlty" dataset="bind:Variables.svProcYM4000PK0_YM400RgYrnQlty.dataSet.poutRgYrnQlty"
+                                        datafield="nyrnqlty" displayfield="nyrnqltydes" on-change="selectUpdYRNQLTYChange($event, $scope, newVal, oldVal)"></wm-select>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow41" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn98">
+                                    <wm-search name="selectUpdYRNSUBQLTYA" type="autocomplete" width="40%" dataset="bind:Variables.svProcYM4000PK0_YM400RgYrnSubQltyA.dataSet.poutRgYrnSubQltyA" displaylabel="subqltydes" datafield="subqltycod" datavalue="bind:Widgets.tableYNDET.selecteditem.yrnsubqltya"
+                                        on-blur="selectUpdYRNSUBQLTYABlur($event, $scope)"></wm-search>
+                                    <wm-label padding="unset 0.5em" caption="Yarn Sub Qlty A" textalign="right" class="col-md-2 control-label" name="label87_1"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow47" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn110">
+                                    <wm-label padding="unset 0.5em" caption="Yarn Sub Qlty B" textalign="right" class="col-md-2 control-label" name="label88_1"></wm-label>
+                                    <wm-search name="selectUpdYRNSUBQLTYB" type="autocomplete" width="40%" dataset="bind:Variables.svProcYM4000PK0_YM400RgYrnSubQltyB.dataSet.poutRgYrnSubQltyB" displaylabel="subqltydes" datafield="subqltycod"
+                                        datavalue="bind:Widgets.tableYNDET.selecteditem.yrnsubqltyb" on-blur="selectUpdYRNSUBQLTYBBlur($event, $scope)"></wm-search>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow83_1" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn169">
+                                    <wm-label padding="unset 0.5em" caption="Yarn Sub Qlty C" textalign="right" class="col-md-2 control-label" name="label89_1"></wm-label>
+                                    <wm-search name="selectUpdYRNSUBQLTYC" type="autocomplete" width="40%" dataset="bind:Variables.svProcYM4000PK0_YM400RgYrnSubQltyC.dataSet.poutRgYrnSubQltyC" displaylabel="subqltydes" datafield="subqltycod"
+                                        datavalue="bind:Widgets.tableYNDET.selecteditem.yrnsubqltyc" on-blur="selectUpdYRNSUBQLTYCBlur($event, $scope)"></wm-search>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow93_2" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn162_3">
+                                    <wm-label padding="unset 0.5em" caption="Yarn Sub Qlty D" textalign="right" class="col-md-2 control-label" name="label90_1"></wm-label>
+                                    <wm-select name="selectUpdYRNSUBQLTYD" width="40%" placeholder="Enter Value" datavalue="bind:Widgets.tableYNDET.selecteditem.yrnsubqltyd" dataset="bind:Variables.svProcYM4000PK0_YM400RgYrnSubQltyD.dataSet.poutRgYrnSubQltyD"
+                                        datafield="subqltycod" displayfield="subqltydes"></wm-select>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow94_2">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn164_1">
+                                    <wm-label padding="unset 0.5em" caption="Yarn Sub Qlty E" textalign="right" class="col-md-2 control-label" name="label91_1"></wm-label>
+                                    <wm-select name="selectUpdYRNSUBQLTYE" width="40%" placeholder="Enter Value" datavalue="bind:Widgets.tableYNDET.selecteditem.yrnsubqltye" dataset="bind:Variables.svProcYM4000PK0_YM400RgYrnSubQltyE.dataSet.poutRgYrnSubQltyE"
+                                        datafield="subqltycod" displayfield="subqltydes"></wm-select>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow96_1" padding="unset unset 10px unset">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn168_1">
+                        <wm-label caption="Freight Details" class="p" fontsize="1" fontunit="em" name="label80" fontweight="bold"></wm-label>
+                        <wm-layoutgrid name="layoutgrid15">
+                            <wm-gridrow name="gridrow42" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn100">
+                                    <wm-label padding="unset 0.5em" caption="Freight Terms" textalign="right" class="col-md-5 control-label" name="label93"></wm-label>
+                                    <wm-select name="selectUpdSUPFREIGHTTERM" width="55%" placeholder="Enter Value" datavalue="bind:Widgets.tableYNDET.selecteditem.supFreightTerm" dataset="bind:Variables.svProcYM4000PK0_YM400RgSupFreightTerm.dataSet.poutRgSupFreightTerm"
+                                        datafield="itemcod" displayfield="itemdes"></wm-select>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow41_1" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn95">
+                                    <wm-label padding="unset 0.5em" caption="Price Per Kg" textalign="right" class="col-md-5 control-label" name="label95"></wm-label>
+                                    <wm-text name="txtUpdSUPCURPRICEKG" type="number" width="55%" datavalue="bind:Widgets.tableYNDET.selecteditem.supCurPricekg" step="0.01" placeholder="Enter number"></wm-text>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow42_1" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn97_1">
+                                    <wm-label padding="unset 0.5em" caption="Currency" textalign="right" class="col-md-5 control-label" name="label94_1"></wm-label>
+                                    <wm-select name="selectUpdSUPCCYCOD" width="55%" placeholder="Enter Value" datavalue="bind:Widgets.tableYNDET.selecteditem.supCcycod" dataset="bind:Variables.svProcYM4000PK0_YM400RgSupCcyCod.dataSet.poutRgSupCcyCod"
+                                        datafield="ccycod" displayfield="ccycod"></wm-select>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow43">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn102">
+                                    <wm-label padding="unset 0.5em" caption="Initial Kgs Ordered" textalign="right" class="col-md-5 control-label" name="label96"></wm-label>
+                                    <wm-text name="txtUpdINIORDKGS" type="number" width="55%" datavalue="bind:Widgets.tableYNDET.selecteditem.iniordkgs" step="0.01" placeholder="Enter number"></wm-text>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn170_2">
+                        <wm-label caption="CIF Details" class="p" fontsize="1" fontunit="em" name="label82" fontweight="bold"></wm-label>
+                        <wm-layoutgrid name="layoutgrid16">
+                            <wm-gridrow name="gridrow44" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn104">
+                                    <wm-label padding="unset 0.5em" caption="Price per Kg" textalign="right" class="col-md-5 control-label" name="label97"></wm-label>
+                                    <wm-text name="txtUpdCIFCURPRICEKG" type="number" width="55%" datavalue="bind:Widgets.tableYNDET.selecteditem.cifCurPricekg" step="0.01" placeholder="Enter number"></wm-text>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow45" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn106">
+                                    <wm-label padding="unset 0.5em" caption="Currency" textalign="right" class="col-md-5 control-label" name="label98"></wm-label>
+                                    <wm-select name="selectUpdCIFCUR" width="55%" placeholder="Enter Value" datavalue="bind:Widgets.tableYNDET.selecteditem.cifCur" dataset="bind:Variables.svProcYM4000PK0_YM400RgSupCcyCod.dataSet.poutRgSupCcyCod"
+                                        datafield="ccycod" displayfield="ccycod"></wm-select>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow40_1" padding="unset unset 3px unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn94_1">
+                                    <wm-label padding="unset 0.5em" caption="Price Per Kg(Rs)" textalign="right" class="col-md-5 control-label" name="label100"></wm-label>
+                                    <wm-text name="txtUpdCIFRSPRICEKG" width="55%" type="number" datavalue="bind:Widgets.tableYNDET.selecteditem.cifRsPricekg" step="0.01" maxchars="10" placeholder="Enter number"></wm-text>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn169_1">
+                        <wm-label caption="Price Type" class="p" fontsize="1" fontunit="em" fontweight="bold" name="label168_1"></wm-label>
+                        <wm-layoutgrid name="layoutgrid36">
+                            <wm-gridrow name="gridrow85">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn173">
+                                    <wm-label padding="unset 0.5em" caption="Price Type" textalign="right" class="col-md-4 control-label" name="label99"></wm-label>
+                                    <wm-select name="selectUpdPRICETYP" placeholder="Enter Value" width="55%" datavalue="bind:Widgets.tableYNDET.selecteditem.pricetyp" datafield="itemcod" dataset="bind:Variables.svProcYM4000PK0_YM400RgPriceTyp.dataSet.poutRgPriceTyp"
+                                        displayfield="itemdes"></wm-select>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow86">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn175"></wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-layoutgrid name="layoutgrid17">
+                <wm-gridrow name="gridrow43_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn99_1">
+                        <wm-label padding="unset 0.5em" caption="Remarks" textalign="right" class="col-md-1 control-label" name="label101"></wm-label>
+                        <wm-text type="text" width="80%" name="txtUpdaREMARK" datavalue="bind:Widgets.tableYNDET.selecteditem.remark" maxchars="500"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view4">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Yarn Count Description" iconclass="wi wi-edit" name="dialogUpdSubCnt">
+            <wm-layoutgrid name="layoutgrid18">
+                <wm-gridrow name="gridrow43_2">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn91">
+                        <wm-label padding="unset 0.5em" caption="bind:Widgets.tableSubCnt.selecteditem.contractid" name="lblUpdSubCntContractID" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn92_1">
+                        <wm-label padding="unset 0.5em" caption="bind:Widgets.tableSubCnt.selecteditem.ynitemno" name="lblUpdSubCntYnItemNO" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn101">
+                        <wm-label padding="unset 0.5em" caption="bind:Widgets.tableSubCnt.selecteditem.subcntseq" name="lblUpdSubCntSubCntSeq" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow45_1" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn95_1">
+                        <wm-label padding="unset 0.5em" caption="Cnt Sys" width="15%" textalign="right" class="col-md-6 control-label" name="label101_1"></wm-label>
+                        <wm-select name="selectUpdSUBCNTSYS" placeholder="Enter Value" width="40%" datavalue="bind:Widgets.tableSubCnt.selecteditem.subcntsys" dataset="bind:Variables.svProcYM4000PK0_YM400RgSubCntSys.dataSet.poutRgSubCntSys"
+                            datafield="cntsys" displayfield="cntsys"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow46_1" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn97_2">
+                        <wm-label padding="unset 0.5em" caption="Ply" width="15%" textalign="right" class="col-md-6 control-label" name="label102"></wm-label>
+                        <wm-text name="txtUpdPLY" type="number" width="40%" datavalue="bind:Widgets.tableSubCnt.selecteditem.ply" maxchars="3" placeholder="Enter number"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow47_1" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn99_2">
+                        <wm-label padding="unset 0.5em" caption="Cnt" width="15%" textalign="right" class="col-md-6 control-label" name="label103"></wm-label>
+                        <wm-text name="txtUpdSUBCNT" type="number" width="40%" datavalue="bind:Widgets.tableSubCnt.selecteditem.subcnt" maxchars="9" step="0.01" placeholder="Enter number"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow87" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn175_1">
+                        <wm-label padding="unset 0.5em" caption="Filaments" width="15%" textalign="right" class="col-md-6 control-label" name="label104"></wm-label>
+                        <wm-text name="txtUpdFILAMENT" type="number" width="40%" datavalue="bind:Widgets.tableSubCnt.selecteditem.filament" maxchars="4" placeholder="Enter number"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow88">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn177">
+                        <wm-label padding="unset 0.5em" caption="Cps" width="15%" textalign="right" class="col-md-6 control-label" name="label105"></wm-label>
+                        <wm-select name="selectUpdSUBCNTCPS" placeholder="Enter Value" width="40%" datavalue="bind:Widgets.tableSubCnt.selecteditem.subcntcps" dataset="bind:Variables.svProcYM4000PK0_YM400RgSubCntCps.dataSet.poutRgSubCntCps"
+                            datafield="ncpstyp" displayfield="ncpstypdes"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions3">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="btnUpdSubCnt" on-click="btnUpdSubCntClick($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button8" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view5">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Yarn Cps Description" iconclass="wi wi-edit" name="dialogUpdCpsTyp">
+            <wm-dialogactions name="dialogactions4">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="btnUpdCpsTyp" on-click="btnUpdCpsTypClick($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog();btnUpdCpsTypExitClick($event, $scope)" name="btnUpdCpsTypExit" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-table editmode="inline" name="TablestatYrnCps1" title="" dataset="bind:Variables.statYrnCpsValues.dataSet" navigation="None" spacing="condensed" on-rowinsert="TablestatYrnCps1Rowinsert($event, $scope, $rowData)" insertmessage="" updatemessage=""
+                confirmdelete="" deletemessage="" on-beforerowupdate="TablestatYrnCps1Beforerowupdate($event, $scope, $rowData)" on-beforerowinsert="TablestatYrnCps1Beforerowinsert($event, $scope, $rowData)" on-rowdelete="TablestatYrnCps1Rowdelete($event, $scope, $rowData)">
+                <wm-table-column binding="subcpstyp" caption="Cps Type" width="60px" edit-widget-type="select" type="string" dataset="bind:Variables.svGetProcYM4000PK0_YM400RGSubCpsTyp.dataSet.poutRgsubCpsTyp" datafield="ncpstyp" displayfield="ncpstypdes"
+                    show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrnfrac" caption="%" width="60px" textalignment="right" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="rowOperations" caption="" width="50px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" widget-type="button"></wm-table-action>
+                <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow()" disabled="false"></wm-table-row-action>
+                <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleterowAction($event)" disabled="false"></wm-table-row-action>
+            </wm-table>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view6">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="bind:!Widgets.lblUpdContDetContainerSeq.caption?&quot;Create Container Details&quot;:&quot;Edit Container Details&quot;" iconclass="bind:!Widgets.lblUpdContDetContainerSeq.caption?&quot;wi wi-create&quot;:&quot;wi wi-pencil&quot;"
+            name="dialogUpdContDet" width="900" on-opened="dialogUpdContDetOpened($event, $scope)">
+            <wm-layoutgrid name="layoutgrid19">
+                <wm-gridrow name="gridrow47_2">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn100_2">
+                        <wm-label class="displayField col-md-6" caption="bind:Widgets.tableContdet.selecteditem.contractid" width="170" name="lblUpdContDetContractId" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn101_1">
+                        <wm-label class="displayField col-md-6" caption="bind:Widgets.tableContdet.selecteditem.ynitemno" width="170" name="lblUpdContDetYnItemNo" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn122">
+                        <wm-label class="displayField col-md-6" caption="bind:Widgets.tableContdet.selecteditem.containerSeq" width="170" name="lblUpdContDetContainerSeq" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow48" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn102_1">
+                        <wm-label padding="unset 0.5em" caption="Expected  Rcv Date" width="45%" textalign="right" class="col-md-6 control-label" name="label108" margin="unset 5px unset unset"></wm-label>
+                        <wm-date name="dateUpdEXPRECDAT" datavalue="bind:Widgets.tableContdet.selecteditem.exprecdat"></wm-date>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn103">
+                        <wm-label padding="unset 0.5em" caption="Kgs To Rcv" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label126"></wm-label>
+                        <wm-text name="txtUpdPLNKGS" type="number" width="50%" datavalue="bind:Widgets.tableContdet.selecteditem.plnkgs" maxchars="10" step="0.01" placeholder="Enter number"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow49" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn104_1">
+                        <wm-label padding="unset 0.5em" caption="Shipmode" width="45%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label127"></wm-label>
+                        <wm-select name="selectUpdSHPMOD" width="50%" placeholder="Enter Value" datavalue="bind:Widgets.tableContdet.selecteditem.shpmod" dataset="bind:Variables.svProcYM4000PK0_Ym400RgShpMod.dataSet.poutRgShpMod" datafield="itemcod"
+                            displayfield="itemdes" on-change="selectUpdSHPMODChange($event, $scope, newVal, oldVal)"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn105">
+                        <wm-label padding="unset 0.5em" caption="# of cntainrs" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label128"></wm-label>
+                        <wm-text name="txtUpdCONTAINERQTY" type="number" width="50%" datavalue="bind:Widgets.tableContdet.selecteditem.containerqty" maxchars="3" minvalue="1" placeholder="Enter number"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow91_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn160_2">
+                        <wm-panel iconclass="" autoclose="outsideClick" title="" name="panelHide">
+                            <wm-layoutgrid name="layoutgrid32_2">
+                                <wm-gridrow name="gridrow92_1" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn162_2">
+                                        <wm-label padding="unset 0.5em" caption="Container Dimension" width="45%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label129"></wm-label>
+                                        <wm-select name="selectCONTAINERTYPE" width="50%" placeholder="Enter Value" datavalue="bind:Widgets.tableContdet.selecteditem.containerType" dataset="bind:Variables.svProcYM4000PK0_YM400RgContainerType.dataSet.poutRgContainerType"
+                                            datafield="itemcod" displayfield="itemdes"></wm-select>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn163_1">
+                                        <wm-label padding="unset 0.5em" caption="Shipping line" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label130"></wm-label>
+                                        <wm-select name="selectUpdSHIPLINE" width="50%" placeholder="Enter Value" datavalue="bind:Widgets.tableContdet.selecteditem.shipline" dataset="bind:Variables.svProcYM4000PK0_YM400RgShipLine.dataSet.poutRgShipLine"
+                                            datafield="itemcod" displayfield="itemcod"></wm-select>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow93_1" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn164">
+                                        <wm-label padding="unset 0.5em" caption="Container  no" width="45%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label131"></wm-label>
+                                        <wm-text name="txtUpdCONTAINERNUM" width="50%" datavalue="bind:Widgets.tableContdet.selecteditem.containernum" maxchars="14"></wm-text>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn165_1">
+                                        <wm-label padding="unset 0.5em" caption="Voyage" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label134"></wm-label>
+                                        <wm-text name="txtUpdVOYAGE" width="50%" datavalue="bind:Widgets.tableContdet.selecteditem.voyage" maxchars="5"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow94_1">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn166_1">
+                                        <wm-label padding="unset 0.5em" caption="Vessel Name" width="45%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label133"></wm-label>
+                                        <wm-search name="selectUpdVESSNAME" width="50%" type="autocomplete" dataset="bind:Variables.svProcYM4000PK0_YM400RgVessName.dataSet.poutRgVessName" displaylabel="vfname" datafield="vfname" datavalue="bind:Widgets.tableContdet.selecteditem.vessname"
+                                            on-blur="selectUpdVESSNAMEBlur($event, $scope)"></wm-search>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn167_2"></wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-panel>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow52" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn110_1">
+                        <wm-label padding="unset 0.5em" caption="Exp Departdate Cntry of Origin" width="45%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label135"></wm-label>
+                        <wm-date name="dateUpdEXPDEPARTUREDAT" datavalue="bind:Widgets.tableContdet.selecteditem.expdeparturedat"></wm-date>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn111_1">
+                        <wm-label padding="unset 0.5em" caption="Bill of Lading" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label132"></wm-label>
+                        <wm-text name="txtUpdLADINGBILL" width="50%" datavalue="bind:Widgets.tableContdet.selecteditem.ladingbill" maxchars="30"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow53" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn112">
+                        <wm-label padding="unset 0.5em" caption="Actual Date" width="45%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label137"></wm-label>
+                        <wm-date name="dateUpdACTARRIVALDAT" datavalue="bind:Widgets.tableContdet.selecteditem.actarrivaldat"></wm-date>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn113">
+                        <wm-label padding="unset 0.5em" caption="Expctd date" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label136"></wm-label>
+                        <wm-date name="dateUpdEXPARRIVALDAT" showbuttonbar="true" datavalue="bind:Widgets.tableContdet.selecteditem.exparrivaldat"></wm-date>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow54" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn114">
+                        <wm-label padding="unset 0.5em" caption="Manufacturing  Date" width="45%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label139"></wm-label>
+                        <wm-date name="dateUpdMANUDAT" datavalue="bind:Widgets.tableContdet.selecteditem.manudat"></wm-date>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn115">
+                        <wm-label padding="unset 0.5em" caption="Qty Received" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label138"></wm-label>
+                        <wm-text name="txtUpdQTYREC" type="number" width="50%" datavalue="bind:Widgets.tableContdet.selecteditem.qtyrec" maxchars="11" step="0.01" placeholder="Enter number"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow55" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn116">
+                        <wm-label padding="unset 0.5em" caption="Flr-LotNo" width="45%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label141"></wm-label>
+                        <wm-text name="txtUpdFLRLOTNUM" width="50%" datavalue="bind:Widgets.tableContdet.selecteditem.flrlotnum" maxchars="15"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn117">
+                        <wm-label padding="unset 0.5em" caption="Supplier lot no" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label140"></wm-label>
+                        <wm-text name="txtUpdRLOTNUM" width="50%" datavalue="bind:Widgets.tableContdet.selecteditem.rlotnum" maxchars="15"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow56" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn118">
+                        <wm-label padding="unset 0.5em" caption="Flr-Origin" width="45%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label142"></wm-label>
+                        <wm-search name="selectUpdFLRYRNORI" width="50%" type="autocomplete" dataset="bind:Variables.svProcYM4000PK0_YM400RgFlrYrnOri.dataSet.poutRgFlrYrnOri" displaylabel="yrnsup" datafield="yrnori" datavalue="bind:Widgets.tableContdet.selecteditem.flryrnori"
+                            on-blur="selectUpdFLRYRNORIBlur($event, $scope)"></wm-search>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn119"></wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow96_2" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn164_2">
+                        <wm-label padding="unset 0.5em" caption="LC Date" width="45%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label157"></wm-label>
+                        <wm-date name="dateUpdLCDat" datavalue="bind:Widgets.tableContdet.selecteditem.lcDate"></wm-date>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn165_2">
+                        <wm-label padding="unset 0.5em" caption="LC Bill ID" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label158"></wm-label>
+                        <wm-text name="txtUpdLCNo" width="50%" maxchars="15" datavalue="bind:Widgets.tableContdet.selecteditem.lcNo"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow97">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn166_3">
+                        <wm-label padding="unset 0.5em" caption="LC Paid STS" width="45%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label160_1"></wm-label>
+                        <wm-select name="selectUpdLCSTS" width="50%" placeholder="Enter Value" dataset="bind:Variables.statLCSts.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Widgets.tableContdet.selecteditem.paidSts"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn167_4"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions5">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="btnUpdContDet" on-click="btnUpdContDetClick($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button12" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view8">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Create New Yarn Details" iconclass="wi wi-create" name="dialogInsYnDet">
+            <wm-layoutgrid name="layoutgrid21">
+                <wm-gridrow name="gridrow58" padding="unset unset 3px unset"></wm-gridrow>
+                <wm-gridrow name="gridrow59" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn125">
+                        <wm-label padding="unset 0.5em" caption="Yarn  Colour" width="20%" textalign="right" class="col-md-6 control-label" name="label130_2"></wm-label>
+                        <wm-select width="40%" placeholder="Enter Value" dataset="bind:Variables.svProcYM4000PK0_YM400RgYrnClr.dataSet.poutRgYrnClr" datafield="nyrnclr" displayfield="nyrncdes" name="selectInsYrnClr" on-change="selectInsYrnClrChange($event, $scope, newVal, oldVal)"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow91" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn182">
+                        <wm-label padding="unset 0.5em" caption="Yarn  Colour Des" width="20%" textalign="right" class="col-md-6 control-label" name="label131_2"></wm-label>
+                        <wm-search name="selectInsYrnCdes" type="autocomplete" width="40%" dataset="bind:Variables.svProcYM4000PK0_YM400RgYrnCdes.dataSet.poutRgYrnCdes" displaylabel="yrnshade" datafield="yrnshade" on-blur="selectInsYrnCdesBlur($event, $scope)"></wm-search>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow92">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn184">
+                        <wm-label padding="unset 0.5em" caption="Price Type" width="20%" textalign="right" class="col-md-6 control-label" name="label132_1"></wm-label>
+                        <wm-select placeholder="Enter Value" width="40%" datafield="itemcod" dataset="bind:Variables.svProcYM4000PK0_YM400RgPriceTyp.dataSet.poutRgPriceTyp" displayfield="itemdes" name="selectInsPriceTyp"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions7">
+                <wm-button class="btn-default" caption="Create And Exit" type="button" margin="unset 0.5em" name="btnInsYnDet" on-click="btnInsYnDetClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button17" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view9">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Yarn Count Description" iconclass="wi wi-create" name="dialogInsSubCnt">
+            <wm-layoutgrid name="layoutgrid22">
+                <wm-gridrow name="gridrow60_1" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn127_2">
+                        <wm-label padding="unset 0.5em" name="lblInsSubCntContractId" caption="bind:Widgets.tableYNDET.selecteditem.contractid" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn135">
+                        <wm-label padding="unset 0.5em" name="lblInsSubCntYnItemNo" caption="bind:Widgets.tableYNDET.selecteditem.ynitemno" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow61" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn129">
+                        <wm-label padding="unset 0.5em" caption="Cnt Sys" width="15%" textalign="right" class="col-md-6 control-label" name="label139_1"></wm-label>
+                        <wm-select placeholder="Enter Value" width="40%" dataset="bind:Variables.svProcYM4000PK0_YM400RgSubCntSys.dataSet.poutRgSubCntSys" datafield="cntsys" displayfield="cntsys" name="selectInsSUBCNTSYS"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow62" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn131">
+                        <wm-label padding="unset 0.5em" caption="Ply" width="15%" textalign="right" class="col-md-6 control-label" name="label142_1"></wm-label>
+                        <wm-text type="number" width="40%" maxchars="3" name="txtInsPLY" placeholder="Enter number"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow63" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn133">
+                        <wm-label padding="unset 0.5em" caption="Cnt" width="15%" textalign="right" class="col-md-6 control-label" name="label140_1"></wm-label>
+                        <wm-text type="number" width="40%" maxchars="9" step="0.01" name="txtInsSUBCNT" placeholder="Enter number"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow93" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn186">
+                        <wm-label padding="unset 0.5em" caption="Filaments" width="15%" textalign="right" class="col-md-6 control-label" name="label143"></wm-label>
+                        <wm-text type="number" width="40%" maxchars="4" name="txtInsFILAMENT" placeholder="Enter number"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow94">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn188">
+                        <wm-label padding="unset 0.5em" caption="Cps" width="15%" textalign="right" class="col-md-6 control-label" name="label141_1"></wm-label>
+                        <wm-select placeholder="Enter Value" width="40%" dataset="bind:Variables.svProcYM4000PK0_YM400RgSubCntCps.dataSet.poutRgSubCntCps" datafield="ncpstyp" displayfield="ncpstypdes" name="selectInsSUBCNTCPS"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions8">
+                <wm-button class="btn-default" caption="Create And Exit" type="button" margin="unset 0.5em" name="btnInsSubCnt" on-click="btnInsSubCntClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button20" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view11">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="bind:!Widgets.lblFinish.caption?&quot;Create Special Process&quot;:&quot;Edit Special Process&quot;" iconclass="wi wi-edit" name="dialogUpdFinish" on-opened="dialogUpdFinishOpened($event, $scope)">
+            <wm-layoutgrid name="layoutgrid24">
+                <wm-gridrow name="gridrow90_1">
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn158">
+                        <wm-label padding="unset 0.5em" name="lblFinish" caption="bind:Widgets.tableFinish.selecteditem.yrnfinish" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn159_2"></wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow68">
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn143">
+                        <wm-label padding="unset 0.5em" caption="Yarn Finish" width="35%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label150"></wm-label>
+                        <wm-select name="selectUpdYrnFinish" width="60%" placeholder="Enter Value" datavalue="bind:Widgets.tableFinish.selecteditem.yrnfinish" datafield="yrnfinish" dataset="bind:Variables.svProcYM4000PK0_YM400RGYrnFinish.dataSet.poutRgyrnFinish"
+                            displayfield="yrnfinishdes"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn144"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions10">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="btnUpdFinish" on-click="btnUpdFinishClick($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button25" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view13">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Delete" iconclass="wi wi-delete" name="dialogDltContDet">
+            <wm-layoutgrid name="layoutgrid27">
+                <wm-gridrow name="gridrow70">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn147">
+                        <wm-label padding="unset 0.5em" caption="All Changes Will be Commited. Confirm Delete?" class="col-md-6 control-label" width="100%" name="label149"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions12">
+                <wm-button class="btn-default" caption="Delete And Exit" type="button" margin="unset 0.5em" name="btnDltContDet" on-click="btnDltContDetClick($event, $scope)" iconclass=""></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button32" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view14">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Delete Special Process" iconclass="wi wi-delete" name="dialogDltFinish">
+            <wm-layoutgrid name="layoutgrid28">
+                <wm-gridrow name="gridrow71">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn148">
+                        <wm-label padding="unset 0.5em" caption="All Changes Will be Commited. Confirm Delete?" class="col-md-6 control-label" width="100%" name="label153"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions13">
+                <wm-button class="btn-default" caption="Delete And Exit" type="button" margin="unset 0.5em" name="btnDltFinish" on-click="btnDltFinishClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button34" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view15">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="bind:!Widgets.lblFibreTyp.caption?&quot;Create Fibre Type&quot;:&quot;Edit Fibre Type&quot;" iconclass="wi wi-edit" name="dialogUpdFibre" on-opened="dialogUpdFibreOpened($event, $scope)">
+            <wm-layoutgrid name="layoutgrid29">
+                <wm-gridrow name="gridrow89_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn157">
+                        <wm-label padding="unset 0.5em" name="lblFibreTyp" caption="bind:Widgets.tableFibre.selecteditem.fibretyp" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow72" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn149">
+                        <wm-label padding="unset 0.5em" caption="Fibre Type" width="15%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label154"></wm-label>
+                        <wm-select name="selectUpdFIBRETYP" placeholder="Enter Value" width="40%" dataset="bind:Variables.svProcYM4000PK0_YM400RGFibreTyp.dataSet.poutRgfibreTyp" datafield="fibretyp" displayfield="fibredes" datavalue="bind:Widgets.tableFibre.selecteditem.fibretyp"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow96">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn192">
+                        <wm-label padding="unset 0.5em" caption="Fibre Frac" width="15%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label155"></wm-label>
+                        <wm-text name="txtUpdFIBREFRAC" width="40%" type="number" maxchars="3" datavalue="bind:Widgets.tableFibre.selecteditem.fibrefrac" placeholder="Enter number"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions14">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="btnUpdFibre" on-click="btnUpdFibreClick($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button36" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view17">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Delete Fibre Type" iconclass="wi wi-delete" name="dialogDltFibre">
+            <wm-dialogactions name="dialogactions16">
+                <wm-button class="btn-default" caption="Delete And Exit" type="button" margin="unset 0.5em" name="btnDltFibre" on-click="btnDltFibreClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button40" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-layoutgrid name="layoutgrid32">
+                <wm-gridrow name="gridrow77">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn159">
+                        <wm-label padding="unset 0.5em" caption="All Changes Will be Commited. Confirm Delete?" class="col-md-6 control-label" width="100%" name="label160"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view18">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Delete Yarn Count Description" iconclass="wi wi-delete" name="dialogDltSubCnt">
+            <wm-dialogactions name="dialogactions17">
+                <wm-button class="btn-default" caption="Delete And Exit" type="button" margin="unset 0.5em" name="btnDltSubCnt" on-click="btnDltSubCntClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button42" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-label padding="unset 0.5em" caption="All Changes Will be Commited. Confirm Delete?" class="col-md-6 control-label" width="100%" name="label161"></wm-label>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view19">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Delete Yarn Details" iconclass="wi wi-delete" name="dialogDltYnDet">
+            <wm-dialogactions name="dialogactions18">
+                <wm-button class="btn-default" caption="Delete And Exit" type="button" margin="unset 0.5em" name="btnDltYnDet" on-click="btnDltYnDetClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button44" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-label padding="unset 0.5em" caption="All changes will be committed. Confirm delete?" class="col-md-6 control-label" width="100%" name="label162"></wm-label>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view20">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Delete PFS ID" iconclass="wi wi-delete" name="dialogDltMain">
+            <wm-dialogactions name="dialogactions19">
+                <wm-button class="btn-default" caption="Delete And Exit" type="button" margin="unset 0.5em" name="btnDltMain" on-click="btnDltMainClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button46" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-label padding="unset 0.5em" caption="All Changes Will be Commited. Confirm Delete?" class="col-md-6 control-label" width="100%" name="label163"></wm-label>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view21">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Create Yarn Code" iconclass="wi wi-create" name="dialogCrtYrnCod">
+            <wm-layoutgrid name="layoutgrid32_1">
+                <wm-gridrow name="gridrow76" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn156_1">
+                        <wm-label padding="unset 0.5em" caption="Sorce" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label164"></wm-label>
+                        <wm-select name="selectYrnSource" width="45%" placeholder="Enter Value" dataset="bind:Variables.svProcYM4000PK0_YM400RGYrnSource.dataSet.poutRgyrnSource" datafield="itemcod" displayfield="maindes"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow77_1" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn159_1">
+                        <wm-label padding="unset 0.5em" caption="Category of Yarn" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label165"></wm-label>
+                        <wm-select name="selectYrnCategory" width="45%" placeholder="Enter Value" dataset="bind:Variables.svProcYM4000PK0_YM400RGYrnCategory.dataSet.poutRgyrnCategory" datafield="itemcod" displayfield="maindes"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow78" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn160">
+                        <wm-label padding="unset 0.5em" caption="Type of Yarn" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label166"></wm-label>
+                        <wm-select name="selectYrnTyp" width="45%" class="col-md-6" margin="unset 5px unset unset" placeholder="Enter Value" dataset="bind:Variables.svProcYM4000PK0_YM400RGYrnTyp.dataSet.poutRgyrnTyp" datafield="itemcod" displayfield="maindes"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow79">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn162">
+                        <wm-label padding="unset 0.5em" caption="Type of Raw Material" width="25%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label167"></wm-label>
+                        <wm-select name="selectRawMat" width="45%" placeholder="Enter Value" dataset="bind:Variables.svProcYM4000PK0_YM400RGRawMat.dataSet.poutRgrawMat" datafield="itemcod" displayfield="maindes"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions20">
+                <wm-button class="btn-default" caption="Create Yarn Code" type="button" margin="unset 0.5em" name="btncrtYrnCod1" on-click="btncrtYrnCod1Click($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button50" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view22">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Select Existing Yarn Code" iconclass="" name="dialogYrnLink">
+            <wm-layoutgrid name="layoutgrid33">
+                <wm-gridrow name="gridrow80">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn160_1">
+                        <wm-label padding="unset 0.5em" caption="Yarn Code" width="20%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label168"></wm-label>
+                        <wm-text name="txtYrnCod" width="50%"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions21">
+                <wm-button class="btn-default" caption="Ok" type="button" margin="unset 0.5em" name="btnLnkYrn" on-click="btnLnkYrnClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button52" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view23">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Add Cps Type" iconclass="wi wi-create" name="dialogCpsTyp">
+            <wm-layoutgrid name="layoutgrid34">
+                <wm-gridrow name="gridrow81">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn161">
+                        <wm-label padding="unset 0.5em" caption="bind:Widgets.tableYNDET.selecteditem.contractid" name="lblFstCpstypContractid" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn165">
+                        <wm-label padding="unset 0.5em" caption="bind:Widgets.tableYNDET.selecteditem.ynitemno" name="lblFstCpstypYnItemNo" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn162_1"></wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow82" padding="unset unset 3px unset">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn163">
+                        <wm-label padding="unset 0.5em" caption="Cps Type" width="15%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label170"></wm-label>
+                        <wm-select name="selectFstCpsTyp" width="40%" dataset="bind:Variables.svGetProcYM4000PK0_YM400RGSubCpsTyp.dataSet.poutRgsubCpsTyp" datafield="ncpstyp" displayfield="ncpstypdes" placeholder="Enter Value"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow98">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn196">
+                        <wm-label padding="unset 0.5em" caption="%" width="15%" textalign="right" class="col-md-6 control-label" margin="unset 5px unset unset" name="label166_2"></wm-label>
+                        <wm-text name="txtFstYrnFrac" type="number" datavalue="100" width="40%" readonly="true"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions22">
+                <wm-button class="btn-default" caption="Create And Exit" type="button" margin="unset 0.5em" name="btnCpsTyp" on-click="btnCpsTypClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button54" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

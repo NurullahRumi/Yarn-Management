@@ -1,0 +1,1104 @@
+<wm-page data-ng-controller="YarnTestPageController" pagetitle="Yarn Test" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.statPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1">
+        <wm-param name="pShowMenubar" value="Y" type="string"></wm-param>
+    </wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter" class="panel-primary">
+                <wm-layoutgrid columns="1" name="layoutgrid44_1">
+                    <wm-gridrow name="gridrow85">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn269">
+                            <wm-form-field readonly="false" name="pYRNCOD" displayname="Yarn Code" key="pYRNCOD" type="string" show="true" widget="text" required="false" defaultvalue="bind:pageParams.pParam1"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn277">
+                            <wm-form-field readonly="false" name="pYrnCnt" displayname="Nominal Y.Cnt" key="pYrnCnt" type="string" show="true" widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn278">
+                            <wm-form-field readonly="false" name="pYRNCLR" displayname="Yarn Colour" key="pYRNCLR" type="string" show="true" widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn279_2">
+                            <wm-form-field readonly="false" name="pYRNLOT" displayname="Yarn Lot" key="pYRNLOT" type="string" show="true" widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn280_1">
+                            <wm-form-field readonly="false" name="pYRNCPS" displayname="Yarn Composition" key="pYRNCPS" type="string" show="true" widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn281"></wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow86">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn270">
+                            <wm-form-field readonly="false" name="pYRNQLTY" displayname="Yarn Quality" key="pYRNQLTY" type="string" show="true" widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn282">
+                            <wm-form-field readonly="false" name="pYrnOri" displayname="Origin" key="pYrnOri" type="string" show="true" widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn283">
+                            <wm-form-field readonly="false" name="pCntNum" displayname="Container#" key="pCntNum" type="string" show="true" widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn284">
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup2">
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="button3" on-click="button3Click($event, $scope)" margin="15px unset unset unset" disabled="bind:Variables.statForBtnQry.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                <wm-button caption="Reset" type="reset" class="btn-secondary" name="button1" on-click="button1Click($event, $scope)" margin="15px unset unset unset"></wm-button>
+                            </wm-buttongroup>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn285_1"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn286"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-form>
+            <wm-panel iconclass="" autoclose="outsideClick" title="Yarn Code" name="panel1" class="panel-info">
+                <wm-list listclass="list-group" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="media-list" dataset="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod" navigation="Classic" name="listYrnCod" showrecordcount="true"
+                    selectfirstitem="true" pagesize="1">
+                    <wm-listtemplate layout="inline" name="listtemplate2">
+                        <wm-layoutgrid name="layoutgrid44_2">
+                            <wm-gridrow name="gridrow84_2">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn263_1">
+                                    <wm-label name="label1" class="col-md-6 control-label" width="100%" caption="Yrn Code"></wm-label>
+                                    <wm-label class="displayField col-md-6" name="lblYrnCode" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].yrncod"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn269_1">
+                                    <wm-label class="col-md-6 control-label" name="label4" width="100%" caption="Container#"></wm-label>
+                                    <wm-label class="displayField col-md-6" name="label5" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].cntnum"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn270_1">
+                                    <wm-label class="col-md-6 control-label" name="label6" width="100%" caption="Lot"></wm-label>
+                                    <wm-label class="displayField col-md-6" name="label7" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].yrnlot"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn271_2">
+                                    <wm-label class="col-md-6 control-label" name="label8" width="100%" caption="Cps"></wm-label>
+                                    <wm-label class="displayField col-md-6" name="label9" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].nfyrncps"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn272_2"></wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn264_1"></wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow85_1">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn265_1">
+                                    <wm-label class="col-md-6 control-label" width="100%" caption="Nominal Y.Cnt" name="label10"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90%" name="label11" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].nyrncnt"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn273_2">
+                                    <wm-label class="displayField col-md-6" width="95%" name="label12" margin="30px unset unset unset" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].nfcntdes"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="3" name="gridcolumn274_2">
+                                    <wm-label class="col-md-6 control-label" width="100%" caption="Colour" name="label13"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="20%" name="label14" margin="unset 5px unset unset" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].nyrnclr"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="75%" name="label15" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].nyrncdes"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn275_2">
+                                    <wm-label class="col-md-6 control-label" width="100%" caption="Origin" name="label29"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].yrnori" name="label31"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn266_1">
+                                    <wm-label class="col-md-6 control-label" width="100%" caption="Status" name="label30"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].yrnstat" name="label32"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow86_1">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn267_1">
+                                    <wm-label class="col-md-6 control-label" width="100%" caption="Quality" name="label17"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].nyrnqlty" name="label23"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn276_1">
+                                    <wm-label class="col-md-6 control-label" width="100%" caption="Subqlty A" name="label18"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].nyrnsubqltya" name="label24"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn277_1">
+                                    <wm-label class="col-md-6 control-label" width="100%" caption="Subqlty B" name="label19"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].nyrnsubqltyb" name="label25"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn278_1">
+                                    <wm-label class="col-md-6 control-label" width="100%" caption="Subqlty C" name="label20"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].nyrnsubqltyc" name="label26"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn279_1">
+                                    <wm-label class="col-md-6 control-label" width="100%" caption="Subqlty D" name="label21"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].nyrnsubqltyd" name="label27"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn268_1">
+                                    <wm-label class="col-md-6 control-label" width="100%" caption="Subqlty E" name="label22"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].nyrnsubqltye" name="label28"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-listtemplate>
+                </wm-list>
+                <wm-layoutgrid name="layoutgrid44_3">
+                    <wm-gridrow name="gridrow85_3">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn270_3">
+                            <wm-label padding="unset 0.5em" name="lblCheck" caption="bind:Widgets.listYrnCod.selecteditem.yrncod" show="bind:false"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn271_3"></wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow86_2">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn272_3"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn273"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-panel>
+            <wm-panel iconclass="" autoclose="outsideClick" title="Yarn Test" name="panel3" class="panel-info">
+                <wm-tile width="900px" height="110px" name="tile1" margin="unset 50px unset unset" backgroundcolor="#bfd4e8" class="well">
+                    <wm-layoutgrid name="layoutgrid8">
+                        <wm-gridrow name="gridrow83_1" padding="unset unset 3px unset">
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn316_2">
+                                <wm-label class="col-md-6 control-label" caption="Test No" width="98%" textalign="left" name="label152" margin="unset 5px unset unset"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="3" name="gridcolumn540" horizontalalign="left">
+                                <wm-slider name="sliderTstNum" minvalue="bind:!Variables.svGetProcYM1311PK0_YM360NumOfTstNum.dataSet.poutTstNum[$i].mintstnum ? 0 : Variables.svGetProcYM1311PK0_YM360NumOfTstNum.dataSet.poutTstNum[$i].mintstnum" maxvalue="bind:!Variables.svGetProcYM1311PK0_YM360NumOfTstNum.dataSet.poutTstNum[$i].maxtstnum ? 0 : Variables.svGetProcYM1311PK0_YM360NumOfTstNum.dataSet.poutTstNum[$i].maxtstnum"
+                                    step="1" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].tstnum" on-change="sliderTstNumChange($event, $scope, newVal, oldVal)" width="95%" show="bind:!Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].yrncod?false:true"></wm-slider>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="4" name="gridcolumn317_2"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn541"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn542"></wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow84" padding="unset unset 3px unset">
+                            <wm-gridcolumn columnwidth="3" name="gridcolumn318_1">
+                                <wm-label class="col-md-3 control-label" caption="Test Date" width="30%" textalign="right" name="label149" margin="unset 5px unset unset"></wm-label>
+                                <wm-label class="displayField col-md-6" width="65%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].testdat | toDate: 'dd-MMM-yyyy'" name="lblTestDat"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="4" name="gridcolumn543">
+                                <wm-label class="col-md-6 control-label" caption="Entry Date" width="25%" textalign="right" margin="unset 5px unset unset" name="label156"></wm-label>
+                                <wm-label class="displayField col-md-6" width="45%" margin="unset 5px unset unset" name="label157" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].entrydat | toDate: 'dd-MMM-yyyy'"></wm-label>
+                                <wm-label class="displayField col-md-6" width="20%" margin="unset 5px unset unset" name="label158" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].entrytime"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn545">
+                                <wm-label class="col-md-6 control-label" caption="User" width="20%" textalign="right" margin="unset 5px unset unset" name="label154"></wm-label>
+                                <wm-label class="displayField col-md-6" width="65%" margin="unset 5px unset unset" name="label155" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].usrid"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="3" name="gridcolumn546">
+                                <wm-label class="col-md-6 control-label" caption="Rating" width="20%" textalign="right" margin="unset 5px unset unset" name="label159"></wm-label>
+                                <wm-label class="displayField col-md-6" width="15%" margin="unset 5px unset unset" name="lblRating" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].rating"></wm-label>
+                                <wm-label class="displayField col-md-6" width="55%" margin="unset 5px unset unset" name="lblWRATINGDESC" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].ratingdes"></wm-label>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-tile>
+                <wm-tile width="260px" height="110px" name="tile2" backgroundcolor="#bfd4e8" class="well">
+                    <wm-layoutgrid name="layoutgrid10">
+                        <wm-gridrow name="gridrow87" padding="unset unset 3px unset">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn325_1">
+                                <wm-label class="col-md-6 control-label" caption="Approved" width="60" textalign="right" margin="unset 5px unset unset" name="label162"></wm-label>
+                                <wm-label class="displayField col-md-6" width="120" margin="unset 5px unset unset" name="lblApprovInd" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].approvind"></wm-label>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow88" padding="unset unset 3px unset">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn327_1">
+                                <wm-label class="col-md-6 control-label" caption="By" width="60" textalign="right" margin="unset 5px unset unset" name="label163"></wm-label>
+                                <wm-label class="displayField col-md-6" width="120" margin="unset 5px unset unset" name="label166" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].approvusrid"></wm-label>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow89" padding="unset unset 3px unset">
+                            <wm-gridcolumn columnwidth="12" name="gridcolumn329_1">
+                                <wm-label class="col-md-6 control-label" caption="On" width="60" textalign="right" margin="unset 5px unset unset" name="label164"></wm-label>
+                                <wm-label class="displayField col-md-6" width="120" margin="unset 5px unset unset" name="label167" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].approvdate | toDate: 'dd-MMM-yyyy'"></wm-label>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-tile>
+                <wm-layoutgrid name="layoutgrid27">
+                    <wm-gridrow name="gridrow100_2">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn314_1"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn317" horizontalalign="center"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn320" horizontalalign="center"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn318"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn321_1" horizontalalign="right"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn274"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-panel iconclass="" autoclose="outsideClick" title="" name="panel2" height="350">
+                    <wm-tile width="1200px" height="100px" class="well" name="tile3" backgroundcolor="#f3f2e2" margin="0px unset" padding="10px unset 0px unset">
+                        <wm-layoutgrid name="layoutgrid18_1">
+                            <wm-gridrow name="gridrow87_1">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn275_1"></wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn276">
+                                    <wm-label class="col-md-6 control-label" fontsize="14" textalign="right" width="65%" caption="Norm" name="label269_1"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn277_2">
+                                    <wm-label class="col-md-6 control-label" fontsize="14" textalign="right" width="80%" caption="Actual" name="label270_1"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn278_2">
+                                    <wm-label class="col-md-6 control-label" fontsize="14" textalign="right" width="60%" caption="Discrepancy" name="label271_1"></wm-label>
+                                    <wm-label class="col-md-6 control-label" fontsize="11" textalign="right" width="70%" caption="(deviation from set norm)" name="label272_1"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow90_2">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn327_3">
+                                    <wm-label class="col-md-3 control-label" width="98%" textalign="right" caption="Count After Conditioning" fontsize="14" name="label254" fontunit="px" fontweight="bold"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="10" name="gridcolumn328_2">
+                                    <wm-layoutgrid name="layoutgrid10_1">
+                                        <wm-gridrow name="gridrow89_1" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn323_1">
+                                                <wm-label class="col-md-3 control-label" caption="Norm Code" width="90%" textalign="right" name="label242_1"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn333_1">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymNormcode" name="label243_1"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn334_1"></wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn335_1"></wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn336_1"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow90" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn325_3">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Actual Count" name="label244"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn337_1">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymCnt" name="label245"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn338_1">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].cnt.toLocaleString()" textalign="right" name="label246"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn339_1">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevCnt" name="label247"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn340_1"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow91" padding="unset unset 0px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn327_2">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Count CV%" name="label248"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn341_1">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymCvcnt" name="label249"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn342_1">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].cvcnt.toLocaleString()" textalign="right" name="label250"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn343_1">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevCvcnt" name="label251"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn344_1"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-tile>
+                    <wm-tile width="1200px" height="100px" class="well" name="tile4" backgroundcolor="#e8e7d6" margin="0px unset" padding="10px unset 0px unset">
+                        <wm-layoutgrid name="layoutgrid19">
+                            <wm-gridrow name="gridrow92">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn331" horizontalalign="center"></wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="10" name="gridcolumn332">
+                                    <wm-layoutgrid name="layoutgrid12">
+                                        <wm-gridrow name="gridrow95" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn351">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="T.M.(Mech)" name="label255"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn359">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymTmmech" name="label258"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn360">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wtwistfactor.toLocaleString()" textalign="right" name="label259"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn361">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevTmmech" name="label260"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn362"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow96" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn353_1">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="TPI (Actual)" name="label256"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn363_1">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymTpi" name="label261"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn364">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].tpi.toLocaleString()" textalign="right" name="label262"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn365_1">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevTpi" name="label263"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn366"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow94">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn349">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="TPI CV%" name="label257"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn368">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymCvtpi" name="label264"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn369">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].cvtpi.toLocaleString()" textalign="right" name="label265"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn370">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevCvtpi" name="label266"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn367"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-tile>
+                    <wm-tile width="1200px" height="210px" class="well" name="tile5" backgroundcolor="#f3f2e2" padding="10px unset 0px unset" margin="0px unset">
+                        <wm-layoutgrid name="layoutgrid20_1">
+                            <wm-gridrow name="gridrow94_1">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn335" horizontalalign="center">
+                                    <wm-label class="col-md-3 control-label" width="98%" textalign="right" caption="UT-5 Results" fontsize="14" name="label269" fontweight="bold"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="10" name="gridcolumn336">
+                                    <wm-layoutgrid name="layoutgrid14">
+                                        <wm-gridrow name="gridrow99" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn375">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="U%" name="label270"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn393">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymUpercent" name="label277"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn394">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].u.toLocaleString()" textalign="right" name="label278"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn395">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevUpercent" name="label279"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn396"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow100" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn377">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Thin(-50%)" name="label271"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn397">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymThin" name="label280"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn398">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].yethin.toLocaleString()" textalign="right" name="label281"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn399">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevThin" name="label282"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn400"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow101" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn379">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Thick(+50%)" name="label272"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn401">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymThick" name="label283"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn402">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].yethick.toLocaleString()" textalign="right" name="label284"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn403">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevThick" name="label285"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn404"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow102" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn381">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Neps(+200%)" name="label273"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn405">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymNeps" name="label286"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn406">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].yeneps.toLocaleString()" textalign="right" name="label287"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn407">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevNeps" name="label288"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn408"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow103" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn383">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Total IPI" name="label274"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn409">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymTotalipi" name="label289"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn410">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].totalipi.toLocaleString()" textalign="right" name="label290"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn411">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevTotalipi" name="label291"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn412"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow104" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn385">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Hairiness (H)" name="label275"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn413">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymHairiness" name="label292"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn414">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].hairiness.toLocaleString()" textalign="right" name="label293"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn415">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevHairiness" name="label294"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn416"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow105">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn387">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="% Sh" name="label276"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn417">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymSh" name="label295"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn418">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].percsh.toLocaleString()" textalign="right" name="label296"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn419">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevSh" name="label297"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn420"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-tile>
+                    <wm-tile width="1200px" height="125px" class="well" name="tile6" backgroundcolor="#e8e7d6" padding="10px unset 0px unset" margin="0px unset">
+                        <wm-layoutgrid name="layoutgrid21">
+                            <wm-gridrow name="gridrow96_1">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn339" horizontalalign="center">
+                                    <wm-label class="col-md-3 control-label" width="98%" textalign="right" caption="Uster Tensojet-4" fontsize="14" name="label300" fontweight="bold"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="10" name="gridcolumn340">
+                                    <wm-layoutgrid name="layoutgrid16">
+                                        <wm-gridrow name="gridrow108" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn425">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="RKM" name="label301"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn437">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymRkm" name="label305"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn438">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].strngth.toLocaleString()" textalign="right" name="label306"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn439">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevRkm" name="label307"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn381_1"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow109" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn427">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="RKM CV%" name="label302"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn441">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymCvrkm" name="label308"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn442">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].cvstrngth.toLocaleString()" textalign="right" name="label309"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn443">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevCvrkm" name="label310"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn380_1"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow110" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn429">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Elongation %" name="label303"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn445">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymElong" name="label311"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn446">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].elong.toLocaleString()" textalign="right" name="label312"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn447">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevElong" name="label313"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn379_1"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow111">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn431">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Elongation CV%" name="label304"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn449">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymCvelong" name="label314"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn450">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].cvelong.toLocaleString()" textalign="right" name="label315"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn451">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevCvelong" name="label316"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn376_1"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-tile>
+                    <wm-tile width="1200px" height="150px" class="well" name="tile7" backgroundcolor="#f3f2e2" padding="10px unset 0px unset" margin="0px unset">
+                        <wm-layoutgrid name="layoutgrid22_1">
+                            <wm-gridrow name="gridrow98_1">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn343" horizontalalign="center">
+                                    <wm-label class="col-md-3 control-label" width="98%" textalign="right" caption="Uster Classimat" fontsize="14" name="label319" fontweight="bold"></wm-label>
+                                    <wm-label class="col-md-3 control-label" width="98%" textalign="right" caption="(Classimat-3 Mode)" fontsize="11" name="label320"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="10" name="gridcolumn344">
+                                    <wm-layoutgrid name="layoutgrid18">
+                                        <wm-gridrow name="gridrow114" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn457">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="A1 B1 C1 D1" name="label321"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn471">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymA1b1c1d1" name="label326"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn472">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].a1b1c1d1.toLocaleString()" textalign="right" name="label327"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn473">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevA1b1c1d1" name="label328"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn374_1"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow115" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn459">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="A3 B3 C2 D2" name="label322"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn475">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymA3b3c2d2" name="label329"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn476">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].a3b3c2d2.toLocaleString()" textalign="right" name="label330"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn477">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevA3b3c2d2" name="label331"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn373_1"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow116" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn461">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="E F G" name="label323"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn479">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymEfg" name="label332"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn480">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].efg.toLocaleString()" textalign="right" name="label333"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn481">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevEfg" name="label334"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn372"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow117" padding="unset unset 3px unset">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn463">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="H1 I1" name="label324"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn483">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymH1i1" name="label335"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn484">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].h1i1.toLocaleString()" textalign="right" name="label336"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn485">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevH1i1" name="label337"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn371"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                        <wm-gridrow name="gridrow118">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn465">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="H2 I2" name="label325"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn487">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymH2i2" name="label338"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn488">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].h2i2.toLocaleString()" textalign="right" name="label339"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn489">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevH2i2" name="label340"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn370_1"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-tile>
+                    <wm-tile width="1200px" height="40px" class="well" name="tile8" backgroundcolor="#e8e7d6" padding="10px unset 0px unset" margin="0px unset">
+                        <wm-layoutgrid name="layoutgrid23">
+                            <wm-gridrow name="gridrow100_1">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn347" horizontalalign="center">
+                                    <wm-label class="col-md-3 control-label" width="98%" textalign="right" caption="Zweigle Hairiness" fontsize="14" name="label343" fontweight="bold"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="10" name="gridcolumn348">
+                                    <wm-layoutgrid name="layoutgrid20">
+                                        <wm-gridrow name="gridrow121">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn495">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="S-3 Value" name="label344"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn501">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymS3value" name="label345"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn502">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].s3value.toLocaleString()" textalign="right" name="label346"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn503">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevS3value" name="label347"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn367_1"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-tile>
+                    <wm-tile width="1200px" height="40px" class="well" name="tile9" backgroundcolor="#f3f2e2" padding="10px unset 0px unset" margin="0px unset">
+                        <wm-layoutgrid name="layoutgrid24_1">
+                            <wm-gridrow name="gridrow102_1">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn351_1" horizontalalign="center">
+                                    <wm-label class="col-md-3 control-label" width="98%" textalign="right" caption="Zweigle Friction" fontsize="14" name="label350" fontweight="bold"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="10" name="gridcolumn352_1">
+                                    <wm-layoutgrid name="layoutgrid22">
+                                        <wm-gridrow name="gridrow124">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn509">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Co-eff of Friction" name="label351"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn515">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymCoeffoffriction" name="label352"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn516">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].friction.toLocaleString()" textalign="right" name="label353"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn517">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevCoeffoffriction" name="label354"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn365"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-tile>
+                    <wm-tile width="1200px" height="40px" class="well" name="tile10" backgroundcolor="#e8e7d6" padding="10px unset 0px unset" margin="0px unset">
+                        <wm-layoutgrid name="layoutgrid25">
+                            <wm-gridrow name="gridrow104_1">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn355" horizontalalign="center">
+                                    <wm-label class="col-md-3 control-label" width="98%" textalign="right" caption="Moisture Content" fontsize="14" name="label357" fontweight="bold"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="10" name="gridcolumn356">
+                                    <wm-layoutgrid name="layoutgrid24">
+                                        <wm-gridrow name="gridrow127">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn523">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Moisture Content" name="label358"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn529">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wymMoisturecontent" name="label359"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn530">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].moisture.toLocaleString()" textalign="right" name="label360"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn531">
+                                                <wm-label class="displayField col-md-6" width="90%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].wdevMoisturecontent" name="label361"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="1" name="gridcolumn363"></wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-tile>
+                    <wm-tile width="1200px" height="40px" class="well" name="tile11" backgroundcolor="#f3f2e2" padding="10px unset 0px unset" margin="0px unset">
+                        <wm-layoutgrid name="layoutgrid26_1">
+                            <wm-gridrow name="gridrow106">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn359_1"></wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="10" name="gridcolumn360_1">
+                                    <wm-layoutgrid name="layoutgrid26">
+                                        <wm-gridrow name="gridrow129">
+                                            <wm-gridcolumn columnwidth="2" name="gridcolumn535">
+                                                <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Comments" name="label364"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="10" name="gridcolumn539">
+                                                <wm-label class="displayField col-md-6" width="70%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].comments" name="label365"></wm-label>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-tile>
+                </wm-panel>
+                <wm-layoutgrid name="layoutgrid5">
+                    <wm-gridrow name="gridrow61_1">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn271_1" horizontalalign="center">
+                            <wm-button class="btn-default" caption="Edit Test" type="button" margin="unset 0.5em" name="button5" on-click="button5Click($event, $scope)" width="120" show="bind:!Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].yrncod?false:true"
+                                accessroles="YRNTEST_UPDTEST"></wm-button>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn275" horizontalalign="center">
+                            <wm-button class="btn-default" caption="Add Test" type="button" margin="unset 0.5em" name="button6" width="120" on-click="button6Click($event, $scope)" accessroles="YRNTEST_UPDTEST"></wm-button>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn272_1" horizontalalign="center">
+                            <wm-button class="btn-default" caption="Approve Test" type="button" margin="unset 0.5em" name="btnApproved" width="120" on-click="btnApprovedClick($event, $scope)" show="bind:!Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].yrncod?false:true"
+                                accessroles="YRNTEST_RELEASE"></wm-button>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn323"></wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow62">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn273_1"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn274_1"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-panel>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view name="notificationAlertDialogView" class="dialog-view">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="bind:!Widgets.lblUpdTSTNUM.caption?&quot;Add yarn test details&quot;:&quot;Update yarn test details&quot;" iconclass="wi wi-edit" name="dialogYM360Details" width="650" on-opened="dialogYM360DetailsOpened($event, $scope)">
+            <wm-tile width="600px" height="65px" class="well" name="tile21" padding="5px unset 0px unset" margin="0px unset" backgroundcolor="#f3f2e2">
+                <wm-layoutgrid name="layoutgrid47_1">
+                    <wm-gridrow name="gridrow125_1" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn342_2">
+                            <wm-label caption="Yrn Code" class="col-md-3 control-label" textalign="right" width="50%" margin="unset 5px unset unset" name="label193_1"></wm-label>
+                            <wm-label padding="unset 0.5em" name="lblUpdYRNCOD" class="displayField col-md-3" width="45%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].yrncod"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn343_3">
+                            <wm-label caption="Test No" class="col-md-3 control-label" textalign="right" width="50%" margin="unset 5px unset unset" name="label198_1"></wm-label>
+                            <wm-label padding="unset 0.5em" class="displayField col-md-3" width="45%" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].tstnum" name="lblUpdTSTNUM"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow126_1">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn344_3">
+                            <wm-label caption="Test Date" class="col-md-3 control-label" textalign="right" width="50%" margin="unset 5px unset unset" name="label195"></wm-label>
+                            <wm-date name="dateUpdTESTDAT" width="45%" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].testdat" maxdate="CURRENT_DATE" mindate="1991-01-01"></wm-date>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn345_1">
+                            <wm-label caption="Rating" class="col-md-3 control-label" textalign="right" width="50%" margin="unset 5px unset unset" name="label199_1"></wm-label>
+                            <wm-select name="selectUpdRATING" width="45%" dataset="bind:Variables.statYM360RATING.dataSet" datafield="dataValue" displayfield="name" placeholder="Enter Value" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].rating"></wm-select>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+            <wm-tile width="600px" height="80px" class="well" name="tile12" padding="5px unset 0px unset" margin="0px unset" backgroundcolor="#e8e7d6">
+                <wm-layoutgrid name="layoutgrid29">
+                    <wm-gridrow name="gridrow127_1">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn346_1"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn347_2">
+                            <wm-label caption="Actual" class="col-md-3 control-label" textalign="right" width="80%" margin="unset 5px unset unset" name="label243_2" fontweight="bold" fontsize="14"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow93">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn279"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn280">
+                            <wm-layoutgrid name="layoutgrid30">
+                                <wm-gridrow name="gridrow95_1" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn283_1">
+                                        <wm-label caption="Actual Count" name="label161" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn315">
+                                        <wm-text name="txtUpdCNT" width="90%" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].cnt" maxchars="6" maxvalue="99.99" on-blur="txtUpdCNTBlur($event, $scope)"
+                                            minvalue=".01"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow96_2">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn285">
+                                        <wm-label caption="Count CV%" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label167_1"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn316">
+                                        <wm-text width="90%" name="txtUpdCVCNT" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].cvcnt" maxchars="6" step="0.01" maxvalue="99.99" minvalue=".01" on-blur="txtUpdCVCNTBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="button4" on-click="button4Click($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button3_1" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-tile width="600px" height="60px" class="well" name="tile13" padding="5px unset 0px unset" margin="0px unset" backgroundcolor="#f3f2e2">
+                <wm-layoutgrid name="layoutgrid31">
+                    <wm-gridrow name="gridrow97">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn287_1">
+                            <wm-label caption="Count After Conditioning" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label179" fontsize="14" fontweight="bold"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn288_1">
+                            <wm-layoutgrid name="layoutgrid32">
+                                <wm-gridrow name="gridrow98" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn289_1">
+                                        <wm-label caption="TPI (Actual)" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label168"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn317_3">
+                                        <wm-text width="90%" name="txtUpdTPI" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].tpi" maxchars="6" step="0.01" minvalue=".01" on-blur="txtUpdTPIBlur($event, $scope)"
+                                            maxvalue="99.99"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow99_1">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn290_1">
+                                        <wm-label caption="TPI CV%" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label169"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn318_2">
+                                        <wm-text width="90%" name="txtUpdCVTPI" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].cvtpi" maxchars="6" step="0.01" minvalue=".01" maxvalue="99.99" on-blur="txtUpdCVTPIBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+            <wm-tile width="600px" height="150px" class="well" name="tile14" padding="5px unset 0px unset" margin="0px unset" backgroundcolor="#e8e7d6">
+                <wm-layoutgrid name="layoutgrid33">
+                    <wm-gridrow name="gridrow100_3">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn291">
+                            <wm-label caption="UT-5 Results" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label180" fontsize="14" fontweight="bold"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn292">
+                            <wm-layoutgrid name="layoutgrid34">
+                                <wm-gridrow name="gridrow101_1" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn293_1">
+                                        <wm-label caption="U%" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label170"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn319">
+                                        <wm-text width="90%" name="txtUpdU" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].u" maxchars="6" step="0.01" minvalue=".01" maxvalue="99.99" on-blur="txtUpdUBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow102_2" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn294_1">
+                                        <wm-label caption="Thin(-50%)" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label171"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn320_1">
+                                        <wm-text width="90%" name="txtUpdYETHIN" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].yethin" maxchars="5" step="0.1" maxvalue="99.9" minvalue=".1" on-blur="txtUpdYETHINBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow118_1">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn331_1">
+                                        <wm-label caption="Thick(+50%)" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label172"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn332_1">
+                                        <wm-text width="90%" name="txtUpdYETHICK" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].yethick" maxchars="5" step="0.1" maxvalue="99.9" minvalue=".1" on-blur="txtUpdYETHICKBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow119" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn333">
+                                        <wm-label caption="Neps(+200%)" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label173"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn334">
+                                        <wm-text width="90%" name="txtUpdYENEPS" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].yeneps" maxchars="5" step="0.1" maxvalue="99.9" minvalue=".1" on-blur="txtUpdYENEPSBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow120" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn335_2">
+                                        <wm-label caption="Hairiness (H)" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label174"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn336_2">
+                                        <wm-text width="90%" name="txtUpdHAIRINESS" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].hairiness" maxchars="6" step="0.01" maxvalue="99.99" minvalue=".01"
+                                            on-blur="txtUpdHAIRINESSBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow121_1">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn337">
+                                        <wm-label caption="% Sh" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label175"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn338">
+                                        <wm-text width="90%" name="txtUpdPERCSH" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].percsh" maxchars="5" step="0.01" maxvalue="9.99" minvalue=".01" on-blur="txtUpdPERCSHBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+            <wm-tile width="600px" height="110px" class="well" name="tile15" padding="5px unset 0px unset" margin="0px unset" backgroundcolor="#f3f2e2">
+                <wm-layoutgrid name="layoutgrid35">
+                    <wm-gridrow name="gridrow103_1">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn295_1">
+                            <wm-label caption="Uster Tensojet-4" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" fontsize="14" name="label197" fontweight="bold"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn296_1">
+                            <wm-layoutgrid name="layoutgrid36">
+                                <wm-gridrow name="gridrow104_2" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn297">
+                                        <wm-label caption="RKM" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label176"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn321_2">
+                                        <wm-text width="90%" name="txtUpdSTRNGTH" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].strngth" maxchars="6" step="0.01" maxvalue="99.99" minvalue=".01" on-blur="txtUpdSTRNGTHBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow105_1" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn298">
+                                        <wm-label caption="RKM CV%" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label177"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn322_1">
+                                        <wm-text width="90%" name="txtUpdCVSTRNGTH" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].cvstrngth" maxchars="6" step="0.01" maxvalue="99.99" minvalue=".01"
+                                            on-blur="txtUpdCVSTRNGTHBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow122" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn339_2">
+                                        <wm-label caption="Elongation %" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label178"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn340_2">
+                                        <wm-text width="90%" name="txtUpdELONG" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].elong" maxchars="7" step="0.001" maxvalue="99.999" minvalue=".001" on-blur="txtUpdELONGBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow123">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn341">
+                                        <wm-label caption="Elongation CV%" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label196"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn342">
+                                        <wm-text width="90%" name="txtUpdCVELONG" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].cvelong" maxchars="6" step="0.01" maxvalue="99.99" minvalue=".01" on-blur="txtUpdCVELONGBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+            <wm-tile width="600px" height="130px" class="well" name="tile16" padding="5px unset 0px unset" margin="0px unset" backgroundcolor="#e8e7d6">
+                <wm-layoutgrid name="layoutgrid37">
+                    <wm-gridrow name="gridrow106_1">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn299_1">
+                            <wm-label class="col-md-6 control-label" width="90%" textalign="right" caption="Uster Classimat" fontsize="14" name="label198" fontweight="bold"></wm-label>
+                            <wm-label class="col-md-6 control-label" width="90%" textalign="right" caption="(Classimat-3 Mode)" fontsize="11" name="label199"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn300_1">
+                            <wm-layoutgrid name="layoutgrid38">
+                                <wm-gridrow name="gridrow107" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn301_1">
+                                        <wm-label caption="A1 B1 C1 D1" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label183"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn323_2">
+                                        <wm-text width="90%" name="txtUpdA1B1C1D1" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].a1b1c1d1" maxchars="6" step="0.1" maxvalue="999.9" minvalue=".1" on-blur="txtUpdA1B1C1D1Blur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow108_1" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn302_1">
+                                        <wm-label caption="A3 B3 C2 D2" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label184"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn324_1">
+                                        <wm-text width="90%" name="txtUpdA3B3C2D2" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].a3b3c2d2" maxchars="6" step="0.1" maxvalue="999.9" minvalue=".1" on-blur="txtUpdA3B3C2D2Blur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow124_1" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn343_2">
+                                        <wm-label caption="E F G" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label185"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn344_2">
+                                        <wm-text width="90%" name="txtUpdEFG" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].efg" maxchars="6" step="0.1" maxvalue="999.9" minvalue=".1" on-blur="txtUpdEFGBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow125" padding="unset unset 3px unset">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn345">
+                                        <wm-label caption="H1 I1" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label186"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn346">
+                                        <wm-text width="90%" name="txtUpdH1I1" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].h1i1" maxchars="6" step="0.1" maxvalue="999.9" minvalue=".1" on-blur="txtUpdH1I1Blur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow126">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn347_1">
+                                        <wm-label caption="H2 I2" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label187"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn348_1">
+                                        <wm-text width="90%" name="txtUpdH2I2" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].h2i2" maxchars="6" step="0.1" maxvalue="999.9" minvalue=".1" on-blur="txtUpdH2I2Blur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+            <wm-tile width="600px" height="35px" class="well" name="tile17" padding="5px unset 0px unset" margin="0px unset" backgroundcolor="#f3f2e2">
+                <wm-layoutgrid name="layoutgrid39">
+                    <wm-gridrow name="gridrow109_1">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn303">
+                            <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Zweigle Hairiness" fontsize="14" name="label200" fontweight="bold"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn304">
+                            <wm-layoutgrid name="layoutgrid40">
+                                <wm-gridrow name="gridrow110_1">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn305_1">
+                                        <wm-label caption="S-3 Value" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label189"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn325">
+                                        <wm-text width="90%" name="txtUpdS3VALUE" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].s3value" maxchars="5" step="1" maxvalue="9999" minvalue="0" on-blur="txtUpdS3VALUEBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+            <wm-tile width="600px" height="35px" class="well" name="tile18" padding="5px unset 0px unset" margin="0px unset" backgroundcolor="#e8e7d6">
+                <wm-layoutgrid name="layoutgrid41">
+                    <wm-gridrow name="gridrow112">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn307_1">
+                            <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Zweigle Friction" fontsize="14" name="label201" fontweight="bold"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn308_1">
+                            <wm-layoutgrid name="layoutgrid42">
+                                <wm-gridrow name="gridrow113">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn309">
+                                        <wm-label caption="Co-eff of Friction" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label191"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn327_4">
+                                        <wm-text width="90%" name="txtUpdFRICTION" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].friction" maxchars="5" step="0.01" maxvalue="9.99" minvalue=".01" on-blur="txtUpdFRICTIONBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+            <wm-tile width="600px" height="35px" class="well" name="tile19" padding="5px unset 0px unset" margin="0px unset" backgroundcolor="#f3f2e2">
+                <wm-layoutgrid name="layoutgrid43">
+                    <wm-gridrow name="gridrow115_1">
+                        <wm-gridcolumn columnwidth="5" name="gridcolumn311_1">
+                            <wm-label class="col-md-3 control-label" width="90%" textalign="right" caption="Moisture Content" fontsize="14" name="label202" fontweight="bold"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn312_1">
+                            <wm-layoutgrid name="layoutgrid44">
+                                <wm-gridrow name="gridrow116_1">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn313_1">
+                                        <wm-label caption="Moisture Content" class="col-md-3 control-label" textalign="right" width="90%" margin="unset 5px unset unset" name="label193"></wm-label>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn329">
+                                        <wm-text width="90%" name="txtUpdMOISTURE" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].moisture" maxchars="5" step="0.1" maxvalue="99.9" minvalue=".1" on-blur="txtUpdMOISTUREBlur($event, $scope)"></wm-text>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+            <wm-tile width="600px" height="35px" class="well" name="tile20" padding="5px unset 0px unset" margin="0px unset" backgroundcolor="#e8e7d6">
+                <wm-layoutgrid name="layoutgrid47">
+                    <wm-gridrow name="gridrow130">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn355_1">
+                            <wm-label caption="Remarks" class="col-md-3 control-label" textalign="right" width="25%" margin="unset 5px unset unset" name="label236_1" fontweight="bold"></wm-label>
+                            <wm-text name="txtUpdRemarks" width="70%" maxchars="150" datavalue="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].comments"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view4">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Approval of test" iconclass="" name="dialogApprbTst">
+            <wm-layoutgrid name="layoutgrid17">
+                <wm-gridrow name="gridrow85_2">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn270_2"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn271"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn272">
+                        <wm-label padding="unset 0.5em" name="lblApprvTstTstNum" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].tstnum" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow90_1">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn327">
+                        <wm-label class="col-md-6 control-label" width="100%" caption="Yrn Code" name="label201_1"></wm-label>
+                        <wm-label padding="unset 0.5em" name="lblApprvTstYrnCod" caption="bind:Variables.svProcYM1311PK0_YM360QueryDetails.dataSet.poutQueryDetails[$i].yrncod" class="displayField col-md-6" width="90%"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn269_2">
+                        <wm-label class="col-md-6 control-label" width="100%" caption="Lot" name="label202_1"></wm-label>
+                        <wm-label padding="unset 0.5em" caption="bind:Variables.svProcYM1311PK0_YM360QueryYrncod.dataSet.poutQueryYrncod[$i].yrnlot" class="displayField col-md-6" width="90%" name="label203"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions3">
+                <wm-button class="btn-default" caption="Approve Test" type="button" margin="unset 0.5em" name="btnApprbTst" on-click="btnApprbTstClick($event, $scope)" show="bind:Widgets.lblApprovInd.caption=='Y'?false:true"></wm-button>
+                <wm-button class="btn-default" caption="Reject Test" type="button" margin="unset 0.5em" name="btnRjctTst" on-click="btnRjctTstClick($event, $scope)" show="bind:Widgets.lblApprovInd.caption=='N'?false:true"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button10" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

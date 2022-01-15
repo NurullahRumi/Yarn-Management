@@ -1,0 +1,121 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1580448309900",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.statPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "information",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "statForBtnQry" : {
+    "_id" : "wm-statForBtnQry-wm.Variable-1580449692870",
+    "name" : "statForBtnQry",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Y",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgid" : {
+    "_id" : "wm-statPrgid-wm.Variable-1546592284012",
+    "name" : "statPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "YM1000W16",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgName" : {
+    "_id" : "wm-statPrgName-wm.Variable-1546592333957",
+    "name" : "statPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "View Inter-store Transfer Acknowledgement",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svGetProcYM311PK0_ACKIST_YM313ViewAck" : {
+    "_id" : "wm-svGetProcYM311PK0_ACKIST_YM313ViewAck-wm.ServiceVariable-1546848620991",
+    "name" : "svGetProcYM311PK0_ACKIST_YM313ViewAck",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.statPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pTrnNum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pTrnNum.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pTrnDateFrom",
+      "value" : "bind:Widgets.formFilter.formWidgets.pTrnDateFrom.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pTrnDateTo",
+      "value" : "bind:Widgets.formFilter.formWidgets.pTrnDateTo.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pReqNum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pReqNum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFromWrh",
+      "value" : "bind:Widgets.formFilter.formWidgets.pFromWrh.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pToWrh",
+      "value" : "bind:Widgets.formFilter.formWidgets.pToWrh.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm311pk0AckistYm313viewAckResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM311PK0_ACKIST_YM313ViewAck",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM311PK0_ACKIST_YM313ViewAck",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svGetProcYM311PK0_ACKIST_YM313ViewAckonSuccess($event, $scope)",
+    "onError" : "svGetProcYM311PK0_ACKIST_YM313ViewAckonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1560400193705",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.StatPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "error",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "statForBtnQry" : {
+    "_id" : "wm-statForBtnQry-wm.Variable-1580384228912",
+    "name" : "statForBtnQry",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Y",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "StatPrgid" : {
+    "_id" : "wm-StatPrgid-wm.Variable-1560400133819",
+    "name" : "StatPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "YM1000W92",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "StatPrgName" : {
+    "_id" : "wm-StatPrgName-wm.Variable-1560400165666",
+    "name" : "StatPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Query Yarn Pallet Requisition",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svDeleteProcYM1000WPK0_YNREQN_YM142Canreq" : {
+    "_id" : "wm-svDeleteProcYM1000WPK0_YNREQN_YM142Canreq-wm.ServiceVariable-1561441653617",
+    "name" : "svDeleteProcYM1000WPK0_YNREQN_YM142Canreq",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pTotqtydel",
+      "value" : "bind:Widgets.lblTotqtydel.caption",
+      "type" : "number"
+    }, {
+      "target" : "pReqnum",
+      "value" : "bind:Widgets.lblReqnum.caption",
+      "type" : "number"
+    }, {
+      "target" : "pReqnseq",
+      "value" : "bind:Widgets.lblReqnseq.caption",
+      "type" : "integer"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.lblOrdnum.caption",
+      "type" : "string"
+    }, {
+      "target" : "pFabseq",
+      "value" : "bind:Widgets.lblFabseq.caption",
+      "type" : "integer"
+    }, {
+      "target" : "pYrnid",
+      "value" : "bind:Widgets.lblYrnid.caption",
+      "type" : "integer"
+    }, {
+      "target" : "pAlcseq",
+      "value" : "bind:Widgets.lblAlcseq.caption",
+      "type" : "integer"
+    }, {
+      "target" : "pYrnmix",
+      "value" : "bind:Widgets.lblYrnmix.caption",
+      "type" : "string"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.lblWrhnum.caption",
+      "type" : "string"
+    }, {
+      "target" : "pQtyreqn",
+      "value" : "bind:Widgets.lblQtyreqn.caption",
+      "type" : "number"
+    } ],
+    "service" : "pfsdb",
+    "operation" : "executeDeleteProcYM1000WPK0_YNREQN_YM142Canreq",
+    "operationId" : "ProcedureExecutionController_executeDeleteProcYM1000WPK0_YNREQN_YM142Canreq",
+    "operationType" : "delete",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svDeleteProcYM1000WPK0_YNREQN_YM142CanreqonSuccess($event, $scope)",
+    "onError" : "svDeleteProcYM1000WPK0_YNREQN_YM142CanreqonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM142Detmix" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM142Detmix-wm.ServiceVariable-1560576983889",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM142Detmix",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:!Variables.StatPrgid.dataSet.dataValue ? '???' : Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pYrnmix",
+      "value" : "bind:!Widgets.tableMaster.selecteditem.yrnmixcode ? '???' : Widgets.tableMaster.selecteditem.yrnmixcode",
+      "type" : "string"
+    }, {
+      "target" : "pReqnum",
+      "value" : "bind:!Widgets.tableMaster.selecteditem.reqnum ? 0 : Widgets.tableMaster.selecteditem.reqnum",
+      "type" : "number"
+    }, {
+      "target" : "pReqnseq",
+      "value" : "bind:!Widgets.tableMaster.selecteditem.reqnseq ? 0 : Widgets.tableMaster.selecteditem.reqnseq",
+      "type" : "integer"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnreqnYm142detmixResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM142Detmix",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM142Detmix",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onBeforeUpdate" : "svGetProcYM1000WPK0_YNREQN_YM142DetmixonBeforeUpdate($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_YNREQN_YM142Master" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNREQN_YM142Master-wm.ServiceVariable-1560420767138",
+    "name" : "svGetProcYM1000WPK0_YNREQN_YM142Master",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pReqnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pReqnum.datavalue",
+      "type" : "number"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formFilter.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pFabseq",
+      "value" : "bind:Widgets.formFilter.formWidgets.pFabseq.datavalue",
+      "type" : "integer"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YnreqnYm142masterResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNREQN_YM142Master",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNREQN_YM142Master",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svGetProcYM1000WPK0_YNREQN_YM142MasteronSuccess($event, $scope)",
+    "onError" : "svGetProcYM1000WPK0_YNREQN_YM142MasteronError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svUpdateProcYM1000WPK0_YNREQN_YM142Cancel" : {
+    "_id" : "wm-svUpdateProcYM1000WPK0_YNREQN_YM142Cancel-wm.ServiceVariable-1561453548988",
+    "name" : "svUpdateProcYM1000WPK0_YNREQN_YM142Cancel",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pAlcseq",
+      "value" : "bind:Widgets.lblcanAlcseq.caption",
+      "type" : "integer"
+    }, {
+      "target" : "pFabseq",
+      "value" : "bind:Widgets.lblcanFabseq.caption",
+      "type" : "integer"
+    }, {
+      "target" : "pQtyreqn",
+      "value" : "bind:Widgets.lblcanQtyreqn.caption",
+      "type" : "number"
+    }, {
+      "target" : "pReqnseq",
+      "value" : "bind:Widgets.lblcanReqnseq.caption",
+      "type" : "integer"
+    }, {
+      "target" : "pReqnum",
+      "value" : "bind:Widgets.lblcanReqnum.caption",
+      "type" : "number"
+    }, {
+      "target" : "pYrnid",
+      "value" : "bind:Widgets.lblcanYrnid.caption",
+      "type" : "integer"
+    }, {
+      "target" : "pTotpal",
+      "value" : "bind:Widgets.lblcanTotpal.caption",
+      "type" : "integer"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.lblcanOrdnum.caption",
+      "type" : "string"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.lblcanWrhnum.caption",
+      "type" : "string"
+    }, {
+      "target" : "pTotqtydel",
+      "value" : "bind:Widgets.lblcanTotqtydel.caption",
+      "type" : "number"
+    }, {
+      "target" : "pYrnmix",
+      "value" : "bind:Widgets.lblcanYrnmix.caption",
+      "type" : "string"
+    }, {
+      "target" : "pTotpaldel",
+      "value" : "bind:Widgets.lblcanTotpaldel.caption",
+      "type" : "integer"
+    } ],
+    "service" : "pfsdb",
+    "operation" : "executeUpdateProcYM1000WPK0_YNREQN_YM142Cancel",
+    "operationId" : "ProcedureExecutionController_executeUpdateProcYM1000WPK0_YNREQN_YM142Cancel",
+    "operationType" : "put",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svUpdateProcYM1000WPK0_YNREQN_YM142CancelonSuccess($event, $scope)",
+    "onError" : "svUpdateProcYM1000WPK0_YNREQN_YM142CancelonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

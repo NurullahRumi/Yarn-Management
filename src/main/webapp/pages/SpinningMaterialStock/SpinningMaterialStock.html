@@ -1,0 +1,1197 @@
+<wm-page data-ng-controller="SpinningMaterialStockPageController" pagetitle="Spinning Material Stock" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.statPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1">
+        <wm-param name="pShowMenubar" value="Y" type="string"></wm-param>
+    </wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-tabs name="tabs1">
+                <wm-tabpane name="tabpane1" title="Receipt of Materials">
+                    <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formReceiptofMaterials" class="panel-primary">
+                        <wm-layoutgrid columns="1" name="layoutgrid7">
+                            <wm-gridrow name="gridrow11">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn59">
+                                    <wm-form-field readonly="false" name="p_TRNNUM" displayname="Transac No" key="p_TRNNUM" type="string" show="true" widget="text" on-change="p_TRNNUMChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn66">
+                                    <wm-label padding="unset 0.5em" name="label37" class="col-md-6 control-label" caption="Store Code" width="200"></wm-label>
+                                    <wm-select name="selectTSTRCOD" placeholder="Enter Value" dataset="bind:Variables.svQryYM650_TSTRCOD.dataSet" datafield="itemcod" displayfield="itemcod" width="150"></wm-select>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn68">
+                                    <wm-form-field readonly="false" name="p_SUPDN" displayname="Supplier Dn" key="p_SUPDN" type="string" show="true" widget="text" on-change="p_SUPDNChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn69">
+                                    <wm-form-field readonly="false" name="p_STATUS" displayname="Status" key="p_STATUS" type="string" show="true" widget="text" on-change="p_STATUSChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn70">
+                                    <wm-form-field readonly="false" name="p_TRNDATE" displayname="Receipt Date" key="p_TRNDATE" type="string" show="true" widget="date"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn71_1">
+                                    <wm-form-field readonly="false" name="p_USRDATE" displayname="Last Modified Date" key="p_USRDATE" type="string" show="true" widget="date"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn70_1">
+                                    <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup4">
+                                        <wm-button caption="Query" type="submit" class="btn-primary" name="button12" margin="15px unset unset unset" on-click="button12Click($event, $scope)"></wm-button>
+                                        <wm-button caption="Reset" type="reset" class="btn-secondary" name="button10" margin="15px unset unset unset" on-click="button10Click($event, $scope)"></wm-button>
+                                    </wm-buttongroup>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-form>
+                    <wm-panel iconclass="" autoclose="outsideClick" title="Receipt" name="panel1" class="panel-info">
+                        <wm-layoutgrid name="layoutgrid8">
+                            <wm-gridrow name="gridrow12">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn66_1">
+                                    <wm-label name="label38" caption="Transac No" class="col-md-6 control-label" width="250"></wm-label>
+                                    <wm-label name="lblTrnnumIn" class="displayField col-md-6" width="200" caption="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].trnnum"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn70_2"></wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn71"></wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn72">
+                                    <wm-label caption="Status" class="col-md-6 control-label" width="250" name="label55"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="100" margin="unset 5px unset unset" name="lblStatus" caption="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].status"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn73"></wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn67"></wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow13">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn68_1">
+                                    <wm-label caption="Store Code" class="col-md-6 control-label" width="250" name="label45"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90" name="label46" margin="unset 5px unset unset" caption="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].tstrcod"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90" name="label47" caption="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].tlcncod"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn75">
+                                    <wm-label caption="Supplier Dn" class="col-md-6 control-label" width="150" name="label48"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="180" name="label49" caption="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].supdn"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn76">
+                                    <wm-label caption="Receipt Date" class="col-md-6 control-label" width="150" name="label50"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="180" name="label51" caption="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].trndate | toDate: 'dd-MMM-yyyy'"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="3" name="gridcolumn69_1">
+                                    <wm-label caption="Last Modified" class="col-md-6 control-label" width="400" name="label52"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="100" name="label53" margin="unset 5px unset unset" caption="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].usrid"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="180" name="label54" caption="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].usrdate | toDate: 'dd-MMM-yyyy HH:mm'"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="3" name="gridcolumn77"></wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow14">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn78">
+                                    <wm-label caption="Transac Rem" class="col-md-6 control-label" width="600" name="label57"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="600" caption="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].remarks" name="label58"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn81" horizontalalign="center">
+                                    <wm-button class="btn-default" caption="Add A New Receipt" type="button" margin="20px unset unset unset" name="button18" width="150" on-click="button18Click($event, $scope)"></wm-button>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn82" horizontalalign="center">
+                                    <wm-button class="btn-default" caption="Update Receipt" type="button" margin="20px unset unset unset" name="button15" width="150" on-click="button15Click($event, $scope)"></wm-button>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn193_2" horizontalalign="left">
+                                    <wm-button class="btn-default" caption="Release" type="button" margin="20px unset unset unset" name="button45" width="100" on-click="button45Click($event, $scope)"></wm-button>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-panel>
+                    <wm-table title="Materials Description" dataset="bind:Variables.svProcYM1311PK0_YM650MaterialsDesIN.dataSet.poutMaterialsDes" navigation="Classic" name="gridMaterialsDes" spacing="condensed" gridfirstrowselect="true" showrecordcount="true"
+                        class="panel-info">
+                        <wm-table-column binding="trnseq" caption="Seq" width="60px" textalignment="right" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="materialcode" caption="Item Code" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wmatusercode" caption="Fibre Reference" width="250px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="baleqty" caption="No of bale" width="90px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="unitwgt" caption="Avg Bale Wgt" width="90px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="totalwgt" caption="Total Weight" width="100px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wgtuom" caption="Uom" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="remarks" caption="Fibre Remarks" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="customField" caption="" widget-type="button" width="70px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
+                            <wm-button caption="{{row.getProperty('customField') || 'Update'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="customFieldAction(selectedItemData)" data-ng-class=""></wm-button>
+                        </wm-table-column>
+                        <wm-table-column binding="rowOperations" caption="" width="50px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleterowAction($event)" disabled="false"></wm-table-row-action>
+                    </wm-table>
+                    <wm-layoutgrid name="layoutgrid17">
+                        <wm-gridrow name="gridrow35" padding="5px unset 20px unset">
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn134_1" horizontalalign="center">
+                                <wm-button class="btn-default" caption="Add Materials Description" type="button" margin="unset 0.5em" name="button23" width="180" on-click="button23Click($event, $scope)"></wm-button>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="10" name="gridcolumn135"></wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-layoutgrid name="layoutgrid9">
+                        <wm-gridrow name="gridrow15" padding="unset unset 15px unset">
+                            <wm-gridcolumn columnwidth="3" name="gridcolumn80">
+                                <wm-label caption="Grand Total of Bales" class="col-md-3 control-label" width="150" name="label54_1" textalign="right" margin="unset 5px unset unset"></wm-label>
+                                <wm-label padding="unset 0.5em" name="label56_1" class="displayField" width="120" caption="bind:Variables.svProcYM1311PK0_YM650MaterialsDesIN.dataSet.poutMaterialsDes[$i].wtotalBales.toLocaleString()" textalign="right"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="3" name="gridcolumn86">
+                                <wm-label caption="Grand Total of Weight" class="col-md-3 control-label" width="150" name="label55_1" textalign="right" margin="unset 5px unset unset"></wm-label>
+                                <wm-label padding="unset 0.5em" name="label57_1" class="displayField" width="120" caption="bind:Variables.svProcYM1311PK0_YM650MaterialsDesIN.dataSet.poutMaterialsDes[$i].wtotalWeight.toLocaleString()" textalign="right"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn84"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn85"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn81_1"></wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-layoutgrid name="layoutgrid10">
+                        <wm-gridrow name="gridrow17">
+                            <wm-gridcolumn columnwidth="4" name="gridcolumn87">
+                                <wm-label caption="Composition" class="col-md-3 control-label" width="90" textalign="right" margin="unset 5px unset unset" name="label58_1"></wm-label>
+                                <wm-label class="displayField col-md-6" width="275" caption="bind:Widgets.gridMaterialsDes.selecteditem.wmatcps" name="label59"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="8" name="gridcolumn88"></wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow18">
+                            <wm-gridcolumn columnwidth="4" name="gridcolumn89">
+                                <wm-label caption="Colour" class="col-md-3 control-label" width="90" textalign="right" margin="unset 5px unset unset" name="label60"></wm-label>
+                                <wm-label class="displayField col-md-6" width="70" caption="bind:Widgets.gridMaterialsDes.selecteditem.wmatclr" name="label61" margin="unset 5px unset unset"></wm-label>
+                                <wm-label class="displayField col-md-6" width="200" caption="bind:Widgets.gridMaterialsDes.selecteditem.wmatclrdes" name="label62"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="8" name="gridcolumn90">
+                                <wm-label caption="Colour Reference" class="col-md-3 control-label" width="110" textalign="right" margin="unset 5px unset unset" name="label68"></wm-label>
+                                <wm-label padding="unset 0.5em" class="displayField col-md-6" width="120" caption="bind:Widgets.gridMaterialsDes.selecteditem.wmatclrref" name="label71"></wm-label>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow19">
+                            <wm-gridcolumn columnwidth="4" name="gridcolumn91">
+                                <wm-label caption="Orign" class="col-md-3 control-label" width="90" textalign="right" margin="unset 5px unset unset" name="label64"></wm-label>
+                                <wm-label class="displayField col-md-6" width="275" caption="bind:Widgets.gridMaterialsDes.selecteditem.wmatori" name="label63"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="8" name="gridcolumn92">
+                                <wm-label caption="Country of Origin" class="col-md-3 control-label" width="110" textalign="right" margin="unset 5px unset unset" name="label69"></wm-label>
+                                <wm-label padding="unset 0.5em" class="displayField col-md-6" width="215" caption="bind:Widgets.gridMaterialsDes.selecteditem.wmatctycod" name="label72"></wm-label>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow20">
+                            <wm-gridcolumn columnwidth="4" name="gridcolumn93">
+                                <wm-label caption="Length" class="col-md-3 control-label" width="90" textalign="right" margin="unset 5px unset unset" name="label65"></wm-label>
+                                <wm-label class="displayField col-md-6" width="140" caption="bind:Variables.svProcYM1311PK0_YM650MaterialsDesIN.dataSet.poutMaterialsDes[$i].wmatlength.toLocaleString()" name="label66" margin="unset 5px unset unset"
+                                    textalign="right"></wm-label>
+                                <wm-label class="displayField col-md-6" width="130" caption="bind:Widgets.gridMaterialsDes.selecteditem.wmatlengthUom" name="label67"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="8" name="gridcolumn94">
+                                <wm-label caption="Fineness" class="col-md-3 control-label" width="110" textalign="right" margin="unset 5px unset unset" name="label70"></wm-label>
+                                <wm-label padding="unset 0.5em" class="displayField" width="120" caption="bind:Widgets.gridMaterialsDes.selecteditem.wmatdiameterUom" name="label73"></wm-label>
+                                <wm-label class="displayField col-md-6" width="90" caption="bind:Variables.svProcYM1311PK0_YM650MaterialsDesIN.dataSet.poutMaterialsDes[$i].wmatdiameter.toLocaleString()" name="label74" margin="unset 5px unset unset"
+                                    textalign="right"></wm-label>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-tabpane>
+                <wm-tabpane name="tabpane2" title="Query Stock Details">
+                    <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formQueryStockDetails" class="panel-primary">
+                        <wm-layoutgrid columns="1" name="layoutgrid1">
+                            <wm-gridrow name="gridrow1">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn1">
+                                    <wm-form-field readonly="false" name="p_STRCOD" displayname="Store  Location" key="p_STRCOD" type="string" show="true" widget="text" on-change="p_STRCODChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn6">
+                                    <wm-form-field readonly="false" name="p_MATERIALCODE" displayname="Item code" key="p_MATERIALCODE" type="string" show="true" widget="text" on-change="p_MATERIALCODEChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn7">
+                                    <wm-form-field readonly="false" name="p_MATUSERCODE" displayname="Fibre Reference" key="p_MATUSERCODE" type="string" show="true" widget="text" on-change="p_MATUSERCODEChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn8">
+                                    <wm-form-field readonly="false" name="p_USRDATEfrom" displayname="Modified Date From" key="p_USRDATEfrom" type="string" show="true" widget="date"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn9">
+                                    <wm-form-field readonly="false" name="p_USRDATEto" displayname="Modified Date To" key="p_USRDATEto" type="string" show="true" widget="date"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn10">
+                                    <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup1">
+                                        <wm-button caption="Query" type="submit" class="btn-primary" name="button3" margin="15px unset unset unset" on-click="button3Click($event, $scope)"></wm-button>
+                                        <wm-button caption="Reset" type="reset" class="btn-secondary" name="button1" margin="15px unset unset unset" on-click="button1Click($event, $scope)"></wm-button>
+                                    </wm-buttongroup>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-form>
+                    <wm-table title="" dataset="bind:Variables.svProcYM1311PK0_YM650QueryStockDetails.dataSet.poutQueryStockDetails" navigation="Classic" name="gridSTOCKDET" spacing="condensed" gridfirstrowselect="true" showrecordcount="true">
+                        <wm-table-column binding="strcod" caption="Store  Location" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="materialcode" caption="Item code" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="matusercode" caption="Fibre Reference" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column-group name="group" caption="Total Receipt">
+                            <wm-table-column binding="wtotalbalercv" caption="Bales" width="60px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="totalwgtrcv" caption="Weight" width="80px" textalignment="right" edit-widget-type="number" type="double" mobiledisplay="false" show="true" readonly="false"></wm-table-column>
+                        </wm-table-column-group>
+                        <wm-table-column-group name="group1" caption="Total Issued">
+                            <wm-table-column binding="wtotalbaleissue" caption="Bales" width="60px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="totalwgtissue" caption="Weight" width="80px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        </wm-table-column-group>
+                        <wm-table-column-group name="group2" caption="Total Available">
+                            <wm-table-column binding="totalbales" caption="Total Bales" width="80px" textalignment="right" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="unitwgt" caption="Avg Bale Wgt (Kg/Bale)" width="100px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="totalwgt" caption="Total  Weight" width="120px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="wgtuom" caption="Uom" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        </wm-table-column-group>
+                        <wm-table-column binding="usrid" caption="Last Modified" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="usrdate" caption="" width="120px" edit-widget-type="datetime" type="datetime" show="true" readonly="false"></wm-table-column>
+                    </wm-table>
+                    <wm-layoutgrid name="layoutgrid2">
+                        <wm-gridrow name="gridrow2">
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn7_1">
+                                <wm-label name="label1" class="col-md-6 control-label" textalign="left" caption="Grand Total Bales" width="120"></wm-label>
+                                <wm-label padding="unset 0.5em" name="label2" class="displayField col-md-6" caption="bind:Variables.svProcYM1311PK0_YM650QueryStockDetails.dataSet.poutQueryStockDetails[$i].wgrandtotalbales.toLocaleString()"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn11">
+                                <wm-label name="label3" class="col-md-6 control-label" textalign="left" caption="Grand Total Weight" width="120"></wm-label>
+                                <wm-label padding="unset 0.5em" name="label4" class="displayField col-md-6" caption="bind:Variables.svProcYM1311PK0_YM650QueryStockDetails.dataSet.poutQueryStockDetails[$i].wgrandtotalwgt.toLocaleString()"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn12"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn13"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn8_1"></wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-layoutgrid name="layoutgrid3">
+                        <wm-gridrow name="gridrow3" padding="10px unset unset unset">
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn12_1">
+                                <wm-label name="label6" class="col-md-3 control-label" textalign="right" width="75" margin="unset 5px unset unset" caption="Origin"></wm-label>
+                                <wm-label name="label7" class="displayField col-md-6" width="115" caption="bind:Widgets.gridSTOCKDET.selecteditem.matori"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn20">
+                                <wm-label class="col-md-3 control-label" textalign="right" width="60" name="label8" margin="unset 5px unset unset" caption="Length"></wm-label>
+                                <wm-label class="displayField col-md-6" width="60" name="label10" margin="unset 5px unset unset" caption="bind:Widgets.gridSTOCKDET.selecteditem.matlengthUom"></wm-label>
+                                <wm-label class="displayField col-md-6" width="65" name="label11" caption="bind:Widgets.gridSTOCKDET.selecteditem.matlength.toLocaleString()"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="4" name="gridcolumn16">
+                                <wm-label class="col-md-3 control-label" textalign="right" width="75" name="label9" margin="unset 5px unset unset" caption="Item Type"></wm-label>
+                                <wm-label class="displayField col-md-6" width="50" margin="unset 5px unset unset" name="label12" caption="bind:Widgets.gridSTOCKDET.selecteditem.itemtype"></wm-label>
+                                <wm-label class="displayField col-md-6" width="105" name="label13" caption="bind:Widgets.gridSTOCKDET.selecteditem.witemdes"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn17"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn13_1"></wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow4">
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn14">
+                                <wm-label class="col-md-3 control-label" textalign="right" width="75" margin="unset 5px unset unset" caption="Composition" name="label14"></wm-label>
+                                <wm-label class="displayField col-md-6" width="115" name="label15" caption="bind:Widgets.gridSTOCKDET.selecteditem.matcps"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn22">
+                                <wm-label class="col-md-3 control-label" textalign="right" width="60" margin="unset 5px unset unset" caption="Fineness" name="label16"></wm-label>
+                                <wm-label class="displayField col-md-6" width="60" margin="unset 5px unset unset" name="label17" caption="bind:Widgets.gridSTOCKDET.selecteditem.matdiameter.toLocaleString()"></wm-label>
+                                <wm-label class="displayField col-md-6" width="65" name="label18" caption="bind:Widgets.gridSTOCKDET.selecteditem.matdiameterUom"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn19">
+                                <wm-label name="label21_1" class="displayField col-md-6" width="100" caption="bind:Widgets.gridSTOCKDET.selecteditem.materialdes1"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn28_1">
+                                <wm-label class="displayField col-md-6" width="100" name="label22" caption="bind:Widgets.gridSTOCKDET.selecteditem.materialdes2"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn27_1">
+                                <wm-label class="displayField col-md-6" width="100" name="label23" caption="bind:Widgets.gridSTOCKDET.selecteditem.materialdes3"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn26_1"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn15"></wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow5" padding="unset unset 10px unset">
+                            <wm-gridcolumn columnwidth="3" name="gridcolumn23">
+                                <wm-label class="col-md-3 control-label" textalign="right" width="75" margin="unset 5px unset unset" caption="Colour" name="label19"></wm-label>
+                                <wm-label class="displayField col-md-6" width="60" margin="unset 5px unset unset" name="label20" caption="bind:Widgets.gridSTOCKDET.selecteditem.matclr"></wm-label>
+                                <wm-label class="displayField col-md-6" width="145" margin="unset 5px unset unset" name="label21" caption="bind:Widgets.gridSTOCKDET.selecteditem.matclrdes"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn27" horizontalalign="center">
+                                <wm-button class="btn-default" caption="View Transactions" type="button" margin="unset 0.5em" name="button3_1" width="150"></wm-button>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn30" horizontalalign="center">
+                                <wm-button class="btn-default" caption="Close Stock" type="button" margin="unset 0.5em" name="button4" width="150"></wm-button>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn29"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="3" name="gridcolumn31"></wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-form errormessage="" captionposition="top" title="Closed Stock Summary" enctype="application/x-www-form-urlencoded" method="post" captionalign="left" name="formClosedStockSummary">
+                        <wm-layoutgrid columns="1" name="layoutgrid4">
+                            <wm-gridrow name="gridrow6">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn29_1">
+                                    <wm-form-field readonly="false" name="p_STRCODE" displayname="Store Code" key="p_STRCODE" type="string" show="true" widget="text"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn33">
+                                    <wm-form-field readonly="false" name="p_MATERIALCODE" displayname="Material Code" key="p_MATERIALCODE" type="string" show="true" widget="text"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn34">
+                                    <wm-form-field readonly="false" name="p_FIBREREF" displayname="Fibre Reference" key="p_FIBREREF" type="string" show="true" widget="text"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn35">
+                                    <wm-form-field readonly="false" name="p_STKYEAR" displayname="Year" key="p_STKYEAR" type="integer" show="true" widget="number"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn36">
+                                    <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup2">
+                                        <wm-button caption="Query" type="submit" class="btn-primary" name="button7" margin="15px unset unset unset" on-click="button7Click($event, $scope)"></wm-button>
+                                        <wm-button caption="Reset" type="reset" class="btn-secondary" name="button5" margin="15px unset unset unset" on-click="button5Click($event, $scope)"></wm-button>
+                                    </wm-buttongroup>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-form>
+                    <wm-table title="" dataset="bind:Variables.svProcYM1311PK0_YM650ClosedStockSummary.dataSet.poutClosedStockSummary" navigation="Classic" name="gridClosedStockSummary" spacing="condensed" showrecordcount="true">
+                        <wm-table-column binding="strcode" caption="Store Code" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="materialcode" caption="Material Code" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="matusercode" caption="Fibre Reference" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="stkmonth" caption="Month" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="stkyear" caption="Year" width="80px" textalignment="right" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="bale" caption="Bale" width="150px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="weight" caption="Weight" width="150px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                    </wm-table>
+                </wm-tabpane>
+                <wm-tabpane name="tabpane3" title="Issue of Materials">
+                    <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formIssueofMaterials" class="panel-primary">
+                        <wm-layoutgrid columns="1" name="layoutgrid11">
+                            <wm-gridrow name="gridrow20_1">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn93_1">
+                                    <wm-form-field readonly="false" name="p_TRNNUM1" displayname="Transac No" key="p_TRNNUM" type="string" show="true" widget="text" on-change="p_TRNNUM1Change($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn99">
+                                    <wm-label name="label75" caption="From Store" class="col-md-6 control-label" width="100"></wm-label>
+                                    <wm-select name="selectFSTRCOD" width="80" dataset="bind:Variables.svQryYM650_TSTRCOD.dataSet" datafield="itemcod" displayfield="itemcod" placeholder="Enter value"></wm-select>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn100">
+                                    <wm-form-field readonly="false" name="p_TSTRCOD" displayname="Delivery Location" key="p_TSTRCOD" type="string" show="true" widget="text" on-change="p_TSTRCODChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn101">
+                                    <wm-form-field readonly="false" name="p_STATUS1" displayname="Status" key="p_STATUS" type="string" show="true" widget="text" on-change="p_STATUS1Change($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn102">
+                                    <wm-form-field readonly="false" name="p_TRNDATE" displayname="Date Issued" key="p_TRNDATE" type="string" show="true" widget="date"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn109">
+                                    <wm-form-field readonly="false" name="p_USRDATE" displayname="Last Modified Date" key="p_USRDATE" type="string" show="true" widget="date"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn103">
+                                    <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup5">
+                                        <wm-button caption="Query" type="submit" class="btn-primary" name="button14" margin="15px unset unset unset" on-click="button14Click($event, $scope)"></wm-button>
+                                        <wm-button caption="Reset" type="reset" class="btn-secondary" name="button12_1" margin="15px unset unset unset" on-click="button12_1Click($event, $scope)"></wm-button>
+                                    </wm-buttongroup>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-form>
+                    <wm-panel iconclass="" autoclose="outsideClick" title="Issue of Materials" name="panel2">
+                        <wm-layoutgrid name="layoutgrid12">
+                            <wm-gridrow name="gridrow26">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn110">
+                                    <wm-label name="label78" class="col-md-6 control-label" width="150" caption="Transac No"></wm-label>
+                                    <wm-label name="lblTRNNUMOut" class="displayField col-md-6" width="200" caption="bind:Variables.svProcYM1311PK0_YM650IssueofMaterials.dataSet.poutIssueofMaterials[$i].trnnum"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn116">
+                                    <wm-label class="col-md-6 control-label" width="150" caption="Transac Type" name="label182_2"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90" margin="unset 5px unset unset" caption="bind:Variables.svProcYM1311PK0_YM650IssueofMaterials.dataSet.poutIssueofMaterials[$i].trntyp" name="lblIssueTrntupe"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn117">
+                                    <wm-label class="col-md-6 control-label" width="150" caption="Store Ind" name="label162"></wm-label>
+                                    <wm-label padding="unset 0.5em" name="lblW_STOREIND" caption="bind:Variables.svProcYM1311PK0_YM650IssueofMaterials.dataSet.poutIssueofMaterials[$i].wstoreind" class="displayField" width="90"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn118">
+                                    <wm-label class="col-md-6 control-label" width="150" caption="Status" name="label89"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90" margin="unset 5px unset unset" name="lblStsout" caption="bind:Variables.svProcYM1311PK0_YM650IssueofMaterials.dataSet.poutIssueofMaterials[$i].status"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn193_1"></wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="3" name="gridcolumn111"></wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow27">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn112">
+                                    <wm-label class="col-md-6 control-label" width="150" caption="From Store" name="label80"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90" name="label81" margin="unset 5px unset unset" caption="bind:Variables.svProcYM1311PK0_YM650IssueofMaterials.dataSet.poutIssueofMaterials[$i].fstrcod"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90" name="label82" caption="bind:Variables.svProcYM1311PK0_YM650IssueofMaterials.dataSet.poutIssueofMaterials[$i].flcncod"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn120">
+                                    <wm-label class="col-md-6 control-label" width="150" caption="Delivery Location" name="label83"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90" margin="unset 5px unset unset" name="label84" caption="bind:Variables.svProcYM1311PK0_YM650IssueofMaterials.dataSet.poutIssueofMaterials[$i].tstrcod"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90" margin="unset 5px unset unset" name="label85" caption="bind:Variables.svProcYM1311PK0_YM650IssueofMaterials.dataSet.poutIssueofMaterials[$i].tlcncod"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn121">
+                                    <wm-label class="col-md-6 control-label" width="150" caption="Date Issued" name="label86"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90" margin="unset 5px unset unset" name="label88" caption="bind:Variables.svProcYM1311PK0_YM650IssueofMaterials.dataSet.poutIssueofMaterials[$i].trndate | toDate: 'dd-MMM-yyyy'"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn122">
+                                    <wm-label class="col-md-6 control-label" width="150" caption="Last Modified" name="label91"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="60" margin="unset 5px unset unset" name="label92" caption="bind:Variables.svProcYM1311PK0_YM650IssueofMaterials.dataSet.poutIssueofMaterials[$i].usrid"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="120" margin="unset 5px unset unset" name="label93" caption="bind:Variables.svProcYM1311PK0_YM650IssueofMaterials.dataSet.poutIssueofMaterials[$i].usrdate | toDate: 'dd-MMM-yyyy HH:mm'"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="3" name="gridcolumn113"></wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow28">
+                                <wm-gridcolumn columnwidth="7" name="gridcolumn114">
+                                    <wm-label class="col-md-6 control-label" width="400" caption="Remarks" name="label94"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="600" margin="unset 5px unset unset" name="label95" caption="bind:Variables.svProcYM1311PK0_YM650IssueofMaterials.dataSet.poutIssueofMaterials[$i].remarks"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="3" name="gridcolumn115" horizontalalign="center">
+                                    <wm-button class="btn-default" caption="Add A Issue of Materials" type="button" margin="20px unset unset unset" name="button14_1" width="200" on-click="button14_1Click($event, $scope)"></wm-button>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn121_2" horizontalalign="left">
+                                    <wm-button class="btn-default" caption="Release" type="button" margin="20px unset unset unset" name="button42" width="100" on-click="button42Click($event, $scope)"></wm-button>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                        <wm-table title="Materials Description" dataset="bind:Variables.svProcYM1311PK0_YM650MaterialsDesOUT.dataSet.poutMaterialsDes" navigation="Classic" name="gridMaterialsDescriptionOUT" spacing="condensed" gridfirstrowselect="true"
+                            showrecordcount="true">
+                            <wm-table-column binding="trnseq" caption="Seq" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="materialcode" caption="Item Code" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="wmatusercode" caption="Fibre Reference" width="250px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="baleqty" caption="No of bale" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="unitwgt" caption="Avg Bale Wgt" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="totalwgt" caption="Total Weight" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="wgtuom" caption="Uom" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="remarks" caption="Remarks" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="customField" caption="" widget-type="button" width="60px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
+                                <wm-button caption="{{row.getProperty('customField') || 'Update'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="customFieldAction(selectedItemData)" data-ng-class=""></wm-button>
+                            </wm-table-column>
+                            <wm-table-column binding="rowOperations" caption="" width="50px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                            <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleterowAction($event)" disabled="false"></wm-table-row-action>
+                        </wm-table>
+                        <wm-layoutgrid name="layoutgrid23_1">
+                            <wm-gridrow name="gridrow59_1" padding="unset unset 15px unset">
+                                <wm-gridcolumn columnwidth="3" name="gridcolumn181_1" horizontalalign="center">
+                                    <wm-button class="btn-default" caption="Add Materials Description" type="button" margin="unset 0.5em" name="button35" width="200" on-click="button35Click($event, $scope)"></wm-button>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="9" name="gridcolumn182_1"></wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                        <wm-layoutgrid name="layoutgrid14">
+                            <wm-gridrow name="gridrow25">
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn118_1">
+                                    <wm-label caption="Composition" class="col-md-3 control-label" width="90" textalign="right" margin="unset 5px unset unset" name="label97"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="275" caption="bind:Widgets.gridMaterialsDescriptionOUT.selecteditem.wmatcps" name="label98"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="8" name="gridcolumn119_1"></wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow26_1">
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn120_1">
+                                    <wm-label caption="Colour" class="col-md-3 control-label" width="90" textalign="right" margin="unset 5px unset unset" name="label99"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="70" caption="bind:Widgets.gridMaterialsDescriptionOUT.selecteditem.wmatclr" margin="unset 5px unset unset" name="label100"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="200" caption="bind:Widgets.gridMaterialsDescriptionOUT.selecteditem.wmatclrdes" name="label101"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="8" name="gridcolumn121_1">
+                                    <wm-label caption="Colour Reference" class="col-md-3 control-label" width="110" textalign="right" margin="unset 5px unset unset" name="label102"></wm-label>
+                                    <wm-label padding="unset 0.5em" class="displayField col-md-6" width="120" caption="bind:Widgets.gridMaterialsDescriptionOUT.selecteditem.wmatclrref" name="label103"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow27_1">
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn122_1">
+                                    <wm-label caption="Orign" class="col-md-3 control-label" width="90" textalign="right" margin="unset 5px unset unset" name="label104"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="275" caption="bind:Widgets.gridMaterialsDescriptionOUT.selecteditem.wmatori" name="label105"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="8" name="gridcolumn123">
+                                    <wm-label caption="Country of Origin" class="col-md-3 control-label" width="110" textalign="right" margin="unset 5px unset unset" name="label106"></wm-label>
+                                    <wm-label padding="unset 0.5em" class="displayField col-md-6" width="215" caption="bind:Widgets.gridMaterialsDescriptionOUT.selecteditem.wmatctycod" name="label107"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow28_1">
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn124">
+                                    <wm-label caption="Length" class="col-md-3 control-label" width="90" textalign="right" margin="unset 5px unset unset" name="label108"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="140" caption="bind:Variables.svProcYM1311PK0_YM650MaterialsDesOUT.dataSet.poutMaterialsDes[$i].wmatlength.toLocaleString()" margin="unset 5px unset unset" name="label109"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="130" caption="bind:Widgets.gridMaterialsDescriptionOUT.selecteditem.wmatlengthUom" name="label110"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="8" name="gridcolumn125">
+                                    <wm-label caption="Fineness" class="col-md-3 control-label" width="110" textalign="right" margin="unset 5px unset unset" name="label111"></wm-label>
+                                    <wm-label padding="unset 0.5em" class="displayField" width="120" caption="bind:Widgets.gridMaterialsDescriptionOUT.selecteditem.wmatdiameterUom" name="label112"></wm-label>
+                                    <wm-label class="displayField col-md-6" width="90" caption="bind:Variables.svProcYM1311PK0_YM650MaterialsDesOUT.dataSet.poutMaterialsDes[$i].wmatdiameter.toLocaleString()" margin="unset 5px unset unset" name="label113"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-panel>
+                </wm-tabpane>
+                <wm-tabpane name="tabpane4" title="Template – Material Reference" badgetype="default">
+                    <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formTemplateMaterialRef" class="panel-primary">
+                        <wm-layoutgrid columns="1" name="layoutgrid5">
+                            <wm-gridrow name="gridrow7">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn34_1">
+                                    <wm-form-field name="p_MATERIALCODE1" readonly="false" displayname="Item Code" key="p_MATERIALCODE" type="string" show="true" widget="text" placeholder="Enter value" on-change="p_MATERIALCODE1Change($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn42">
+                                    <wm-form-field name="p_MATUSERCODE1" readonly="false" displayname="Fibre Reference" key="p_MATUSERCODE" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="p_MATUSERCODE1Change($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn43">
+                                    <wm-label class="col-md-6 control-label" name="label25" caption="Item Type" width="200"></wm-label>
+                                    <wm-select name="selectItemType" dataset="bind:Variables.svQryYM650_itemcod.dataSet" datafield="itemcod" displayfield="itemdes" class="col-md-6" width="150" placeholder="Enter value"></wm-select>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn44">
+                                    <wm-label class="col-md-6 control-label" name="label26" caption="Country of Origin" width="200"></wm-label>
+                                    <wm-select name="selectMATCTYCOD" width="150" dataset="bind:Variables.svProcYM1311PK0_YM650CtyCod.dataSet.poutctyCod" datafield="ctycod" displayfield="ctyabb" placeholder="Enter value"></wm-select>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn45">
+                                    <wm-label class="col-md-6 control-label" name="label27" caption="Composition" width="200"></wm-label>
+                                    <wm-select name="selectMATCPS" width="150" placeholder="Enter value" dataset="bind:Variables.svQryYM650_MATCPS.dataSet" datafield="ncpstyp" displayfield="ncpstypdes"></wm-select>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn46">
+                                    <wm-label class="col-md-6 control-label" name="label28" caption="Colour" width="200"></wm-label>
+                                    <wm-select name="selectMATCLR" width="150" placeholder="Enter value" dataset="bind:Variables.svQryYYM650_MATCLR.dataSet" datafield="nyrnclr" displayfield="nyrnclr"></wm-select>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow8">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn35_1">
+                                    <wm-form-field name="p_MATCLRREF" readonly="false" displayname="Colour Reference" key="p_MATCLRREF" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="p_MATCLRREFChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn47">
+                                    <wm-form-field name="p_STS" readonly="false" displayname="Status" key="p_STS" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="p_STSChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn48">
+                                    <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup3">
+                                        <wm-button caption="Query" type="submit" class="btn-primary" name="button9" margin="15px unset unset unset" on-click="button9Click($event, $scope)"></wm-button>
+                                        <wm-button caption="Reset" type="reset" class="btn-secondary" name="button7_1" margin="15px unset unset unset" on-click="button7_1Click($event, $scope)"></wm-button>
+                                    </wm-buttongroup>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-form>
+                    <wm-table title="" dataset="bind:Variables.svProcYM1311PK0_YM650TemplateMaterialRef.dataSet.poutTemplateMaterialRef" navigation="Classic" name="gridTemplateMaterialRef" spacing="condensed" gridfirstrowselect="true" showrecordcount="true">
+                        <wm-table-column binding="materialcode" caption="Item Code" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="matusercode" caption="Fibre Reference" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="balerequired" caption="Rcv in Bale" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column-group name="group" caption="Item Type">
+                            <wm-table-column binding="itemtype" caption="" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="witemdes" caption="" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        </wm-table-column-group>
+                        <wm-table-column-group name="group1" caption="Origin">
+                            <wm-table-column binding="matori" caption="" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="wmatorides" caption="" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        </wm-table-column-group>
+                        <wm-table-column-group name="group2" caption="Country of Origin">
+                            <wm-table-column binding="matctycod" caption="" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="wmatctydes" caption="" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        </wm-table-column-group>
+                        <wm-table-column-group name="group3" caption="Composition">
+                            <wm-table-column binding="matcps" caption="" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="wmatcpsdes" caption="" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        </wm-table-column-group>
+                        <wm-table-column-group name="group4" caption="Colour">
+                            <wm-table-column binding="matclr" caption="" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="matclrdes" caption="" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        </wm-table-column-group>
+                        <wm-table-column binding="matclrref" caption="Colour   Reference" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="matdiameter" caption="Fineness" width="70px" textalignment="right" edit-widget-type="number" type="float" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="matdiameterUom" caption="Uom" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="matlength" caption="Length" width="70px" textalignment="right" edit-widget-type="number" type="float" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="matlengthUom" caption="Uom" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wgtuom" caption="Wgt Uom" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="sts" caption="Status" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="customField" caption="" widget-type="button" width="70px" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
+                            <wm-button caption="{{row.getProperty('customField') || 'Update'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="customFieldAction(selectedItemData)" data-ng-class=""></wm-button>
+                        </wm-table-column>
+                    </wm-table>
+                    <wm-layoutgrid name="layoutgrid22">
+                        <wm-gridrow name="gridrow56" padding="unset unset 15px unset">
+                            <wm-gridcolumn columnwidth="3" name="gridcolumn175" horizontalalign="center">
+                                <wm-button class="btn-default" caption="Add A Template" type="button" margin="unset 0.5em" name="button31" width="200" on-click="button31Click($event, $scope)"></wm-button>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="9" name="gridcolumn176"></wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-layoutgrid name="layoutgrid6">
+                        <wm-gridrow name="gridrow9" padding="10px unset">
+                            <wm-gridcolumn columnwidth="3" name="gridcolumn43_1">
+                                <wm-label name="label28_1" class="col-md-3 control-label" caption="Last Modified" width="100" textalign="right" margin="unset 5px unset unset"></wm-label>
+                                <wm-label name="label29" class="displayField col-md-6" width="65" margin="unset 5px unset unset" caption="bind:Variables.svProcYM1311PK0_YM650TemplateMaterialRef.dataSet.poutTemplateMaterialRef[$i].usrid"></wm-label>
+                                <wm-label name="label30" class="displayField col-md-6" width="120" caption="bind:Variables.svProcYM1311PK0_YM650TemplateMaterialRef.dataSet.poutTemplateMaterialRef[$i].usrdate | toDate: 'dd-MMM-yyyy HH:mm'"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn48_1">
+                                <wm-label padding="unset 0.5em" name="label31" class="displayField col-md-6" width="90" caption="bind:Variables.svProcYM1311PK0_YM650TemplateMaterialRef.dataSet.poutTemplateMaterialRef[$i].materialdes1"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn52">
+                                <wm-label padding="unset 0.5em" name="label33" class="displayField col-md-6" width="90" caption="bind:Variables.svProcYM1311PK0_YM650TemplateMaterialRef.dataSet.poutTemplateMaterialRef[$i].materialdes2"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn50">
+                                <wm-label padding="unset 0.5em" name="label34" class="displayField col-md-6" width="90" caption="bind:Variables.svProcYM1311PK0_YM650TemplateMaterialRef.dataSet.poutTemplateMaterialRef[$i].materialdes3"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn51"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn49"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn44_1"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn49_1"></wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow10">
+                            <wm-gridcolumn columnwidth="3" name="gridcolumn45_1" horizontalalign="center">
+                                <wm-button class="btn-default" caption="Cancel Fibre Reference" type="button" margin="unset 0.5em" name="button9_1" width="200"></wm-button>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn58">
+                                <wm-label padding="unset 0.5em" name="label32" class="displayField col-md-6" width="90" caption="bind:Variables.svProcYM1311PK0_YM650TemplateMaterialRef.dataSet.poutTemplateMaterialRef[$i].materialval1"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn46_1">
+                                <wm-label padding="unset 0.5em" name="label35" class="displayField col-md-6" width="90" caption="bind:Variables.svProcYM1311PK0_YM650TemplateMaterialRef.dataSet.poutTemplateMaterialRef[$i].materialval2"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn57">
+                                <wm-label padding="unset 0.5em" name="label36" class="displayField col-md-6" width="90" caption="bind:Variables.svProcYM1311PK0_YM650TemplateMaterialRef.dataSet.poutTemplateMaterialRef[$i].materialval3"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn56"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn53"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn54"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn55"></wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-tabpane>
+            </wm-tabs>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Receipt" iconclass="wi wi-edit" name="dialogUpdReceipt" width="700">
+            <wm-layoutgrid name="layoutgrid14_1">
+                <wm-gridrow name="gridrow28_2">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn123_1">
+                        <wm-label caption="Store Code" name="label110_1" class="col-md-6 control-label" margin="unset 5px unset unset" width="150"></wm-label>
+                        <wm-select name="selectUpdTSTRCOD" width="150" placeholder="Enter value" dataset="bind:Variables.svQryYM650_TSTRCOD.dataSet" datafield="itemcod" displayfield="itemcod" datavalue="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].tstrcod"
+                            required="false"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn127">
+                        <wm-label caption="Supplier Dn" name="label111_1" class="col-md-6 control-label" margin="unset 5px unset unset" width="150"></wm-label>
+                        <wm-text name="txtUpdSUPDN" width="150" maxchars="15" datavalue="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].supdn"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn124_1">
+                        <wm-composite name="composite5">
+                            <wm-label class="col-md-6 control-label" name="label118" caption="Receipt Date"></wm-label>
+                            <wm-container class="col-md-9" name="container5">
+                                <wm-date name="dateUpdTRNDATE" maxdate="CURRENT_DATE" datepattern="dd-MMM-yyyy" datavalue="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].trndate"></wm-date>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow29">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn125_1">
+                        <wm-composite name="composite1">
+                            <wm-label class="col-md-6 control-label" name="label114" caption="Transac Rem"></wm-label>
+                            <wm-container class="col-md-9" name="container1">
+                                <wm-textarea name="textareaUpdREMARKS" maxchars="150" datavalue="bind:Variables.svProcYM1311PK0_YM650ReceiptofMaterials.dataSet.poutReceiptofMaterials[$i].remarks"></wm-textarea>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="button17" on-click="button17Click($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button16" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view3">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Materials Description" iconclass="wi wi-edit" name="dialogMaterialsDes">
+            <wm-layoutgrid name="layoutgrid15">
+                <wm-gridrow name="gridrow30">
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn126">
+                        <wm-composite name="composite5_1">
+                            <wm-label class="col-md-6 control-label" name="label120" caption="Fibre Reference"></wm-label>
+                            <wm-container class="col-md-9" name="container5_1">
+                                <wm-select name="selectUpdWMATUSERCODE" dataset="bind:Variables.svProcYM1311PK0_YM650UpdWMATUSERCODE.dataSet.poutWmatusercode" datafield="matusercode" displayfield="matusercode" datavalue="bind:Widgets.gridMaterialsDes.selecteditem.wmatusercode"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn175_1">
+                        <wm-composite name="composite13">
+                            <wm-label class="col-md-6 control-label" caption="Item Code" name="label161_1"></wm-label>
+                            <wm-container class="col-md-9" name="container13">
+                                <wm-select datafield="materialcode" placeholder="" name="selectUpdMATERIALCODE" dataset="bind:Variables.svProcYM1311PK0_YM650UpdMATERIALCODE.dataSet" displayfield="materialcode" datavalue="bind:Variables.svProcYM1311PK0_YM650UpdMATERIALCODE.dataSet[$i].materialcode"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow31">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn128">
+                        <wm-composite name="composite6">
+                            <wm-label class="col-md-6 control-label" name="label121" caption="No of bale"></wm-label>
+                            <wm-container class="col-md-9" name="container6">
+                                <wm-text name="txtUpdBALEQTY" datavalue="bind:Widgets.gridMaterialsDes.selecteditem.baleqty" maxchars="14" type="number" step="0.1" minvalue="0.1"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn129">
+                        <wm-composite name="composite7">
+                            <wm-label class="col-md-6 control-label" name="label122" caption="Total Weight"></wm-label>
+                            <wm-container class="col-md-9" name="container7">
+                                <wm-text name="txtUpdTOTALWGT" datavalue="bind:Widgets.gridMaterialsDes.selecteditem.totalwgt" maxchars="14" type="number" minvalue="0.1" step="0.1"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow32">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn130">
+                        <wm-composite name="composite4">
+                            <wm-label class="col-md-6 control-label" name="label119" caption="Fibre Remarks"></wm-label>
+                            <wm-container class="col-md-9" name="container4">
+                                <wm-textarea name="textareaUpdREMARKSMat" datavalue="bind:Widgets.gridMaterialsDes.selecteditem.remarks" maxchars="200"></wm-textarea>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions2">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="button20" on-click="button20Click($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button19" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view4">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Add A New Receipt" iconclass="wi wi-create" name="dialogInsReceipt" width="700">
+            <wm-layoutgrid name="layoutgrid16">
+                <wm-gridrow name="gridrow33">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn130_1">
+                        <wm-label caption="Store Code" class="col-md-6 control-label" margin="unset 5px unset unset" width="150" name="label122_1"></wm-label>
+                        <wm-select width="150" placeholder="Enter value" dataset="bind:Variables.svQryYM650_TSTRCOD.dataSet" datafield="itemcod" displayfield="itemcod" name="selectInsTSTRCOD" required="true"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn134">
+                        <wm-label caption="Supplier Dn" class="col-md-6 control-label" margin="unset 5px unset unset" width="150" name="label123"></wm-label>
+                        <wm-text width="150" maxchars="15" name="txtInsSUPDN" required="false"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn131">
+                        <wm-composite name="composite8">
+                            <wm-label class="col-md-6 control-label" caption="Receipt Date" name="label126"></wm-label>
+                            <wm-container class="col-md-9" name="container8">
+                                <wm-date maxdate="CURRENT_DATE" datepattern="dd-MMM-yyyy" name="dateInsTRNDATE"></wm-date>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow34">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn132">
+                        <wm-composite name="composite7_1">
+                            <wm-label class="col-md-6 control-label" caption="Transac Rem" name="label125"></wm-label>
+                            <wm-container class="col-md-9" name="container7_1">
+                                <wm-textarea maxchars="150" name="textareaInsREMARKS"></wm-textarea>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions3">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="button22" on-click="button22Click($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button21" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view5">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Add Materials Description" iconclass="wi wi-create" name="dialogInsMaterialsDes">
+            <wm-layoutgrid name="layoutgrid18">
+                <wm-gridrow name="gridrow55_1">
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn173_1">
+                        <wm-composite name="composite10">
+                            <wm-label class="col-md-6 control-label" caption="Fibre Reference" name="label158_1"></wm-label>
+                            <wm-container class="col-md-9" name="container10">
+                                <wm-select dataset="bind:Variables.svProcYM1311PK0_YM650WMATUSERCODE.dataSet.poutWmatusercode" datafield="matusercode" displayfield="matusercode" name="selectInsWMATUSERCODE" placeholder="Enter Value" on-change="selectInsWMATUSERCODEChange($event, $scope, newVal, oldVal)"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn174_1">
+                        <wm-composite name="composite12">
+                            <wm-label class="col-md-6 control-label" name="label160_1" caption="Item Code"></wm-label>
+                            <wm-container class="col-md-9" name="container12">
+                                <wm-select name="selectInsMATERIALCODE" dataset="bind:Variables.svProcYM1311PK0_YM650InsMATERIALCODE.dataSet.poutMaterialcode" datafield="materialcode" displayfield="materialcode" placeholder="" datavalue="bind:Variables.svProcYM1311PK0_YM650InsMATERIALCODE.dataSet.poutMaterialcode[$i].materialcode"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow37" padding="unset unset 10px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn138">
+                        <wm-label class="col-md-6 control-label" caption="No of bale" name="label126_1"></wm-label>
+                        <wm-text maxchars="14" type="number" name="txtInsBALEQTY" width="200" step="0.1" minvalue="0.1"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn139">
+                        <wm-label class="col-md-6 control-label" caption="Total Weight" name="label127"></wm-label>
+                        <wm-text maxchars="14" type="number" minvalue="0.1" step="0.1" name="txtInsTOTALWGT" width="200"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow38">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn140">
+                        <wm-composite name="composite9">
+                            <wm-label class="col-md-3 control-label" caption="Fibre Remarks" name="label128"></wm-label>
+                            <wm-container class="col-md-9" name="container9">
+                                <wm-textarea maxchars="200" name="textareaInsREMARKSMat"></wm-textarea>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions4">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="button25" on-click="button25Click($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button24" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view6">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Delete Materials Description" iconclass="wi wi-delete" name="dialogDltMaterialsDes">
+            <wm-label padding="unset 0.5em" caption="Do you really want to delete this Materials Description??" name="label126_2" class="col-md-3 control-label" width="500"></wm-label>
+            <wm-dialogactions name="dialogactions5">
+                <wm-button class="btn-default" caption="Delete And Exit" type="button" margin="unset 0.5em" name="button27" on-click="button27Click($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button26" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view7">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Template – Material Reference" iconclass="wi wi-edit" name="dialogTemplateMaterialRef">
+            <wm-layoutgrid name="layoutgrid19">
+                <wm-gridrow name="gridrow38_1" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn139_1">
+                        <wm-label padding="unset 0.5em" caption="Fibre Reference" name="label126_3" class="col-md-6 control-label"></wm-label>
+                        <wm-text name="txtUpdMATUSERCODE" width="220" maxchars="100" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.matusercode"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn140_1">
+                        <wm-label padding="unset 0.5em" caption="Rcv in Bale" name="label127_1" class="col-md-6 control-label"></wm-label>
+                        <wm-select name="selectUpdBALEREQUIRED" width="220" dataset="bind:Variables.statBALEREQUIRED.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.balerequired"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow39" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn141">
+                        <wm-label padding="unset 0.5em" caption="Item Type" name="label128_1" class="col-md-6 control-label"></wm-label>
+                        <wm-select name="selectUpdITEMTYPE" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.itemtype" placeholder="Enter Value" dataset="bind:Variables.svQryYM650_itemcod.dataSet" datafield="itemcod"
+                            displayfield="itemdes"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn142">
+                        <wm-label padding="unset 0.5em" caption="Origin" name="label129" class="col-md-6 control-label"></wm-label>
+                        <wm-select name="selectUpdMATORI" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.matori" placeholder="Enter Value" dataset="bind:Variables.svQryYM650_MATORI.dataSet" datafield="fibori" displayfield="fibori"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow40" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn143">
+                        <wm-label padding="unset 0.5em" caption="Country of Origin" class="col-md-6 control-label" name="label132"></wm-label>
+                        <wm-select name="selectUpdMATCTYCOD" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.matctycod" placeholder="Enter Value" dataset="bind:Variables.svProcYM1311PK0_YM650MATCTYCOD.dataSet.poutMatctycod"
+                            datafield="ctycod" displayfield="ctycod"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn144">
+                        <wm-label padding="unset 0.5em" caption="Composition" class="col-md-6 control-label" name="label133"></wm-label>
+                        <wm-select name="selectUpdMATCPS" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.matcps" placeholder="Enter Value" dataset="bind:Variables.svQryYM650_MATCPS.dataSet" datafield="ncpstyp" displayfield="ncpstyp"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow41" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn145">
+                        <wm-label padding="unset 0.5em" caption="Colour" class="col-md-6 control-label" name="label134"></wm-label>
+                        <wm-select name="selectUpdMATCLR" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.matclr" placeholder="Enter Value" dataset="bind:Variables.svQryYYM650_MATCLR.dataSet" datafield="nyrnclr" displayfield="nyrnclr"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn146">
+                        <wm-label padding="unset 0.5em" caption="Colour Reference" class="col-md-6 control-label" name="label135"></wm-label>
+                        <wm-text name="txtUpdMATCLRREF" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.matclrref" maxchars="15"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow42" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn147">
+                        <wm-label padding="unset 0.5em" caption="Fineness" class="col-md-6 control-label" name="label136"></wm-label>
+                        <wm-text name="txtUpdMATDIAMETER" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.matdiameter" type="number" step="0.1" maxchars="7" minvalue="0" maxvalue="9999999"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn148">
+                        <wm-label padding="unset 0.5em" caption="Matdiameter Uom" class="col-md-6 control-label" name="label137"></wm-label>
+                        <wm-select name="selectUpdMATDIAMETER_UOM" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.matdiameterUom" placeholder="Enter Value" dataset="bind:Variables.svQryYM650_MATDIAMETER_UOM.dataSet"
+                            datafield="itemcod" displayfield="itemcod"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow43" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn149">
+                        <wm-label padding="unset 0.5em" caption="Length" class="col-md-6 control-label" name="label138"></wm-label>
+                        <wm-text name="txtUpdMATLENGTH" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.matlength" type="number" step="1" maxchars="7" minvalue="0" maxvalue="9999999"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn150">
+                        <wm-label padding="unset 0.5em" caption="Matlength Uom" class="col-md-6 control-label" name="label139"></wm-label>
+                        <wm-text name="txtUpdMATLENGTH_UOM" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.matlengthUom" maxchars="6"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow44" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn151">
+                        <wm-label padding="unset 0.5em" caption="Wgt  Uom" class="col-md-6 control-label" name="label140"></wm-label>
+                        <wm-select name="selectUpdWGTUOM" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.wgtuom" placeholder="Enter Value" dataset="bind:Variables.svQryYM650_WGTUOM.dataSet" datafield="itemcod" displayfield="itemcod"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn152">
+                        <wm-label padding="unset 0.5em" caption="Material Val1" class="col-md-6 control-label" name="label141"></wm-label>
+                        <wm-text name="txtUpdMATERIALVAL1" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.materialval1" maxchars="60"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow45">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn153">
+                        <wm-label padding="unset 0.5em" caption="Material Val2" class="col-md-6 control-label" name="label142"></wm-label>
+                        <wm-text name="txtUpdMATERIALVAL2" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.materialval2" maxchars="60"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn154">
+                        <wm-label padding="unset 0.5em" caption="Material Val3" class="col-md-6 control-label" name="label143"></wm-label>
+                        <wm-text name="txtUpdMATERIALVAL3" width="220" datavalue="bind:Widgets.gridTemplateMaterialRef.selecteditem.materialval3" maxchars="60"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions6">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="button29" on-click="button29Click($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button28" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view8">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Add Template – Material Reference" iconclass="wi wi-create" name="dialogInsTemplateMaterialRef">
+            <wm-dialogactions name="dialogactions7">
+                <wm-button class="btn-default" caption="Add And Exit" type="button" margin="unset 0.5em" name="button32" on-click="button32Click($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button30" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-layoutgrid name="layoutgrid21">
+                <wm-gridrow padding="unset unset 5px unset" name="gridrow48">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn159">
+                        <wm-label padding="unset 0.5em" caption="Fibre Reference" class="col-md-6 control-label" name="label146"></wm-label>
+                        <wm-text width="220" maxchars="100" name="txtInsMATUSERCODE"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn160">
+                        <wm-label padding="unset 0.5em" caption="Rcv in Bale" class="col-md-6 control-label" name="label147"></wm-label>
+                        <wm-select width="220" dataset="bind:Variables.statBALEREQUIRED.dataSet" datafield="dataValue" displayfield="name" name="selectInsBALEREQUIRED"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow padding="unset unset 5px unset" name="gridrow49">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn161">
+                        <wm-label padding="unset 0.5em" caption="Item Type" class="col-md-6 control-label" name="label148"></wm-label>
+                        <wm-select width="220" placeholder="Enter Value" dataset="bind:Variables.svQryYM650_itemcod.dataSet" datafield="itemcod" displayfield="itemdes" name="selectInsITEMTYPE"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn162">
+                        <wm-label padding="unset 0.5em" caption="Origin" class="col-md-6 control-label" name="label149"></wm-label>
+                        <wm-select width="220" placeholder="Enter Value" dataset="bind:Variables.svQryYM650_MATORI.dataSet" datafield="fibori" displayfield="fibori" name="selectInsMATORI"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow padding="unset unset 5px unset" name="gridrow50">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn163">
+                        <wm-label padding="unset 0.5em" caption="Country of Origin" class="col-md-6 control-label" name="label150"></wm-label>
+                        <wm-select width="220" placeholder="Enter Value" dataset="bind:Variables.svProcYM1311PK0_YM650MATCTYCOD.dataSet.poutMatctycod" datafield="ctycod" displayfield="ctycod" name="selectInsMATCTYCOD"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn164">
+                        <wm-label padding="unset 0.5em" caption="Composition" class="col-md-6 control-label" name="label151"></wm-label>
+                        <wm-select width="220" placeholder="Enter Value" dataset="bind:Variables.svQryYM650_MATCPS.dataSet" datafield="ncpstyp" displayfield="ncpstyp" name="selectInsMATCPS"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow padding="unset unset 5px unset" name="gridrow51">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn165">
+                        <wm-label padding="unset 0.5em" caption="Colour" class="col-md-6 control-label" name="label152"></wm-label>
+                        <wm-select width="220" placeholder="Enter Value" dataset="bind:Variables.svQryYYM650_MATCLR.dataSet" datafield="nyrnclr" displayfield="nyrnclr" name="selectInsMATCLR"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn166">
+                        <wm-label padding="unset 0.5em" caption="Colour Reference" class="col-md-6 control-label" name="label153"></wm-label>
+                        <wm-text width="220" maxchars="15" name="txtInsMATCLRREF"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow padding="unset unset 5px unset" name="gridrow52">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn167">
+                        <wm-label padding="unset 0.5em" caption="Fineness" class="col-md-6 control-label" name="label154"></wm-label>
+                        <wm-text width="220" type="number" step="0.1" maxchars="7" minvalue="0" maxvalue="9999999" name="txtInsMATDIAMETER"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn168">
+                        <wm-label padding="unset 0.5em" caption="Matdiameter Uom" class="col-md-6 control-label" name="label155"></wm-label>
+                        <wm-select width="220" placeholder="Enter Value" dataset="bind:Variables.svQryYM650_MATDIAMETER_UOM.dataSet" datafield="itemcod" displayfield="itemcod" name="selectInsMATDIAMETER_UOM"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow padding="unset unset 5px unset" name="gridrow53">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn169">
+                        <wm-label padding="unset 0.5em" caption="Length" class="col-md-6 control-label" name="label156"></wm-label>
+                        <wm-text width="220" type="number" step="1" maxchars="7" minvalue="0" maxvalue="9999999" name="txtInsMATLENGTH"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn170">
+                        <wm-label padding="unset 0.5em" caption="Matlength Uom" class="col-md-6 control-label" name="label157"></wm-label>
+                        <wm-text width="220" maxchars="6" name="txtInsMATLENGTH_UOM"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow padding="unset unset 5px unset" name="gridrow54">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn171">
+                        <wm-label padding="unset 0.5em" caption="Wgt  Uom" class="col-md-6 control-label" name="label158"></wm-label>
+                        <wm-select width="220" placeholder="Enter Value" dataset="bind:Variables.svQryYM650_WGTUOM.dataSet" datafield="itemcod" displayfield="itemcod" name="selectInsWGTUOM"></wm-select>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn172">
+                        <wm-label padding="unset 0.5em" caption="Material Val1" class="col-md-6 control-label" name="label159"></wm-label>
+                        <wm-text width="220" maxchars="60" name="txtInsMATERIALVAL1"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow55">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn173">
+                        <wm-label padding="unset 0.5em" caption="Material Val2" class="col-md-6 control-label" name="label160"></wm-label>
+                        <wm-text width="220" maxchars="60" name="txtInsMATERIALVAL2"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn174">
+                        <wm-label padding="unset 0.5em" caption="Material Val3" class="col-md-6 control-label" name="label161"></wm-label>
+                        <wm-text width="220" maxchars="60" name="txtInsMATERIALVAL3"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view10">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Add  Issue of Materials" iconclass="wi wi-create" name="dialogInsIssueOfMaterials">
+            <wm-layoutgrid name="layoutgrid23">
+                <wm-gridrow name="gridrow59">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn181">
+                        <wm-composite name="composite13_1">
+                            <wm-label class="col-md-6 control-label" name="label167" caption="From Store"></wm-label>
+                            <wm-container class="col-md-9" name="container13_1">
+                                <wm-select name="selectIssueFSTRCOD" dataset="bind:Variables.svQryYM650_TSTRCOD.dataSet" datafield="itemcod" displayfield="itemcod" placeholder="Enter Value"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn182">
+                        <wm-composite name="composite17">
+                            <wm-label class="col-md-6 control-label" name="label171" caption="Store Ind"></wm-label>
+                            <wm-container class="col-md-9" name="container17">
+                                <wm-select name="selectIssueWSTOREIND" dataset="bind:Variables.statWSTOREIND.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Variables.statWSTOREIND.dataSet[$i].dataValue"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow60">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn183">
+                        <wm-composite name="composite14">
+                            <wm-label class="col-md-6 control-label" name="label168" caption="Delivery Location"></wm-label>
+                            <wm-container class="col-md-9" name="container14">
+                                <wm-select name="selectIssueTSTRCOD" placeholder="Enter Value" dataset="bind:Variables.svQryYM650_IssueTSTRCOD.dataSet" datafield="itemcod" displayfield="itemcod"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn184">
+                        <wm-composite name="composite15">
+                            <wm-label class="col-md-6 control-label" name="label169" caption="Date Issued"></wm-label>
+                            <wm-container class="col-md-9" name="container15">
+                                <wm-date name="dateIssueTRNDATE" maxdate="CURRENT_DATE"></wm-date>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow58">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn180">
+                        <wm-composite name="composite16">
+                            <wm-label class="col-md-6 control-label" name="label170" caption="Remarks"></wm-label>
+                            <wm-container class="col-md-9" name="container16">
+                                <wm-textarea name="textareaIssueREMARKS" maxchars="150"></wm-textarea>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions9">
+                <wm-button class="btn-default" caption="Add And Exit" type="button" margin="unset 0.5em" name="button34" on-click="button34Click($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button36" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view10_1">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Add Materials Description" iconclass="wi wi-create" name="dialogIssueMaterialsDes">
+            <wm-layoutgrid name="layoutgrid24">
+                <wm-gridrow name="gridrow61">
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn185">
+                        <wm-composite name="composite18">
+                            <wm-label class="col-md-6 control-label" name="label172" caption="Fibre Reference"></wm-label>
+                            <wm-container class="col-md-9" name="container18">
+                                <wm-select name="selectIssueInsWMATUSERCODE" dataset="bind:Variables.svProcYM1311PK0_YM650WMATUSERCODE.dataSet.poutWmatusercode" datafield="matusercode" displayfield="matusercode" placeholder="Enter Value"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn186">
+                        <wm-composite name="composite19">
+                            <wm-label class="col-md-6 control-label" name="label173" caption="Item Code"></wm-label>
+                            <wm-container class="col-md-9" name="container19">
+                                <wm-select name="selectIssueInsMATERIALCODE" dataset="bind:Variables.svQryYM650_IssueMATERIALCODE.dataSet" datafield="materialcode" displayfield="materialcode" datavalue="bind:Variables.svQryYM650_IssueMATERIALCODE.dataSet[$i].materialcode"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow62">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn187">
+                        <wm-composite name="composite21">
+                            <wm-label class="col-md-6 control-label" name="label175" caption="No of bale"></wm-label>
+                            <wm-container class="col-md-9" name="container21">
+                                <wm-text name="txtIssueInsBALEQTY" type="number" maxchars="14" step="0.1" minvalue="0.1"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn188">
+                        <wm-composite name="composite22">
+                            <wm-label class="col-md-6 control-label" name="label176" caption="Total Weight"></wm-label>
+                            <wm-container class="col-md-9" name="container22">
+                                <wm-text name="txtIssueInsTOTALWGT" type="number" maxchars="14" minvalue="0.1" step="0.1"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow62_1">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn187_1">
+                        <wm-composite name="composite23">
+                            <wm-label class="col-md-6 control-label" name="label177" caption="Remarks"></wm-label>
+                            <wm-container class="col-md-9" name="container23">
+                                <wm-textarea name="textareaIssueInsREMARKS" maxchars="200"></wm-textarea>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions9_1">
+                <wm-button class="btn-default" caption="Add And Exit" type="button" margin="unset 0.5em" name="button37" on-click="button37Click($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button36_1" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view11">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Delete Materials Description" iconclass="wi wi-delete" name="dialogIssueDltMaterialsDes">
+            <wm-dialogactions name="dialogactions10">
+                <wm-button class="btn-default" caption="Delete And Exit" type="button" margin="unset 0.5em" name="button39" on-click="button39Click($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button38" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-label padding="unset 0.5em" name="label177_1" caption=""></wm-label>
+            <wm-label padding="unset 0.5em" name="label178" caption="Are you sure you want to delete this?" class="col-md-3 control-label" width="400"></wm-label>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view12">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Materials Description" iconclass="wi wi-edit" name="dialogIssueUpdMaterialsDes">
+            <wm-dialogactions name="dialogactions11">
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button40" iconclass="wi wi-close"></wm-button>
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="button41" on-click="button41Click($event, $scope)" iconclass="wi wi-save"></wm-button>
+            </wm-dialogactions>
+            <wm-layoutgrid name="layoutgrid26">
+                <wm-gridrow name="gridrow65">
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn192">
+                        <wm-composite name="composite23_1">
+                            <wm-label class="col-md-6 control-label" caption="Fibre Reference" name="label180"></wm-label>
+                            <wm-container class="col-md-9" name="container23_1">
+                                <wm-select dataset="bind:Variables.svProcYM1311PK0_YM650WMATUSERCODE.dataSet.poutWmatusercode" datafield="matusercode" displayfield="matusercode" placeholder="Enter Value" name="selectIssueUpdWMATUSERCODE" datavalue="bind:Widgets.gridMaterialsDescriptionOUT.selecteditem.wmatusercode"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn193">
+                        <wm-composite name="composite24">
+                            <wm-label class="col-md-6 control-label" caption="Item Code" name="label181"></wm-label>
+                            <wm-container class="col-md-9" name="container24">
+                                <wm-select dataset="bind:Variables.svQryYM650_UpdIssueMATERIALCODE.dataSet" datafield="materialcode" displayfield="materialcode" datavalue="bind:Variables.svQryYM650_UpdIssueMATERIALCODE.dataSet[$i].materialcode" name="selectIssueUpdMATERIALCODE"></wm-select>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow66">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn194">
+                        <wm-composite name="composite25">
+                            <wm-label class="col-md-6 control-label" caption="No of bale" name="label182"></wm-label>
+                            <wm-container class="col-md-9" name="container25">
+                                <wm-text type="number" name="txtIssueUpdBALEQTY" maxchars="14" step="0.1" datavalue="bind:Widgets.gridMaterialsDescriptionOUT.selecteditem.baleqty" minvalue="0.1"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn195">
+                        <wm-composite name="composite26">
+                            <wm-label class="col-md-6 control-label" caption="Total Weight" name="label183"></wm-label>
+                            <wm-container class="col-md-9" name="container26">
+                                <wm-text type="number" name="txtIssueUpdTOTALWGT" minvalue="0.1" maxchars="14" step="0.1" datavalue="bind:Widgets.gridMaterialsDescriptionOUT.selecteditem.totalwgt"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow67">
+                    <wm-gridcolumn columnwidth="12" name="gridcolumn196">
+                        <wm-composite name="composite27">
+                            <wm-label class="col-md-6 control-label" caption="Remarks" name="label184"></wm-label>
+                            <wm-container class="col-md-9" name="container27">
+                                <wm-textarea name="textareaIssueUpdREMARKS" maxchars="200" datavalue="bind:Widgets.gridMaterialsDescriptionOUT.selecteditem.remarks"></wm-textarea>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view13">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Release Issue Of Materials" iconclass="" name="dialogReleaseIssueofMaterials">
+            <wm-label padding="unset 0.5em" caption="Are you sure you want release this  Transac No??" name="label182_1" width="500" class="col-md-3 control-label"></wm-label>
+            <wm-dialogactions name="dialogactions12">
+                <wm-button class="btn-default" caption="Release And Exit" type="button" margin="unset 0.5em" name="button44" on-click="button44Click($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button43" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view14">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Release Receipt of Materials" iconclass="" name="dialogReleaseReceiptofMaterials">
+            <wm-label padding="unset 0.5em" caption="Are you sure you want release this  Transac No??" name="label185" class="col-md-3 control-label" width="500"></wm-label>
+            <wm-dialogactions name="dialogactions13">
+                <wm-button class="btn-default" caption="Release And Exit" type="button" margin="unset 0.5em" name="button47" on-click="button47Click($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button46" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

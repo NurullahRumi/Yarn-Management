@@ -1,0 +1,89 @@
+<wm-page data-ng-controller="AddReqYarnTransformationPageController" pagetitle="Add Req Yarn Transformation" name="page1"> 
+    <wm-header content="header" name="header1"> 
+        <wm-param name="pTitle" value="bind:Variables.StatPrgName.dataSet.dataValue" type="string"></wm-param> 
+    </wm-header> 
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav> 
+    <wm-content name="content1"> 
+        <wm-page-content columnwidth="12" name="page_content1"> 
+            <wm-table title="Requested Yarn Transformation" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM550DplyReqno.dataSet.poutReqno" navigation="Classic" name="tableDplyReqno" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" class="panel-primary"> 
+                <wm-table-column binding="trnreqno" caption="Request No" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="trnreqseq" caption="Seq" width="60px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="srcyrncod" caption="Src Yarn Code" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="destyrncod" caption="Dest Yarn Code" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="qtyres" caption="Qty Requested" width="80px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="qtytransformed" caption="Qty Transformed" width="80px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="modby" caption="Requested By" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column> 
+                <wm-table-column binding="moddat" caption="On" width="110px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy HH:mm" formatpattern="toDate" fractionsize="0" show="true" readonly="false"></wm-table-column> 
+            </wm-table> 
+            <wm-panel iconclass="" autoclose="outsideClick" title="Request number for yarn transformation" name="panelHeader" class="panel-info"> 
+                <wm-layoutgrid name="layoutgrid2"> 
+                    <wm-gridrow name="gridrow8"> 
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn10"> 
+                            <wm-label padding="unset 0.5em" name="label2" caption="Transaction Type"></wm-label> 
+                            <wm-label padding="unset 0.5em" name="label4" class="displayField" caption="bind:Widgets.tableDplyReqno.selecteditem.trntyp"></wm-label> 
+                            <wm-label padding="unset 0.5em" name="label5" class="displayField" caption="bind:Widgets.tableDplyReqno.selecteditem.wtrndesc"></wm-label> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn14"> 
+                            <wm-label padding="unset 0.5em" caption="Warehouse" name="label3"></wm-label> 
+                            <wm-label padding="unset 0.5em" class="displayField" name="label6" caption="bind:Widgets.tableDplyReqno.selecteditem.wrhnum"></wm-label> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="7" name="gridcolumn11"> 
+                            <wm-label padding="unset 0.5em" caption="Request No" name="label7"></wm-label> 
+                            <wm-label padding="unset 0.5em" name="lblTrnnum" caption="bind:Variables.svCreateProcYM1000WPK0_YNTRANSFRM_YM550AddReqTrns.dataSet.poutTrnnum" show="true" class="displayField"></wm-label> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                </wm-layoutgrid> 
+            </wm-panel> 
+            <wm-form errormessage="" captionposition="left" title="Request entries" enctype="application/x-www-form-urlencoded" method="post" captionalign="left" name="formAddReqTrns" class="panel-info" postmessage=""> 
+                <wm-layoutgrid columns="1" name="layoutgrid1"> 
+                    <wm-gridrow name="gridrow1"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn1"> 
+                            <wm-form-field name="pTrntyp" readonly="false" displayname="Transaction Type" key="pTrntyp" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM550ListofTrntyp.dataSet.poutTrntyp" datafield="itemcod" displayfield="itemdes"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow2"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn2"> 
+                            <wm-form-field name="pWrhnum" readonly="false" displayname="Warehouse" key="pWrhnum" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM550ListofWrhnum.dataSet.poutWrhnum" datafield="strcod" displayfield="strdes"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow3"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn3"> 
+                            <wm-form-field name="pSrcYrncod" readonly="false" displayname="Src Yarn Code" key="pSrcYrncod" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pSrcYrncodChange($event, $scope, newVal, oldVal)"></wm-form-field> 
+                        </wm-gridcolumn> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn8"> 
+                            <wm-form-field displayname="Default  Pallet Wgt" widget="text" show="true" type="custom" name="pPalwgt" defaultvalue="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM550VldtSrcYrn.dataSet.poutPalwgt" readonly="true"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow4"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn4"> 
+                            <wm-form-field name="pDestYrncod" readonly="false" displayname="Dest Yarn Code" key="pDestYrncod" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pDestYrncodChange($event, $scope, newVal, oldVal)"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow5"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn5"> 
+                            <wm-form-field name="pNumpal" readonly="false" displayname="No of Pallets" key="pNumpal" type="number" show="true" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow6"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn6"> 
+                            <wm-form-field name="pQtyres" readonly="false" displayname="Qty" key="pQtyres" type="number" show="true" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                    <wm-gridrow name="gridrow7"> 
+                        <wm-gridcolumn columnwidth="4" name="gridcolumn7"> 
+                            <wm-form-field name="pRemarks" readonly="false" displayname="Remarks" key="pRemarks" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field> 
+                        </wm-gridcolumn> 
+                    </wm-gridrow> 
+                </wm-layoutgrid> 
+                <wm-buttongroup horizontalalign="right" class="form-action col-md-12" name="buttongroup1"> 
+                    <wm-button caption="Save" type="submit" class="btn-primary" name="btnSav" on-click="btnSavClick($event, $scope)"></wm-button> 
+                    <wm-button caption="Reset" type="reset" class="btn-secondary" name="btnReset"></wm-button> 
+                </wm-buttongroup> 
+            </wm-form> 
+        </wm-page-content> 
+    </wm-content> 
+    <wm-footer content="footer" name="footer1"></wm-footer> 
+    <wm-view class="dialog-view" name="view1"> 
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}" on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog> 
+    </wm-view> 
+</wm-page>

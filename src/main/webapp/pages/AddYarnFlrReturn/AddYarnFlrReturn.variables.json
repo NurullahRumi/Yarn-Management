@@ -1,0 +1,267 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1554960361723",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.StatPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "information",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "StatPrgid" : {
+    "_id" : "wm-StatPrgid-wm.Variable-1554375511058",
+    "name" : "StatPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "YM1000W82",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "StatPrgName" : {
+    "_id" : "wm-StatPrgName-wm.Variable-1554375555797",
+    "name" : "StatPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Yarn Return from Floor",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svCreateProcYM1000WPK0_DELFLR_YM323AddReturnYrn" : {
+    "_id" : "wm-svCreateProcYM1000WPK0_DELFLR_YM323AddReturnYrn-wm.ServiceVariable-1554955185690",
+    "name" : "svCreateProcYM1000WPK0_DELFLR_YM323AddReturnYrn",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pGrosswgt",
+      "value" : "bind:Widgets.formAddreturn.formWidgets.pGrosswgt.datavalue",
+      "type" : "number"
+    }, {
+      "target" : "pReqnseq",
+      "value" : "bind:Widgets.formAddreturn.formWidgets.pReqnseq.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pReqnum",
+      "value" : "bind:Widgets.formAddreturn.formWidgets.pReqnum.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pRetby",
+      "value" : "bind:Widgets.formAddreturn.formWidgets.pRetby.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formAddreturn.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pYrncod",
+      "value" : "bind:Widgets.formAddreturn.formWidgets.pYrncod.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formAddreturn.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.CreateProcYm1000wpk0DelflrYm323addReturnYrnResponse",
+    "service" : "pfsdb",
+    "operation" : "executeCreateProcYM1000WPK0_DELFLR_YM323AddReturnYrn",
+    "operationId" : "ProcedureExecutionController_executeCreateProcYM1000WPK0_DELFLR_YM323AddReturnYrn",
+    "operationType" : "post",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svCreateProcYM1000WPK0_DELFLR_YM323AddReturnYrnonSuccess($event, $scope)",
+    "onError" : "svCreateProcYM1000WPK0_DELFLR_YM323AddReturnYrnonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum" : {
+    "_id" : "wm-svGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum-wm.ServiceVariable-1554959329048",
+    "name" : "svGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000pk0DelflrYm322lstOfWrhnumResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_DELFLR_YM322ListofDelby" : {
+    "_id" : "wm-svGetProcYM1000WPK0_DELFLR_YM322ListofDelby-wm.ServiceVariable-1554959511603",
+    "name" : "svGetProcYM1000WPK0_DELFLR_YM322ListofDelby",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.StatPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formAddreturn.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0DelflrYm322listofDelbyResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_DELFLR_YM322ListofDelby",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_DELFLR_YM322ListofDelby",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_DELFLR_YM323ListofFabseq" : {
+    "_id" : "wm-svGetProcYM1000WPK0_DELFLR_YM323ListofFabseq-wm.ServiceVariable-1554971167217",
+    "name" : "svGetProcYM1000WPK0_DELFLR_YM323ListofFabseq",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0DelflrYm323listofFabseqResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_DELFLR_YM323ListofFabseq",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_DELFLR_YM323ListofFabseq",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "Javascript",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_DELFLR_YM323ListofOrder" : {
+    "_id" : "wm-svGetProcYM1000WPK0_DELFLR_YM323ListofOrder-wm.ServiceVariable-1554960308146",
+    "name" : "svGetProcYM1000WPK0_DELFLR_YM323ListofOrder",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formAddreturn.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0DelflrYm323listofOrderResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_DELFLR_YM323ListofOrder",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_DELFLR_YM323ListofOrder",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_DELFLR_YM323Nonbase" : {
+    "_id" : "wm-svGetProcYM1000WPK0_DELFLR_YM323Nonbase-wm.ServiceVariable-1554972428152",
+    "name" : "svGetProcYM1000WPK0_DELFLR_YM323Nonbase",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0DelflrYm323nonbaseResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_DELFLR_YM323Nonbase",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_DELFLR_YM323Nonbase",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svGetProcYM1000WPK0_DELFLR_YM323NonbaseonSuccess($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svGetProcYM1000WPK0_DELFLR_YM323VldtOrdnum" : {
+    "_id" : "wm-svGetProcYM1000WPK0_DELFLR_YM323VldtOrdnum-wm.ServiceVariable-1554975386326",
+    "name" : "svGetProcYM1000WPK0_DELFLR_YM323VldtOrdnum",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pWrhnum",
+      "value" : "bind:Widgets.formAddreturn.formWidgets.pWrhnum.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pOrdnum",
+      "value" : "bind:Widgets.formAddreturn.formWidgets.pOrdnum.datavalue",
+      "type" : "string"
+    } ],
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_DELFLR_YM323VldtOrdnum",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_DELFLR_YM323VldtOrdnum",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svGetProcYM1000WPK0_DELFLR_YM323VldtOrdnumonSuccess($event, $scope)",
+    "onError" : "svGetProcYM1000WPK0_DELFLR_YM323VldtOrdnumonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

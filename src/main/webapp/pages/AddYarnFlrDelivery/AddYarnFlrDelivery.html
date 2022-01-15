@@ -1,0 +1,156 @@
+<wm-page data-ng-controller="AddYarnFlrDeliveryPageController" pagetitle="Add Yarn Flr Delivery" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.StatPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="left" title="Add Yarn Delivery" enctype="application/x-www-form-urlencoded" method="post" captionalign="left" name="formAddYrnDel" class="panel-primary">
+                <wm-layoutgrid columns="1" name="layoutgrid2">
+                    <wm-gridrow name="gridrow10">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn10">
+                            <wm-form-field name="pWrhnum" readonly="false" displayname="Warehouse" key="pWrhnum" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.svGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum.dataSet.poutLstOfWrhnum"
+                                datafield="strcod" displayfield="strcod"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn11_1">
+                            <wm-form-field name="pDateDel" displayname="Date" widget="date" show="true" type="custom" defaultvalue="CURRENT_DATE" datepattern="dd-MMM-yyyy" key="pDateDel" placeholder="Select date" readonly="true"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow11">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn11">
+                            <wm-form-field name="pDelby" readonly="false" displayname="Operator" key="pDelby" type="string" show="true" widget="select" placeholder="Enter value" dataset="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322ListofDelby.dataSet.poutLstOfDelby"
+                                datafield="wrkid" displayfield="wrknam"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow12">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn12">
+                            <wm-form-field name="pOrdnum" readonly="false" displayname="Order No" key="pOrdnum" type="string" show="true" widget="text" placeholder="Enter value" on-click="pOrdnumClick($event, $scope)" inputtype="text" on-change="pOrdnumChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn10_1">
+                            <wm-form-field name="pClinam" widget="text" show="true" type="custom" readonly="true" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322ListofFabseq.dataSet.poutClinam" inputtype="text" key="pClinam" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow13">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn13">
+                            <wm-form-field name="pFabseq" readonly="true" displayname="Fabric" key="pFabseq" type="string" show="true" widget="number" placeholder="Enter value" inputtype="number"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn13_1">
+                            <wm-form-field name="pFabtyp" widget="text" show="true" type="custom" readonly="true" inputtype="text" key="pFabtyp" placeholder="Enter value" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322Fatchnonbase.dataSet.poutfabtyp"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn17_1">
+                            <wm-form-field name="pFabdesc" widget="text" show="true" type="custom" readonly="true" inputtype="text" key="pFabdesc" placeholder="Enter value" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322Fatchnonbase.dataSet.poutfabdesc"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn14_1">
+                            <wm-form-field name="pFabind" widget="text" show="true" type="custom" readonly="true" inputtype="text" key="pFabind" placeholder="Enter value" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322Fatchnonbase.dataSet.poutfabind"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn15_1">
+                            <wm-form-field name="pFabwgt" displayname="g/m2" widget="number" show="true" type="custom" readonly="true" inputtype="number" key="pFabwgt" placeholder="Enter value" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322Fatchnonbase.dataSet.poutfabwgt"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow9">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                            <wm-panel iconclass="" autoclose="outsideClick" title="Yarn Details" name="panelYrnDel" class="panel-info">
+                                <wm-layoutgrid name="layoutgrid2_1">
+                                    <wm-gridrow name="gridrow10_1">
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn24">
+                                            <wm-form-field name="pKMCHFLRID" displayname="Knt Machine" widget="text" show="true" type="custom" readonly="true" inputtype="text" key="pKMCHFLRID" placeholder="Enter value"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn28">
+                                            <wm-form-field name="pALCSEQ" displayname="Allocation Seq" widget="number" show="true" type="custom" readonly="true" inputtype="number" key="pALCSEQ" placeholder="Enter value"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="6" name="gridcolumn29_1"></wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow11_1">
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn26">
+                                            <wm-form-field name="pYRNID" displayname="Yarn ID" widget="number" show="true" type="custom" readonly="true" inputtype="number" key="pYRNID" placeholder="Enter value"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn30">
+                                            <wm-form-field name="pYRNCOD" displayname="Yrn Code" widget="text" show="true" type="custom" readonly="true" inputtype="text" key="pYRNCOD" placeholder="Enter value"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow12_1">
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn32">
+                                            <wm-form-field name="pYrnlot" displayname="Yrn Lot" widget="text" show="true" type="custom" readonly="true" inputtype="text" key="pYrnlot" placeholder="Enter value" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322Fatchnonbase.dataSet.poutyrnlot"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn34">
+                                            <wm-form-field name="pYrncnt" displayname="Cnt" widget="text" show="true" type="custom" readonly="true" inputtype="text" key="pYrncnt" placeholder="Enter value" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322Fatchnonbase.dataSet.poutyrncnt"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow13_1">
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn36">
+                                            <wm-form-field name="pYRNCPS" displayname="Yrn Cps" widget="text" show="true" type="custom" readonly="true" inputtype="text" key="pYRNCPS" placeholder="Enter value" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322Fatchnonbase.dataSet.poutyrncps"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn38">
+                                            <wm-form-field name="pYRNORI" displayname="Origin" widget="text" show="true" type="custom" readonly="true" inputtype="text" key="pYRNORI" placeholder="Enter value" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322Fatchnonbase.dataSet.poutyrnori"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow14_1">
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn40">
+                                            <wm-form-field name="pREQNUM" displayname="Requisition #" widget="number" show="true" type="custom" readonly="true" inputtype="number" key="pREQNUM" placeholder="Enter value"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn48">
+                                            <wm-form-field name="pREQNSEQ" displayname="Req Seq" widget="number" show="true" type="custom" readonly="true" inputtype="number" key="pREQNSEQ" placeholder="Enter value"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow15_1">
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn44">
+                                            <wm-form-field name="pREQCON" displayname="Cones" widget="number" show="true" type="custom" readonly="true" inputtype="number" key="pREQCON" placeholder="Enter value" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322CalBalance.dataSet.poutreqcon"></wm-form-field>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="3" name="gridcolumn31">
+                                            <wm-form-field name="pBALANCE" displayname="Balance" widget="number" show="true" type="custom" readonly="true" inputtype="number" key="pBALANCE" placeholder="Enter value" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322CalBalance.dataSet.poutbalance"></wm-form-field>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-panel>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow16_1">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn49">
+                            <wm-form-field name="pCondel" readonly="false" displayname="No of Cones" key="pCondel" type="integer" show="true" widget="number" inputtype="number" placeholder="Enter value" maxchars="6" on-change="pCondelChange($event, $scope, newVal, oldVal)"
+                                minvalue="1" maxvalue="999999"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn28_1">
+                            <wm-form-field name="pSTDCONWGT" displayname="Std Wgt" widget="number" show="true" type="custom" readonly="true" inputtype="number" key="pSTDCONWGT" placeholder="Enter value" defaultvalue="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322Fatchnonbase.dataSet.poutstdconwgt"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn29"></wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow16">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn16">
+                            <wm-form-field name="pGrossWgt" readonly="false" displayname="Weight" key="pGrossWgt" type="number" show="true" widget="number" inputtype="number" placeholder="Enter value" maxchars="10" minvalue="1"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn50"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-buttongroup horizontalalign="right" class="form-action col-md-12" name="buttongroup2">
+                    <wm-button caption="Save" type="submit" class="btn-primary" name="btnSav" on-click="btnSavClick($event, $scope)"></wm-button>
+                    <wm-button caption="Reset" type="reset" class="btn-secondary" name="btnRst"></wm-button>
+                </wm-buttongroup>
+            </wm-form>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="List of Orders to deliver" iconclass="wi wi-list" name="dlgOpnOdrLst" width="60%">
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Select And Exit" type="button" margin="unset 0.5em" name="btnsaveOdrLst" on-click="btnsaveOdrLstClick($event, $scope)"></wm-button>
+            </wm-dialogactions>
+            <wm-table title="" dataset="bind:Variables.svGetProcYM1000WPK0_DELFLR_YM322ListofOrder.dataSet.poutListofOrder" navigation="None" name="tableOrderList" spacing="condensed" showrecordcount="true" height="120">
+                <wm-table-column binding="ordnum" caption="Order" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="fabseq" caption="Fab" width="60px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="fabwgt" caption="Fabwgt" width="70px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="kmchflrid" caption="MC Flr id" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrncod" caption="Yarn Code" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="reqnum" caption="ReqNo" width="70px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="reqnseq" caption="Req Seq" width="70px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrnid" caption="Yrn id" width="70px" textalignment="right" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="alcseq" caption="Allocation Seq" width="80px" textalignment="right" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrnmixcode" caption="Yrnmixcode" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="kmchcod" caption="MC id" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+            </wm-table>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+</wm-page>

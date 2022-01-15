@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <sql-query name="qryYM650_WGTUOM">
+        <![CDATA[
+        select itemcod
+from rft850
+where lovfld='MATUOM'
+and tab='YMT1350'
+and nvl(sts, '?') <> 'C'
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_WGTUOM__count">
+        <![CDATA[
+        select count(*) from (select itemcod
+from rft850
+where lovfld='MATUOM'
+and tab='YMT1350'
+and nvl(sts, '?') <> 'C') wmTempTable
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_MATDIAMETER_UOM">
+        <![CDATA[
+        select itemcod
+	    from rft850
+  	  where lovfld = 'FINENESS'
+	    and sts is null
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_MATDIAMETER_UOM__count">
+        <![CDATA[
+        select count(*) from (select itemcod
+	    from rft850
+  	  where lovfld = 'FINENESS'
+	    and sts is null) wmTempTable
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_MATCPS">
+        <![CDATA[
+        select ncpstyp,ncpstypdes
+		  from ymt015
+		  where sts is null
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_MATCPS__count">
+        <![CDATA[
+        select count(*) from (select ncpstyp,ncpstypdes
+		  from ymt015
+		  where sts is null) wmTempTable
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_MATORI">
+        <![CDATA[
+        select fibori,supdes,fibdes
+
+			from ymt053
+			where sts is null
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_MATORI__count">
+        <![CDATA[
+        select count(*) from (select fibori,supdes,fibdes
+
+			from ymt053
+			where sts is null) wmTempTable
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_itemcod">
+        <![CDATA[
+        select itemcod,itemdes
+ 	from rft850
+ 	where tab='YMT1350'
+ 	and lovfld='MATITEMTYP'
+ 	and nvl(sts,'?')<>'C'
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_itemcod__count">
+        <![CDATA[
+        select count(*) from (select itemcod,itemdes
+ 	from rft850
+ 	where tab='YMT1350'
+ 	and lovfld='MATITEMTYP'
+ 	and nvl(sts,'?')<>'C') wmTempTable
+        ]]>
+    </sql-query>
+
+    <sql-query name="getqrymindate">
+        <![CDATA[
+        select sysdate - 7 mindate
+from dual
+        ]]>
+    </sql-query>
+
+    <sql-query name="getqrymindate__count">
+        <![CDATA[
+        select count(*) from (select sysdate - 7 mindate
+from dual) wmTempTable
+        ]]>
+    </sql-query>
+
+    <sql-query name="qrySy9200pk0Progurl">
+        <![CDATA[
+        select sy9200pk0.sproc_call_wmakerapp(:pWmprogid, :pParamList) progurl
+from dual
+        ]]>
+    <query-param name="pWmprogid" type="java.lang.String"/>
+    <query-param name="pParamList" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qrySy9200pk0Progurl__count">
+        <![CDATA[
+        select count(*) from (select sy9200pk0.sproc_call_wmakerapp(:pWmprogid, :pParamList) progurl
+from dual) wmTempTable
+        ]]>
+    <query-param name="pWmprogid" type="java.lang.String"/>
+    <query-param name="pParamList" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYM100_NEWSTDWGT">
+        <![CDATA[
+        select distinct qtyphys from ymt500 where yrnmixcode = '1'||:yrncod and nvl(pallettype,'L') <> 'L'
+        ]]>
+    <query-param name="yrncod" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYM100_NEWSTDWGT__count">
+        <![CDATA[
+        select count(*) from (select distinct qtyphys from ymt500 where yrnmixcode = '1'||:yrncod and nvl(pallettype,'L') <> 'L') wmTempTable
+        ]]>
+    <query-param name="yrncod" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYM100_NYRNCLR">
+        <![CDATA[
+        select nyrnclr, nyrnclr||'-'||nyrncdes nyrncdes
+from ymt025
+where ymt025.sts is null
+and ymt025.yrnuseind ='Y'
+order by 1
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM100_NYRNCLR__count">
+        <![CDATA[
+        select count(*) from (select nyrnclr, nyrnclr||'-'||nyrncdes nyrncdes
+from ymt025
+where ymt025.sts is null
+and ymt025.yrnuseind ='Y'
+order by 1) wmTempTable
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_MATERIALCODE">
+        <![CDATA[
+        select MATERIALCODE
+      from YMT1350
+      where MATUSERCODE = :pWMATUSERCODE
+      order by MATERIALCODE
+        ]]>
+    <query-param name="pWMATUSERCODE" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYM650_MATERIALCODE__count">
+        <![CDATA[
+        select count(*) from (select MATERIALCODE
+      from YMT1350
+      where MATUSERCODE = :pWMATUSERCODE
+      order by MATERIALCODE) wmTempTable
+        ]]>
+    <query-param name="pWMATUSERCODE" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYM650_IssueTrnnum">
+        <![CDATA[
+        select count('*') IssueTrnnum
+	from ymt1310
+	where trnnum=:ptrnnum
+	and nvl(totalwgt,0)=0
+        ]]>
+    <query-param name="ptrnnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYM650_IssueTrnnum__count">
+        <![CDATA[
+        select count(*) from (select count('*') IssueTrnnum
+	from ymt1310
+	where trnnum=:ptrnnum
+	and nvl(totalwgt,0)=0) wmTempTable
+        ]]>
+    <query-param name="ptrnnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYM650_IssueMATERIALCODE">
+        <![CDATA[
+        select MATERIALCODE
+      from YMT1350
+      where MATUSERCODE = :pWMATUSERCODE
+      order by MATERIALCODE
+        ]]>
+    <query-param name="pWMATUSERCODE" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYM650_IssueMATERIALCODE__count">
+        <![CDATA[
+        select count(*) from (select MATERIALCODE
+      from YMT1350
+      where MATUSERCODE = :pWMATUSERCODE
+      order by MATERIALCODE) wmTempTable
+        ]]>
+    <query-param name="pWMATUSERCODE" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYM650_TSTRCOD">
+        <![CDATA[
+        select itemdes3,itemcod,itemdes
+			from rft850
+			where rft850.tab='YMT1300'
+			and lovfld='SMLSTORES'
+			and nvl(sts,'?')<>'C'
+			and nvl(itemdes2,'?')='Y'
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_TSTRCOD__count">
+        <![CDATA[
+        select count(*) from (select itemdes3,itemcod,itemdes
+			from rft850
+			where rft850.tab='YMT1300'
+			and lovfld='SMLSTORES'
+			and nvl(sts,'?')<>'C'
+			and nvl(itemdes2,'?')='Y') wmTempTable
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM100_YRNQLTYCARE">
+        <![CDATA[
+        select  itemcod, itemcod||'-'||itemdes  itemdes
+from rft850
+where rft850.lovfld = 'YRNQLTYCAR'
+and sts is null
+order by 1
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM100_YRNQLTYCARE__count">
+        <![CDATA[
+        select count(*) from (select  itemcod, itemcod||'-'||itemdes  itemdes
+from rft850
+where rft850.lovfld = 'YRNQLTYCAR'
+and sts is null
+order by 1) wmTempTable
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_receiptTrnnum">
+        <![CDATA[
+        select count('*') receiptTrnnum
+	from ymt1310
+	where trnnum=:ptrnnum
+	and nvl(totalwgt,0)=0
+        ]]>
+    <query-param name="ptrnnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYM650_receiptTrnnum__count">
+        <![CDATA[
+        select count(*) from (select count('*') receiptTrnnum
+	from ymt1310
+	where trnnum=:ptrnnum
+	and nvl(totalwgt,0)=0) wmTempTable
+        ]]>
+    <query-param name="ptrnnum" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qrySy9200pk0FormPath">
+        <![CDATA[
+        select sy9200pk0.sproc_call_fmbpath(:pFmbpath, :pOtherParams) progurl
+from dual
+        ]]>
+    <query-param name="pFmbpath" type="java.lang.String"/>
+    <query-param name="pOtherParams" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qrySy9200pk0FormPath__count">
+        <![CDATA[
+        select count(*) from (select sy9200pk0.sproc_call_fmbpath(:pFmbpath, :pOtherParams) progurl
+from dual) wmTempTable
+        ]]>
+    <query-param name="pFmbpath" type="java.lang.String"/>
+    <query-param name="pOtherParams" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYM100_NYRNQLTY">
+        <![CDATA[
+        select nyrnqlty, nyrnqlty||'-'||nyrnqltydes nyrnqltydes
+from ymt020
+where sts is null
+order by 1
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM100_NYRNQLTY__count">
+        <![CDATA[
+        select count(*) from (select nyrnqlty, nyrnqlty||'-'||nyrnqltydes nyrnqltydes
+from ymt020
+where sts is null
+order by 1) wmTempTable
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM100_SURPLUSCAT">
+        <![CDATA[
+        select itemcod, itemcod||'-'||itemdes itemdes
+from rft850
+where rft850.lovfld = 'YRNSURPLUS'
+and sts is null
+order by 1
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM100_SURPLUSCAT__count">
+        <![CDATA[
+        select count(*) from (select itemcod, itemcod||'-'||itemdes itemdes
+from rft850
+where rft850.lovfld = 'YRNSURPLUS'
+and sts is null
+order by 1) wmTempTable
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYM650_IssueTSTRCOD">
+        <![CDATA[
+        select itemdes3,itemcod,itemdes
+from rft850
+where rft850.tab='YMT1300'
+and lovfld='SMLSTORES'
+and nvl(sts,'?')<>'C'
+and itemcod<>:fstrcod
+        ]]>
+    <query-param name="fstrcod" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYM650_IssueTSTRCOD__count">
+        <![CDATA[
+        select count(*) from (select itemdes3,itemcod,itemdes
+from rft850
+where rft850.tab='YMT1300'
+and lovfld='SMLSTORES'
+and nvl(sts,'?')<>'C'
+and itemcod<>:fstrcod) wmTempTable
+        ]]>
+    <query-param name="fstrcod" type="java.lang.String"/>
+    </sql-query>
+
+    <sql-query name="qryYYM650_MATCLR">
+        <![CDATA[
+        select nyrnclr,decode(nyrnclr,'YD',null,'TD', null, 'SD', null, 'DD', null, 'MD', null, nyrncdes)nyrnclrdes
+	
+	  	  from ymt025
+		    where  fibuseind = 'Y'
+		    and sts is null
+        ]]>
+    </sql-query>
+
+    <sql-query name="qryYYM650_MATCLR__count">
+        <![CDATA[
+        select count(*) from (select nyrnclr,decode(nyrnclr,'YD',null,'TD', null, 'SD', null, 'DD', null, 'MD', null, nyrncdes)nyrnclrdes
+	
+	  	  from ymt025
+		    where  fibuseind = 'Y'
+		    and sts is null) wmTempTable
+        ]]>
+    </sql-query>
+</hibernate-mapping>

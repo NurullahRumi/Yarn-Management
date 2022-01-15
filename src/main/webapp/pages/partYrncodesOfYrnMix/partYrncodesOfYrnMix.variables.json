@@ -1,0 +1,37 @@
+{
+  "svGetProcYM1000WPK0_YNTRANSFRM_YM430ViewYrn" : {
+    "_id" : "wm-svGetProcYM1000WPK0_YNTRANSFRM_YM430ViewYrn-wm.ServiceVariable-1562582957368",
+    "name" : "svGetProcYM1000WPK0_YNTRANSFRM_YM430ViewYrn",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pSrcpalletid",
+      "value" : "bind:!pageParams.pSrcpalletid ? '???' : pageParams.pSrcpalletid",
+      "type" : "string"
+    }, {
+      "target" : "pWrhnum",
+      "value" : "bind:!pageParams.pWrhnum ? '???' : pageParams.pWrhnum",
+      "type" : "string"
+    }, {
+      "target" : "pSrcyrnmixcode",
+      "value" : "bind:!pageParams.pSrcyrnmixcode ? '???' : pageParams.pSrcyrnmixcode",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.GetProcYm1000wpk0YntransfrmYm430viewYrnResponse",
+    "service" : "pfsdb",
+    "operation" : "executeGetProcYM1000WPK0_YNTRANSFRM_YM430ViewYrn",
+    "operationId" : "ProcedureExecutionController_executeGetProcYM1000WPK0_YNTRANSFRM_YM430ViewYrn",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onBeforeUpdate" : "svGetProcYM1000WPK0_YNTRANSFRM_YM430ViewYrnonBeforeUpdate($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

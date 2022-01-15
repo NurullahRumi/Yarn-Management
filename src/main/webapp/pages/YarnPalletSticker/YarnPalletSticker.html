@@ -1,0 +1,172 @@
+<wm-page data-ng-controller="YarnPalletStickerPageController" pagetitle="Yarn Pallet Sticker" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.statPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter" class="panel-primary">
+                <wm-layoutgrid columns="1" name="layoutgrid2">
+                    <wm-gridrow name="gridrow2">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn10">
+                            <wm-form-field name="p_PALLETID" key="p_PALLETID" displayname="Palletid" show="true" type="string" on-change="p_PALLETIDChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn33_2">
+                            <wm-form-field name="p_LOTWISE" key="p_LOTWISE" displayname="Lotwise Pallet No" show="true" type="string" widget="text" inputtype="text" placeholder="Enter value" on-change="p_LOTWISEChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn34_2">
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup2">
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="button5" margin="15px unset unset unset" on-click="button5Click($event, $scope)" disabled="bind:Variables.statForBtnQry.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                <wm-button caption="Reset" type="reset" class="btn-secondary" name="button3" margin="15px unset unset unset" on-click="button3Click($event, $scope)"></wm-button>
+                            </wm-buttongroup>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn35_2"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn36"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn37"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-form>
+            <wm-table title="Pallet Details" dataset="bind:Variables.svProcYM1311PK0_YM284YarnPalletSticker.dataSet.poutYarnPalletSticker" navigation="Classic" name="gridPalletID" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" class="panel-info">
+                <wm-table-column binding="palletid" caption="Palletid" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrncod" caption="Yarncode" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="nyrncdes" caption="Description" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="lotwise" caption="Lotwise Pallet No" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="conwgt" caption="Cone Wgt(KG)" width="60px" textalignment="right" edit-widget-type="number" type="float" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wconwgt" caption="Cone Wgt(gm)" width="60px" textalignment="right" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="numcon" caption="No. of cones/Pallet" width="80px" textalignment="right" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="coneclr" caption="Colour of Cone" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="manudat" caption="Date" width="90px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="grosswgt" caption="Gross Wgt(KG)" width="60px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="tarewgt" caption="Tare Wgt(KG)" width="60px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wnetwgt" caption="Net Wgt(KG)" width="60px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="cntsys" caption="Count" width="50px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrnori" caption="Origin" width="50px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="cnt" caption="" width="40px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="customField" caption="" widget-type="button" width="60px" edit-widget-type="text" type="string" accessroles="YRNPALLETSTICKER_EDITPAL" searchable="false" show="true" readonly="false">
+                    <wm-button caption="{{row.getProperty('customField') || 'Update'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="customFieldAction(selectedItemData)" data-ng-class=""></wm-button>
+                </wm-table-column>
+            </wm-table>
+            <wm-layoutgrid name="layoutgrid4_1">
+                <wm-gridrow name="gridrow15" padding="50px unset unset unset">
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn40" horizontalalign="center">
+                        <wm-button class="btn-default" caption="Create Palletid" type="button" margin="unset 0.5em" name="button6" width="150" on-click="button6Click($event, $scope)" accessroles="YRNPALLETSTICKER_CREATEPAL"></wm-button>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="10" name="gridcolumn41"></wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow16">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn42"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn43"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view name="notificationAlertDialogView" class="dialog-view">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Edit Pallet Sticker" iconclass="wi wi-edit" name="dialogUpdPalletId">
+            <wm-layoutgrid name="layoutgrid3">
+                <wm-gridrow name="gridrow13_1" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="5" name="gridcolumn36_2">
+                        <wm-label class="col-md-3 control-label" margin="unset 5px unset unset" caption="Cone Wgt" width="50%" textalign="right" name="label28"></wm-label>
+                        <wm-text width="45%" on-change="txtYrncodChange($event, $scope, newVal, oldVal)" name="txtUpdCONWGT" type="number" datavalue="bind:Widgets.gridPalletID.selecteditem.conwgt" maxchars="8" step="0.01"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="7" name="gridcolumn37_1">
+                        <wm-label class="col-md-3 control-label" margin="unset 5px unset unset" caption="No. of cones/Pallet" width="40%" textalign="right" name="label29_1"></wm-label>
+                        <wm-text width="30%" on-change="txtYrncodChange($event, $scope, newVal, oldVal)" name="txtUpdNUMCON" type="number" datavalue="bind:Widgets.gridPalletID.selecteditem.numcon" maxchars="5"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow14_1" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="5" name="gridcolumn38">
+                        <wm-label class="col-md-3 control-label" margin="unset 5px unset unset" caption="Colour of Cone" width="50%" textalign="right" name="label30_1"></wm-label>
+                        <wm-text width="45%" on-change="txtYrncodChange($event, $scope, newVal, oldVal)" name="txtUpdCONECLR" type="text" datavalue="bind:Widgets.gridPalletID.selecteditem.coneclr" maxchars="20"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="7" name="gridcolumn39">
+                        <wm-label class="col-md-3 control-label" margin="unset 5px unset unset" caption="Lotwise Pallet No" width="40%" textalign="right" name="label31"></wm-label>
+                        <wm-text width="30%" on-change="txtYrncodChange($event, $scope, newVal, oldVal)" name="txtUpdLOTWISE" datavalue="bind:Widgets.gridPalletID.selecteditem.lotwise" maxchars="9"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow12">
+                    <wm-gridcolumn columnwidth="5" name="gridcolumn27">
+                        <wm-label class="col-md-3 control-label" margin="unset 5px unset unset" caption="Gross Wgt" width="50%" textalign="right" name="label32_1"></wm-label>
+                        <wm-text width="45%" on-change="txtYrncodChange($event, $scope, newVal, oldVal)" name="txtUpdGROSSWGT" type="number" datavalue="bind:Widgets.gridPalletID.selecteditem.grosswgt" maxchars="10" minvalue="0" step="0.1"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="7" name="gridcolumn28">
+                        <wm-label class="col-md-3 control-label" margin="unset 5px unset unset" caption="Tare Wgt" width="40%" textalign="right" name="label33_1"></wm-label>
+                        <wm-text width="30%" on-change="txtYrncodChange($event, $scope, newVal, oldVal)" name="txtUpdTAREWGT" type="number" datavalue="bind:Widgets.gridPalletID.selecteditem.tarewgt" maxchars="10" minvalue="0" step="0.1"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="button5_1" on-click="button5_1Click($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button4_1" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view3">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Create Palletid" iconclass="wi wi-insert-comment" name="dialogInsPalletId">
+            <wm-layoutgrid name="layoutgrid5"></wm-layoutgrid>
+            <wm-layoutgrid name="layoutgrid6">
+                <wm-gridrow name="gridrow19" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="5" name="gridcolumn48">
+                        <wm-label caption="Yarncode" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="80" name="label34_1"></wm-label>
+                        <wm-text name="txtInInsYRNCOD" width="130" on-change="txtInInsYRNCODChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="7" name="gridcolumn49">
+                        <wm-label caption="Origin" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="120" name="label48"></wm-label>
+                        <wm-label class="displayField col-md-6" width="150" caption="bind:Variables.svProcYM1311PK0_YM284YMT100YarnPltStkr.dataSet.pyrnori" name="lblInsYrnori"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow20" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="5" name="gridcolumn50">
+                        <wm-label caption="Description" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="80" name="label36"></wm-label>
+                        <wm-label class="displayField col-md-6" width="130" caption="bind:Variables.svProcYM1311PK0_YM284YMT100YarnPltStkr.dataSet.pnyrncdes" name="lblInsNYRNCDES"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="7" name="gridcolumn51">
+                        <wm-label caption="No. of cones/Pallet" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="120" name="label41"></wm-label>
+                        <wm-text width="150" class="displayField col-md-6" name="txtInsNUMCON" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM284YMT100YarnPltStkr.dataSet.pnumcon" maxchars="5"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow20_1" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="5" name="gridcolumn50_1">
+                        <wm-label caption="Cone Wgt" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="80" name="label38"></wm-label>
+                        <wm-text name="txtInsCONWGT" width="105" class="displayField col-md-6" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM284YMT100YarnPltStkr.dataSet.pconwgt" maxchars="8" step="0.001"></wm-text>
+                        <wm-label caption="KG" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="20" name="label40"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="7" name="gridcolumn51_1">
+                        <wm-label caption="Colour of Cone" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="120" name="label42"></wm-label>
+                        <wm-text width="150" class="displayField col-md-6" name="txtInsCONECLR" maxchars="20"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow21" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="5" name="gridcolumn52">
+                        <wm-label caption="Palletid" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="80" name="label45"></wm-label>
+                        <wm-text width="130" class="displayField col-md-6" name="txtInsPALLETID" on-change="txtInsPALLETIDChange($event, $scope, newVal, oldVal)" maxchars="15"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="7" name="gridcolumn53">
+                        <wm-label caption="Lotwise Pallet No" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="120" name="label44"></wm-label>
+                        <wm-text width="150" class="displayField col-md-6" name="txtInsLOTWISE" maxchars="9"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow22">
+                    <wm-gridcolumn columnwidth="5" name="gridcolumn54">
+                        <wm-label caption="Gross Wgt" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="80" name="label46"></wm-label>
+                        <wm-text width="105" class="displayField col-md-6" name="txtInsGROSSWGT" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM284YMT100YarnPltStkr.dataSet.pgrosswgt" maxchars="10" step="0.1" minvalue=".1"></wm-text>
+                        <wm-label caption="KG" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="20" name="label50"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="7" name="gridcolumn55">
+                        <wm-label caption="Tare Wgt" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="120" name="label47"></wm-label>
+                        <wm-text width="130" class="displayField col-md-6" name="txtInsTAREWGT" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM284YMT100YarnPltStkr.dataSet.ptarewgt" maxchars="10" step="0.1" minvalue=".1"></wm-text>
+                        <wm-label caption="KG" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" width="20" name="label51"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions2">
+                <wm-button class="btn-default" caption="Create And Exit" type="button" margin="unset 0.5em" name="button8" on-click="button8Click($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button7" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

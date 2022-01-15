@@ -1,0 +1,145 @@
+<wm-page data-ng-controller="ViewYarnMixDetailsPageController" pagetitle="View Yarn Mix Details" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.statPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1">
+        <wm-param name="pShowMenubar" value="Y" type="string"></wm-param>
+    </wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-tabs name="tabs1">
+                <wm-tabpane name="tabpane1" title="Yarnmix Details">
+                    <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter" class="panel-primary">
+                        <wm-layoutgrid columns="1" name="layoutgrid1">
+                            <wm-gridrow name="gridrow1">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn1">
+                                    <wm-form-field readonly="false" name="pYrnmixCode" displayname="Yrn mix Code" key="pYrnmixCode" type="string" show="true" widget="text" defaultvalue="bind:pageParams.pParam1" on-change="pYrnmixCodeChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn3">
+                                    <wm-form-field readonly="false" name="pWrhNum" displayname="Warehouse" key="pWrhNum" type="string" show="true" widget="text" on-change="pWrhNumChange($event, $scope, newVal, oldVal)" defaultvalue="bind:pageParams.pParam2"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn4">
+                                    <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup1">
+                                        <wm-button caption="Query" type="submit" class="btn-primary" name="button3" margin="15px unset unset unset" on-click="button3Click($event, $scope)" disabled="bind:Variables.statForBtnQry1.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                        <wm-button caption="Reset" type="reset" class="btn-secondary" name="button1" margin="15px unset unset unset" on-click="button1Click($event, $scope)"></wm-button>
+                                    </wm-buttongroup>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn5"></wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn6"></wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn7"></wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-form>
+                    <wm-table title="Yarnmix Details" dataset="bind:Variables.svProcYM3600PKO_YM345Main.dataSet.poutYm345main" navigation="Classic" name="tableMain" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" class="panel-info">
+                        <wm-table-column binding="yrnmixcode" caption="Yrnmixcode" width="140px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wrhnum" caption="Warehouse" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="yrncod" caption="Yrncod" width="140px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wmixratio" caption="Ratio %" width="70px" textalignment="right" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wconmult" caption="Cone  multiple" width="90px" textalignment="right" edit-widget-type="number" type="long" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wyrncnt" caption="Yrn Cnt" width="140px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wyrncps" caption="Cps" width="180px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wyrnlot" caption="Lot #" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wyrnclr" caption="Clr" width="50px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="qtyalc" caption="Qty Alc" width="70px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="qtydel" caption="Qty Del" width="70px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="qtyreqn" caption="Qty Reqn" width="70px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="qtyavail" caption="Qty Avail" width="70px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="qtyphys" caption="Qty Phys" width="70px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                    </wm-table>
+                    <wm-layoutgrid name="layoutgrid2">
+                        <wm-gridrow name="gridrow2">
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn7_1">
+                                <wm-label class="col-md-6 control-label" textalign="left" width="200" caption="KN2W01 Buffer" name="label1" margin="unset unset unset 10px"></wm-label>
+                                <wm-label class="displayField" width="130" caption="bind:Widgets.tableMain.selecteditem.wwh1" name="label2" margin="unset unset unset 10px"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn11">
+                                <wm-label class="col-md-6 control-label" textalign="left" width="200" caption="KN2W02 Buffer" name="label3"></wm-label>
+                                <wm-label class="displayField" width="130" caption="bind:Widgets.tableMain.selecteditem.wwh2" name="label4"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn12"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn13"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn14"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn8"></wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-tabpane>
+                <wm-tabpane name="tabpane2" title="Yarnmix Pallets">
+                    <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formPalletFilter" class="panel-primary">
+                        <wm-layoutgrid columns="1" name="layoutgrid3">
+                            <wm-gridrow name="gridrow3">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn13_1">
+                                    <wm-form-field name="pYrnmixCode1" readonly="false" displayname="Yrnmixcode" key="pYrnmixCode" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" defaultvalue="bind:pageParams.pParam1" on-change="pYrnmixCode1Change($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn17">
+                                    <wm-form-field name="pWrhnum" key="pWrhnum" displayname="Warehouse" show="true" type="string" widget="text" defaultvalue="bind:pageParams.pParam2"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn19">
+                                    <wm-form-field name="pPalletID" readonly="false" displayname="Pallet Id" key="pPalletID" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pPalletIDChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn20">
+                                    <wm-form-field name="pPalletType" readonly="false" displayname="Pal Type" key="pPalletType" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pPalletTypeChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn21_1">
+                                    <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup2">
+                                        <wm-button caption="Query" type="submit" class="btn-primary" name="button5" margin="15px unset unset unset" on-click="button5Click($event, $scope)" disabled="bind:Variables.statForBtnQry2.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                        <wm-button caption="Reset" type="reset" class="btn-secondary" name="button3_1" margin="15px unset unset unset" on-click="button3_1Click($event, $scope)"></wm-button>
+                                    </wm-buttongroup>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn22_1"></wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-form>
+                    <wm-table title="Yarnmix Pallets" dataset="bind:Variables.svProcYM3600PKO_YM345Pallet.dataSet.poutYm345pallet" navigation="Classic" name="tableYrnmixPallet" spacing="condensed" gridfirstrowselect="true" class="panel-info" showrecordcount="true">
+                        <wm-table-column binding="yrnmixcode" caption="Yrnmixcode" width="140px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wpalletid" caption="Pallet Id" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="pallettype" caption="Pal Type" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="actwrh" caption="Act Wrh" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="destwrh" caption="Dest Wrh" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="ordnum" caption="Order #" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="fabseq" caption="Fabseq" width="60px" textalignment="right" edit-widget-type="number" type="byte" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="qtyphys" caption="Qty phys" width="100px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="palsts" caption="Pal sts" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="remark" caption="Remarks" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    </wm-table>
+                    <wm-table title="Pallet Details" dataset="bind:Variables.svProcYM3600PKO_YM345PalletDetails.dataSet.poutYm345palletDetails" navigation="Classic" name="tablePalletDetails" spacing="condensed" gridfirstrowselect="true" class="panel-info"
+                        showrecordcount="true">
+                        <wm-table-column binding="yrncod" caption="Yarncode" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="conwgt" caption="Cone Weight" width="60px" textalignment="right" edit-widget-type="number" type="float" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="numcon" caption="# Cones" width="60px" textalignment="right" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="yrnphys" caption="Qty Phys" width="100px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wqtyachievable" caption="Knitting Qty Achievable  per yarn/colour" width="140px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wclrref" caption="Clr Ref" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wnyrncdes" caption="Colour" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wnyrncnt" caption="Yarn Count" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wnfyrncps" caption="Yarn Composition" width="200px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wyrnori" caption="Origin" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wyrnlot" caption="Yrn Lot" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wbchseq" caption="Batch" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wdmchcod" caption="M/C" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wnyrnqlty" caption="Yarn Quality" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wnyrnsubqltya" caption="Yrn SubQuality A" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wnyrnsubqltyb" caption="Yrn SubQuality B" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    </wm-table>
+                    <wm-panel iconclass="" autoclose="outsideClick" title="Pallet" name="panel1">
+                        <wm-layoutgrid name="layoutgrid5">
+                            <wm-gridrow name="gridrow5">
+                                <wm-gridcolumn columnwidth="2" name="gridcolumn21">
+                                    <wm-label class="col-md-3 control-label" textalign="left" caption="Pallet Id" margin="unset 5px unset unset" name="label8"></wm-label>
+                                    <wm-label class="displayField" width="150" caption="bind:Widgets.tableYrnmixPallet.selecteditem.palletid" name="lblPalletID"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="10" name="gridcolumn22">
+                                    <wm-button class="btn-default" caption="1.Convert to Cartons" type="button" name="button5_1" on-click="button5_1Click($event, $scope)"></wm-button>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-panel>
+                </wm-tabpane>
+            </wm-tabs>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+</wm-page>

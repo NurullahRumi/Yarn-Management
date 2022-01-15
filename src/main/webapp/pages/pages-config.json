@@ -1,0 +1,230 @@
+[ {
+  "name" : "AckInterstoreTrsf",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "AcknowladgePackingList",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "AddMultipleYarnPalletisation",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "AddReqYarnTransformation",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "AddYarnFlrDelivery",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "AddYarnFlrReturn",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "AddYarnPalletReqn",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "AddYarnRettoWrh",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "AddYarnSales",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "AddYrnDeltoKNBuf",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "AdditionalReceipt",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "p_param1",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "Common",
+  "type" : "PARTIAL",
+  "params" : [ ]
+}, {
+  "name" : "CreateYrnReqIST",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Login",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "Main",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "PalletsGeneration",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "QryMultipleYarnPalletisation",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "QryReqYarnTransformation",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "QryYarnPalletReqn",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "QueryYarnFlrDelivery",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "QueryYarnFlrReturn",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "QueryYarnReturntoWrh",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "QueryYarnSales",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "QueryYarnStockTransformation",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "SpinningMaterialStock",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "TransformYarnStock",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "ViewInterstoreTrsf",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "ViewInterstoreTrsfAck",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "ViewYarnAllocByYrncode",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "p_param1",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "ViewYarnDeallocation",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "ViewYarnMixDetails",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "pParam1",
+    "type" : "string"
+  }, {
+    "name" : "pParam2",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "YarnAdjustment",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "pParam1",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "YarnCartonSticker",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "YarnOrdering",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "YarnPalletSticker",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "YarnReqForInterstoreTransfer",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "pParam1",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "YarnStock",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "YarnTest",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "pParam1",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "YarnTransactions",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "footer",
+  "type" : "FOOTER",
+  "params" : [ ]
+}, {
+  "name" : "header",
+  "type" : "HEADER",
+  "params" : [ {
+    "name" : "pTitle",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "leftnav",
+  "type" : "LEFTNAV",
+  "params" : [ ]
+}, {
+  "name" : "partYrncodesOfYrnMix",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "pSrcyrnmixcode",
+    "type" : "string"
+  }, {
+    "name" : "pWrhnum",
+    "type" : "string"
+  }, {
+    "name" : "pSrcpalletid",
+    "type" : "string"
+  } ]
+}, {
+  "name" : "partialPackingList",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "pContractid",
+    "type" : "string"
+  }, {
+    "name" : "pYnitemno",
+    "type" : "integer"
+  }, {
+    "name" : "pContainerSeq",
+    "type" : "integer"
+  } ]
+}, {
+  "name" : "rightnav",
+  "type" : "RIGHTNAV",
+  "params" : [ ]
+}, {
+  "name" : "topnav",
+  "type" : "TOPNAV",
+  "params" : [ {
+    "name" : "pShowMenubar",
+    "type" : "string"
+  } ]
+} ]

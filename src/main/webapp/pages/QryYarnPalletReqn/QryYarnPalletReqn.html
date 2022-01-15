@@ -1,0 +1,219 @@
+<wm-page data-ng-controller="QryYarnPalletReqnPageController" pagetitle="Qry Yarn Pallet Reqn" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.StatPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter" class="panel-primary" postmessage="">
+                <wm-layoutgrid columns="1" name="layoutgrid2">
+                    <wm-gridrow name="gridrow3">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn5">
+                            <wm-form-field name="pReqnum" readonly="false" displayname="Requisition number" key="pReqnum" type="number" show="true" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn4">
+                            <wm-form-field name="pOrdnum" readonly="false" displayname="Order Number" key="pOrdnum" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pOrdnumChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn5_1">
+                            <wm-form-field name="pFabseq" readonly="false" displayname="Fabric Seq" key="pFabseq" type="integer" show="true" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn6_1">
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup1">
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="btnQry" margin="15px unset unset unset" on-click="btnQryClick($event, $scope)" disabled="bind:Variables.statForBtnQry.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                <wm-button caption="Reset" type="reset" class="btn-secondary" name="btnReset" margin="15px unset unset unset" on-click="btnResetClick($event, $scope)"></wm-button>
+                            </wm-buttongroup>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-form>
+            <wm-panel iconclass="" autoclose="outsideClick" title="Query Yarn Requisition" name="panel1" class="panel-info">
+                <wm-table title="" dataset="bind:Variables.svGetProcYM1000WPK0_YNREQN_YM142Master.dataSet.poutmaster" navigation="Classic" name="tableMaster" spacing="condensed" showrecordcount="true" gridfirstrowselect="true">
+                    <wm-table-column binding="reqnum" caption="Req #" width="70px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="ordnum" caption="Order" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="fabseq" caption="Fab Seq" width="60px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="yrnid" caption="Id" width="60px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="alcseq" caption="Alloc Seq" width="70px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="yrnmixcode" caption="Yarn Mix" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="wkmchflrid" caption="" width="70px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="qtyreqn" caption="Kgs Reqn" width="70px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="totqtydel" caption="Kgs Del" width="70px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="totqtyret" caption="Kgs Ret" width="70px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="wtotnetqtydel" caption="Net Kgs Del" width="80px" textalignment="right" edit-widget-type="number" type="long" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="totpal" caption="Pal Req" width="60px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="totpaldel" caption="Pal Del" width="60px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="datereq" caption="Req Date" width="90px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="usrid" caption="User" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="Canreq" caption="" widget-type="button" width="80px" textalignment="center" edit-widget-type="text" type="string" accessroles="YNREQN_DELETE" searchable="false" show="true" readonly="false">
+                        <wm-button caption="{{row.getProperty('Canreq') || 'Delete Requisition'}}" show="{{row.getProperty('totqtydel')>0?false:true}}" class="btn-sm btn-primary" iconclass="" on-click="CanreqAction(selectedItemData)" data-ng-class=""></wm-button>
+                    </wm-table-column>
+                    <wm-table-column binding="CanUndelAmt" caption="" widget-type="button" width="110px" textalignment="center" edit-widget-type="text" type="string" accessroles="YNREQN_CXLAMT" searchable="false" show="true" readonly="false">
+                        <wm-button caption="{{row.getProperty('CanUndelAmt') || 'Cancel Undelivered Amount'}}" show="{{row.getProperty('totqtydel') == 0 || row.getProperty('totqtydel') >= row.getProperty('qtyreqn') || row.getProperty('totpaldel') > row.getProperty('totpal')? false : true}}"
+                            class="btn-sm btn-primary" iconclass="" on-click="CanUndelAmtAction(selectedItemData)" data-ng-class=""></wm-button>
+                    </wm-table-column>
+                </wm-table>
+                <wm-layoutgrid name="layoutgrid2_1">
+                    <wm-gridrow name="gridrow2">
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn5_2">
+                            <wm-label padding="unset 0.5em" name="label2" class="col-md-3 control-label" width="95%" caption="Tot Kgs Reqn" textalign="right"></wm-label>
+                            <wm-label padding="unset 0.5em" name="label3" class="displayField col-md-6" width="95%" caption="bind:Variables.svGetProcYM1000WPK0_YNREQN_YM142Master.dataSet.poutmaster[$i].wtotqtyreq" textalign="right"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn6">
+                            <wm-label padding="unset 0.5em" class="col-md-3 control-label" width="95%" caption="Tot Kgs Del" name="label4" textalign="right"></wm-label>
+                            <wm-label padding="unset 0.5em" class="displayField col-md-6" width="95%" name="label9" caption="bind:Variables.svGetProcYM1000WPK0_YNREQN_YM142Master.dataSet.poutmaster[$i].wtotqtydel" textalign="right"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn13">
+                            <wm-label padding="unset 0.5em" class="col-md-3 control-label" width="95%" caption="Tot Kgs Ret" name="label5" textalign="right"></wm-label>
+                            <wm-label padding="unset 0.5em" class="displayField col-md-6" width="95%" name="label10" caption="bind:Variables.svGetProcYM1000WPK0_YNREQN_YM142Master.dataSet.poutmaster[$i].wtotqtyret" textalign="right"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn14">
+                            <wm-label padding="unset 0.5em" class="col-md-3 control-label" width="95%" caption="Tot Net Kgs Del" name="label6" textalign="right"></wm-label>
+                            <wm-label padding="unset 0.5em" class="displayField col-md-6" width="95%" name="label11" caption="bind:Variables.svGetProcYM1000WPK0_YNREQN_YM142Master.dataSet.poutmaster[$i].wtotalNetqtydel" textalign="right"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn16">
+                            <wm-label padding="unset 0.5em" class="col-md-3 control-label" width="95%" caption="Tot Pal Req" name="label7" textalign="right"></wm-label>
+                            <wm-label padding="unset 0.5em" class="displayField col-md-6" width="95%" name="label12" caption="bind:Variables.svGetProcYM1000WPK0_YNREQN_YM142Master.dataSet.poutmaster[$i].wsumtotpal" textalign="right"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn17">
+                            <wm-label padding="unset 0.5em" class="col-md-3 control-label" width="95%" caption="Tot Pal Del" name="label8" textalign="right"></wm-label>
+                            <wm-label padding="unset 0.5em" class="displayField col-md-6" width="95%" name="label13" caption="bind:Variables.svGetProcYM1000WPK0_YNREQN_YM142Master.dataSet.poutmaster[$i].wtotpaldel" textalign="right"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn18"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn19"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn20"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn21"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn22"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn15"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-panel>
+            <wm-panel iconclass="" autoclose="outsideClick" title="Requisition Details" name="panel2" class="panel-info">
+                <wm-table title="" dataset="bind:Variables.svGetProcYM1000WPK0_YNREQN_YM142Detmix.dataSet.poutDetmix" navigation="Classic" name="tableDetmix" spacing="condensed" gridfirstrowselect="true" showrecordcount="true">
+                    <wm-table-column binding="yrnseq" caption="Seq" width="60px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="yrncod" caption="Yarn Code" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="yrnlot" caption="Lot No" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="nyrncnt" caption="Count" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="nfyrncps" caption="Composition" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="yrnori" caption="Origin" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="mixratio" caption="Yrn Frac" width="80px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="wqtyreqn" caption="Estimated  Kgs Reqn" width="110px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                </wm-table>
+                <wm-layoutgrid name="layoutgrid3">
+                    <wm-gridrow name="gridrow4">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn9">
+                            <wm-label padding="unset 0.5em" class="col-md-3 control-label" width="60%" caption="Tot Estimated  Kgs Reqn" name="label16" textalign="right"></wm-label>
+                            <wm-label padding="unset 0.5em" class="displayField col-md-6" width="60%" caption="bind:Variables.svGetProcYM1000WPK0_YNREQN_YM142Detmix.dataSet.poutDetmix[$i].wsumqtyreqn" name="label17" textalign="right"></wm-label>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn10"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn23"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn25"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn26"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn24" horizontalalign="right"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-panel>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Delete Requisition" iconclass="wi wi-delete" name="dialogDelReq">
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Delete And Exit" type="button" margin="unset 0.5em" name="btnDelReq" on-click="btnDelReqClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="btnDelreqExit" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-label padding="unset 0.5em" class="col-md-3 control-label" width="95%" caption="Do you want to delete the requisition ?" textalign="left" name="label19"></wm-label>
+            <wm-layoutgrid name="layoutgrid5">
+                <wm-gridrow name="gridrow5">
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn29_1">
+                        <wm-label padding="unset 0.5em" name="lblTotqtydel" caption="bind:Widgets.tableMaster.selecteditem.totqtydel" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn33">
+                        <wm-label padding="unset 0.5em" name="lblReqnum" caption="bind:Widgets.tableMaster.selecteditem.reqnum" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn34">
+                        <wm-label padding="unset 0.5em" name="lblReqnseq" caption="bind:Widgets.tableMaster.selecteditem.reqnseq" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn35">
+                        <wm-label padding="unset 0.5em" name="lblOrdnum" caption="bind:Widgets.tableMaster.selecteditem.ordnum" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn36">
+                        <wm-label padding="unset 0.5em" name="lblFabseq" caption="bind:Widgets.tableMaster.selecteditem.fabseq" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn30_1"></wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow6">
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn31">
+                        <wm-label padding="unset 0.5em" name="lblYrnid" caption="bind:Widgets.tableMaster.selecteditem.yrnid" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn37">
+                        <wm-label padding="unset 0.5em" name="lblAlcseq" caption="bind:Widgets.tableMaster.selecteditem.alcseq" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn38">
+                        <wm-label padding="unset 0.5em" name="lblYrnmix" caption="bind:Widgets.tableMaster.selecteditem.yrnmixcode" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn39">
+                        <wm-label padding="unset 0.5em" name="lblWrhnum" caption="bind:Widgets.tableMaster.selecteditem.wrhnum" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn40">
+                        <wm-label padding="unset 0.5em" name="lblQtyreqn" caption="bind:Widgets.tableMaster.selecteditem.qtyreqn" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn32"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view3">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Cancel Undelivered Amount" iconclass="" name="dialogCancel">
+            <wm-dialogactions name="dialogactions2">
+                <wm-button class="btn-default" caption="Cancel" type="button" margin="unset 0.5em" name="btnCancel" on-click="btnCancelClick($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="btnCancelExit" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-label padding="unset 0.5em" class="col-md-3 control-label" width="95%" caption="Do you want to Cancel Undelivered Amount ?" textalign="left" name="label30"></wm-label>
+            <wm-layoutgrid name="layoutgrid6">
+                <wm-gridrow name="gridrow7">
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn41">
+                        <wm-label padding="unset 0.5em" name="lblcanReqnum" caption="bind:Widgets.tableMaster.selecteditem.reqnum" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn45">
+                        <wm-label padding="unset 0.5em" name="lblcanReqnseq" caption="bind:Widgets.tableMaster.selecteditem.reqnseq" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn46">
+                        <wm-label padding="unset 0.5em" name="lblcanTotqtydel" caption="bind:Widgets.tableMaster.selecteditem.totqtydel" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn47">
+                        <wm-label padding="unset 0.5em" name="lblcanQtyreqn" caption="bind:Widgets.tableMaster.selecteditem.qtyreqn" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn48">
+                        <wm-label padding="unset 0.5em" name="lblcanTotpaldel" caption="bind:Widgets.tableMaster.selecteditem.totpaldel" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn42">
+                        <wm-label padding="unset 0.5em" name="lblcanTotpal" caption="bind:Widgets.tableMaster.selecteditem.totpal" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow8">
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn43">
+                        <wm-label padding="unset 0.5em" name="lblcanOrdnum" caption="bind:Widgets.tableMaster.selecteditem.ordnum" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn49">
+                        <wm-label padding="unset 0.5em" name="lblcanFabseq" caption="bind:Widgets.tableMaster.selecteditem.fabseq" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn50">
+                        <wm-label padding="unset 0.5em" name="lblcanYrnid" caption="bind:Widgets.tableMaster.selecteditem.yrnid" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn51">
+                        <wm-label padding="unset 0.5em" name="lblcanAlcseq" caption="bind:Widgets.tableMaster.selecteditem.alcseq" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn52">
+                        <wm-label padding="unset 0.5em" name="lblcanYrnmix" caption="bind:Widgets.tableMaster.selecteditem.yrnmixcode" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn44">
+                        <wm-label padding="unset 0.5em" name="lblcanWrhnum" caption="bind:Widgets.tableMaster.selecteditem.wrhnum" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

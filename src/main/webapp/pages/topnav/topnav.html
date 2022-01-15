@@ -1,0 +1,35 @@
+<wm-partial data-ng-controller="topnavPageController" name="topnav" type="topnav">
+    <wm-navbar name="navbar1">
+        <wm-nav type="navbar" class="navbar-left" name="nav1">
+            <wm-nav-item name="nav_item1">
+                <wm-anchor caption="Home" iconclass="glyphicon glyphicon-home" on-click="Actions.goToPage_Main.invoke()" name="anchor1" margin="10px unset unset unset"></wm-anchor>
+            </wm-nav-item>
+            <wm-nav-item name="nav_item13">
+                <wm-menu caption="Yarn Stock" autoclose="outsideClick" name="menuStock" iconclass="" type="anchor" dataset="bind:Variables.statYrnStock.dataSet" itemlabel="label" itemlink="link"></wm-menu>
+            </wm-nav-item>
+            <wm-nav-item name="nav_item14_2">
+                <wm-menu caption="Interstore Transfer" autoclose="outsideClick" name="menuIntrTrns" iconclass="" type="anchor" dataset="bind:Variables.statIntrTrns.dataSet" itemlabel="progname" itemaction="Action"></wm-menu>
+            </wm-nav-item>
+            <wm-nav-item name="nav_item15_2">
+                <wm-menu caption="Query Screens" autoclose="outsideClick" name="menuQrySrns" iconclass="" type="anchor" dataset="bind:Variables.statVwScrns.dataSet" itemlabel="progname" itemaction="Action"></wm-menu>
+            </wm-nav-item>
+            <wm-nav-item name="nav_item16_1">
+                <wm-menu caption="Yarn Delivery" autoclose="outsideClick" name="menuYrnDelivery" iconclass="" type="anchor" dataset="bind:Variables.statYarnDelivery.dataSet" itemlabel="label" show="true" itemlink="link" itemicon="icon"></wm-menu>
+            </wm-nav-item>
+            <wm-nav-item name="nav_item15_4">
+                <wm-menu caption="Yarn Ordering" autoclose="outsideClick" name="menuYrnOrd" iconclass="" type="anchor" dataset="bind:Variables.statYrnOrd.dataSet" itemlabel="progname" itemaction="Action"></wm-menu>
+            </wm-nav-item>
+            <wm-nav-item name="nav_item18">
+                <wm-menu caption="Palletisation" autoclose="outsideClick" name="menuPalletisation" iconclass="" type="anchor" dataset="bind:Variables.staticPalletisation.dataSet" itemlabel="label" itemlink="link" itemicon="icon"></wm-menu>
+            </wm-nav-item>
+            <wm-nav-item name="nav_item2">
+                <wm-anchor caption="Material Stock" iconclass="" name="anchor2" on-click="Actions.goToPage_SpinningMaterialStock.invoke()" margin="10px unset unset unset"></wm-anchor>
+            </wm-nav-item>
+        </wm-nav>
+        <wm-nav type="navbar" class="navbar-right" name="nav2" horizontalalign="left">
+            <wm-nav-item name="nav_item4">
+                <wm-anchor caption="Help" iconclass="glyphicon glyphicon-question-sign" name="anchor3" textalign="right"></wm-anchor>
+            </wm-nav-item>
+        </wm-nav>
+    </wm-navbar>
+</wm-partial>

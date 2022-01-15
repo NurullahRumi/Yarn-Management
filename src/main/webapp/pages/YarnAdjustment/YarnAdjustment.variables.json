@@ -1,0 +1,258 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1525688763582",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "title",
+      "value" : "bind:Variables.statPrgName.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "alerttype",
+      "value" : "information",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "statForBtnQry" : {
+    "_id" : "wm-statForBtnQry-wm.Variable-1580298568786",
+    "name" : "statForBtnQry",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Y",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgid" : {
+    "_id" : "wm-statPrgid-wm.Variable-1525688341702",
+    "name" : "statPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "YM1000W55",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgName" : {
+    "_id" : "wm-statPrgName-wm.Variable-1525688399606",
+    "name" : "statPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Yarn Stock Adjustment"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svProcYM1000PKO_YM155CpltYrn" : {
+    "_id" : "wm-svProcYM1000PKO_YM155CpltYrn-wm.ServiceVariable-1525942058018",
+    "name" : "svProcYM1000PKO_YM155CpltYrn",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pprgid",
+      "value" : "bind:Variables.statPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pYrncod",
+      "value" : "bind:Widgets.lblYrncod.caption",
+      "type" : "string"
+    }, {
+      "target" : "pcomments",
+      "value" : "bind:Widgets.textareaCmpltCmt.datavalue",
+      "type" : "string"
+    } ],
+    "service" : "pfsdb",
+    "operation" : "executeProcYM1000PKO_YM155CpltYrn",
+    "operationId" : "ProcedureExecutionController_executeProcYM1000PKO_YM155CpltYrn",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svProcYM1000PKO_YM155CpltYrnonSuccess($event, $scope)",
+    "onError" : "svProcYM1000PKO_YM155CpltYrnonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svProcYM1000PKO_YM155DETAIL" : {
+    "_id" : "wm-svProcYM1000PKO_YM155DETAIL-wm.ServiceVariable-1525769051744",
+    "name" : "svProcYM1000PKO_YM155DETAIL",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pprgid",
+      "value" : "bind:Variables.statPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pYrncod",
+      "value" : "bind:Widgets.lblYrncod.caption",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.ProcYm1000pkoYm155detailResponse",
+    "service" : "pfsdb",
+    "operation" : "executeProcYM1000PKO_YM155DETAIL",
+    "operationId" : "ProcedureExecutionController_executeProcYM1000PKO_YM155DETAIL",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svProcYM1000PKO_YM155Master" : {
+    "_id" : "wm-svProcYM1000PKO_YM155Master-wm.ServiceVariable-1525687818162",
+    "name" : "svProcYM1000PKO_YM155Master",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pprgid",
+      "value" : "bind:Variables.statPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pYRNCOD",
+      "value" : "bind:Widgets.formFilter.formWidgets.p_YRNCOD.datavalue",
+      "type" : "string"
+    } ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.procedure.ProcYm1000pkoYm155masterResponse",
+    "service" : "pfsdb",
+    "operation" : "executeProcYM1000PKO_YM155Master",
+    "operationId" : "ProcedureExecutionController_executeProcYM1000PKO_YM155Master",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svProcYM1000PKO_YM155MasteronSuccess($event, $scope)",
+    "onError" : "svProcYM1000PKO_YM155MasteronError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svProcYM1000PKO_YM155UpdDetail" : {
+    "_id" : "wm-svProcYM1000PKO_YM155UpdDetail-wm.ServiceVariable-1526553983490",
+    "name" : "svProcYM1000PKO_YM155UpdDetail",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pprgid",
+      "value" : "bind:Variables.statPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pYrncod",
+      "value" : "bind:Widgets.table1.selecteditem.yrncod",
+      "type" : "string"
+    }, {
+      "target" : "pWRHNUM",
+      "value" : "bind:Widgets.table1.selecteditem.wrhnum",
+      "type" : "string"
+    }, {
+      "target" : "pNEWQTYPHYS",
+      "value" : "bind:Widgets.txtUpdNEW_QTYPHYS.datavalue",
+      "type" : "number"
+    }, {
+      "target" : "pNEWQTYAVAIL",
+      "value" : "bind:Widgets.txtUpdNEW_QTYAVAIL.datavalue",
+      "type" : "number"
+    }, {
+      "target" : "pcomments",
+      "value" : "bind:Widgets.textareaUpdRemarks.datavalue",
+      "type" : "string"
+    } ],
+    "service" : "pfsdb",
+    "operation" : "executeProcYM1000PKO_YM155UpdDetail",
+    "operationId" : "ProcedureExecutionController_executeProcYM1000PKO_YM155UpdDetail",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svProcYM1000PKO_YM155UpdDetailonSuccess($event, $scope)",
+    "onError" : "svProcYM1000PKO_YM155UpdDetailonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  },
+  "svQrySy9200pk0FormPath" : {
+    "_id" : "wm-svQrySy9200pk0FormPath-wm.ServiceVariable-1577514555428",
+    "name" : "svQrySy9200pk0FormPath",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.query.QrySy9200pk0formPathResponse",
+    "service" : "pfsdb",
+    "operation" : "executeQrySy9200pk0FormPath",
+    "operationId" : "QueryExecutionController_executeQrySy9200pk0FormPath",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "onSuccess" : "svQrySy9200pk0FormPathonSuccess($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
+  "svQrySy9200pk0Progurl" : {
+    "_id" : "wm-svQrySy9200pk0Progurl-wm.ServiceVariable-1530009627880",
+    "name" : "svQrySy9200pk0Progurl",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "com.mu.cmt.pfs.pfsdb.models.query.QrySy9200pk0progurlResponse",
+    "service" : "pfsdb",
+    "operation" : "executeQrySy9200pk0Progurl",
+    "operationId" : "QueryExecutionController_executeQrySy9200pk0Progurl",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svQrySy9200pk0ProgurlonSuccess($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  }
+}

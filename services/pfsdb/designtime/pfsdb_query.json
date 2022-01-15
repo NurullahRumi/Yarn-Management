@@ -1,0 +1,839 @@
+{
+  "getqrymindate" : {
+    "name" : "getqrymindate",
+    "description" : "minimum date for receive  date",
+    "version" : "V2",
+    "queryString" : "select sysdate - 7 mindate\nfrom dual",
+    "countQueryString" : "select count(*) from (select sysdate - 7 mindate\nfrom dual) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.GetqrymindateResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "MINDATE",
+        "fieldName" : "mindate",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.time.LocalDateTime",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qrySy9200pk0FormPath" : {
+    "name" : "qrySy9200pk0FormPath",
+    "description" : "Callin Oracle forms",
+    "version" : "V2",
+    "queryString" : "select sy9200pk0.sproc_call_fmbpath(:pFmbpath, :pOtherParams) progurl\nfrom dual",
+    "countQueryString" : "select count(*) from (select sy9200pk0.sproc_call_fmbpath(:pFmbpath, :pOtherParams) progurl\nfrom dual) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "pFmbpath",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "$scope.Variables.svQrySy9200pk0FormPath.setInput(\"\",);",
+      "required" : false
+    }, {
+      "name" : "pOtherParams",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "XX",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QrySy9200pk0formPathResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "PROGURL",
+        "fieldName" : "progurl",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qrySy9200pk0Progurl" : {
+    "name" : "qrySy9200pk0Progurl",
+    "description" : "fetch program url",
+    "version" : "V2",
+    "queryString" : "select sy9200pk0.sproc_call_wmakerapp(:pWmprogid, :pParamList) progurl\nfrom dual",
+    "countQueryString" : "select count(*) from (select sy9200pk0.sproc_call_wmakerapp(:pWmprogid, :pParamList) progurl\nfrom dual) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "pWmprogid",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "YM1000W09",
+      "required" : false
+    }, {
+      "name" : "pParamList",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "pYrncod",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QrySy9200pk0progurlResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "SINGLE",
+      "properties" : [ {
+        "name" : "PROGURL",
+        "fieldName" : "progurl",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM100_NEWSTDWGT" : {
+    "name" : "qryYM100_NEWSTDWGT",
+    "description" : "Get NEWSTDWGT",
+    "version" : "V2",
+    "queryString" : "select distinct qtyphys from ymt500 where yrnmixcode = '1'||:yrncod and nvl(pallettype,'L') <> 'L'",
+    "countQueryString" : "select count(*) from (select distinct qtyphys from ymt500 where yrnmixcode = '1'||:yrncod and nvl(pallettype,'L') <> 'L') wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "yrncod",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : null,
+      "testValue" : "303IP17511007",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm100NewstdwgtResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "QTYPHYS",
+        "fieldName" : "qtyphys",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Double",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM100_NYRNCLR" : {
+    "name" : "qryYM100_NYRNCLR",
+    "description" : "List Of NYRNCLR",
+    "version" : "V2",
+    "queryString" : "select nyrnclr, nyrnclr||'-'||nyrncdes nyrncdes\nfrom ymt025\nwhere ymt025.sts is null\nand ymt025.yrnuseind ='Y'\norder by 1",
+    "countQueryString" : "select count(*) from (select nyrnclr, nyrnclr||'-'||nyrncdes nyrncdes\nfrom ymt025\nwhere ymt025.sts is null\nand ymt025.yrnuseind ='Y'\norder by 1) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm100NyrnclrResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "NYRNCLR",
+        "fieldName" : "nyrnclr",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "NYRNCDES",
+        "fieldName" : "nyrncdes",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM100_NYRNQLTY" : {
+    "name" : "qryYM100_NYRNQLTY",
+    "description" : "List of NYRNQLTY",
+    "version" : "V2",
+    "queryString" : "select nyrnqlty, nyrnqlty||'-'||nyrnqltydes nyrnqltydes\nfrom ymt020\nwhere sts is null\norder by 1",
+    "countQueryString" : "select count(*) from (select nyrnqlty, nyrnqlty||'-'||nyrnqltydes nyrnqltydes\nfrom ymt020\nwhere sts is null\norder by 1) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm100NyrnqltyResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "NYRNQLTY",
+        "fieldName" : "nyrnqlty",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "NYRNQLTYDES",
+        "fieldName" : "nyrnqltydes",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM100_SURPLUSCAT" : {
+    "name" : "qryYM100_SURPLUSCAT",
+    "description" : "List Of SURPLUSCAT",
+    "version" : "V2",
+    "queryString" : "select itemcod, itemcod||'-'||itemdes itemdes\nfrom rft850\nwhere rft850.lovfld = 'YRNSURPLUS'\nand sts is null\norder by 1",
+    "countQueryString" : "select count(*) from (select itemcod, itemcod||'-'||itemdes itemdes\nfrom rft850\nwhere rft850.lovfld = 'YRNSURPLUS'\nand sts is null\norder by 1) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm100SurpluscatResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ITEMCOD",
+        "fieldName" : "itemcod",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "ITEMDES",
+        "fieldName" : "itemdes",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM100_YRNQLTYCARE" : {
+    "name" : "qryYM100_YRNQLTYCARE",
+    "description" : "List Of YRNQLTYCARE",
+    "version" : "V2",
+    "queryString" : "select  itemcod, itemcod||'-'||itemdes  itemdes\nfrom rft850\nwhere rft850.lovfld = 'YRNQLTYCAR'\nand sts is null\norder by 1",
+    "countQueryString" : "select count(*) from (select  itemcod, itemcod||'-'||itemdes  itemdes\nfrom rft850\nwhere rft850.lovfld = 'YRNQLTYCAR'\nand sts is null\norder by 1) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm100YrnqltycareResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ITEMCOD",
+        "fieldName" : "itemcod",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "ITEMDES",
+        "fieldName" : "itemdes",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM650_IssueMATERIALCODE" : {
+    "name" : "qryYM650_IssueMATERIALCODE",
+    "description" : "Get MATERIALCODE",
+    "version" : "V2",
+    "queryString" : "select MATERIALCODE\n      from YMT1350\n      where MATUSERCODE = :pWMATUSERCODE\n      order by MATERIALCODE",
+    "countQueryString" : "select count(*) from (select MATERIALCODE\n      from YMT1350\n      where MATUSERCODE = :pWMATUSERCODE\n      order by MATERIALCODE) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "pWMATUSERCODE",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "PIMA COTTON 2011",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm650IssueMaterialcodeResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "MATERIALCODE",
+        "fieldName" : "materialcode",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM650_IssueTSTRCOD" : {
+    "name" : "qryYM650_IssueTSTRCOD",
+    "description" : "List of TSTRCOD",
+    "version" : "V2",
+    "queryString" : "select itemdes3,itemcod,itemdes\nfrom rft850\nwhere rft850.tab='YMT1300'\nand lovfld='SMLSTORES'\nand nvl(sts,'?')<>'C'\nand itemcod<>:fstrcod",
+    "countQueryString" : "select count(*) from (select itemdes3,itemcod,itemdes\nfrom rft850\nwhere rft850.tab='YMT1300'\nand lovfld='SMLSTORES'\nand nvl(sts,'?')<>'C'\nand itemcod<>:fstrcod) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "fstrcod",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : null,
+      "testValue" : "SMLSTR",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm650IssueTstrcodResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ITEMDES3",
+        "fieldName" : "itemdes3",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "ITEMCOD",
+        "fieldName" : "itemcod",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "ITEMDES",
+        "fieldName" : "itemdes",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM650_IssueTrnnum" : {
+    "name" : "qryYM650_IssueTrnnum",
+    "description" : "Qry Issue Trnnum",
+    "version" : "V2",
+    "queryString" : "select count('*') IssueTrnnum\n\tfrom ymt1310\n\twhere trnnum=:ptrnnum\n\tand nvl(totalwgt,0)=0",
+    "countQueryString" : "select count(*) from (select count('*') IssueTrnnum\n\tfrom ymt1310\n\twhere trnnum=:ptrnnum\n\tand nvl(totalwgt,0)=0) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "ptrnnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "SRPIS130000263",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm650IssueTrnnumResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "SINGLE",
+      "properties" : [ {
+        "name" : "ISSUETRNNUM",
+        "fieldName" : "issuetrnnum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.math.BigDecimal",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM650_MATCPS" : {
+    "name" : "qryYM650_MATCPS",
+    "description" : "Get MATCPS",
+    "version" : "V2",
+    "queryString" : "select ncpstyp,ncpstypdes\n\t\t  from ymt015\n\t\t  where sts is null",
+    "countQueryString" : "select count(*) from (select ncpstyp,ncpstypdes\n\t\t  from ymt015\n\t\t  where sts is null) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm650MatcpsResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "NCPSTYP",
+        "fieldName" : "ncpstyp",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "NCPSTYPDES",
+        "fieldName" : "ncpstypdes",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM650_MATDIAMETER_UOM" : {
+    "name" : "qryYM650_MATDIAMETER_UOM",
+    "description" : "Get MATDIAMETER_UOM list",
+    "version" : "V2",
+    "queryString" : "select itemcod\n\t    from rft850\n  \t  where lovfld = 'FINENESS'\n\t    and sts is null",
+    "countQueryString" : "select count(*) from (select itemcod\n\t    from rft850\n  \t  where lovfld = 'FINENESS'\n\t    and sts is null) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm650MatdiameterUomResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ITEMCOD",
+        "fieldName" : "itemcod",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM650_MATERIALCODE" : {
+    "name" : "qryYM650_MATERIALCODE",
+    "description" : "List MATERIALCODE",
+    "version" : "V2",
+    "queryString" : "select MATERIALCODE\n      from YMT1350\n      where MATUSERCODE = :pWMATUSERCODE\n      order by MATERIALCODE",
+    "countQueryString" : "select count(*) from (select MATERIALCODE\n      from YMT1350\n      where MATUSERCODE = :pWMATUSERCODE\n      order by MATERIALCODE) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "pWMATUSERCODE",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "PIMA COTTON 2011",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm650MaterialcodeResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "MATERIALCODE",
+        "fieldName" : "materialcode",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM650_MATORI" : {
+    "name" : "qryYM650_MATORI",
+    "description" : "Get MATORI list",
+    "version" : "V2",
+    "queryString" : "select fibori,supdes,fibdes\n\n\t\t\tfrom ymt053\n\t\t\twhere sts is null",
+    "countQueryString" : "select count(*) from (select fibori,supdes,fibdes\n\n\t\t\tfrom ymt053\n\t\t\twhere sts is null) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm650MatoriResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "FIBORI",
+        "fieldName" : "fibori",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "SUPDES",
+        "fieldName" : "supdes",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "FIBDES",
+        "fieldName" : "fibdes",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM650_TSTRCOD" : {
+    "name" : "qryYM650_TSTRCOD",
+    "description" : "Get TSTRCOD",
+    "version" : "V2",
+    "queryString" : "select itemdes3,itemcod,itemdes\n\t\t\tfrom rft850\n\t\t\twhere rft850.tab='YMT1300'\n\t\t\tand lovfld='SMLSTORES'\n\t\t\tand nvl(sts,'?')<>'C'\n\t\t\tand nvl(itemdes2,'?')='Y'",
+    "countQueryString" : "select count(*) from (select itemdes3,itemcod,itemdes\n\t\t\tfrom rft850\n\t\t\twhere rft850.tab='YMT1300'\n\t\t\tand lovfld='SMLSTORES'\n\t\t\tand nvl(sts,'?')<>'C'\n\t\t\tand nvl(itemdes2,'?')='Y') wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm650TstrcodResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ITEMDES3",
+        "fieldName" : "itemdes3",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "ITEMCOD",
+        "fieldName" : "itemcod",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "ITEMDES",
+        "fieldName" : "itemdes",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM650_WGTUOM" : {
+    "name" : "qryYM650_WGTUOM",
+    "description" : "Get WGTUOM list",
+    "version" : "V2",
+    "queryString" : "select itemcod\nfrom rft850\nwhere lovfld='MATUOM'\nand tab='YMT1350'\nand nvl(sts, '?') <> 'C'",
+    "countQueryString" : "select count(*) from (select itemcod\nfrom rft850\nwhere lovfld='MATUOM'\nand tab='YMT1350'\nand nvl(sts, '?') <> 'C') wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm650WgtuomResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ITEMCOD",
+        "fieldName" : "itemcod",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM650_itemcod" : {
+    "name" : "qryYM650_itemcod",
+    "description" : "Get itemcod",
+    "version" : "V2",
+    "queryString" : "select itemcod,itemdes\n \tfrom rft850\n \twhere tab='YMT1350'\n \tand lovfld='MATITEMTYP'\n \tand nvl(sts,'?')<>'C'",
+    "countQueryString" : "select count(*) from (select itemcod,itemdes\n \tfrom rft850\n \twhere tab='YMT1350'\n \tand lovfld='MATITEMTYP'\n \tand nvl(sts,'?')<>'C') wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm650ItemcodResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "ITEMCOD",
+        "fieldName" : "itemcod",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "ITEMDES",
+        "fieldName" : "itemdes",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYM650_receiptTrnnum" : {
+    "name" : "qryYM650_receiptTrnnum",
+    "description" : "Get receipt Trnnum",
+    "version" : "V2",
+    "queryString" : "select count('*') receiptTrnnum\n\tfrom ymt1310\n\twhere trnnum=:ptrnnum\n\tand nvl(totalwgt,0)=0",
+    "countQueryString" : "select count(*) from (select count('*') receiptTrnnum\n\tfrom ymt1310\n\twhere trnnum=:ptrnnum\n\tand nvl(totalwgt,0)=0) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "ptrnnum",
+      "type" : "string",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "SRP180000209",
+      "required" : false
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYm650ReceiptTrnnumResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "SINGLE",
+      "properties" : [ {
+        "name" : "RECEIPTTRNNUM",
+        "fieldName" : "receipttrnnum",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.math.BigDecimal",
+          "list" : false
+        }
+      } ]
+    }
+  },
+  "qryYYM650_MATCLR" : {
+    "name" : "qryYYM650_MATCLR",
+    "description" : "Get MATCLR",
+    "version" : "V2",
+    "queryString" : "select nyrnclr,decode(nyrnclr,'YD',null,'TD', null, 'SD', null, 'DD', null, 'MD', null, nyrncdes)nyrnclrdes\n\t\n\t  \t  from ymt025\n\t\t    where  fibuseind = 'Y'\n\t\t    and sts is null",
+    "countQueryString" : "select count(*) from (select nyrnclr,decode(nyrnclr,'YD',null,'TD', null, 'SD', null, 'DD', null, 'MD', null, nyrncdes)nyrnclrdes\n\t\n\t  \t  from ymt025\n\t\t    where  fibuseind = 'Y'\n\t\t    and sts is null) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ ],
+    "response" : {
+      "typeRef" : "com.mu.cmt.pfs.pfsdb.models.query.QryYym650MatclrResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "NYRNCLR",
+        "fieldName" : "nyrnclr",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "NYRNCLRDES",
+        "fieldName" : "nyrnclrdes",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
+  }
+}

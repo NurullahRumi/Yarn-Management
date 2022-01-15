@@ -1,0 +1,176 @@
+<wm-page data-ng-controller="AddMultipleYarnPalletisationPageController" pagetitle="Add Multiple Yarn Palletisation" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.StatPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-panel iconclass="" autoclose="outsideClick" title="Multiple Yarn Palletisation" name="panelMulYrnPall" class="panel-primary">
+                <wm-layoutgrid name="layoutgrid4">
+                    <wm-gridrow name="gridrow4_1">
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn15_1">
+                            <wm-composite name="composite1">
+                                <wm-label class="col-md-3 control-label" name="label1" caption="Warehouse"></wm-label>
+                                <wm-container class="col-md-9" name="container1" width="50%">
+                                    <wm-select name="selectWrhnum" placeholder="Enter Value" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430RGWrhnum.dataSet.poutWrhnum" datafield="strcod" displayfield="strdes"></wm-select>
+                                </wm-container>
+                            </wm-composite>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn21"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn22"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn19"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn19_1"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-panel iconclass="" autoclose="outsideClick" title="Source" name="panelSource" class="panel-info">
+                    <wm-table nodatamessage="" deletemessage="" confirmdelete="Are you sure you want to delete this?" updatemessage="" insertmessage="" on-rowinsert="TableSourceRowinsert($event, $scope, $rowData)" on-beforerowinsert="TableSourceBeforerowinsert($event, $scope, $rowData, options)"
+                        width="50%" showrecordcount="true" spacing="condensed" navigation="Classic" dataset="bind:Variables.statViewSource.dataSet" title="" name="TableSource" editmode="inline">
+                        <wm-table-column binding="SRCPALLETID" caption="Pallet Id" width="80px" edit-widget-type="text" type="string" show="true" readonly="false" on-change="SRCPALLETIDOnChange($event, $scope, $rowData, newVal)"></wm-table-column>
+                        <wm-table-column binding="WPALLETTYPE" caption="Pallet Type" width="50px" edit-widget-type="text" type="string" show="true" readonly="false" disabled="bind:true"></wm-table-column>
+                        <wm-table-column binding="SRCYRNMIXCODE" caption="Yarnmixcode" width="90px" edit-widget-type="text" type="string" show="true" readonly="false" disabled="bind:Widgets.txtForPalletId.datavalue == 'Y' ? true : false"
+                            on-change="SRCYRNMIXCODEOnChange($event, $scope, rowData)"></wm-table-column>
+                        <wm-table-column binding="SRCKGS" caption="Src kgs" width="60px" textalignment="right" edit-widget-type="text" type="string" show="true" readonly="false" disabled="bind:Widgets.txtForPalletId.datavalue == 'Y' ? true : false"
+                            on-change="SRCKGSOnChange($event, $scope, rowData)"></wm-table-column>
+                        <wm-table-column binding="rowOperations" caption="" width="40px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                        <wm-table-action key="addNewRow" display-name="Add" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRowAction($event)" shortcutkey="" disabled="false" widget-type="button"></wm-table-action>
+                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow()" disabled="false"></wm-table-row-action>
+                        <wm-table-row-action key="updaterow" display-name="" show="false" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow()" disabled="false"></wm-table-row-action>
+                    </wm-table>
+                    <wm-text show="bind:false" name="txtForPalletId"></wm-text>
+                </wm-panel>
+                <wm-panel iconclass="" autoclose="outsideClick" title="Destination" name="panelDestination" class="panel-info">
+                    <wm-layoutgrid name="layoutgrid2">
+                        <wm-gridrow name="gridrow2">
+                            <wm-gridcolumn columnwidth="6" name="gridcolumn3" padding="unset 10px unset unset">
+                                <wm-table on-rowdelete="TableDestRowdelete($event, $scope, $rowData)" nodatamessage="" deletemessage="" confirmdelete="Are you sure you want to delete this?" updatemessage="" insertmessage="" on-rowinsert="TableDestRowinsert($event, $scope, $rowData)"
+                                    on-beforerowinsert="TableDestBeforerowinsert($event, $scope, $rowData, options)" showrecordcount="true" spacing="condensed" navigation="Classic" dataset="bind:Variables.statViewDest.dataSet" title="" name="TableDest" editmode="inline">
+                                    <wm-table-column disabled="bind:true" readonly="false" show="true" type="string" edit-widget-type="text" textalignment="right" width="50px" caption="Pallet Seq" binding="DESTPALLETSEQ"></wm-table-column>
+                                    <wm-table-column on-change="PALLETTYPEOnChange($event, $scope, $rowData, newVal)" readonly="false" show="true" displayfield="itemdes" placeholder="Enter Value" datafield="itemcod" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430RGPalletTyp.dataSet.poutPalTyp"
+                                        type="string" edit-widget-type="select" width="60px" caption="Pallet type" binding="PALLETTYPE"></wm-table-column>
+                                    <wm-table-column on-change="ORDNUMOnChange($event, $scope, $rowData, newVal)" readonly="false" show="true" type="string" edit-widget-type="text" width="70px" caption="Order No" binding="ORDNUM"></wm-table-column>
+                                    <wm-table-column on-change="FABSEQOnChange($event, $scope, $rowData, newVal)" readonly="false" show="true" displayfield="fabseq" placeholder="Enter Value" datafield="fabseq" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430RGFabseq.dataSet.poutFabseq"
+                                        type="string" edit-widget-type="select" textalignment="right" width="60px" caption="Fab Seq" binding="FABSEQ"></wm-table-column>
+                                    <wm-table-column on-change="PALMODREQNUMOnChange($event, $scope, rowData)" readonly="false" show="true" displayfield="palseq" placeholder="Enter Value" datafield="palseq" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430RGReqnum.dataSet.poutReqnum"
+                                        type="string" edit-widget-type="select" textalignment="right" width="60px" caption="Pal  Request" binding="PALMODREQNUM"></wm-table-column>
+                                    <wm-table-column disabled="bind:Widgets.txtForPalTyp.datavalue == 'Y' ? true : false" readonly="false" show="true" type="string" edit-widget-type="text" textalignment="right" width="60px" caption="No of Pallets"
+                                        binding="WNUMPAL"></wm-table-column>
+                                    <wm-table-column disabled="bind:Widgets.txtForPalTyp.datavalue == 'Y' ? false : true" readonly="false" show="true" fractionsize="2" formatpattern="numberToString" type="string" edit-widget-type="text"
+                                        textalignment="right" width="60px" caption="Total Kgs" binding="PALWGT"></wm-table-column>
+                                    <wm-table-column show="true" searchable="false" sortable="false" readonly="true" type="custom" edit-widget-type="text" width="60px" caption="" binding="rowOperations"></wm-table-column>
+                                    <wm-table-action widget-type="button" disabled="false" shortcutkey="" action="addNewRowAction($event)" title="New" iconclass="wi wi-plus" class="btn-primary" show="true" display-name="Add" key="addNewRow"></wm-table-action>
+                                    <wm-table-row-action disabled="false" action="deleteRow()" title="Delete" iconclass="wi wi-trash" class="btn-transparent" show="true" display-name="" key="deleterow"></wm-table-row-action>
+                                    <wm-table-row-action disabled="false" action="editRow()" title="Edit" iconclass="wi wi-pencil" class="btn-transparent" show="false" display-name="" key="updaterow"></wm-table-row-action>
+                                </wm-table>
+                                <wm-text show="bind:false" name="txtForPalTyp"></wm-text>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="6" name="gridcolumn4" padding="unset unset unset 10px">
+                                <wm-table nodatamessage="" deletemessage="" confirmdelete="Are you sure you want to delete this?" updatemessage="" insertmessage="" on-rowinsert="TableDestDelRowinsert($event, $scope, $rowData)" on-beforerowinsert="TableDestDelBeforerowinsert($event, $scope, $rowData, options)"
+                                    showrecordcount="true" spacing="condensed" navigation="Classic" dataset="bind:Variables.statDestDel.dataSet" title="" name="TableDestDel" editmode="inline">
+                                    <wm-table-column on-change="DESTPALLET_SEQOnChange($event, $scope, $rowData, newVal)" readonly="false" show="true" type="string" edit-widget-type="text" textalignment="right" width="50px" caption="Pallet Seq" binding="DESTPALLET_SEQ"></wm-table-column>
+                                    <wm-table-column on-change="YRNCODOnChange($event, $scope, $rowData, newVal)" on-click="YRNCODOnClick($event, $scope, rowData)" readonly="false" show="true" type="string" edit-widget-type="text" width="80px"
+                                        caption="Yarn Code" binding="YRNCOD"></wm-table-column>
+                                    <wm-table-column readonly="false" show="true" type="string" edit-widget-type="text" textalignment="right" width="60px" caption="Cone Wgt" binding="CONWGT"></wm-table-column>
+                                    <wm-table-column on-change="CONCAROnChange($event, $scope, rowData)" disabled="bind:Widgets.txtforDestDel.datavalue == 'Y' ? false : true" readonly="false" show="true" type="string" edit-widget-type="text"
+                                        textalignment="right" width="60px" caption="Cones  /Ctn" binding="CONCAR"></wm-table-column>
+                                    <wm-table-column on-change="CARPALLOnChange($event, $scope, rowData)" disabled="bind:Widgets.txtforDestDel.datavalue == 'Y' ? false : true" readonly="false" show="true" type="string" edit-widget-type="text"
+                                        textalignment="right" width="60px" caption="Ctns/ Pallet" binding="CARPALL"></wm-table-column>
+                                    <wm-table-column on-change="NUMCONESOnChange($event, $scope, rowData)" disabled="bind:Widgets.txtforDestDel.datavalue == 'Y' ? true : false" readonly="false" show="true" fractionsize="2" formatpattern="numberToString"
+                                        type="string" edit-widget-type="text" textalignment="right" width="60px" caption="No of Cones" binding="NUMCONES"></wm-table-column>
+                                    <wm-table-column disabled="bind:true" readonly="false" show="true" fractionsize="2" formatpattern="numberToString" type="string" edit-widget-type="text" textalignment="right" width="60px" caption="Kgs"
+                                        binding="PALWGT"></wm-table-column>
+                                    <wm-table-column show="true" searchable="false" sortable="false" readonly="true" type="custom" edit-widget-type="text" width="60px" caption="" binding="rowOperations"></wm-table-column>
+                                    <wm-table-action widget-type="button" disabled="false" shortcutkey="" action="addNewRowAction($event)" title="New" iconclass="wi wi-plus" class="btn-primary" show="true" display-name="Add" key="addNewRow"></wm-table-action>
+                                    <wm-table-row-action disabled="false" action="editRow()" title="Edit" iconclass="wi wi-pencil" class="btn-transparent" show="false" display-name="" key="updaterow"></wm-table-row-action>
+                                    <wm-table-row-action disabled="false" action="deleteRow()" title="Delete" iconclass="wi wi-trash" class="btn-transparent" show="true" display-name="" key="deleterow"></wm-table-row-action>
+                                </wm-table>
+                                <wm-text show="bind:false" name="txtforDestDel"></wm-text>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-panel>
+                <wm-layoutgrid name="layoutgrid2_1">
+                    <wm-gridrow name="gridrow2_1">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn3_1"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn4_1" horizontalalign="center"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn7" horizontalalign="center">
+                            <wm-button class="btn-default" caption="Generate Cartons" type="button" margin="unset 0.5em" name="btnGenLoose"></wm-button>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn8" horizontalalign="center">
+                            <wm-button on-click="btnCpYrnMixClick($event, $scope)" class="btn-default" caption="Copy from Yarnmix" type="button" margin="unset 0.5em" name="btnCpYrnMix"></wm-button>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn9"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn10"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-panel>
+            <wm-layoutgrid name="layoutgrid3">
+                <wm-gridrow name="gridrow4">
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn11"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn12"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn15" horizontalalign="center">
+                        <wm-button class="btn-default" caption="Save" type="button" margin="unset 0.5em" name="BtnSav" width="45%" on-click="BtnSavClick($event, $scope)"></wm-button>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn16"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn17"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn18"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="List of yarn code" iconclass="wi wi-list" name="dialogRGYrncod">
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Select And Exit" type="button" margin="unset 0.5em" name="btnRGYrncodSve" on-click="btnRGYrncodSveClick($event, $scope)"></wm-button>
+            </wm-dialogactions>
+            <wm-table title="" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430RGYrncod.dataSet.poutYrncod" navigation="Classic" name="tableRGYrncod" spacing="condensed" showrecordcount="true">
+                <wm-table-column binding="yrncod" caption="Yrncod" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="conwgt" caption="Conwgt" width="80px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+            </wm-table>
+        </wm-dialog>
+    </wm-view>
+    <wm-view name="view3" class="dialog-view">
+        <wm-dialog name="dialogCpyYrnmix" dialogtype="design-dialog" modal="true" title="Copy Yarn Mix Code" iconclass="wi wi-content-copy">
+            <wm-layoutgrid name="layoutgrid5">
+                <wm-gridrow name="gridrow5">
+                    <wm-gridcolumn name="gridcolumn20" columnwidth="12">
+                        <wm-composite name="composite2">
+                            <wm-label caption="YrnmixCode" name="label7" class="col-md-3 control-label"></wm-label>
+                            <wm-container name="container2" class="col-md-9">
+                                <wm-text width="50%" name="txtCpyYrnMix"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow6">
+                    <wm-gridcolumn name="gridcolumn22_1" columnwidth="12">
+                        <wm-composite name="composite3">
+                            <wm-label caption="Total qty required" name="label8" class="col-md-3 control-label"></wm-label>
+                            <wm-container name="container3" class="col-md-9">
+                                <wm-text width="50%" name="txtCpyQty"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow7">
+                    <wm-gridcolumn name="gridcolumn24" columnwidth="12">
+                        <wm-composite name="composite4">
+                            <wm-label caption="No of Pallets" name="label9" class="col-md-3 control-label"></wm-label>
+                            <wm-container name="container4" class="col-md-9">
+                                <wm-text width="50%" name="txtCpyNumpal"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions2">
+                <wm-button on-click="btnCpyYrnMixClick($event, $scope)" name="btnCpyYrnMix" class="btn-default" caption="Copy and Exit" type="button" margin="unset 0.5em"></wm-button>
+                <wm-button name="button5" class="btn-primary" caption="Exit" on-click="closeDialog()" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

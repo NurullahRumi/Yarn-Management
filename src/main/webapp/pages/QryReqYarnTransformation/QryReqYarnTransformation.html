@@ -1,0 +1,84 @@
+<wm-page data-ng-controller="QryReqYarnTransformationPageController" pagetitle="Qry Req Yarn Transformation" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.StatPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter" class="panel-primary">
+                <wm-layoutgrid columns="1" name="layoutgrid2">
+                    <wm-gridrow name="gridrow3">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn5">
+                            <wm-form-field name="pTrnReqno" readonly="false" displayname="Request No" key="pTrnReqno" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pTrnReqnoChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn12">
+                            <wm-form-field name="pWrhnum" readonly="false" displayname="Warehouse" key="pWrhnum" type="string" show="true" widget="select" inputtype="text" placeholder="Enter value" dataset="bind:Variables.svGetProcYM1000PK0_DELFLR_YM322LstOfWrhnum.dataSet.poutLstOfWrhnum"
+                                datafield="strcod" displayfield="strcod" on-change="pWrhnumChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn13">
+                            <wm-form-field name="pFromReqDat" readonly="false" displayname="From" key="pFromReqDat" type="string" show="true" widget="date" datepattern="dd-MMM-yyyy" placeholder="Select date"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn14">
+                            <wm-form-field name="pToReqDat" readonly="false" displayname="To" key="pToReqDat" type="string" show="true" widget="date" datepattern="dd-MMM-yyyy" placeholder="Select date"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn15">
+                            <wm-form-field name="pSrcYrncod" readonly="false" displayname="Src Yarn Code" key="pSrcYrncod" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pSrcYrncodChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn16">
+                            <wm-form-field name="pDestYrncod" readonly="false" displayname="Dest Yarn Code" key="pDestYrncod" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pDestYrncodChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow4">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn6">
+                            <wm-form-field name="pSts" readonly="false" displayname="Status" key="pSts" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value" on-change="pStsChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn17">
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup1">
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="btnQry" margin="15px unset unset unset" on-click="btnQryClick($event, $scope)" disabled="bind:Variables.statForBtnQry.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                <wm-button caption="Reset" type="reset" class="btn-secondary" name="btnReset" margin="15px unset unset unset" on-click="btnResetClick($event, $scope)"></wm-button>
+                            </wm-buttongroup>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-form>
+            <wm-table title="View Request" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM550ViewReq.dataSet.poutViewReq" navigation="Classic" name="tableViewReq" spacing="condensed" class="panel-info" gridfirstrowselect="true" showrecordcount="true">
+                <wm-table-column binding="trnreqno" caption="Request No" width="90px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column-group name="group" caption="Transaction Type">
+                    <wm-table-column binding="trntyp" caption="" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="wtrndesc" caption="" width="120px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                </wm-table-column-group>
+                <wm-table-column binding="wrhnum" caption="Warehouse" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="srcyrncod" caption="Src Yarn Code" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="destyrncod" caption="Dest Yarn Code" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="qtyres" caption="Qty  Requested" width="80px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="qtytransformed" caption="Qty Transformed" width="80px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wnet" caption="Net Qty" width="90px" textalignment="right" edit-widget-type="number" type="long" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="remarks" caption="Remarks" width="150px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="sts" caption="Status" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="modby" caption="Requested  By" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="moddat" caption="On" width="120px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy HH:mm" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+            </wm-table>
+            <wm-layoutgrid name="layoutgrid2_1">
+                <wm-gridrow name="gridrow3_1">
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn13_1" horizontalalign="center">
+                        <wm-button class="btn-default" caption="Request for Yarn Transformation" type="button" margin="unset 0.5em" name="btnAddReqyrnTrn" on-click="btnAddReqyrnTrnClick($event, $scope)"></wm-button>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn17_1" horizontalalign="center">
+                        <wm-button class="btn-default" caption="Cancel/Complete Request" type="button" margin="unset 0.5em" name="btnCnslReq" on-click="btnCnslReqClick($event, $scope)"></wm-button>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="1" name="gridcolumn18_1">
+                        <wm-label padding="unset 0.5em" name="lblVld" caption="bind:Widgets.tableViewReq.selecteditem.trnreqno" show="bind:false"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn19_1"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn20_1"></wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn14_1"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+</wm-page>

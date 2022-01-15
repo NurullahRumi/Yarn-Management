@@ -1,0 +1,87 @@
+{
+  "notifMsg" : {
+    "_id" : "wm-notifMsg-wm.NotificationVariable-1546667153936",
+    "name" : "notifMsg",
+    "owner" : "Page",
+    "category" : "wm.NotificationVariable",
+    "dataBinding" : [ {
+      "target" : "alerttype",
+      "value" : "information",
+      "type" : "string"
+    } ],
+    "operation" : "alert"
+  },
+  "statPrgid" : {
+    "_id" : "wm-statPrgid-wm.Variable-1546658897783",
+    "name" : "statPrgid",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "YM1000W17",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "statPrgName" : {
+    "_id" : "wm-statPrgName-wm.Variable-1546658927665",
+    "name" : "statPrgName",
+    "owner" : "Page",
+    "category" : "wm.Variable",
+    "dataBinding" : [ {
+      "target" : "dataValue",
+      "value" : "Acknowledge Inter-store Transfer",
+      "type" : "string"
+    } ],
+    "dataSet" : {
+      "dataValue" : ""
+    },
+    "type" : "string",
+    "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "svUpdateProcYM311PK0_ACKIST_YM313SaveAck" : {
+    "_id" : "wm-svUpdateProcYM311PK0_ACKIST_YM313SaveAck-wm.ServiceVariable-1546665993643",
+    "name" : "svUpdateProcYM311PK0_ACKIST_YM313SaveAck",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "pPrgid",
+      "value" : "bind:Variables.statPrgid.dataSet.dataValue",
+      "type" : "string"
+    }, {
+      "target" : "pTrnNum",
+      "value" : "bind:Widgets.formSaveAck.formWidgets.pTrnNum.datavalue",
+      "type" : "integer"
+    }, {
+      "target" : "pYrnMixCode",
+      "value" : "bind:Widgets.formSaveAck.formWidgets.pYrnMixCode.datavalue",
+      "type" : "string"
+    }, {
+      "target" : "pPalletId",
+      "value" : "bind:Widgets.formSaveAck.formWidgets.pPalletId.datavalue",
+      "type" : "string"
+    } ],
+    "service" : "pfsdb",
+    "operation" : "executeUpdateProcYM311PK0_ACKIST_YM313SaveAck",
+    "operationId" : "ProcedureExecutionController_executeUpdateProcYM311PK0_ACKIST_YM313SaveAck",
+    "operationType" : "put",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "onSuccess" : "svUpdateProcYM311PK0_ACKIST_YM313SaveAckonSuccess($event, $scope)",
+    "onError" : "svUpdateProcYM311PK0_ACKIST_YM313SaveAckonError($event, $scope)",
+    "startUpdate" : false,
+    "autoUpdate" : false,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "ProcedureExecution"
+  }
+}

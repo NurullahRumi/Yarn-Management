@@ -1,0 +1,297 @@
+<wm-page data-ng-controller="YarnCartonStickerPageController" pagetitle="Yarn Carton Sticker" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.statPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter" class="panel-primary">
+                <wm-layoutgrid columns="1" name="layoutgrid1">
+                    <wm-gridrow name="gridrow1">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn1">
+                            <wm-form-field readonly="false" name="p_CARTONID" displayname="Carton ID" key="p_CARTONID" type="string" show="true" widget="text" on-change="p_CARTONIDChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn4">
+                            <wm-form-field readonly="false" name="p_YRNCOD" displayname="Yarn Code" key="p_YRNCOD" type="string" show="true" widget="text" on-change="p_YRNCODChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn5">
+                            <wm-form-field readonly="false" name="p_IST_REQNUM" displayname="Interstore Trsf Request #" key="p_IST_REQNUM" type="string" show="true" widget="text" on-change="p_IST_REQNUMChange($event, $scope, newVal, oldVal)"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn6">
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup1">
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="button3" margin="15px unset unset unset" on-click="button3Click($event, $scope)" disabled="bind:Variables.statForBtnQry.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                <wm-button caption="Reset" type="reset" class="btn-secondary" name="button1" margin="15px unset unset unset" on-click="button1Click($event, $scope)"></wm-button>
+                            </wm-buttongroup>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn7"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn8"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-form>
+            <wm-table title="Details" dataset="bind:Variables.svProcYM1311PK0_YM284YarnCartonSticker.dataSet.poutYarnCartonSticker" navigation="Classic" name="gridCartonSticker" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" class="panel-info">
+                <wm-table-column binding="cartonid" caption="Carton ID" width="115px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="wrhnum" caption="Warehouse" width="75px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="yrncod" caption="Yarn Code" width="106px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="istReqnum" caption="Interstore Trsf Request #" width="68px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="grosswgt" caption="Gross  Wgt kg" width="42px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column binding="tarewgt" caption="Tare Wgt kg" width="39px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                <wm-table-column-group name="group" caption="<------Carton Dimension-------->">
+                    <wm-table-column binding="netwgt" caption="Net Wgt Kg" width="50px" textalignment="right" edit-widget-type="number" type="double" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="numcon" caption="Cones/ Carton" width="50px" textalignment="right" edit-widget-type="number" type="integer" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="conwgt" caption="Net Cone  Wgt kg" width="60px" textalignment="right" edit-widget-type="number" type="float" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="cartonlen" caption="Length" width="50px" textalignment="right" edit-widget-type="number" type="float" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="cartonwid" caption="Wid" width="50px" textalignment="right" edit-widget-type="number" type="float" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="cartonhgt" caption="Height" width="50px" textalignment="right" edit-widget-type="number" type="float" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="cartondimuom" caption="Uom" width="50px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="coneclr" caption="Cone Colour" width="140px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="tapeclr" caption="Tape Colour on carton" width="140px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                    <wm-table-column binding="cartonsts" caption="Status" width="50px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                </wm-table-column-group>
+                <wm-table-column binding="customField" caption="" widget-type="button" width="60px" edit-widget-type="text" type="string" accessroles="YRNCARTONSTICKER_EDITCRT" searchable="false" show="true" readonly="false">
+                    <wm-button caption="{{row.getProperty('customField') || 'Update'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="customFieldAction(selectedItemData)" data-ng-class=""></wm-button>
+                </wm-table-column>
+            </wm-table>
+            <wm-layoutgrid name="layoutgrid2">
+                <wm-gridrow name="gridrow2" padding="unset unset 10px unset">
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn19">
+                        <wm-label name="label11" class="col-md-3 control-label" margin="unset 5px unset unset" caption="Created By/On" width="90"></wm-label>
+                        <wm-label name="label12" class="displayField col-md-6" margin="unset 5px unset unset" width="70" caption="bind:Variables.svProcYM1311PK0_YM284YarnCartonSticker.dataSet.poutYarnCartonSticker[$i].usrid"></wm-label>
+                        <wm-label name="label13" class="displayField col-md-6" width="120" caption="bind:Variables.svProcYM1311PK0_YM284YarnCartonSticker.dataSet.poutYarnCartonSticker[$i].usrdat | toDate: 'dd-MMM-yyyy HH:mm'"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn20">
+                        <wm-label class="col-md-3 control-label" margin="unset 5px unset unset" caption="Last Upd By/On" width="90" name="label14"></wm-label>
+                        <wm-label class="displayField col-md-6" margin="unset 5px unset unset" width="70" name="label15" caption="bind:Variables.svProcYM1311PK0_YM284YarnCartonSticker.dataSet.poutYarnCartonSticker[$i].modid"></wm-label>
+                        <wm-label class="displayField col-md-6" width="120" name="label16" caption="bind:Variables.svProcYM1311PK0_YM284YarnCartonSticker.dataSet.poutYarnCartonSticker[$i].moddat | toDate: 'dd-MMM-yyyy HH:mm'"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn24">
+                        <wm-label name="label17" caption="Total Net Wgt Kg" class="col-md-3 control-label" width="100"></wm-label>
+                        <wm-label class="displayField col-md-6" margin="unset 5px unset unset" width="70" caption="bind:Variables.svProcYM1311PK0_YM284YarnCartonSticker.dataSet.poutYarnCartonSticker[$i].wsumNetwgt.toLocaleString()" name="label18"
+                            textalign="right"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow3">
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn9" horizontalalign="center">
+                        <wm-button class="btn-default" caption="Create cartons" type="button" margin="unset 0.5em" name="button3_1" on-click="button3_1Click($event, $scope)" accessroles="YRNCARTONSTICKER_CREATECRT"></wm-button>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn21">
+                        <wm-label class="col-md-3 control-label" name="label7_1" caption="From Carton ID" width="90" margin="unset 5px unset unset"></wm-label>
+                        <wm-text name="txtFCARTONID" width="195" class="displayField col-md-6" datavalue="bind:Variables.svProcYM1311PK0_YM284YarnCartonSticker.dataSet.poutYarnCartonSticker[$i].wfcartonid"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn22">
+                        <wm-label class="col-md-3 control-label" name="label8_1" caption="To" width="25" margin="unset 5px unset unset"></wm-label>
+                        <wm-text name="txtTCARTONID" width="150" datavalue="bind:Variables.svProcYM1311PK0_YM284YarnCartonSticker.dataSet.poutYarnCartonSticker[$i].wtcartonid"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn10">
+                        <wm-label class="col-md-3 control-label" name="label9" caption="Printer" width="45" margin="unset 5px unset unset"></wm-label>
+                        <wm-text name="text3" width="145" datavalue="bind:Variables.svProcYM1311PK0_YM284YarnCartonSticker.dataSet.poutYarnCartonSticker[$i].wprindes"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="2" name="gridcolumn23"></wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Create Cartons" iconclass="wi wi-create" name="dialogInsYarnCartonSticker" width="1200">
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-default" caption="Create And Exit" type="button" margin="unset 0.5em" name="button7" on-click="button7Click($event, $scope)"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button4" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-tile width="270px" height="220px" class="well" name="tile1" margin="unset 15px unset unset">
+                <wm-layoutgrid name="layoutgrid8">
+                    <wm-gridrow name="gridrow15" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn37">
+                            <wm-label name="label38" margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Yarn Code" width="70"></wm-label>
+                            <wm-text name="txtInsYRNCOD" width="120" maxchars="15"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow16" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn39">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Request #" width="70" name="label40"></wm-label>
+                            <wm-text width="120" name="txtInsIST_REQNUM" on-change="txtInsIST_REQNUMChange($event, $scope, newVal, oldVal)" maxchars="8"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow19" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn45">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Warehouse" width="70" name="label41"></wm-label>
+                            <wm-label class="displayField col-md-6" name="lblInsWRHNUM" width="120" caption="bind:Variables.svProcYM1311PK0_YM284validate_reqnum.dataSet.poutwrhnum"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow20">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn46">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Kgs Req" width="70" name="label42"></wm-label>
+                            <wm-label class="displayField col-md-6" name="lblInsQTYREQN" width="120" caption="bind:Variables.svProcYM1311PK0_YM284validate_reqnum.dataSet.poutqtyreqn"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+            <wm-tile width="240px" height="220px" class="well" name="tile2" margin="unset 15px unset unset">
+                <wm-label name="tileTitle" caption="Carton Dimension" class="p" fontsize="1.5" fontunit="em"></wm-label>
+                <wm-radioset height="auto" name="radioset1" layout="inline" dataset="bind:Variables.statCartonDimension.dataSet" datafield="dataValue" displayfield="name" selectedvalue="bind:Variables.statCartonDimension.dataSet[$i].dataValue"></wm-radioset>
+                <wm-layoutgrid name="layoutgrid12">
+                    <wm-gridrow name="gridrow25" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn55">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Length" width="50" name="label47"></wm-label>
+                            <wm-text width="100" name="txtInsCARTONLEN" datavalue="bind:Variables.svProcYM1311PK0_YM284fetch_dflt_crtndim.dataSet.plen" type="number" maxchars="8"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow26" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn57">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Width" width="50" name="label48"></wm-label>
+                            <wm-text width="100" name="txtInsCARTONWID" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM284fetch_dflt_crtndim.dataSet.pwid" maxchars="8"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow27" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn59">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Height" width="50" name="label49"></wm-label>
+                            <wm-text width="100" name="txtInsCARTONHGT" type="number" datavalue="bind:Variables.svProcYM1311PK0_YM284fetch_dflt_crtndim.dataSet.phgt" maxchars="8"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow28">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn60">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Uom" width="50" name="label50"></wm-label>
+                            <wm-select name="selectInsCARTONDIMUOM" width="100" datavalue="bind:Variables.svProcYM1311PK0_YM284fetch_dflt_crtndim.dataSet.pdimuom" dataset="bind:Variables.statCARTONDIMUOM.dataSet" datafield="dataValue" displayfield="name"></wm-select>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+            <wm-tile width="350px" height="220px" class="well" name="tile3" margin="unset 15px unset unset">
+                <wm-layoutgrid name="layoutgrid13">
+                    <wm-gridrow name="gridrow29" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn61">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Gross Wgt" width="60" name="label36"></wm-label>
+                            <wm-text width="70" name="txtInsGROSSWGT" type="number" maxchars="10"></wm-text>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn62">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Net Wgt" width="60" name="label37"></wm-label>
+                            <wm-label class="displayField col-md-6" width="70" name="lblInsNETWGT" caption="bind:Widgets.txtInsGROSSWGT.datavalue - Widgets.txtInsTAREWGT.datavalue | numberToString: '2'"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow20_1" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn39_1">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Tare Wgt" width="60" name="label38_1"></wm-label>
+                            <wm-text width="70" name="txtInsTAREWGT" maxchars="10" type="number"></wm-text>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn40">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="(empty carton &amp; cone)" width="200" name="label39_1"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow21" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn41">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Cones/Carton" width="140" name="label41_1"></wm-label>
+                            <wm-text width="70" name="txtInsNUMCON" type="number" maxchars="5" on-change="txtInsNUMCONChange($event, $scope, newVal, oldVal)"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow22" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn43">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Net Cone Wgt Kg" width="140" name="label42_1"></wm-label>
+                            <wm-text width="70" name="txtInsCONWGT" maxchars="8" type="number"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow23" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn45_1">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Cone Colour" width="70" name="label43_1"></wm-label>
+                            <wm-text width="200" name="txtInsCONECLR" maxchars="40"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow30">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn63">
+                            <wm-label margin="unset 5px unset unset" class="col-md-3 control-label" textalign="right" caption="Tape Colour" width="70" name="label44_1"></wm-label>
+                            <wm-text width="200" name="txtInsTAPECLR" maxchars="40"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+            <wm-tile width="240px" height="220px" class="well" name="tile4">
+                <wm-layoutgrid name="layoutgrid8_1">
+                    <wm-gridrow name="gridrow25_1" padding="unset unset 3px unset">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn49" horizontalalign="center">
+                            <wm-label margin="unset 5px unset unset" class="col-md-6 control-label" textalign="center" caption="Depalletised Kgs Left" width="200" name="label47_1"></wm-label>
+                            <wm-label class="displayField col-md-6" width="120" name="lblInsCARTONQTY_AVAIL" caption="bind:Variables.svProcYM1311PK0_YM284validate_reqnum.dataSet.pcartonqtyavail"></wm-label>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow26_1">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn51">
+                            <wm-label margin="unset 5px unset unset" class="col-md-6 control-label" textalign="center" caption="No of Cartons to create" width="200" name="label48_1"></wm-label>
+                            <wm-text width="120" name="txtInsNUMCARTONS" class="displayField col-md-6" maxchars="30" type="number" minvalue="1" step="1"></wm-text>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-tile>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Update Yarn Carton Sticker" iconclass="wi wi-edit" name="dialogUpdYarnCartonSticker" width="700">
+            <wm-layoutgrid name="layoutgrid4">
+                <wm-gridrow name="gridrow7" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn17">
+                        <wm-label caption="Yarn Code" name="label7" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="150"></wm-label>
+                        <wm-label name="lblUpdYRNCOD" class="displayField col-md-6" width="130" caption="bind:Widgets.gridCartonSticker.selecteditem.yrncod"></wm-label>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn18">
+                        <wm-label caption="Interstore Trsf Request #" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="150" name="label19"></wm-label>
+                        <wm-label class="displayField col-md-6" width="130" caption="bind:Widgets.gridCartonSticker.selecteditem.istReqnum" name="lblUpdIST_REQNUM"></wm-label>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow7_1" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn21_1">
+                        <wm-label caption="Gross  Wgt kg" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="150" name="label20"></wm-label>
+                        <wm-text width="130" name="txtUpdGROSSWGT" type="number" datavalue="bind:Widgets.gridCartonSticker.selecteditem.grosswgt" maxchars="10" on-change="txtUpdGROSSWGTChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn22_1">
+                        <wm-label caption="Tare Wgt kg" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="150" name="label25"></wm-label>
+                        <wm-text width="130" name="txtUpdTAREWGT" type="number" datavalue="bind:Widgets.gridCartonSticker.selecteditem.tarewgt" maxchars="10" on-change="txtUpdTAREWGTChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow8" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn23_1">
+                        <wm-label caption="Cones/ Carton" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="150" name="label21"></wm-label>
+                        <wm-text width="130" name="txtUpdNUMCON" type="number" datavalue="bind:Widgets.gridCartonSticker.selecteditem.numcon" maxchars="5" on-change="txtUpdNUMCONChange($event, $scope, newVal, oldVal)"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn24_1">
+                        <wm-label caption="Net Cone  Wgt kg" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="150" name="label26"></wm-label>
+                        <wm-text width="130" name="txtUpdCONWGT" type="number" datavalue="bind:Widgets.gridCartonSticker.selecteditem.conwgt" maxchars="8"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow9" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn25">
+                        <wm-label caption="Length" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="150" name="label22"></wm-label>
+                        <wm-text width="130" name="txtUpdCARTONLEN" type="number" datavalue="bind:Widgets.gridCartonSticker.selecteditem.cartonlen" maxchars="8"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn26">
+                        <wm-label caption="Wid" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="150" name="label27"></wm-label>
+                        <wm-text width="130" name="txtUpdCARTONWID" type="number" datavalue="bind:Widgets.gridCartonSticker.selecteditem.cartonwid" maxchars="8"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow10" padding="unset unset 5px unset">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn27">
+                        <wm-label caption="Height" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="150" name="label23"></wm-label>
+                        <wm-text width="130" name="txtUpdCARTONHGT" type="number" datavalue="bind:Widgets.gridCartonSticker.selecteditem.cartonhgt" maxchars="8"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn28">
+                        <wm-label caption="Uom" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="150" name="label28"></wm-label>
+                        <wm-select name="txtUpdCARTONDIMUOM" width="130" dataset="bind:Variables.statCARTONDIMUOM.dataSet" datafield="dataValue" displayfield="name" datavalue="bind:Widgets.gridCartonSticker.selecteditem.cartondimuom"></wm-select>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow11">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn29">
+                        <wm-label caption="Cone Colour" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="150" name="label24"></wm-label>
+                        <wm-text width="150" name="txtUpdCONECLR" datavalue="bind:Widgets.gridCartonSticker.selecteditem.coneclr" maxchars="40"></wm-text>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn30">
+                        <wm-label caption="Tape Colour on carton" class="col-md-3 control-label" margin="unset 5px unset unset" textalign="right" width="150" name="label29"></wm-label>
+                        <wm-text width="150" name="txtUpdTAPECLR" datavalue="bind:Widgets.gridCartonSticker.selecteditem.tapeclr" maxchars="40"></wm-text>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions2">
+                <wm-button class="btn-default" caption="Save And Exit" type="button" margin="unset 0.5em" name="button6" on-click="button6Click($event, $scope)" iconclass="wi wi-save"></wm-button>
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button5" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view name="notificationAlertDialogView" class="dialog-view">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+</wm-page>

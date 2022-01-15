@@ -1,0 +1,171 @@
+<wm-page data-ng-controller="QryMultipleYarnPalletisationPageController" pagetitle="Qry Multiple Yarn Palletisation" name="page1">
+    <wm-header content="header" name="header1">
+        <wm-param name="pTitle" value="bind:Variables.StatPrgName.dataSet.dataValue" type="string"></wm-param>
+    </wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-form errormessage="" captionposition="top" title="Filter" enctype="application/x-www-form-urlencoded" method="get" captionalign="left" name="formFilter" class="panel-primary">
+                <wm-layoutgrid columns="1" name="layoutgrid1">
+                    <wm-gridrow name="gridrow1">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn1">
+                            <wm-form-field name="pPalmodnum" readonly="false" displayname="Transformation Id" key="pPalmodnum" type="string" show="true" widget="text" inputtype="text" placeholder="Enter value"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn3">
+                            <wm-form-field name="pSrcwrhnum" readonly="false" displayname="Warehouse" key="pSrcwrhnum" type="string" show="true" widget="select" inputtype="text" placeholder="Enter value" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430RGWrhnum.dataSet.poutWrhnum"
+                                datafield="strcod" displayfield="strdes"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn4">
+                            <wm-buttongroup horizontalalign="left" class="form-action col-md-12" name="buttongroup1">
+                                <wm-button caption="Query" type="submit" class="btn-primary" name="btnQry" margin="15px unset unset unset" on-click="btnQryClick($event, $scope)" disabled="bind:Variables.statForBtnQry.dataSet.dataValue == &quot;Y&quot; ? false : true"></wm-button>
+                                <wm-button caption="Reset" type="reset" class="btn-secondary" name="btnReset" margin="15px unset unset unset" on-click="btnResetClick($event, $scope)"></wm-button>
+                            </wm-buttongroup>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-form>
+            <wm-panel iconclass="" autoclose="outsideClick" title="Details of Transformation Id" name="panel5" class="panel-info">
+                <wm-layoutgrid name="layoutgrid9">
+                    <wm-gridrow name="gridrow11" padding="unset unset 15px unset">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn33">
+                            <wm-list listclass="list-group" template="true" itemsperrow="xs-1 sm-1 md-1 lg-1" class="bordered" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430QryView.dataSet.pourView" navigation="Classic" name="listQryView" pagesize="1"
+                                selectfirstitem="true" showrecordcount="true" title="">
+                                <wm-listtemplate layout="inline" name="listtemplate1">
+                                    <wm-layoutgrid name="layoutgrid7">
+                                        <wm-gridrow name="gridrow8" padding="10px unset unset unset">
+                                            <wm-gridcolumn columnwidth="4" name="gridcolumn27">
+                                                <wm-label class="col-md-3 control-label" caption="Warehouse" width="45%" textalign="right" margin="unset 5px unset unset" name="label5_1"></wm-label>
+                                                <wm-label padding="unset 0.5em" name="label7" class="displayField" width="50%" caption="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430QryView.dataSet.pourView[$i].srcwrhnum"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="3" name="gridcolumn28">
+                                                <wm-label padding="unset 0.5em" class="displayField" width="95%" name="label8" caption="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430QryView.dataSet.pourView[$i].wstrdes"></wm-label>
+                                            </wm-gridcolumn>
+                                            <wm-gridcolumn columnwidth="5" name="gridcolumn25">
+                                                <wm-label class="col-md-3 control-label" caption="Transformation Id" width="45%" textalign="right" margin="unset 5px unset unset" name="label9"></wm-label>
+                                                <wm-label padding="unset 0.5em" class="displayField" width="50%" name="label10" caption="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430QryView.dataSet.pourView[$i].palmodnum"></wm-label>
+                                            </wm-gridcolumn>
+                                        </wm-gridrow>
+                                    </wm-layoutgrid>
+                                </wm-listtemplate>
+                            </wm-list>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn34"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-panel iconclass="" autoclose="outsideClick" title="Source" name="panelSource" class="panel-info">
+                    <wm-table title="" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430Source.dataSet.poutSrc" navigation="Classic" name="tableSource" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" width="65%">
+                        <wm-table-column binding="srcpalletSeq" caption="Src Seq" width="80px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="srcpalletid" caption="Pallet Id" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="wpallettype" caption="Pallet Type" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="srcyrnmixcode" caption="Yarnmixcode" width="110px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="srckgs" caption="Src kgs" width="90px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column-group name="group" caption="Created By">
+                            <wm-table-column binding="modid" caption="" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="moddat" caption="" width="100px" edit-widget-type="datetime" type="datetime" datepattern="dd-MMM-yyyy" formatpattern="toDate" show="true" readonly="false"></wm-table-column>
+                        </wm-table-column-group>
+                        <wm-table-column binding="vewYrn" caption="" widget-type="button" width="80px" textalignment="center" edit-widget-type="text" type="string" searchable="false" show="true" readonly="false">
+                            <wm-button caption="{{row.getProperty('vewYrn') || 'View Pallet'}}" show="true" class="btn-sm btn-primary" iconclass="" on-click="vewYrnAction(selectedItemData)" data-ng-class=""></wm-button>
+                        </wm-table-column>
+                    </wm-table>
+                    <wm-layoutgrid name="layoutgrid3">
+                        <wm-gridrow name="gridrow3">
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn6"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn7"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn10">
+                                <wm-label class="col-md-3 control-label" caption="Total Src Kgs" width="50%" textalign="right" margin="unset 5px unset unset" name="label4"></wm-label>
+                                <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430Source.dataSet.poutSrc[$i].wtotalSrc | numberToString: '2'" width="40%" margin="unset 5px unset unset" name="label5"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn11"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn12"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn13"></wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-panel>
+                <wm-panel iconclass="" autoclose="outsideClick" title="Destination" name="panelDest" class="panel-info">
+                    <wm-layoutgrid name="layoutgrid4">
+                        <wm-gridrow name="gridrow4">
+                            <wm-gridcolumn columnwidth="6" name="gridcolumn12_1" padding="unset 10px unset unset">
+                                <wm-table title="" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430ViewDest.dataSet.poutDest" navigation="Classic" name="tableDest" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" pagesize="3">
+                                    <wm-table-column binding="destpalletSeq" caption="Pallet Seq" width="60px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="pallettype" caption="Pallet type" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="yrnmixcode" caption="Yrnmixcode" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="ordnum" caption="Order No" width="80px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="fabseq" caption="Fab Seq" width="60px" textalignment="right" edit-widget-type="number" type="byte" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="palmodReqnum" caption="Pal  Request" width="60px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="wnumpal" caption="No of Pallets" width="60px" textalignment="right" edit-widget-type="number" type="long" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="palwgt" caption="Total Kgs" width="60px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                                </wm-table>
+                                <wm-layoutgrid name="layoutgrid7_1">
+                                    <wm-gridrow name="gridrow7">
+                                        <wm-gridcolumn columnwidth="6" name="gridcolumn24"></wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="6" name="gridcolumn25_1">
+                                            <wm-label class="col-md-3 control-label" caption="Sum of Total Kgs" width="55%" textalign="right" margin="unset 5px unset unset" name="label9_1"></wm-label>
+                                            <wm-label class="displayField col-md-6" caption="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430ViewDest.dataSet.poutDest[$i].wtotalDest | numberToString: '2'" width="40%" margin="unset 5px unset unset"
+                                                name="label10_1"></wm-label>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="6" name="gridcolumn13_1" padding="unset 10px">
+                                <wm-table title="" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430DestDel.dataSet.poutDestDel" navigation="Classic" name="tableDestDel" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" pagesize="3">
+                                    <wm-table-column binding="destpalletSeq" caption="Pallet Seq" width="60px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="yrncod" caption="Yarn Code" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="conwgt" caption="Cone Wgt" width="60px" textalignment="right" edit-widget-type="number" type="float" formatpattern="numberToString" fractionsize="3" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="concar" caption="Cones  /Ctn" width="60px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="carpall" caption="Ctns/ Pallet" width="60px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="numcones" caption="No of Cones" width="60px" textalignment="right" edit-widget-type="number" type="integer" formatpattern="numberToString" show="true" readonly="false"></wm-table-column>
+                                    <wm-table-column binding="palwgt" caption="Kgs" width="70px" textalignment="right" edit-widget-type="number" type="double" formatpattern="numberToString" fractionsize="2" show="true" readonly="false"></wm-table-column>
+                                </wm-table>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow13">
+                            <wm-gridcolumn columnwidth="3" name="gridcolumn37">
+                                <wm-table title="" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430DestPal.dataSet.poutDestpal" navigation="Classic" name="tableDestPal" spacing="condensed" gridfirstrowselect="true" showrecordcount="true" pagesize="3">
+                                    <wm-table-column binding="destpalletid" caption="Pallets Generated" width="100px" edit-widget-type="text" type="string" show="true" readonly="false"></wm-table-column>
+                                </wm-table>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="7" name="gridcolumn38"></wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn39"></wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-panel>
+                <wm-layoutgrid name="layoutgrid5">
+                    <wm-gridrow name="gridrow5">
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn14">
+                            <wm-composite name="composite2_1">
+                                <wm-label class="col-md-3 control-label" name="label7_1" caption="Printer Name" width="40%" textalign="right" margin="unset 5px unset unset"></wm-label>
+                                <wm-container class="col-md-9" name="container2_1" width="55%">
+                                    <wm-select name="select1" placeholder="Enter Value" dataset="bind:Variables.svGetProcYM1000WPK0_YNTRANSFRM_YM430RGPrtnam.dataSet.poutRgprt" datafield="prnid" displayfield="prndesc"></wm-select>
+                                </wm-container>
+                            </wm-composite>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn15" horizontalalign="left">
+                            <wm-button class="btn-default" caption="Print Stickers" type="button" margin="unset 0.5em" name="btnPrtSkr"></wm-button>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn18"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn19"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn20"></wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="2" name="gridcolumn21"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+            </wm-panel>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-alertdialog name="notificationalertdialog" controller="NotificationDialogController" notificationdialog="alert" message="{{notification.text}}" title="{{notification.title}}" oktext="{{notification.okButtonText}}" alerttype="{{notification.alerttype}}"
+            on-ok="variableOnOk()" on-close="variableOnClose()"></wm-alertdialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Pallet Details" iconclass="wi wi-details" name="dialogYrncod" width="55%">
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-primary" caption="Exit" on-click="closeDialog()" name="button3" iconclass="wi wi-close"></wm-button>
+            </wm-dialogactions>
+            <wm-panel iconclass="" autoclose="outsideClick" title="" name="panelYrncod" content="partYrncodesOfYrnMix">
+                <wm-param name="pSrcyrnmixcode" value="bind:Widgets.tableSource.selecteditem.srcyrnmixcode" type="string"></wm-param>
+                <wm-param name="pWrhnum" value="bind:Widgets.tableView.selecteditem.srcwrhnum" type="string"></wm-param>
+                <wm-param name="pSrcpalletid" value="bind:Widgets.tableSource.selecteditem.srcpalletid" type="string"></wm-param>
+            </wm-panel>
+        </wm-dialog>
+    </wm-view>
+</wm-page>
